@@ -20,7 +20,7 @@
 //#include <neb/gfx/glsl/Uniform/scalar.hpp>
 //#include <neb/gfx/glsl/attrib.hh>
 
-#include <neb/free.hh>
+#include <neb/core/free.hpp>
 
 void		neb::init_log() {
 	
@@ -68,10 +68,11 @@ void		neb::init_log() {
 void		neb::init() {
 
 	neb::init_log();
-	
-	neb::app::base::g_app_ = sp::make_shared<neb::app::base>();
 
-	neb::app::base::g_app_->init();
+	/** @todo app should be created and initialized by final */	
+	//neb::app::base::g_app_ = sp::make_shared<neb::app::base>();
+		
+	//neb::app::base::g_app_->init();
 
 
 }

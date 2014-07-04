@@ -16,8 +16,7 @@
 #include <neb/core/scene/util/Types.hh>
 
 //#include <neb/config.hh> // Nebula/config.hpp.in
-//#include <neb/gfx/glsl/program.hh>
-
+//#include <neb/gfx/glsl/program.hpp>
 
 //#include <neb/core/actor/base.hpp>
 #include <neb/core/actor/util/Parent.hh>
@@ -60,6 +59,8 @@ namespace neb { namespace core { namespace scene {
 		public:
 			neb::core::pose						getPose();
 			neb::core::pose						getPoseGlobal();
+
+			sp::weak_ptr<neb::core::scene::util::parent>		getParent();
 		public:
 			void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
 
@@ -67,6 +68,7 @@ namespace neb { namespace core { namespace scene {
 			/** @name convenience functions
 			 * @{
 			 */
+			virtual sp::weak_ptr<neb::core::actor::base>			createActorBase(neb::core::pose const & pose) = 0;
 			/** @brief create rigidstatic cube
 			 *
 			 * @note typeof returned actor will be determined by final implementation of this
@@ -90,10 +92,10 @@ namespace neb { namespace core { namespace scene {
 			 *
 			 * @note WEAK
 			 */
-			sp::shared_ptr<neb::core::scene::util::parent>		parent_;
+			sp::weak_ptr<neb::core::scene::util::parent>					parent_;
 
 		public:
-			neb::core::scene::util::Flag					flag_;
+			neb::core::scene::util::Flag							flag_;
 
 			::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
 

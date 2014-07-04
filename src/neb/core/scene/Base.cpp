@@ -116,10 +116,10 @@ sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDy
 sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorLightPoint(vec3 p) {
 
 	// actor
-	auto actor = createActorBase(neb::core::pose(p));
+	auto actor = createActorBase(neb::core::pose(p)).lock();
 
 	// shape	
-	auto shape = actor->createShapeBase();
+	auto shape = actor->createShapeBase().lock();
 
 	// light
 	auto light = shape->createLightPoint();

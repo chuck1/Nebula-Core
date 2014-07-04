@@ -1,4 +1,4 @@
-#include <neb/game/map/base.hpp>
+#include <neb/core/game/map/base.hpp>
 
 neb::game::map::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	neb::core::scene::base(parent)

@@ -2,8 +2,8 @@
 #define NEB_GAME_TRIGGER_ACTOREX1_HPP
 
 #include <neb/core/actor/util/Types.hh>
-#include <neb/game/trigger/util/decl.hpp>
-#include <neb/game/trigger/base.hpp>
+#include <neb/core/game/trigger/util/decl.hpp>
+#include <neb/core/game/trigger/base.hpp>
 
 namespace neb { namespace game { namespace trigger {
 

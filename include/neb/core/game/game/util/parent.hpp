@@ -1,12 +1,9 @@
 #ifndef __GRU_GAME_GAME_UTIL_PARENT_HPP__
 #define __GRU_GAME_GAME_UTIL_PARENT_HPP__
 
-#include <map>
+#include <gal/std/shared.hpp>
 
-
-#include <Galaxy-Standard/shared.hpp>
-
-#include <neb/game/game/base.hpp>
+#include <neb/core/game/game/base.hpp>
 
 namespace neb { namespace game { namespace game { namespace util {
 

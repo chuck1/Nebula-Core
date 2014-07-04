@@ -1,11 +1,12 @@
 
-#include <neb/app/Base.hh>
+//#include <neb/app/Base.hh>
 #include <neb/core/actor/base.hpp>
 #include <neb/core/scene/base.hpp>
-#include <neb/game/game/base.hpp>
-#include <neb/game/game/util/parent.hpp>
-#include <neb/game/trigger/util/parent.hpp>
-#include <neb/game/trigger/ActorEx1.hpp>
+#include <neb/core/scene/util/Parent.hh>
+#include <neb/core/game/game/base.hpp>
+#include <neb/core/game/game/util/parent.hpp>
+#include <neb/core/game/trigger/util/parent.hpp>
+#include <neb/core/game/trigger/ActorEx1.hpp>
 
 neb::game::trigger::ActorEx1::ActorEx1(sp::shared_ptr<neb::game::trigger::util::parent> parent):
 	neb::game::trigger::base(parent)
@@ -36,10 +37,12 @@ void				neb::game::trigger::ActorEx1::doSomething() {
 	auto scene(game->scene_.lock());
 	
 	if(!scene) return;
+
+	auto scene_parent = scene->getParent().lock();
 	
-	auto app(neb::app::base::global());
+	assert(scene_parent);
 	
-	app->neb::core::scene::util::parent::erase(scene->i_);
+	scene_parent->neb::core::scene::util::parent::erase(scene->i_);
 	
 	//scene->getParent()->erase(scene->i_);
 	
