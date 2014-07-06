@@ -3,9 +3,6 @@
 
 #include <map>
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include <Galaxy-Standard/shared.hpp>
 
 #include <neb/util/parent.hpp>
@@ -14,9 +11,6 @@
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Cast.hh>
-
-//#include <neb/gfx/material.hh>
-//#include <neb/gfx/mesh.hh>
 
 #include <neb/core/Pose.hh>
 
