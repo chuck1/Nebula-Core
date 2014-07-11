@@ -7,6 +7,10 @@
 
 #include <neb/core/app/util/Flag.hh>
 
+namespace gal { namespace console {
+class command_set;
+}}
+
 namespace neb {
 	namespace app {
 		/** @brief %base */
@@ -21,6 +25,8 @@ namespace neb {
 				static ::std::shared_ptr<neb::app::__base>	g_app_;
 
 				gal::std::timestep				ts_;
+
+				::std::shared_ptr<gal::console::command_set>	command_set_;
 
 		};
 	}

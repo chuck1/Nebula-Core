@@ -12,6 +12,7 @@ FIND_PACKAGE(glfw)
 FIND_PACKAGE(Galaxy COMPONENTS
 	std
 	log
+	console
 	REQUIRED)
 
 
