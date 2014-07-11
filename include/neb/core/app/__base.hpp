@@ -17,6 +17,8 @@ namespace neb {
 		class __base {
 			public:
 				virtual void					init();
+				
+				static ::std::shared_ptr<neb::app::__base>	global();
 			public:
 				boost::asio::io_service				ios_;
 

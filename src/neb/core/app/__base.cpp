@@ -42,8 +42,8 @@ void		neb::app::__base::init() {
 	
 	auto cmd_exit = ::std::make_shared<gal::console::command>();
 
-	cmd_exit->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
-		sp::shared_ptr<neb::app::base> app = neb::app::base::global();
+	cmd_exit->func_ = [&] (::std::shared_ptr<gal::console::base> term, bpo::variables_map vm) {
+		auto app = neb::app::__base::global();
 		app->flag_.set(neb::app::util::flag::SHOULD_RELEASE);
 	};
 
