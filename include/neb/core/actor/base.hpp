@@ -27,7 +27,7 @@
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Flag.hh>
-#include <neb/core/actor/util/Parent.hh>
+#include <neb/core/actor/util/parent.hpp>
 #include <neb/core/pose.hpp>
 
 
