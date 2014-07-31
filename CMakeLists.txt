@@ -12,6 +12,7 @@ FIND_PACKAGE(glfw)
 FIND_PACKAGE(Galaxy COMPONENTS
 	std
 	log
+	console
 	REQUIRED)
 
 
@@ -49,9 +50,7 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 SET(libs ${libs}
 	${PROJECT_NAME}
 	maze
-	galaxy_std_shared
-	Galaxy-Network
-	galaxy_log_shared
+	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
 	glfw3
 	GL

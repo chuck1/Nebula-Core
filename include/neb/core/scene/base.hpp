@@ -19,7 +19,7 @@
 //#include <neb/gfx/glsl/program.hpp>
 
 //#include <neb/core/actor/base.hpp>
-#include <neb/core/actor/util/Parent.hh>
+#include <neb/core/actor/util/parent.hpp>
 
 //#include <neb/gfx/Camera/View/Base.hh>
 //#include <neb/gfx/drawable/base.hpp>
