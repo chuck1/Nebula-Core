@@ -11,7 +11,7 @@ namespace gal { namespace console {
 class command_set;
 }}
 
-namespace neb {
+namespace neb { namespace core {
 	namespace app {
 		/** @brief %base */
 		class __base {
@@ -32,7 +32,7 @@ namespace neb {
 
 		};
 	}
-}
+}}
 
 #endif
 
