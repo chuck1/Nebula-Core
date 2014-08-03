@@ -3,23 +3,17 @@
 #include <string.h>
 #include <fstream>
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-//#include <GL/gl.h>
 
 #include <boost/archive/xml_iarchive.hpp>
 
-#include <Galaxy-Log/log.hpp>
+#include <gal/log/log.hpp>
 
-#include <neb/util/debug.hpp>
-//#include <neb/app/Base.hh>
-//#include <neb/gfx/window/Base.hh>
-//#include <neb/gfx/glsl/Uniform/scalar.hpp>
-//#include <neb/gfx/glsl/attrib.hh>
-
+#include <neb/core/util/debug.hpp>
 #include <neb/core/free.hpp>
 
 void		neb::init_log() {

@@ -3,17 +3,13 @@
 
 #include <memory>
 
-#include <neb/typedef.hpp>
-
-#include <neb/gfx/Color/Color.hh>
+#include <neb/core/typedef.hpp>
+#include <neb/core/Color/Color.hh>
 
 namespace neb {
 	void	init_log();
 	void	init();
 }
-
-
-
 
 #endif
 
