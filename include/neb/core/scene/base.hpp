@@ -3,15 +3,13 @@
 
 #include <vector>
 
-#include <Galaxy-Standard/flag.hpp>
-#include <Galaxy-Standard/map.hpp>
-
-
+#include <gal/std/flag.hpp>
+#include <gal/std/map.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/typedef.hpp>
+#include <neb/core/typedef.hpp>
 #include <neb/core/scene/util/Flag.hh>
 #include <neb/core/scene/util/Types.hh>
 
@@ -24,12 +22,9 @@
 //#include <neb/gfx/Camera/View/Base.hh>
 //#include <neb/gfx/drawable/base.hpp>
 
-
 #define LIGHT_MAX 20
 
 namespace neb { namespace core { namespace scene {
-
-
 	/** 
 	 * @ingroup group_core
 	 * @brief Base

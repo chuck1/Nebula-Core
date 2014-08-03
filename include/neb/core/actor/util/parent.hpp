@@ -3,10 +3,9 @@
 
 #include <map>
 
-#include <Galaxy-Standard/shared.hpp>
+#include <gal/std/shared.hpp>
 
-#include <neb/util/parent.hpp>
-
+#include <neb/core/util/parent.hpp>
 
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/util/Types.hh>

@@ -1,6 +1,6 @@
 #include <glm/gtx/transform.hpp>
 
-#include <Galaxy-Standard/map.hpp>
+#include <gal/std/map.hpp>
 #include <Galaxy-Log/log.hpp>
 
 #include <neb/debug.hh>

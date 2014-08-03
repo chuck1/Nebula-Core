@@ -1,7 +1,7 @@
 #ifndef NEBULA_ACTOR_UTIL_CAST_HH
 #define NEBULA_ACTOR_UTIL_CAST_HH
 
-#include <Galaxy-Standard/shared.hpp>
+#include <gal/std/shared.hpp>
 
 #include <neb/core/actor/util/Types.hh>
 

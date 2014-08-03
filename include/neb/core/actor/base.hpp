@@ -9,30 +9,15 @@
 #include <boost/archive/polymorphic_oarchive.hpp>
 #include <boost/serialization/map.hpp>
 
-//#include <PxPhysicsAPI.h>
-
-//#include <neb/config.hh> // Nebula/config.hpp.in
-//#include <neb/core/actor/util/desc.hh>
-
-//#include <neb/math/Serialization.hh>
-
-//#include <neb/Filter.hh>
-#include <neb/math/Serialization/GLM.hpp>
-//#include <neb/message/Actor/Update.hh>
-//#include <neb/gfx/texture.hh>
-//#include <neb/gfx/material.hh>
-
-#include <neb/core/shape/base.hpp>
-#include <neb/core/shape/util/Parent.hh>
+#include <neb/core/pose.hpp>
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Flag.hh>
 #include <neb/core/actor/util/parent.hpp>
-#include <neb/core/pose.hpp>
-
-
+#include <neb/core/math/Serialization/GLM.hpp>
 #include <neb/core/shape/base.hpp>
 #include <neb/core/shape/util/Parent.hh>
+
 
 namespace neb { 
 

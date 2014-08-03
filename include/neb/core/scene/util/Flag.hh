@@ -1,7 +1,7 @@
 #ifndef NEBULA_SCENE_FLAG
 #define NEBULA_SCENE_FLAG
 
-#include <Galaxy-Standard/flag.hpp>
+#include <gal/std/flag.hpp>
 
 namespace neb { namespace core {
 	namespace scene {

@@ -3,7 +3,7 @@
 
 #include <boost/thread.hpp>
 
-#include <neb/util/shared.hpp>
+#include <neb/core/util/shared.hpp>
 
 namespace neb {
 	namespace actor {

@@ -1,6 +1,6 @@
 #include <iomanip>
 
-#include <Galaxy-Log/log.hpp>
+#include <gal/log/log.hpp>
 
 #include <neb/debug.hh>
 #include <neb/math/geo/polygon.hpp>

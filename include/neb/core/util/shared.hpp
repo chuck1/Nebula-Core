@@ -7,8 +7,7 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <Galaxy-Standard/shared.hpp>
-
+#include <gal/std/shared.hpp>
 #include <gal/std/timestep.hpp>
 
 namespace neb {

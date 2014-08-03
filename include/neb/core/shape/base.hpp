@@ -5,26 +5,18 @@
 
 #include <boost/weak_ptr.hpp>
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+//#include <GL/glew.h>
+//#include <GLFW/glfw3.h>
 
 #include <gal/std/timestep.hpp>
 
-//#include <neb/util/decl.hpp>
-#include <neb/typedef.hpp>
-//#include <neb/gfx/util/decl.hpp>
-
+#include <neb/core/typedef.hpp>
 #include <neb/core/shape/util/Parent.hh>
 #include <neb/core/shape/util/Flag.hh>
-
-//#include <neb/gfx/glsl/program.hpp>//#include <neb/core/light/base.hpp>
 #include <neb/core/light/util/parent.hpp>
 #include <neb/core/light/util/light_count.hpp>
-//#include <neb/gfx/material.hpp>
-//#include <neb/gfx/mesh.hh>
 
 namespace neb { 
-
 	namespace gfx { namespace core { namespace shape {
 		class base;
 	}}}

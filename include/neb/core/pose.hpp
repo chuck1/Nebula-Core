@@ -3,11 +3,12 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <neb/math/Serialization/GLM.hpp>
+#include <neb/core/math/Serialization/GLM.hpp>
 
 namespace neb { namespace core {
-
-
+	/** @brief %pose
+	*
+	*/
 	class pose {
 		public:
 			pose();

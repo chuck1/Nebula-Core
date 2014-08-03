@@ -1,10 +1,10 @@
 #ifndef NEBULA_UTIL_PARENT_HPP
 #define NEBULA_UTIL_PARENT_HPP
 
-#include <Galaxy-Standard/parent.hpp>
+#include <gal/std/parent.hpp>
 #include <gal/std/timestep.hpp>
 
-#include <neb/util/shared.hpp>
+#include <neb/core/util/shared.hpp>
 
 namespace neb {
 	namespace util {

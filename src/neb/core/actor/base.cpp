@@ -1,10 +1,10 @@
 #include <gal/log/log.hpp>
 
-#include <neb/debug.hh>
+#include <neb/core/debug.hh>
 
 //#include <neb/util/Typed.hh>
 
-#include <neb/util/decl.hpp>
+#include <neb/core/util/decl.hpp>
 //#include <neb/config.hh> // Nebula/config.hpp.in
 //#include <neb/timer/Actor/Base.hpp>
 //#include <neb/app/Base.hh>

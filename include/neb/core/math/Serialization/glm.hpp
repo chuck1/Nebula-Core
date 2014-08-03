@@ -3,8 +3,7 @@
 
 #include <boost/serialization/nvp.hpp>
 
-#include <neb/typedef.hpp>
-
+#include <neb/core/typedef.hpp>
 
 namespace boost {
 	namespace serialization {
