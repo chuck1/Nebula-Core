@@ -4,7 +4,7 @@
 #include <neb/core/Pose.hh>
 #include <neb/core/shape/util/Cast.hh>
 #include <neb/core/light/__base.hpp>
-#include <neb/util/parent.hpp>
+#include <neb/core/util/parent.hpp>
 
 namespace neb { namespace core { namespace light { namespace util {
 

@@ -4,26 +4,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-
-//#include <galaxy/flag.hpp>
-
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-//#include <neb/config.hh>
-#include <neb/util/decl.hpp>
-
-
-#include <neb/math/Serialization/GLM.hpp>
-
+#include <neb/core/typedef.hpp>
+#include <neb/core/Color/Color.hh>
+#include <neb/core/math/Serialization/GLM.hpp>
 #include <neb/core/pose.hpp>
 #include <neb/core/light/__base.hpp>
 #include <neb/core/light/util/Flag.hh>
 #include <neb/core/light/util/light_count.hpp>
-
-#include <neb/typedef.hpp>
-
-#include <neb/gfx/Color/Color.hh>
+#include <neb/core/util/decl.hpp>
 
 namespace neb {
 

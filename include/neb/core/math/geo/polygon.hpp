@@ -9,7 +9,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <neb/typedef.hpp>
+#include <neb/core/typedef.hpp>
 
 namespace math {
 	namespace geo {

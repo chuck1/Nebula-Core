@@ -1,35 +1,23 @@
+
 #include <gal/log/log.hpp>
 
 #include <neb/core/debug.hh>
-
-//#include <neb/util/Typed.hh>
-
-#include <neb/core/util/decl.hpp>
-//#include <neb/config.hh> // Nebula/config.hpp.in
-//#include <neb/timer/Actor/Base.hpp>
-//#include <neb/app/Base.hh>
-#include <neb/core/scene/base.hpp>
-//#include <neb/gfx/window/util/signals.hpp>
-
 #include <neb/core/actor/base.hpp>
 #include <neb/core/actor/util/Types.hh>
+#include <neb/core/scene/base.hpp>
+#include <neb/core/util/decl.hpp>
 
-//#include <neb/gfx/window/Base.hh>
-//#include <neb/gfx/util/decl.hpp>
-
-/** @file Base
+/** @file base
  */
 
-//neb::core::actor::base::base() {
-//}
 neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	density_(10.0),
 	parent_(parent)
 {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
 }
 neb::core::actor::base::~base() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
 }
 void		neb::core::actor::base::init() {
 }
@@ -50,7 +38,7 @@ neb::core::pose				neb::core::actor::base::getPose() {
 	return pose_;
 }
 neb::core::pose				neb::core::actor::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
 	
 	neb::core::pose p;
 	
@@ -70,7 +58,7 @@ void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
 	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::actor::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
 
 	typedef neb::core::actor::util::parent A;
 	typedef neb::core::shape::util::parent S;

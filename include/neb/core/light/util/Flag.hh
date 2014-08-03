@@ -1,7 +1,7 @@
 #ifndef NEBULA_GRAPHICS_LIGHT_FLAG_HH
 #define NEBULA_GRAPHICS_LIGHT_FLAG_HH
 
-#include <Galaxy-Standard/flag.hpp>
+#include <gal/std/flag.hpp>
 
 namespace neb { namespace core {
 	namespace light {

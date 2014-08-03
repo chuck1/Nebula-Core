@@ -18,6 +18,7 @@
 #include <vector>
 #include <memory>
 
-
+#ifdef WIN32
+#endif
 
 #endif

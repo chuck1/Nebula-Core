@@ -1,6 +1,8 @@
 #ifndef NEBULA_ACTOR_UTIL_FLAG_HH
 #define NEBULA_ACTOR_UTIL_FLAG_HH
 
+#include <gal/std/flag.hpp>
+
 namespace neb { namespace core { namespace actor {
 
 

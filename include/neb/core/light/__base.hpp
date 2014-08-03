@@ -1,7 +1,7 @@
 #ifndef NEBULA_CORE_LIGHT___BASE_HPP
 #define NEBULA_CORE_LIGHT___BASE_HPP
 
-#include <neb/util/shared.hpp>
+#include <neb/core/util/shared.hpp>
 
 namespace neb { namespace core { namespace light {
 

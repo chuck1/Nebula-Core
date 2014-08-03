@@ -1,27 +1,24 @@
 #include <glm/gtx/transform.hpp>
 
 #include <gal/std/map.hpp>
-#include <Galaxy-Log/log.hpp>
 
-#include <neb/debug.hh>
-//#include <neb/app/Base.hh>
+#include <gal/log/log.hpp>
+
+#include <neb/core/debug.hh>
 #include <neb/core/shape/base.hpp>
-
 #include <neb/core/light/base.hpp>
-//#include <neb/gfx/glsl/attrib.hh>
-//#include <neb/gfx/glsl/Uniform/scalar.hpp>
-#include <neb/math/geo/polygon.hpp>
+#include <neb/core/math/geo/polygon.hpp>
 
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
 	assert(parent);
 }
 neb::core::shape::base::~base() {}
 neb::core::pose				neb::core::shape::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
 	
 	neb::core::pose m;
 	
@@ -38,7 +35,7 @@ neb::core::pose				neb::core::shape::base::getPose() {
 	return pose_;
 }
 void					neb::core::shape::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
 
 	auto me = sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
@@ -61,7 +58,7 @@ void					neb::core::shape::base::init() {
 
 }
 void					neb::core::shape::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __PRETTY_FUNCTION__;
+	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
 
 	//neb::util::parent<neb::core::shape::base>::release();
 	neb::core::shape::util::parent::release();
