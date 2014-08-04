@@ -18,13 +18,13 @@ namespace neb { namespace core {
 			public:
 				virtual void					init();
 				
-				static ::std::shared_ptr<neb::app::__base>	global();
+				static ::std::shared_ptr<neb::core::app::__base>	global();
 			public:
 				boost::asio::io_service				ios_;
 
-				neb::app::util::flag				flag_;
+				neb::core::app::util::flag				flag_;
 
-				static ::std::shared_ptr<neb::app::__base>	g_app_;
+				static ::std::shared_ptr<neb::core::app::__base>	g_app_;
 
 				gal::std::timestep				ts_;
 
