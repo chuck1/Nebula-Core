@@ -1,8 +1,8 @@
 #ifndef NEB_GAME_TRIGGER_HPP
 #define NEB_GAME_TRIGGER_HPP
 
-#include <neb/util/shared.hpp>
-#include <neb/util/typedef.hpp>
+#include <neb/core/util/shared.hpp>
+#include <neb/core/util/typedef.hpp>
 
 
 namespace neb { namespace game { namespace trigger {

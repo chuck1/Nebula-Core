@@ -2,9 +2,9 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/debug.hh>
-#include <neb/math/geo/polygon.hpp>
-#include <neb/math/Serialization/GLM.hpp>
+#include <neb/core/debug.hh>
+#include <neb/core/math/geo/polygon.hpp>
+#include <neb/core/math/Serialization/GLM.hpp>
 
 
 void				math::geo::vertex::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

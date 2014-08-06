@@ -1,4 +1,4 @@
-#include <neb/math/geo/quad.hpp>
+#include <neb/core/math/geo/quad.hpp>
 
 math::geo::rectangle::rectangle(vec3 center, vec3 x, vec3 n, float w, float h) {
 	

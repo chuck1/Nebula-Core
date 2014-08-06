@@ -1,8 +1,7 @@
 #include <stdio.h>
 
-#include <neb/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/polyhedron.hh>
 
-//math::geo::thin_cyl::cylinder(float 
 math::geo::cuboid::cuboid(float x, float y, float z) {
 	
 

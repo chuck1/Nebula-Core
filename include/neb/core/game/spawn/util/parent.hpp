@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <Galaxy-Standard/shared.hpp>
+#include <gal/std/shared.hpp>
 
 #include <neb/core/game/spawn/base.hpp>
 

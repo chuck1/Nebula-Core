@@ -1,6 +1,6 @@
 
-#include <neb/math/geo/height_map.hh>
-#include <neb/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/height_map.hh>
+#include <neb/core/math/geo/polyhedron.hh>
 
 
 math::geo::height_map::height_map(int nx, int ny) {

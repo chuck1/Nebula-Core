@@ -3,9 +3,9 @@
 
 //#include <PxPhysicsAPI.h>
 
-#include <neb/typedef.hpp>
-#include <neb/math/geo/polygon.hpp>
-#include <neb/math/geo/quad.hpp>
+#include <neb/core/typedef.hpp>
+#include <neb/core/math/geo/polygon.hpp>
+#include <neb/core/math/geo/quad.hpp>
 
 namespace math {
 	namespace geo {

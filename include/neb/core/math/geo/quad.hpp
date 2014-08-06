@@ -1,10 +1,8 @@
 #ifndef __MATH_GEO_QUAD_H__
 #define __MATH_GEO_QUAD_H__
 
-//#include <PxPhysicsAPI.h>
-
-#include <neb/typedef.hpp>
-#include <neb/math/geo/polygon.hpp>
+#include <neb/core/typedef.hpp>
+#include <neb/core/math/geo/polygon.hpp>
 
 namespace math {
 	namespace geo {

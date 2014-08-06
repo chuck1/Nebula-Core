@@ -1,4 +1,4 @@
-#include <neb/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/polyhedron.hh>
 
 std::vector< std::shared_ptr< math::geo::tri > >		math::geo::polyhedron::triangles() {
 	

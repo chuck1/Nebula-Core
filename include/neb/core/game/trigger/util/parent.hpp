@@ -3,15 +3,12 @@
 
 #include <map>
 
+#include <gal/std/shared.hpp>
 
-#include <Galaxy-Standard/shared.hpp>
-
-#include <neb/util/parent.hpp>
+#include <neb/core/util/parent.hpp>
 #include <neb/core/game/trigger/base.hpp>
 
 namespace neb { namespace game { namespace trigger { namespace util {
-
-
 	/** @brief @Parent
 	 * abstract class for parent of an @Actor
 	 */
@@ -24,9 +21,6 @@ namespace neb { namespace game { namespace trigger { namespace util {
 
 			virtual void						init() {}
 	};
-
-
-
 }}}}
 
 #endif
