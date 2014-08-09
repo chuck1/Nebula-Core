@@ -12,6 +12,9 @@
 #include <neb/core/scene/base.hpp>
 #include <neb/core/scene/util/Types.hh>
 #include <neb/core/scene/util/Parent.hh>
+#include <neb/core/util/config.hpp>
+
+using namespace std;
 
 neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
 	parent_(parent)
@@ -50,7 +53,7 @@ void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, real size) {
+/*weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, double size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 
@@ -67,12 +70,12 @@ sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidSt
 	auto shape = actor->createShapeCube(size);
 
 	// reinitialize in order to apply filtering to shape
-	/** @todo consider implementing refresh-type function instead */
+	/// @todo consider implementing refresh-type function instead
 	actor->init();
 
 	return actor;
-}
-sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, real size) {
+}*/
+/*sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, double size) {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
 
@@ -89,11 +92,11 @@ sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDy
 	auto shape = actor->createShapeCube(size);
 
 	// reinitialize in order to apply filtering to shape
-	/** @todo consider implementing refresh-type function instead */
+	/// @todo consider implementing refresh-type function instead
 	actor->init();
 
 	return actor;
-}
+}*/
 sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorLightPoint(vec3 p) {
 
 	// actor

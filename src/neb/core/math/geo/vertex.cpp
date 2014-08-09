@@ -4,7 +4,7 @@
 
 #include <neb/core/debug.hh>
 #include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/math/Serialization/GLM.hpp>
+#include <neb/core/math/Serialization/glm.hpp>
 
 
 void				math::geo::vertex::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {

@@ -1,5 +1,6 @@
 #include <gal/log/log.hpp>
 
+#include <neb/core/util/config.hpp>
 #include <neb/core/debug.hh>
 #include <neb/core/actor/base.hpp>
 #include <neb/core/actor/util/parent.hpp>

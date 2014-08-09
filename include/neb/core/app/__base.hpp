@@ -16,19 +16,15 @@ namespace neb { namespace core {
 		/** @brief %base */
 		class __base {
 			public:
-				virtual void					init();
-				
+				virtual ~__base() {};
+				void							init();
 				static ::std::shared_ptr<neb::core::app::__base>	global();
 			public:
-				boost::asio::io_service				ios_;
-
+				boost::asio::io_service					ios_;
 				neb::core::app::util::flag				flag_;
-
 				static ::std::shared_ptr<neb::core::app::__base>	g_app_;
-
-				gal::std::timestep				ts_;
-
-				::std::shared_ptr<gal::console::command_set>	command_set_;
+				gal::std::timestep					ts_;
+				::std::shared_ptr<gal::console::command_set>		command_set_;
 
 		};
 	}

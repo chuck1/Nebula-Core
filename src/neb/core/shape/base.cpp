@@ -8,6 +8,7 @@
 #include <neb/core/shape/base.hpp>
 #include <neb/core/light/base.hpp>
 #include <neb/core/math/geo/polygon.hpp>
+#include <neb/core/util/config.hpp>
 
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),

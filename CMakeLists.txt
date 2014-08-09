@@ -49,7 +49,6 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 
 SET(libs ${libs}
 	${PROJECT_NAME}
-	maze
 	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
 	glfw3

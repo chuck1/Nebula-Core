@@ -10,6 +10,7 @@
 #include <neb/core/actor/__base.hpp>
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Cast.hh>
+#include <neb/core/scene/util/cast.hpp>
 
 #include <neb/core/Pose.hh>
 
@@ -29,6 +30,7 @@ namespace neb { namespace core {
 		 */
 		class parent:
 			virtual public neb::util::parent<neb::actor::__base>,
+			virtual public neb::core::scene::util::cast,
 			virtual public neb::core::Pose
 		{
 			public:

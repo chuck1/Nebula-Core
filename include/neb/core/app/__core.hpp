@@ -4,6 +4,8 @@
 #include <neb/core/app/__base.hpp>
 #include <neb/core/scene/util/Parent.hh>
 
+using namespace std;
+
 namespace neb {
 	namespace app {
 		class __core:
@@ -13,7 +15,9 @@ namespace neb {
 			public:
 				virtual void			init();
 				virtual void			release() {}
-				
+
+				static weak_ptr<neb::app::__core>	global();
+
 				neb::core::pose			getPose();
 				neb::core::pose			getPoseGlobal();
 		};

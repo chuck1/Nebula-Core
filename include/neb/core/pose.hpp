@@ -3,7 +3,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <neb/core/math/Serialization/GLM.hpp>
+#include <neb/core/math/Serialization/glm.hpp>
 
 namespace neb { namespace core {
 	/** @brief %pose

@@ -14,7 +14,7 @@
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Flag.hh>
 #include <neb/core/actor/util/parent.hpp>
-#include <neb/core/math/Serialization/GLM.hpp>
+#include <neb/core/math/Serialization/glm.hpp>
 #include <neb/core/shape/base.hpp>
 #include <neb/core/shape/util/Parent.hh>
 
@@ -67,7 +67,7 @@ namespace neb {
 
 				virtual sp::weak_ptr<neb::core::shape::base>		createShapeBase() = 0;
 				virtual sp::weak_ptr<neb::core::shape::base>		createShapeBox(vec3 size) = 0;
-				virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(real size) = 0;
+				virtual sp::weak_ptr<neb::core::shape::base>		createShapeCube(double size) = 0;
 
 			public:
 

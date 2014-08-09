@@ -1,6 +1,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/core/util/config.hpp>
 #include <neb/core/debug.hh>
 #include <neb/core/actor/base.hpp>
 #include <neb/core/actor/util/Types.hh>
@@ -9,6 +10,8 @@
 
 /** @file base
  */
+
+using namespace std;
 
 neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
 	density_(10.0),
@@ -72,7 +75,7 @@ void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-sp::weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(real size) {
+weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(double size) {
 	
 	auto shape = createShapeBox(vec3(size));
 

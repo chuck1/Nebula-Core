@@ -9,7 +9,7 @@
 
 #include <neb/core/typedef.hpp>
 #include <neb/core/Color/Color.hh>
-#include <neb/core/math/Serialization/GLM.hpp>
+#include <neb/core/math/Serialization/glm.hpp>
 #include <neb/core/pose.hpp>
 #include <neb/core/light/__base.hpp>
 #include <neb/core/light/util/Flag.hh>
