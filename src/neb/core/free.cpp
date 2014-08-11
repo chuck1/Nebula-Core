@@ -12,7 +12,7 @@
 
 #include <boost/archive/xml_iarchive.hpp>
 
-#include <Galaxy-Log/log.hpp>
+#include <gal/log/log.hpp>
 
 #include <neb/util/debug.hpp>
 //#include <neb/app/Base.hh>
