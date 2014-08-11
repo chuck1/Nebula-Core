@@ -10,7 +10,7 @@ namespace neb {
 	namespace app {
 		class __core:
 			virtual public neb::core::app::__base,
-			virtual public neb::core::scene::util::parent
+			virtual public neb::core::core::scene::util::parent
 		{
 			public:
 				virtual void			init();

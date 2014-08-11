@@ -1,27 +1,21 @@
 #ifndef NEBULA_SCENE_TYPES_HH
 #define NEBULA_SCENE_TYPES_HH
 
-#include <memory>
-
-namespace neb { namespace core {
-
-
-
-	/** @brief %Scene */
-	namespace scene {
-		/** @name %Utilities @{ */
-		namespace util {
-			class parent;
+namespace neb {
+	namespace core {
+		namespace core {
+			/** @brief %Scene */
+			namespace scene {
+				/** @brief %Utilities */
+				namespace util {
+					class parent;
+					class cast;
+				}
+				class base;
+			}
 		}
-
-		class base;
-		class local;
-		class remote;
 	}
-
-
-
-}}
+}
 
 #endif
 

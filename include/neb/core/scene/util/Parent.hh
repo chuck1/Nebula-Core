@@ -8,20 +8,23 @@
 #include <neb/core/scene/base.hpp>
 #include <neb/core/util/parent.hpp>
 
-namespace neb { namespace core {
+namespace neb {
+	namespace core {
+	namespace core {
 	namespace scene {
 		namespace util {
 			/** @brief parent
 			*/
 			class parent:
-				virtual public neb::util::parent<neb::core::scene::base>,
+				virtual public neb::util::parent<neb::core::core::scene::base>,
 				virtual public neb::core::Pose
 			{
 				public:
 			};
 		}
 	}
-}}
-
+}
+}
+}
 #endif
 

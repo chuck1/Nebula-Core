@@ -16,33 +16,33 @@
 
 using namespace std;
 
-neb::core::scene::base::base(sp::shared_ptr<neb::core::scene::util::parent> parent):
+neb::core::core::scene::base::base(sp::shared_ptr<neb::core::core::scene::util::parent> parent):
 	parent_(parent)
 {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
 }
-neb::core::scene::base::~base() {
+neb::core::core::scene::base::~base() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
 }
-void neb::core::scene::base::init() {
+void neb::core::core::scene::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
 }
-void neb::core::scene::base::release() {
+void neb::core::core::scene::base::release() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
 	
 	neb::core::actor::util::parent::clear();
 }
-neb::core::pose					neb::core::scene::base::getPose() {
+neb::core::pose					neb::core::core::scene::base::getPose() {
 	return neb::core::pose();
 }		
-neb::core::pose					neb::core::scene::base::getPoseGlobal() {
+neb::core::pose					neb::core::core::scene::base::getPoseGlobal() {
 	return neb::core::pose();
 }
-void		neb::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
+void		neb::core::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::core::scene::base::step(gal::std::timestep const & ts) {
+void		neb::core::core::scene::base::step(gal::std::timestep const & ts) {
 
 	typedef neb::core::actor::util::parent A;
 
@@ -53,7 +53,7 @@ void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-/*weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, double size) {
+/*weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, double size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 
@@ -75,7 +75,7 @@ void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 
 	return actor;
 }*/
-/*sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, double size) {
+/*sp::weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, double size) {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
 
@@ -97,7 +97,7 @@ void		neb::core::scene::base::step(gal::std::timestep const & ts) {
 
 	return actor;
 }*/
-sp::weak_ptr<neb::core::actor::base>		neb::core::scene::base::createActorLightPoint(vec3 p) {
+weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorLightPoint(vec3 p) {
 
 	// actor
 	auto actor = createActorBase(neb::core::pose(p)).lock();

@@ -3,15 +3,19 @@
 
 #include <neb/core/util/shared.hpp>
 
+using namespace std;
+
 namespace neb {
 	namespace core {
 		namespace core {
 			namespace scene {
+				class base;
 				namespace util {
 					class cast:
 						virtual public neb::std::shared
 					{
-						shared_ptr<neb::core::scene::base>		isSceneBase();
+						public:
+							shared_ptr<neb::core::core::scene::base>		isSceneBase();
 					};
 				}
 			}

@@ -42,7 +42,7 @@ void				neb::game::trigger::ActorEx1::doSomething() {
 	
 	assert(scene_parent);
 	
-	scene_parent->neb::core::scene::util::parent::erase(scene->i_);
+	scene_parent->neb::core::core::scene::util::parent::erase(scene->i_);
 	
 	//scene->getParent()->erase(scene->i_);
 	
