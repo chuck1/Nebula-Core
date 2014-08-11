@@ -2,7 +2,6 @@
 
 #include <gal/log/log.hpp>
 
-
 #include <neb/core/debug.hh>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/util/config.hpp>
@@ -30,10 +29,5 @@ void		neb::core::app::__base::init() {
 	}
 
 	/** @todo export class to python to implement exit() */
-
-
-
 }
-
-
 

@@ -7,12 +7,20 @@ PROJECT(nebula_core)
 SET(nebula_core_SHARED TRUE)
 SET(nebula_core_STATIC TRUE)
 
+FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(glfw)
-
 FIND_PACKAGE(Galaxy COMPONENTS
 	std
 	log
 	console
+	REQUIRED)
+
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_RUNTIME OFF)
+add_definitions( -DBOOST_ALL_DYN_LINK )
+
+FIND_PACKAGE(Boost 1.55 COMPONENTS
+	serialization
 	REQUIRED)
 
 
@@ -34,18 +42,6 @@ set(include_extensions obj)
 
 SET(GRU_VERSION 0.1.1)
 
-FIND_PACKAGE(CMakeHelper)
-
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_STATIC_RUNTIME OFF)
-add_definitions( -DBOOST_ALL_DYN_LINK )
-
-FIND_PACKAGE(Boost 1.55 COMPONENTS
-	serialization
-	log
-	system
-	thread
-	REQUIRED)
 
 SET(libs ${libs}
 	${PROJECT_NAME}
