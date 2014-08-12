@@ -11,8 +11,7 @@
 
 #include <neb/core/typedef.hpp>
 #include <neb/core/scene/util/Flag.hh>
-#include <neb/core/scene/util/Types.hh>
-
+#include <neb/core/scene/util/decl.hpp>
 //#include <neb/config.hh> // Nebula/config.hpp.in
 //#include <neb/gfx/glsl/program.hpp>
 

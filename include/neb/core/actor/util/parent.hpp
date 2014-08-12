@@ -11,8 +11,7 @@
 #include <neb/core/actor/util/Types.hh>
 #include <neb/core/actor/util/Cast.hh>
 #include <neb/core/scene/util/cast.hpp>
-#include <neb/core/scene/util/Types.hh>
-
+#include <neb/core/scene/util/decl.hpp>
 #include <neb/core/Pose.hh>
 
 namespace neb {

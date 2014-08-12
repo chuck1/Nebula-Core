@@ -4,7 +4,7 @@
 #include <gal/std/map.hpp>
 
 #include <neb/core/Pose.hh>
-#include <neb/core/scene/util/Types.hh>
+//#include <neb/core/scene/util/decl.hpp>
 #include <neb/core/scene/base.hpp>
 #include <neb/core/util/parent.hpp>
 

@@ -10,7 +10,7 @@
 #include <neb/core/light/util/light_count.hpp>
 #include <neb/core/shape/base.hpp>
 #include <neb/core/scene/base.hpp>
-#include <neb/core/scene/util/Types.hh>
+#include <neb/core/scene/util/decl.hpp>
 #include <neb/core/scene/util/Parent.hh>
 #include <neb/core/util/config.hpp>
 
