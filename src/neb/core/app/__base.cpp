@@ -10,7 +10,7 @@ using namespace std;
 
 shared_ptr<neb::core::app::__base>	neb::core::app::__base::g_app_;
 
-void		neb::core::app::__base::init() {
+void		neb::core::app::__base::__init() {
 	
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb app", debug) << __FUNCSIG__;
 	

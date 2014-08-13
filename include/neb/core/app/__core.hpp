@@ -12,12 +12,11 @@ namespace neb {
 			virtual public neb::core::app::__base,
 			virtual public neb::core::core::scene::util::parent
 		{
+			protected:
+				virtual void			__init();
 			public:
-				virtual void			init();
 				virtual void			release() {}
-
 				static weak_ptr<neb::app::__core>	global();
-
 				neb::core::pose			getPose();
 				neb::core::pose			getPoseGlobal();
 		};

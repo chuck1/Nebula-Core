@@ -9,11 +9,11 @@ neb::core::light::base::base(sp::shared_ptr<neb::core::light::util::parent> pare
 	parent_(parent),
 	pos_(vec4(0.0, 0.0, 0.0, 1.0))
 {}
-void neb::core::light::base::init() {
+void				neb::core::light::base::init() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __FUNCSIG__;
 
 }
-void neb::core::light::base::release() {
+void				neb::core::light::base::release() {
 	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __FUNCSIG__;
 }
 void				neb::core::light::base::step(gal::std::timestep const & ts) {
