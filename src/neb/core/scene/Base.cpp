@@ -33,13 +33,16 @@ void neb::core::core::scene::base::release() {
 	
 	neb::core::actor::util::parent::clear();
 }
-neb::core::pose					neb::core::core::scene::base::getPose() {
+neb::core::pose						neb::core::core::scene::base::getPose() {
 	return neb::core::pose();
 }		
-neb::core::pose					neb::core::core::scene::base::getPoseGlobal() {
+neb::core::pose						neb::core::core::scene::base::getPoseGlobal() {
 	return neb::core::pose();
 }
-void		neb::core::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
+weak_ptr<neb::core::core::scene::util::parent>		neb::core::core::scene::base::getParent() {
+	return parent_;
+}
+void						neb::core::core::scene::base::add_deferred(sp::shared_ptr<neb::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }

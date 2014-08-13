@@ -3,7 +3,6 @@
 #include <neb/core/math/geo/polyhedron.hh>
 
 math::geo::cuboid::cuboid(float x, float y, float z) {
-	
 
 
 	polygons_.push_back(sp::make_shared<math::geo::rectangle>(vec3(-x*0.5, 0, 0), vec3( 0, 1, 0), vec3(-1, 0, 0), y, z));
