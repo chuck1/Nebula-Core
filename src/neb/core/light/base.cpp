@@ -1,6 +1,8 @@
+
 #include <gal/log/log.hpp>
 
 #include <neb/core/util/config.hpp>
+#include <neb/core/util/log.hpp>
 #include <neb/core/debug.hh>
 #include <neb/core/light/util/parent.hpp>
 #include <neb/core/light/base.hpp>
@@ -10,17 +12,17 @@ neb::core::light::base::base(sp::shared_ptr<neb::core::light::util::parent> pare
 	pos_(vec4(0.0, 0.0, 0.0, 1.0))
 {}
 void				neb::core::light::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::light::sl, debug) << __FUNCSIG__;
 
 }
 void				neb::core::light::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::light::sl, debug) << __FUNCSIG__;
 }
 void				neb::core::light::base::step(gal::std::timestep const & ts) {
 
 }
 neb::core::pose			neb::core::light::base::getPose() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core light", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::light::sl, debug) << __FUNCSIG__;
 	
 	auto parent(parent_.lock());
 	assert(parent);

@@ -65,10 +65,10 @@ namespace neb {
 						/** @name convenience functions
 						 * @{
 						 */
-						virtual sp::weak_ptr<neb::core::actor::base>			createActorBase(neb::core::pose const & pose) = 0;
+						virtual sp::weak_ptr<neb::core::actor::base>			createActorBase(neb::core::pose pose) = 0;
 						/** @brief create empty actor with point light
 						*/
-						virtual sp::weak_ptr<neb::core::actor::base>			createActorLightPoint(vec3 p) = 0;
+						virtual sp::weak_ptr<neb::core::actor::base>			createActorLightPoint(vec3 p);
 
 						/** @brief create rigidstatic cube
 						 *

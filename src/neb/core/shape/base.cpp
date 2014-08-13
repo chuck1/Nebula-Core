@@ -9,17 +9,18 @@
 #include <neb/core/light/base.hpp>
 #include <neb/core/math/geo/polygon.hpp>
 #include <neb/core/util/config.hpp>
+#include <neb/core/util/log.hpp>
 
 neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
 	assert(parent);
 }
 neb::core::shape::base::~base() {}
 neb::core::pose				neb::core::shape::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
 	
 	neb::core::pose m;
 	
@@ -36,7 +37,7 @@ neb::core::pose				neb::core::shape::base::getPose() {
 	return pose_;
 }
 void					neb::core::shape::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
 
 	auto me = sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
@@ -59,7 +60,7 @@ void					neb::core::shape::base::init() {
 
 }
 void					neb::core::shape::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core shape", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
 
 	//neb::util::parent<neb::core::shape::base>::release();
 	neb::core::shape::util::parent::release();

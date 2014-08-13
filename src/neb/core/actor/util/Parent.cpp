@@ -1,5 +1,6 @@
 #include <gal/log/log.hpp>
 
+#include <neb/core/util/log.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/debug.hh>
 #include <neb/core/actor/base.hpp>
@@ -18,7 +19,7 @@ void							neb::core::actor::util::parent::release() {
 }
 sp::shared_ptr<neb::core::core::scene::base>		neb::core::actor::util::parent::getScene() {
 
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
 
 	auto scene(::std::dynamic_pointer_cast<neb::core::core::scene::base>(shared_from_this()));
 

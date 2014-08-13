@@ -13,22 +13,23 @@
 #include <neb/core/scene/util/decl.hpp>
 #include <neb/core/scene/util/Parent.hh>
 #include <neb/core/util/config.hpp>
+#include <neb/core/util/log.hpp>
 
 using namespace std;
 
 neb::core::core::scene::base::base(sp::shared_ptr<neb::core::core::scene::util::parent> parent):
 	parent_(parent)
 {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::scene::sl, debug) << __FUNCSIG__;
 }
 neb::core::core::scene::base::~base() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::scene::sl, debug) << __FUNCSIG__;
 }
 void neb::core::core::scene::base::init() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::scene::sl, debug) << __FUNCSIG__;
 }
 void neb::core::core::scene::base::release() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core scene", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::scene::sl, debug) << __FUNCSIG__;
 	
 	neb::core::actor::util::parent::clear();
 }
@@ -103,7 +104,7 @@ weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorLight
 	auto actor = createActorBase(neb::core::pose(p)).lock();
 
 	// shape	
-	auto shape = actor->createShapeBase().lock();
+	auto shape = actor->createShapeBase(neb::core::pose()).lock();
 
 	// light
 	auto light = shape->createLightPoint();

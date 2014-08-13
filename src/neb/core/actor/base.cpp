@@ -1,6 +1,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/core/util/log.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/debug.hh>
 #include <neb/core/actor/base.hpp>
@@ -17,10 +18,10 @@ neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> pare
 	density_(10.0),
 	parent_(parent)
 {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
 }
 neb::core::actor::base::~base() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
 }
 void		neb::core::actor::base::init() {
 }
@@ -41,7 +42,7 @@ neb::core::pose				neb::core::actor::base::getPose() {
 	return pose_;
 }
 neb::core::pose				neb::core::actor::base::getPoseGlobal() {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
 	
 	neb::core::pose p;
 	
@@ -61,7 +62,7 @@ void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
 	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::actor::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) BOOST_LOG_CHANNEL_SEV(lg, "neb core actor", debug) << __FUNCSIG__;
+	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
 
 	typedef neb::core::actor::util::parent A;
 	typedef neb::core::shape::util::parent S;
@@ -75,11 +76,20 @@ void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(double size) {
+weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(neb::core::pose pose, double size) {
 	
-	auto shape = createShapeBox(vec3(size));
+	auto shape = createShapeBox(pose, vec3(size));
 
 	return shape;
 	
 }
+
+
+
+
+
+
+
+
+
 
