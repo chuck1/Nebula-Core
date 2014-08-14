@@ -19,6 +19,7 @@ neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> pare
 	parent_(parent)
 {
 	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
+	assert(parent);
 }
 neb::core::actor::base::~base() {
 	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;

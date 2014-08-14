@@ -49,7 +49,7 @@ namespace neb {
 					/** @} */
 
 
-					sp::weak_ptr<neb::core::light::base>			createLightPoint();
+					virtual weak_ptr<neb::core::light::base>		createLightPoint() = 0;
 
 
 

@@ -73,7 +73,4 @@ void							neb::core::shape::base::step(gal::std::timestep const & ts) {
 	neb::core::light::util::parent::step(ts);
 
 }
-sp::weak_ptr<neb::core::light::base>			neb::core::shape::base::createLightPoint() {
-	return sp::weak_ptr<neb::core::light::base>();
-}
 
