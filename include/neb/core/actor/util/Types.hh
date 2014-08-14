@@ -39,30 +39,6 @@ namespace neb { namespace core {
 			class remote;
 		}
 
-		/** @brief %rigidbody */
-		namespace rigidbody {
-			class base;
-			class local;
-			class remote;
-		}
-
-		/** @brief %rigiddynamic */
-		namespace rigiddynamic {
-			class base;
-			class local;
-			class remote;
-		}
-
-		/** @brief %rigidstatic */
-		namespace rigidstatic {
-			class base;
-			class local;
-			class remote;
-
-		}
-
-		class empty;
-
 
 		/** @brief Utilities */
 		namespace util {
