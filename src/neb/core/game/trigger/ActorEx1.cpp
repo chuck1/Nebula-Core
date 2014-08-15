@@ -1,5 +1,5 @@
 
-//#include <neb/app/Base.hh>
+#include <neb/core/app/__base.hpp>
 #include <neb/core/actor/base.hpp>
 #include <neb/core/scene/base.hpp>
 #include <neb/core/scene/util/Parent.hh>
@@ -44,6 +44,10 @@ void				neb::game::trigger::ActorEx1::doSomething() {
 	
 	scene_parent->neb::core::core::scene::util::parent::erase(scene->i_);
 	
+	// message
+	auto app = neb::core::app::__base::global();
+	if(app->console_) app->console_->operator<<("you won!");
+
 	//scene->getParent()->erase(scene->i_);
 	
 //	auto gp(game->parent_.lock());
