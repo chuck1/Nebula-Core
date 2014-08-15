@@ -57,50 +57,40 @@ void		neb::core::core::scene::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-/*weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCube(neb::core::pose const & pose, double size) {
+weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCube(
+		neb::core::pose pose,
+		double size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
-
-	// set data members
-
 	actor->pose_ = pose;
-
-	// initialize (create physx)
-
 	actor->init();
 
 	// create shape
 
-	auto shape = actor->createShapeCube(size);
+	auto shape = actor->createShapeCube(neb::core::pose(), size);
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
 	actor->init();
 
 	return actor;
-}*/
-/*sp::weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCube(neb::core::pose const & pose, double size) {
+}
+weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCube(
+		neb::core::pose pose,
+		double size) {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
-
-	// set data members
-
 	actor->pose_ = pose;
-
-	// initialize (create physx)
-
 	actor->init();
 
-	// create shape
+	// shape
+	auto shape = actor->createShapeCube(neb::core::pose(), size);
 
-	auto shape = actor->createShapeCube(size);
-
-	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
 	actor->init();
 
 	return actor;
-}*/
+}
 weak_ptr<neb::core::actor::base>		neb::core::core::scene::base::createActorLightPoint(vec3 p) {
 
 	// actor

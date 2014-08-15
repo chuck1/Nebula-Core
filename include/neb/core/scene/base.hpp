@@ -74,16 +74,16 @@ namespace neb {
 						 *
 						 * @note typeof returned actor will be determined by final implementation of this
 						 */
-						//sp::weak_ptr<neb::core::actor::base>				createActorRigidStaticCube(neb::core::pose const & pose, double size);
-						//sp::weak_ptr<neb::core::actor::base>				createActorRigidDynamicCube(neb::core::pose const & pose, double size);
+						weak_ptr<neb::core::actor::base>				createActorRigidStaticCube(neb::core::pose pose, double size);
+						weak_ptr<neb::core::actor::base>				createActorRigidDynamicCube(neb::core::pose pose, double size);
 						/** @brief create rigidstatic
 						 *
 						 * @note typeof returned actor will be determined by final implementation of this
 						 *
 						 * @warning return actor is not initialized
 						 */
-						//virtual sp::weak_ptr<neb::core::actor::base>			createActorRigidStaticUninitialized() = 0;
-						//virtual sp::weak_ptr<neb::core::actor::base>			createActorRigidDynamicUninitialized() = 0;
+						virtual weak_ptr<neb::core::actor::base>			createActorRigidStaticUninitialized() = 0;
+						virtual weak_ptr<neb::core::actor::base>			createActorRigidDynamicUninitialized() = 0;
 						/** @} */
 					public:
 						/** @brief parent

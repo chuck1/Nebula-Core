@@ -4,9 +4,6 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 PROJECT(nebula_core)
 
-SET(nebula_core_SHARED TRUE)
-SET(nebula_core_STATIC TRUE)
-
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(Galaxy COMPONENTS
@@ -15,27 +12,18 @@ FIND_PACKAGE(Galaxy COMPONENTS
 	console
 	REQUIRED)
 
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_STATIC_RUNTIME OFF)
-add_definitions( -DBOOST_ALL_DYN_LINK )
-
+cmh_boost_static()
 FIND_PACKAGE(Boost 1.55 COMPONENTS
 	serialization
 	REQUIRED)
 
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 include_directories("/usr/include/freetype2")
-include_directories("../maze/include")
-include_directories("../Control-System/include")
 include_directories("../glm")
 #include_directories(${physx_INCLUDE_DIR})
 
-link_directories("../maze/Debug")
-link_directories("../Control-System/Debug")
-
-ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
+ADD_DEFINITIONS("-D_DEBUG -DGLM_FORCE_RADIANS")
 
 # custom include extensions
 set(include_extensions obj)
@@ -44,26 +32,41 @@ SET(GRU_VERSION 0.1.1)
 
 
 SET(libs ${libs}
-	${PROJECT_NAME}
 	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
-	glfw3
-	GL
-	GLU
-	GLEW
-	freetype
-	png
-	rt
-	pthread
-	X11
-	Xrandr
-	Xi
-	Xcursor
+	${glfw_LIBRARIES}
+	)
+
+cmh_static_library()
+
+
+
+PROJECT(nebula_core_shared)
+
+SET(Galaxy_SHARED TRUE)
+FIND_PACKAGE(Galaxy COMPONENTS
+	std
+	log
+	console
+	REQUIRED)
+
+cmh_boost_shared()
+FIND_PACKAGE(Boost 1.55 COMPONENTS
+	python
+	serialization
+	REQUIRED)
+
+SET(libs
+	${Galaxy_LIBRARIES}
+	${Boost_LIBRARIES}
+	${glfw_LIBRARIES}
 	)
 
 
-cmh_library()
+cmh_shared_library()
 
 add_subdirectory(test)
+
+
 
 
