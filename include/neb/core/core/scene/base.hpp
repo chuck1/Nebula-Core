@@ -9,19 +9,9 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/core/typedef.hpp>
-#include <neb/core/scene/util/Flag.hh>
-#include <neb/core/scene/util/decl.hpp>
-//#include <neb/config.hh> // Nebula/config.hpp.in
-//#include <neb/gfx/glsl/program.hpp>
-
-//#include <neb/core/actor/base.hpp>
-#include <neb/core/actor/util/parent.hpp>
-
-//#include <neb/gfx/Camera/View/Base.hh>
-//#include <neb/gfx/drawable/base.hpp>
-
-#define LIGHT_MAX 20
+#include <neb/core/core/scene/util/Flag.hh>
+#include <neb/core/core/scene/util/decl.hpp>
+#include <neb/core/core/actor/util/parent.hpp>
 
 namespace neb {
 	namespace core {

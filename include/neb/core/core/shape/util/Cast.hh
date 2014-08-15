@@ -3,7 +3,7 @@
 
 #include <gal/std/shared.hpp>
 
-#include <neb/core/shape/util/Types.hh>
+#include <neb/core/core/shape/util/Types.hh>
 
 namespace neb { namespace core { namespace shape { namespace util {
 			class cast:

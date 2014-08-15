@@ -10,13 +10,13 @@
 #include <boost/serialization/map.hpp>
 
 #include <neb/core/pose.hpp>
-#include <neb/core/actor/__base.hpp>
-#include <neb/core/actor/util/Types.hh>
-#include <neb/core/actor/util/Flag.hh>
-#include <neb/core/actor/util/parent.hpp>
+#include <neb/core/core/actor/__base.hpp>
+#include <neb/core/core/actor/util/Types.hh>
+#include <neb/core/core/actor/util/Flag.hh>
+#include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/math/Serialization/glm.hpp>
-#include <neb/core/shape/base.hpp>
-#include <neb/core/shape/util/Parent.hh>
+#include <neb/core/core/shape/base.hpp>
+#include <neb/core/core/shape/util/Parent.hh>
 
 
 namespace neb { 

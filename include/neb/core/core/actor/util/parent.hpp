@@ -7,12 +7,12 @@
 
 #include <neb/core/util/parent.hpp>
 
-#include <neb/core/actor/__base.hpp>
-#include <neb/core/actor/util/Types.hh>
-#include <neb/core/actor/util/Cast.hh>
-#include <neb/core/scene/util/cast.hpp>
-#include <neb/core/scene/util/decl.hpp>
-#include <neb/core/Pose.hh>
+#include <neb/core/core/actor/__base.hpp>
+#include <neb/core/core/actor/util/Types.hh>
+#include <neb/core/core/actor/util/Cast.hh>
+#include <neb/core/core/scene/util/cast.hpp>
+#include <neb/core/core/scene/util/decl.hpp>
+#include <neb/core/interface/Pose.hh>
 
 namespace neb {
 	namespace core {

@@ -8,27 +8,15 @@
 
 #include <gal/std/timestep.hpp>
 
-#include <neb/core/typedef.hpp>
-#include <neb/core/shape/util/Parent.hh>
-#include <neb/core/shape/util/Flag.hh>
-#include <neb/core/light/util/parent.hpp>
-#include <neb/core/light/util/light_count.hpp>
+#include <neb/core/core/shape/util/Parent.hh>
+#include <neb/core/core/shape/util/Flag.hh>
+#include <neb/core/core/light/util/decl.hpp>
+#include <neb/core/core/light/util/parent.hpp>
+#include <neb/core/core/light/util/light_count.hpp>
 
 namespace neb { 
-	namespace gfx { namespace core { namespace shape {
-		class base;
-	}}}
-
 	namespace core {
-		namespace light {
-			class base;
-		}
-
-
 		namespace shape {
-
-
-
 			class base:
 				virtual public neb::std::shared,
 				virtual public neb::core::shape::util::parent,

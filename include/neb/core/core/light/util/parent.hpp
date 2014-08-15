@@ -1,9 +1,9 @@
 #ifndef NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 #define NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 
-#include <neb/core/Pose.hh>
-#include <neb/core/shape/util/Cast.hh>
-#include <neb/core/light/__base.hpp>
+#include <neb/core/interface/Pose.hh>
+#include <neb/core/core/shape/util/Cast.hh>
+#include <neb/core/core/light/__base.hpp>
 #include <neb/core/util/parent.hpp>
 
 namespace neb { namespace core { namespace light { namespace util {

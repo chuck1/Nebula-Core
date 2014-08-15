@@ -14,9 +14,9 @@ namespace neb { namespace core {
 			pose();
 			pose(neb::core::pose const & rhs);
 			pose(neb::core::pose&& rhs);
-			pose(vec3 p, quat q);
-			pose(vec3 p);
-			pose(quat q);
+			pose(glm::vec3 p, glm::quat q);
+			pose(glm::vec3 p);
+			pose(glm::quat q);
 
 			pose&		operator=(neb::core::pose const & rhs);
 			pose		operator*(neb::core::pose const & rhs) const;
@@ -26,10 +26,10 @@ namespace neb { namespace core {
 				ar & rot_;
 			}
 			
-			mat4		mat4_cast() const;
+			glm::mat4		mat4_cast() const;
 
-			vec4		pos_;
-			quat		rot_;
+			glm::vec4		pos_;
+			glm::quat		rot_;
 	};
 
 

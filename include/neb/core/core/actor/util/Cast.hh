@@ -3,7 +3,7 @@
 
 #include <gal/std/shared.hpp>
 
-#include <neb/core/actor/util/Types.hh>
+#include <neb/core/core/actor/util/Types.hh>
 
 using namespace std;
 

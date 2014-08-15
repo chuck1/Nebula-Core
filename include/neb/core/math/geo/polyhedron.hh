@@ -3,7 +3,6 @@
 
 //#include <PxPhysicsAPI.h>
 
-#include <neb/core/typedef.hpp>
 #include <neb/core/math/geo/polygon.hpp>
 #include <neb/core/math/geo/quad.hpp>
 
@@ -16,9 +15,9 @@ namespace math {
 				};
 
 				int		triangle_count();
-				std::vector< std::shared_ptr<tri> >		triangles();
+				vector< std::shared_ptr<tri> >		triangles();
 
-				std::vector< std::shared_ptr<polygon> >		polygons_;
+				vector< std::shared_ptr<polygon> >		polygons_;
 
 				unsigned int	flag_;
 		};

@@ -8,10 +8,10 @@
 
 #include <gal/std/shared.hpp>
 
-#include <neb/core/Pose.hh>
-#include <neb/core/actor/util/Types.hh>
-#include <neb/core/actor/util/Cast.hh>
-#include <neb/core/shape/util/Cast.hh>
+#include <neb/core/interface/Pose.hh>
+#include <neb/core/core/actor/util/Types.hh>
+#include <neb/core/core/actor/util/Cast.hh>
+#include <neb/core/core/shape/util/Cast.hh>
 #include <neb/core/util/parent.hpp>
 
 namespace neb { namespace core { namespace shape { namespace util {

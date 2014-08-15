@@ -4,33 +4,35 @@
 #include <memory>
 #include <vector>
 
+#include <glm/glm.hpp>
+
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-#include <neb/core/typedef.hpp>
+using namespace std;
 
 namespace math {
 	namespace geo {
 		class vertex {
 			public:
 				vertex() {};
-				vertex(vec3 np, vec3 nn, vec2 ntc): p(np,1.0), n(nn), tc(ntc) {}
+				vertex(glm::vec3 np, glm::vec3 nn, glm::vec2 ntc): p(np,1.0), n(nn), tc(ntc) {}
 				void		serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 				void		print(int sl);
 				/** @brief position */
-				vec4		p;
+				glm::vec4		p;
 				/** @brief normal */
-				vec3		n;
+				glm::vec3		n;
 				/** @brief texture coordinate */
-				vec2		tc;
+				glm::vec2		tc;
 		};
 		struct tri {
-			tri(std::shared_ptr<vertex>, std::shared_ptr<vertex>, std::shared_ptr<vertex>);
+			tri(shared_ptr<vertex>, shared_ptr<vertex>, shared_ptr<vertex>);
 
-			std::shared_ptr<vertex>		v_[3];
+			shared_ptr<vertex>		v_[3];
 
 			void	reset_normals();
 		};
@@ -38,7 +40,7 @@ namespace math {
 			int	triangle_count();
 
 
-			std::vector< sp::shared_ptr<tri> >		triangles_;
+			vector< shared_ptr<tri> >		triangles_;
 
 		};
 	}

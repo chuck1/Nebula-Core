@@ -1,7 +1,6 @@
 #ifndef NEBULA_CORE_POSE
 #define NEBULA_CORE_POSE
 
-#include <neb/core/typedef.hpp>
 #include <neb/core/pose.hpp>
 
 namespace neb {

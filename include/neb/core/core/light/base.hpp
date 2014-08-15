@@ -7,13 +7,12 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/core/typedef.hpp>
-#include <neb/core/Color/Color.hh>
+#include <neb/core/color/Color.hh>
 #include <neb/core/math/Serialization/glm.hpp>
 #include <neb/core/pose.hpp>
-#include <neb/core/light/__base.hpp>
-#include <neb/core/light/util/Flag.hh>
-#include <neb/core/light/util/light_count.hpp>
+#include <neb/core/core/light/__base.hpp>
+#include <neb/core/core/light/util/Flag.hh>
+#include <neb/core/core/light/util/light_count.hpp>
 #include <neb/core/util/decl.hpp>
 
 namespace neb {
@@ -34,7 +33,7 @@ namespace neb {
 					virtual void			step(gal::std::timestep const & ts);
 
 					neb::core::pose			getPose();
-					vec4				getPos();
+					glm::vec4			getPos();
 				private:
 					template<class Archive> void		serializeTemplate(Archive & ar, unsigned int const & version) {
 						ar & boost::serialization::make_nvp("i",i_);
