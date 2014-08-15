@@ -2,7 +2,7 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/core/debug.hh>
+#include <neb/core/util/debug.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
@@ -17,18 +17,18 @@ shared_ptr<neb::core::app::__base>	neb::core::app::__base::global() {
 }
 void		neb::core::app::__base::__init() {
 
-	if(DEBUG_NEB) LOG(lg, neb::core::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::core::sl, debug) << __FUNCSIG__;
 	
 	assert(!flag_.any(neb::core::app::util::flag::INIT___BASE));
 
 	// boost asio ioservice
-	if(DEBUG_NEB) LOG(lg, neb::core::sl, debug) << "launch ios thread";
+	LOG(lg, neb::core::sl, debug) << "launch ios thread";
 
 	std::thread t([&](){
 			boost::asio::io_service::work w(ios_);
 			ios_.run();
 
-			if(DEBUG_NEB) LOG(lg, neb::core::sl, debug) << "ios stopped";
+			LOG(lg, neb::core::sl, debug) << "ios stopped";
 			});
 	t.detach();
 

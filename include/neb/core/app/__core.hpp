@@ -2,7 +2,7 @@
 #define __NEBULA_APP___CORE_H__
 
 #include <neb/core/app/__base.hpp>
-#include <neb/core/scene/util/Parent.hh>
+#include <neb/core/core/scene/util/parent.hpp>
 
 using namespace std;
 

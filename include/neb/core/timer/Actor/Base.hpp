@@ -6,20 +6,16 @@
 #include <boost/bind.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
-
-//#include <neb/config.hh> // Nebula/config.hpp.in
-#include <neb/core/actor/util/Types.hh>
-
-/** @todo replace types with inheritance and possibly shared library support */
+#include <neb/core/core/actor/util/decl.hpp>
 
 namespace neb {
 	namespace Timer {
 		namespace actor {
 			class base:
-				public sp::enable_shared_from_this<base>
+				public enable_shared_from_this<base>
 			{
 				public:
-					base(sp::shared_ptr<neb::core::actor::base> actor, double);
+					base(shared_ptr<neb::core::core::actor::base> actor, double);
 					virtual ~base();
 
 					/**
@@ -32,7 +28,7 @@ namespace neb {
 
 					boost::asio::deadline_timer				timer_;
 
-					sp::weak_ptr<neb::core::actor::base>			actor_;
+					weak_ptr<neb::core::core::actor::base>			actor_;
 
 					double							time_;
 			};

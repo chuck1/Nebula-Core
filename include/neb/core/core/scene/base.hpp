@@ -9,93 +9,93 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/core/core/scene/util/Flag.hh>
+#include <neb/core/core/scene/util/flag.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
+#include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
 
-namespace neb {
-	namespace core {
-		namespace core {
-			namespace scene {
-				/** 
-				 * @ingroup group_core
-				 * @brief Base
+typedef weak_ptr<neb::core::core::actor::base> wbase;
+
+namespace neb { namespace core { namespace core {
+	namespace scene {
+		/** 
+		 * @ingroup group_core
+		 * @brief Base
+		 */
+		class base:
+			virtual public neb::core::core::actor::util::parent
+		{
+			public:
+				base(sp::shared_ptr<neb::core::core::scene::util::parent>);
+				virtual ~base();
+				virtual void			init();
+				virtual void			release();
+				/** @name Main Loop @{ */
+				virtual void			step(gal::std::timestep const & ts);
+				/** @} */
+
+				virtual  void			serialize(
+						boost::archive::polymorphic_iarchive & ar,
+						unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+				}
+				virtual void			serialize(
+						boost::archive::polymorphic_oarchive & ar,
+						unsigned int const & version) {
+					ar & boost::serialization::make_nvp("i",i_);
+					ar & boost::serialization::make_nvp("flag",flag_);
+				}
+			public:
+				neb::core::pose						getPose();
+				neb::core::pose						getPoseGlobal();
+
+				weak_ptr<neb::core::core::scene::util::parent>		getParent();
+			public:
+				void					add_deferred(
+						shared_ptr<neb::core::core::actor::base>);
+				/** @name convenience functions
+				 * @{
 				 */
-				class base:
-					virtual public neb::core::actor::util::parent
-				{
-					public:
-						base(sp::shared_ptr<neb::core::core::scene::util::parent>);
-						virtual ~base();
-						virtual void				init();
-						virtual void				release();
-						/** @name Main Loop @{ */
-						/** @brief render */
+				virtual wbase				createActorBase(
+						neb::core::pose pose) = 0;
+				/** @brief create empty actor with point light
+				*/
+				virtual wbase				createActorLightPoint(
+						glm::vec3 p);
 
-						virtual void			step(gal::std::timestep const & ts);
-						/** @} */
-
-						virtual  void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) {
-							ar & boost::serialization::make_nvp("i",i_);
-							ar & boost::serialization::make_nvp("flag",flag_);
-						}
-						virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) {
-							ar & boost::serialization::make_nvp("i",i_);
-							ar & boost::serialization::make_nvp("flag",flag_);
-						}
-					public:
-						neb::core::pose						getPose();
-						neb::core::pose						getPoseGlobal();
-
-						sp::weak_ptr<neb::core::core::scene::util::parent>		getParent();
-					public:
-						void							add_deferred(sp::shared_ptr<neb::core::actor::base>);
-
-
-						/** @name convenience functions
-						 * @{
-						 */
-						virtual sp::weak_ptr<neb::core::actor::base>			createActorBase(neb::core::pose pose) = 0;
-						/** @brief create empty actor with point light
-						*/
-						virtual sp::weak_ptr<neb::core::actor::base>			createActorLightPoint(vec3 p);
-
-						/** @brief create rigidstatic cube
-						 *
-						 * @note typeof returned actor will be determined by final implementation of this
-						 */
-						weak_ptr<neb::core::actor::base>				createActorRigidStaticCube(neb::core::pose pose, double size);
-						weak_ptr<neb::core::actor::base>				createActorRigidDynamicCube(neb::core::pose pose, double size);
-						/** @brief create rigidstatic
-						 *
-						 * @note typeof returned actor will be determined by final implementation of this
-						 *
-						 * @warning return actor is not initialized
-						 */
-						virtual weak_ptr<neb::core::actor::base>			createActorRigidStaticUninitialized() = 0;
-						virtual weak_ptr<neb::core::actor::base>			createActorRigidDynamicUninitialized() = 0;
-						/** @} */
-					public:
-						/** @brief parent
-						 *
-						 * @note WEAK
-						 */
-						sp::weak_ptr<neb::core::core::scene::util::parent>					parent_;
-
-					public:
-						neb::core::core::scene::util::Flag							flag_;
-
-						::std::map< ::std::string, sp::shared_ptr<neb::core::actor::base> >		actors_deferred_;
-
-						float		last_;
-				};
-
-
-
-			}
-		}
+				/** @brief create rigidstatic cube
+				 *
+				 * @note typeof returned actor will be
+				 * determined by final implementation of this
+				 */
+				wbase			createActorRigidStaticCube(
+						neb::core::pose pose, double size);
+				wbase			createActorRigidDynamicCube(
+						neb::core::pose pose, double size);
+				/** @brief create rigidstatic
+				 *
+				 * @note typeof returned actor will be
+				 * determined by final implementation of this
+				 *
+				 * @warning return actor is not initialized
+				 */
+				virtual wbase		createActorRigidStaticUninitialized() = 0;
+				virtual wbase		createActorRigidDynamicUninitialized() = 0;
+				/** @} */
+			public:
+				/** @brief parent
+				 *
+				 * @note WEAK
+				 */
+				weak_ptr<neb::core::core::scene::util::parent>			parent_;
+			public:
+				neb::core::core::scene::util::flag				flag_;
+				map< string, shared_ptr<neb::core::core::actor::base> >		actors_deferred_;
+				float								last_;
+		};
 	}
-}
+}}}
 
 #endif
 

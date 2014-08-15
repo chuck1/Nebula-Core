@@ -1,7 +1,7 @@
 #ifndef NEBULA_GAME_HPP
 #define NEBULA_GAME_HPP
 
-#include <neb/core/scene/util/decl.hpp>
+#include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/game/game/util/decl.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
 

@@ -3,47 +3,47 @@
 
 #include <neb/core/util/log.hpp>
 #include <neb/core/util/config.hpp>
-#include <neb/core/debug.hh>
-#include <neb/core/actor/base.hpp>
-#include <neb/core/actor/util/Types.hh>
-#include <neb/core/scene/base.hpp>
+#include <neb/core/util/debug.hpp>
 #include <neb/core/util/decl.hpp>
+#include <neb/core/core/actor/base.hpp>
+#include <neb/core/core/actor/util/decl.hpp>
+#include <neb/core/core/scene/base.hpp>
 
 /** @file base
  */
 
 using namespace std;
 
-neb::core::actor::base::base(sp::shared_ptr<neb::core::actor::util::parent> parent):
+neb::core::core::actor::base::base(sp::shared_ptr<neb::core::core::actor::util::parent> parent):
 	density_(10.0),
 	parent_(parent)
 {
-	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 	assert(parent);
 }
-neb::core::actor::base::~base() {
-	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
+neb::core::core::actor::base::~base() {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 }
-void		neb::core::actor::base::init() {
+void		neb::core::core::actor::base::init() {
 }
-void		neb::core::actor::base::release() {
+void		neb::core::core::actor::base::release() {
 	
 	gal::std::__release::release();
 	
-	neb::core::actor::util::parent::clear();
-	neb::core::shape::util::parent::clear();
+	neb::core::core::actor::util::parent::clear();
+	neb::core::core::shape::util::parent::clear();
 
 }
-sp::shared_ptr<neb::core::actor::util::parent>	neb::core::actor::base::get_parent() {
+sp::shared_ptr<neb::core::core::actor::util::parent>	neb::core::core::actor::base::get_parent() {
 	auto parent(parent_.lock());
 	assert(parent);
 	return parent;
 }
-neb::core::pose				neb::core::actor::base::getPose() {
+neb::core::pose				neb::core::core::actor::base::getPose() {
 	return pose_;
 }
-neb::core::pose				neb::core::actor::base::getPoseGlobal() {
-	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
+neb::core::pose				neb::core::core::actor::base::getPoseGlobal() {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 	
 	neb::core::pose p;
 	
@@ -57,16 +57,16 @@ neb::core::pose				neb::core::actor::base::getPoseGlobal() {
 
 	return p;
 }
-void		neb::core::actor::base::setPose(neb::core::pose const & pose) {
+void		neb::core::core::actor::base::setPose(neb::core::pose const & pose) {
 	pose_ = pose;
 	
-	flag_.set(neb::core::actor::util::flag::E::SHOULD_UPDATE);
+	flag_.set(neb::core::core::actor::util::flag::E::SHOULD_UPDATE);
 }
-void		neb::core::actor::base::step(gal::std::timestep const & ts) {
-	if(DEBUG_NEB) LOG(lg, neb::core::actor::sl, debug) << __FUNCSIG__;
+void		neb::core::core::actor::base::step(gal::std::timestep const & ts) {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
-	typedef neb::core::actor::util::parent A;
-	typedef neb::core::shape::util::parent S;
+	typedef neb::core::core::actor::util::parent A;
+	typedef neb::core::core::shape::util::parent S;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
 			it->ptr_->step(ts);
@@ -77,9 +77,10 @@ void		neb::core::actor::base::step(gal::std::timestep const & ts) {
 			});
 
 }
-weak_ptr<neb::core::shape::base>			neb::core::actor::base::createShapeCube(neb::core::pose pose, double size) {
+weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeCube(
+		neb::core::pose pose, double size) {
 	
-	auto shape = createShapeBox(pose, vec3(size));
+	auto shape = createShapeBox(pose, glm::vec3(size));
 
 	return shape;
 	

@@ -4,23 +4,23 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/core/debug.hh>
-#include <neb/core/shape/base.hpp>
-#include <neb/core/light/base.hpp>
 #include <neb/core/math/geo/polygon.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
+#include <neb/core/util/debug.hpp>
+#include <neb/core/core/shape/base.hpp>
+#include <neb/core/core/light/base.hpp>
 
-neb::core::shape::base::base(sp::shared_ptr<neb::core::shape::util::parent> parent):
+neb::core::core::shape::base::base(sp::shared_ptr<neb::core::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
-	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	assert(parent);
 }
-neb::core::shape::base::~base() {}
-neb::core::pose				neb::core::shape::base::getPoseGlobal() {
-	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
+neb::core::core::shape::base::~base() {}
+neb::core::pose				neb::core::core::shape::base::getPoseGlobal() {
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	
 	neb::core::pose m;
 	
@@ -33,13 +33,13 @@ neb::core::pose				neb::core::shape::base::getPoseGlobal() {
 
 	return m;
 }
-neb::core::pose				neb::core::shape::base::getPose() {
+neb::core::pose				neb::core::core::shape::base::getPose() {
 	return pose_;
 }
-void					neb::core::shape::base::init() {
-	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
+void					neb::core::core::shape::base::init() {
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
-	auto me = sp::dynamic_pointer_cast<neb::core::shape::base>(shared_from_this());
+	auto me = sp::dynamic_pointer_cast<neb::core::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 
 	// type
@@ -49,28 +49,27 @@ void					neb::core::shape::base::init() {
 		program_ = neb::program_name::LIGHT;
 	} else {
 		** @todo replace this with something better... *
-		//flag_.set(neb::core::shape::flag::e::IMAGE);
+		//flag_.set(neb::core::core::shape::flag::e::IMAGE);
 
 		program_ = neb::program_name::IMAGE;
 	}
 */
 
-	neb::core::shape::util::parent::init();
-	neb::core::light::util::parent::init();
+	neb::core::core::shape::util::parent::init();
+	neb::core::core::light::util::parent::init();
 
 }
-void					neb::core::shape::base::release() {
-	if(DEBUG_NEB) LOG(lg, neb::core::shape::sl, debug) << __FUNCSIG__;
+void					neb::core::core::shape::base::release() {
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
-	//neb::util::parent<neb::core::shape::base>::release();
-	neb::core::shape::util::parent::release();
-	neb::core::light::util::parent::release();
+	//neb::util::parent<neb::core::core::shape::base>::release();
+	neb::core::core::shape::util::parent::release();
+	neb::core::core::light::util::parent::release();
 }
-void							neb::core::shape::base::step(gal::std::timestep const & ts) {
-
-	neb::core::shape::util::parent::step(ts);
-
-	neb::core::light::util::parent::step(ts);
-
+void						neb::core::core::shape::base::step(
+		gal::std::timestep const & ts)
+{
+	neb::core::core::shape::util::parent::step(ts);
+	neb::core::core::light::util::parent::step(ts);
 }
 

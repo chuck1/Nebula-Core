@@ -3,14 +3,10 @@
 
 #include <gal/std/flag.hpp>
 
-namespace neb { namespace core {
-	namespace light {
-		namespace util {
-			DEFINE_FLAG(Flag,
-					((SHOULD_RELEASE)(1 << 0))
-				   )
-		}
-	}
-}}
+namespace neb { namespace core { namespace core { namespace light { namespace util {
+	DEFINE_FLAG(flag,
+			((SHOULD_RELEASE)(1 << 0))
+		   )
+}}}}}
 
 #endif

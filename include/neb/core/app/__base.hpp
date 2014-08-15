@@ -17,7 +17,9 @@ namespace neb {
 			/** @brief %base */
 			class __base {
 				public:
-					typedef gal::console::temp<gal::console::frontend::store, gal::console::backend::python> console_type;
+					typedef gal::console::temp<
+						gal::console::frontend::store,
+						gal::console::backend::python> console_type;
 					virtual ~__base() {};
 				protected:
 					void							__init();

@@ -8,74 +8,59 @@
 
 #include <gal/std/timestep.hpp>
 
-#include <neb/core/core/shape/util/Parent.hh>
-#include <neb/core/core/shape/util/Flag.hh>
+#include <neb/core/core/shape/util/parent.hpp>
+#include <neb/core/core/shape/util/flag.hpp>
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/core/light/util/parent.hpp>
 #include <neb/core/core/light/util/light_count.hpp>
 
-namespace neb { 
-	namespace core {
-		namespace shape {
-			class base:
-				virtual public neb::std::shared,
-				virtual public neb::core::shape::util::parent,
-				virtual public neb::core::light::util::parent
+namespace neb { namespace core { namespace core { namespace shape {
+	class base:
+		virtual public neb::std::shared,
+		virtual public neb::core::core::shape::util::parent,
+		virtual public neb::core::core::light::util::parent
+	{
+		public:
+
+			base(shared_ptr<neb::core::core::shape::util::parent> parent);
+			virtual ~base();
+			void			init();
+			void			release();
+			void			step(gal::std::timestep const & ts);
+			/** @name Accessors @{ */
+			neb::core::pose						getPose();
+			neb::core::pose						getPoseGlobal();
+			/** @} */
+			virtual weak_ptr<neb::core::core::light::base>		createLightPoint() = 0;
+		public:
+			template<class Archive>	void	serialize(
+					Archive & ar, unsigned int const & version)
 			{
-				public:
+				ar & boost::serialization::make_nvp("flag",flag_);
+				ar & boost::serialization::make_nvp("pose",pose_);
+				ar & boost::serialization::make_nvp("s",s_);
+				ar & boost::serialization::make_nvp("image",image_);
+				ar & boost::serialization::make_nvp("normal",normal_);
+			}
 
-					base(sp::shared_ptr<neb::core::shape::util::parent> parent);
-					virtual ~base();
+		public:
+			weak_ptr<neb::core::core::shape::util::parent>		parent_;
 
-					void			init();
-					void			release();
-					void			step(gal::std::timestep const & ts);
-
-					/** @name Accessors @{ */
-					neb::core::pose						getPose();
-					neb::core::pose						getPoseGlobal();
-					/** @} */
-
-
-					virtual weak_ptr<neb::core::light::base>		createLightPoint() = 0;
-
-
-
-				public:
-					template<class Archive>	void	serialize(Archive & ar, unsigned int const & version) {
-						ar & boost::serialization::make_nvp("flag",flag_);
-						ar & boost::serialization::make_nvp("pose",pose_);
-						ar & boost::serialization::make_nvp("s",s_);
-						ar & boost::serialization::make_nvp("image",image_);
-						ar & boost::serialization::make_nvp("normal",normal_);
-					}
-
-				public:
-					sp::weak_ptr<neb::core::shape::util::parent>		parent_;
-
-				public:
-					neb::core::shape::util::Flag		flag_;
-					/** @brief pose */
-					neb::core::pose				pose_;
-					/** @brief scale */
-					vec3					s_;
-					/** @brief Name of image file */
-					::std::string				image_;
-					/** @brief Name of normal map file */
-					::std::string				normal_;
-				public:
+		public:
+			neb::core::core::shape::util::flag		flag_;
+			/** @brief pose */
+			neb::core::pose					pose_;
+			/** @brief scale */
+			glm::vec3					s_;
+			/** @brief Name of image file */
+			string				image_;
+			/** @brief Name of normal map file */
+			string				normal_;
+		public:
 
 
-			};
-
-		}
-	}
-}
-
+	};
+}}}}
 
 #endif
-
-
-
-
 

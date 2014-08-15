@@ -3,7 +3,7 @@
 
 #include <gal/log/log.hpp>
 
-namespace neb {
+namespace neb { namespace core {
 	namespace core {
 		namespace scene {
 			extern severity_level	sl;
@@ -17,8 +17,10 @@ namespace neb {
 		namespace light {
 			extern severity_level	sl;
 		}
-		extern severity_level	sl;
+
 	}
-}
+	extern severity_level	sl;
+}}
 
 #endif
+

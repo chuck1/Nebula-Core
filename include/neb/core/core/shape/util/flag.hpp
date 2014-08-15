@@ -3,10 +3,10 @@
 
 #include <gal/std/flag.hpp>
 
-namespace neb { namespace core { namespace shape { namespace util {
-	DEFINE_FLAG(Flag,
+namespace neb { namespace core { namespace core { namespace shape { namespace util {
+	DEFINE_FLAG(flag,
 			((FOO)(1 << 0))
 		   )
-}}}}
+}}}}}
 
 #endif

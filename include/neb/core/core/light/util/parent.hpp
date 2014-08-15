@@ -2,25 +2,19 @@
 #define NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 
 #include <neb/core/interface/Pose.hh>
-#include <neb/core/core/shape/util/Cast.hh>
-#include <neb/core/core/light/__base.hpp>
 #include <neb/core/util/parent.hpp>
+#include <neb/core/core/shape/util/cast.hpp>
+#include <neb/core/core/light/__base.hpp>
 
-namespace neb { namespace core { namespace light { namespace util {
-
-
-
+namespace neb { namespace core { namespace core { namespace light { namespace util {
 	class parent:
 		virtual public neb::util::parent<neb::core::light::__base>,
-		virtual public neb::core::shape::util::cast,
+		virtual public neb::core::core::shape::util::cast,
 		virtual public neb::core::Pose
 	{
 		public:
 			virtual ~parent() {}
 	};
-
-
-
-}}}}
+}}}}}
 
 #endif

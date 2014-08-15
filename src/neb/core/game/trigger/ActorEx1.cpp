@@ -1,20 +1,20 @@
 
 #include <neb/core/app/__base.hpp>
-#include <neb/core/actor/base.hpp>
-#include <neb/core/scene/base.hpp>
-#include <neb/core/scene/util/Parent.hh>
+#include <neb/core/core/actor/base.hpp>
+#include <neb/core/core/scene/base.hpp>
+#include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/game/game/base.hpp>
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
-neb::game::trigger::ActorEx1::ActorEx1(sp::shared_ptr<neb::game::trigger::util::parent> parent):
+neb::game::trigger::ActorEx1::ActorEx1(shared_ptr<neb::game::trigger::util::parent> parent):
 	neb::game::trigger::base(parent)
 {
 }
-void				neb::game::trigger::ActorEx1::connect(sp::shared_ptr<neb::core::actor::base> actor) {
+void				neb::game::trigger::ActorEx1::connect(shared_ptr<neb::core::core::actor::base> actor) {
 	
-	auto self(sp::dynamic_pointer_cast<neb::game::trigger::ActorEx1>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::game::trigger::ActorEx1>(shared_from_this()));
 	
 	typedef boost::signals2::signal<void()> signal_type;
 
@@ -24,14 +24,12 @@ void				neb::game::trigger::ActorEx1::connect(sp::shared_ptr<neb::core::actor::b
 				self
 				).track_foreign(self)
 			);
-
 }
 void				neb::game::trigger::ActorEx1::doSomething() {
-	
 	auto parent(parent_.lock());
 	assert(parent);
 	
-	auto game(sp::dynamic_pointer_cast<neb::game::game::base>(parent));
+	auto game(dynamic_pointer_cast<neb::game::game::base>(parent));
 	assert(game);
 	
 	auto scene(game->scene_.lock());

@@ -4,6 +4,8 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/map.hpp>
 
+using namespace std;
+
 namespace neb { namespace util {
 
 	class debug_options {
@@ -12,7 +14,7 @@ namespace neb { namespace util {
 				ar & boost::serialization::make_nvp("map",map_);
 			}
 
-			std::map< std::string, int > map_;
+			map<string, int> map_;
 	};
 
 }}
