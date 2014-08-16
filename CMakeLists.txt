@@ -60,6 +60,7 @@ SET(libs
 	${Galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
 	${glfw_LIBRARIES}
+	python2.7
 	)
 
 
