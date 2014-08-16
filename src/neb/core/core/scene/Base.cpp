@@ -17,7 +17,7 @@
 
 using namespace std;
 
-neb::core::core::scene::base::base(sp::shared_ptr<neb::core::core::scene::util::parent> parent):
+neb::core::core::scene::base::base(std::shared_ptr<neb::core::core::scene::util::parent> parent):
 	parent_(parent)
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
@@ -42,16 +42,16 @@ neb::core::pose						neb::core::core::scene::base::getPoseGlobal() {
 weak_ptr<neb::core::core::scene::util::parent>		neb::core::core::scene::base::getParent() {
 	return parent_;
 }
-void						neb::core::core::scene::base::add_deferred(sp::shared_ptr<neb::core::core::actor::base> actor) {
+void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::core::actor::base> actor) {
 
 	actors_deferred_[actor->name_] = actor;
 }
-void		neb::core::core::scene::base::step(gal::std::timestep const & ts) {
+void		neb::core::core::scene::base::step(gal::etc::timestep const & ts) {
 
 	typedef neb::core::core::actor::util::parent A;
 
 	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = sp::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);
+			auto actor = std::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);
 			assert(actor);
 			actor->step(ts);
 			});

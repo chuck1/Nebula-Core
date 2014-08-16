@@ -3,7 +3,7 @@
 
 #include <boost/asio/io_service.hpp>
 
-#include <gal/std/timestep.hpp>
+#include <gal/etc/timestep.hpp>
 
 #include <gal/console/console.hpp>
 
@@ -24,12 +24,12 @@ namespace neb {
 				protected:
 					void							__init();
 				public:
-					static shared_ptr<neb::core::app::__base>		global();
+					static std::shared_ptr<neb::core::app::__base>		global();
 				public:
 					boost::asio::io_service					ios_;
 					neb::core::app::util::flag				flag_;
 					static ::std::shared_ptr<neb::core::app::__base>	g_app_;
-					gal::std::timestep					ts_;
+					gal::etc::timestep					ts_;
 					shared_ptr<console_type>				console_;
 			};
 		}

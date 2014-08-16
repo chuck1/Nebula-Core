@@ -3,11 +3,11 @@
 
 #include <boost/thread.hpp>
 
-#include <neb/core/util/shared.hpp>
+#include <neb/core/itf/shared.hpp>
 
 namespace neb {
 	namespace actor {
-		class __base: virtual public neb::std::shared {
+		class __base: virtual public neb::itf::shared {
 			public:
 		};
 	}

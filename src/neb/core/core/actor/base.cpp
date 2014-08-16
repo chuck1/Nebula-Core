@@ -14,7 +14,7 @@
 
 using namespace std;
 
-neb::core::core::actor::base::base(sp::shared_ptr<neb::core::core::actor::util::parent> parent):
+neb::core::core::actor::base::base(std::shared_ptr<neb::core::core::actor::util::parent> parent):
 	density_(10.0),
 	parent_(parent)
 {
@@ -28,13 +28,13 @@ void		neb::core::core::actor::base::init() {
 }
 void		neb::core::core::actor::base::release() {
 	
-	gal::std::__release::release();
+	gal::itf::__release::release();
 	
 	neb::core::core::actor::util::parent::clear();
 	neb::core::core::shape::util::parent::clear();
 
 }
-sp::shared_ptr<neb::core::core::actor::util::parent>	neb::core::core::actor::base::get_parent() {
+std::shared_ptr<neb::core::core::actor::util::parent>	neb::core::core::actor::base::get_parent() {
 	auto parent(parent_.lock());
 	assert(parent);
 	return parent;
@@ -62,7 +62,7 @@ void		neb::core::core::actor::base::setPose(neb::core::pose const & pose) {
 	
 	flag_.set(neb::core::core::actor::util::flag::E::SHOULD_UPDATE);
 }
-void		neb::core::core::actor::base::step(gal::std::timestep const & ts) {
+void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
 	typedef neb::core::core::actor::util::parent A;

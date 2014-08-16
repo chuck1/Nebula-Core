@@ -1,6 +1,6 @@
 #include <glm/gtx/transform.hpp>
 
-#include <gal/std/map.hpp>
+#include <gal/stl/map.hpp>
 
 #include <gal/log/log.hpp>
 
@@ -11,7 +11,7 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
-neb::core::core::shape::base::base(sp::shared_ptr<neb::core::core::shape::util::parent> parent):
+neb::core::core::shape::base::base(std::shared_ptr<neb::core::core::shape::util::parent> parent):
 	parent_(parent),
 	s_(1,1,1)
 {
@@ -39,7 +39,7 @@ neb::core::pose				neb::core::core::shape::base::getPose() {
 void					neb::core::core::shape::base::init() {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
-	auto me = sp::dynamic_pointer_cast<neb::core::core::shape::base>(shared_from_this());
+	auto me = std::dynamic_pointer_cast<neb::core::core::shape::base>(shared_from_this());
 	//auto scene = get_parent()->get_scene();
 
 	// type
@@ -67,7 +67,7 @@ void					neb::core::core::shape::base::release() {
 	neb::core::core::light::util::parent::release();
 }
 void						neb::core::core::shape::base::step(
-		gal::std::timestep const & ts)
+		gal::etc::timestep const & ts)
 {
 	neb::core::core::shape::util::parent::step(ts);
 	neb::core::core::light::util::parent::step(ts);

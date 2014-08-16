@@ -11,11 +11,10 @@ math::geo::rectangle::rectangle(glm::vec3 center, glm::vec3 x, glm::vec3 n, floa
 	x *= w * 0.5;
 	y *= h * 0.5;
 	
-
-	auto v0(make_shared<math::geo::vertex>(center - x - y, n, glm::vec2(0,0)));
-	auto v1(make_shared<math::geo::vertex>(center + x - y, n, glm::vec2(1,0)));
-	auto v2(make_shared<math::geo::vertex>(center + x + y, n, glm::vec2(1,1)));
-	auto v3(make_shared<math::geo::vertex>(center - x + y, n, glm::vec2(0,1)));
+	auto v0(make_shared<math::geo::vertex>(center - x - y, n, glm::vec2(0,0), x, y));
+	auto v1(make_shared<math::geo::vertex>(center + x - y, n, glm::vec2(1,0), x, y));
+	auto v2(make_shared<math::geo::vertex>(center + x + y, n, glm::vec2(1,1), x, y));
+	auto v3(make_shared<math::geo::vertex>(center - x + y, n, glm::vec2(0,1), x, y));
 	
 	
 	glm::vec3 e1(v1->p - v0->p);

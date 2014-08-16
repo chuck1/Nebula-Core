@@ -5,7 +5,7 @@
 
 namespace neb { namespace game { namespace spawn {
 
-	class base: virtual public neb::std::shared {
+	class base: virtual public neb::itf::shared {
 		public:
 
 			neb::core::pose		pose_;

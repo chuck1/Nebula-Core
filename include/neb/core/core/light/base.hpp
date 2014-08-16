@@ -19,12 +19,12 @@
 namespace neb { namespace core { namespace core { namespace light {
 	class base: virtual public neb::core::light::__base {
 		public:
-			base(shared_ptr<neb::core::core::light::util::parent> parent);
+			base(std::shared_ptr<neb::core::core::light::util::parent> parent);
 
 			void				init();
 
 			virtual void			release();
-			virtual void			step(gal::std::timestep const & ts);
+			virtual void			step(gal::etc::timestep const & ts);
 
 			neb::core::pose			getPose();
 			glm::vec4			getPos();

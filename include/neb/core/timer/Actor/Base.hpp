@@ -12,10 +12,10 @@ namespace neb {
 	namespace Timer {
 		namespace actor {
 			class base:
-				public enable_shared_from_this<base>
+				public std::enable_shared_from_this<base>
 			{
 				public:
-					base(shared_ptr<neb::core::core::actor::base> actor, double);
+					base(std::shared_ptr<neb::core::core::actor::base> actor, double);
 					virtual ~base();
 
 					/**
@@ -28,7 +28,7 @@ namespace neb {
 
 					boost::asio::deadline_timer				timer_;
 
-					weak_ptr<neb::core::core::actor::base>			actor_;
+					std::weak_ptr<neb::core::core::actor::base>		actor_;
 
 					double							time_;
 			};

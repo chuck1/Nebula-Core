@@ -29,28 +29,28 @@ namespace neb { namespace core { namespace core { namespace actor {
 			/** @brief default constructor */
 			//base();
 			/** @brief constructor */
-			base(shared_ptr<neb::core::core::actor::util::parent> parent);
+			base(std::shared_ptr<neb::core::core::actor::util::parent> parent);
 			virtual ~base();
 		public:
 			virtual void						init();
 			virtual void						release();
 		public:
-			virtual void						step(gal::std::timestep const & ts);
+			virtual void						step(gal::etc::timestep const & ts);
 		public:
 			virtual neb::core::pose					getPose();
 			virtual neb::core::pose					getPoseGlobal();
-			sp::shared_ptr<neb::core::core::actor::util::parent>		get_parent();
+			std::shared_ptr<neb::core::core::actor::util::parent>		get_parent();
 			/** @brief set pose
 			 *
 			 * virtual because actor::local will add self to active transform list
 			 */
 			virtual void						setPose(neb::core::pose const & pose);
 		public:
-			virtual sp::weak_ptr<neb::core::core::shape::base>		createShapeBase(
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
 					neb::core::pose pose) = 0;
-			virtual sp::weak_ptr<neb::core::core::shape::base>		createShapeBox(
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBox(
 					neb::core::pose pose, glm::vec3 size) = 0;
-			virtual sp::weak_ptr<neb::core::core::shape::base>		createShapeCube(
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCube(
 					neb::core::pose pose, double size);
 		public:
 			/** @brief %Serialize

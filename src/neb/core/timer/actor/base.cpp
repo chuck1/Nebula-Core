@@ -8,7 +8,7 @@
 #include <neb/core/app/__base.hpp>
 
 
-neb::Timer::actor::base::base(shared_ptr<neb::core::core::actor::base> actor, double seconds):
+neb::Timer::actor::base::base(std::shared_ptr<neb::core::core::actor::base> actor, double seconds):
 	timer_(neb::core::app::__base::global()->ios_, boost::posix_time::seconds(seconds)),
 	actor_(actor)
 {

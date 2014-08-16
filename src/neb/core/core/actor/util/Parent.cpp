@@ -17,7 +17,7 @@ void							neb::core::core::actor::util::parent::init() {
 void							neb::core::core::actor::util::parent::release() {
 
 }
-sp::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::parent::getScene() {
+std::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::parent::getScene() {
 
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 

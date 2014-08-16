@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <gal/std/flag.hpp>
-#include <gal/std/map.hpp>
+#include <gal/etc/flag.hpp>
+#include <gal/stl/map.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
@@ -26,12 +26,12 @@ namespace neb { namespace core { namespace core {
 			virtual public neb::core::core::actor::util::parent
 		{
 			public:
-				base(sp::shared_ptr<neb::core::core::scene::util::parent>);
+				base(std::shared_ptr<neb::core::core::scene::util::parent>);
 				virtual ~base();
 				virtual void			init();
 				virtual void			release();
 				/** @name Main Loop @{ */
-				virtual void			step(gal::std::timestep const & ts);
+				virtual void			step(gal::etc::timestep const & ts);
 				/** @} */
 
 				virtual  void			serialize(
@@ -91,7 +91,7 @@ namespace neb { namespace core { namespace core {
 				weak_ptr<neb::core::core::scene::util::parent>			parent_;
 			public:
 				neb::core::core::scene::util::flag				flag_;
-				map< string, shared_ptr<neb::core::core::actor::base> >		actors_deferred_;
+				map< string, std::shared_ptr<neb::core::core::actor::base> >		actors_deferred_;
 				float								last_;
 		};
 	}

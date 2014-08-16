@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include <gal/std/shared.hpp>
+#include <gal/itf/shared.hpp>
 
 #include <neb/core/util/parent.hpp>
 

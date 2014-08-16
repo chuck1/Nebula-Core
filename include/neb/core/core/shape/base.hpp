@@ -6,7 +6,7 @@
 //#include <GL/glew.h>
 //#include <GLFW/glfw3.h>
 
-#include <gal/std/timestep.hpp>
+#include <gal/etc/timestep.hpp>
 
 #include <neb/core/core/shape/util/parent.hpp>
 #include <neb/core/core/shape/util/flag.hpp>
@@ -16,17 +16,17 @@
 
 namespace neb { namespace core { namespace core { namespace shape {
 	class base:
-		virtual public neb::std::shared,
+		virtual public neb::itf::shared,
 		virtual public neb::core::core::shape::util::parent,
 		virtual public neb::core::core::light::util::parent
 	{
 		public:
 
-			base(shared_ptr<neb::core::core::shape::util::parent> parent);
+			base(std::shared_ptr<neb::core::core::shape::util::parent> parent);
 			virtual ~base();
 			void			init();
 			void			release();
-			void			step(gal::std::timestep const & ts);
+			void			step(gal::etc::timestep const & ts);
 			/** @name Accessors @{ */
 			neb::core::pose						getPose();
 			neb::core::pose						getPoseGlobal();

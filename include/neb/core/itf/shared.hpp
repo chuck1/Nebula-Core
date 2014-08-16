@@ -7,11 +7,11 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <gal/std/shared.hpp>
-#include <gal/std/timestep.hpp>
+#include <gal/itf/shared.hpp>
+#include <gal/etc/timestep.hpp>
 
 namespace neb {
-	namespace std {
+	namespace itf {
 		/** @brief %shared.
 		 *
 		 * Avoid multiple enabled_shared_from_this bases.
@@ -19,7 +19,7 @@ namespace neb {
 		 * Supply type info.
 		 *
 		 */
-		class shared: virtual public gal::std::shared {
+		class shared: virtual public gal::itf::shared {
 			public:
 				shared();
 				/** @brief destructor
@@ -28,7 +28,7 @@ namespace neb {
 				virtual ~shared() {}
 				virtual void					init();
 				virtual void					release();
-				virtual void					step(gal::std::timestep const & ts);
+				virtual void					step(gal::etc::timestep const & ts);
 
 				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);

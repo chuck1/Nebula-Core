@@ -1,16 +1,16 @@
 
 #include <neb/core/util/wrapper.hpp>
 
-neb::std::wrapper::wrapper() {
+neb::stl::wrapper::wrapper() {
 }
-neb::std::wrapper::wrapper(sp::shared_ptr<neb::std::shared> s) {
+neb::stl::wrapper::wrapper(std::shared_ptr<neb::itf::shared> s) {
 }
-void		neb::std::wrapper::init() {
+void		neb::stl::wrapper::init() {
 }
-void		neb::std::wrapper::release() {
+void		neb::stl::wrapper::release() {
 	
 }
-void		neb::std::wrapper::step(gal::std::timestep const & ts) {
+void		neb::stl::wrapper::step(gal::etc::timestep const & ts) {
 	
 }
 

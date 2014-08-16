@@ -1,7 +1,7 @@
 #ifndef NEBULA_SCENE_UTIL_PARENT_HH
 #define NEBULA_SCENE_UTIL_PARENT_HH
 
-#include <gal/std/map.hpp>
+#include <gal/stl/map.hpp>
 
 #include <neb/core/interface/Pose.hh>
 #include <neb/core/util/parent.hpp>

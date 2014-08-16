@@ -1,7 +1,7 @@
 #ifndef NEBULA_APP_UTIL_FLAG_HH
 #define NEBULA_APP_UTIL_FLAG_HH
 
-#include <gal/std/flag.hpp>
+#include <gal/etc/flag.hpp>
 
 namespace neb {
 	namespace core {

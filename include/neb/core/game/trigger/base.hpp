@@ -1,7 +1,7 @@
 #ifndef NEB_GAME_TRIGGER_HPP
 #define NEB_GAME_TRIGGER_HPP
 
-#include <neb/core/util/shared.hpp>
+#include <neb/core/itf/shared.hpp>
 #include <neb/core/util/typedef.hpp>
 
 
@@ -11,15 +11,15 @@ namespace neb { namespace game { namespace trigger {
 		class parent;
 	}
 
-	class base: virtual public neb::std::shared
+	class base: virtual public neb::itf::shared
 	{
 		public:
-			base(sp::shared_ptr<neb::game::trigger::util::parent> parent);
+			base(std::shared_ptr<neb::game::trigger::util::parent> parent);
 			
 			virtual void						doSomething() = 0;
 			
 		public:
-			sp::weak_ptr<neb::game::trigger::util::parent>		parent_;
+			std::weak_ptr<neb::game::trigger::util::parent>		parent_;
 	};
 
 

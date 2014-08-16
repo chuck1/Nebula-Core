@@ -18,7 +18,7 @@ namespace math {
 		class vertex {
 			public:
 				vertex() {};
-				vertex(glm::vec3 np, glm::vec3 nn, glm::vec2 ntc): p(np,1.0), n(nn), tc(ntc) {}
+				vertex(glm::vec3 np, glm::vec3 nn, glm::vec2 ntc, glm::vec3 ntangent, glm::vec3 nbinormal): p(np,1.0), n(nn), tc(ntc), tangent(ntangent), binormal(nbinormal) {}
 				void		serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 				void		print(int sl);
@@ -28,9 +28,12 @@ namespace math {
 				glm::vec3		n;
 				/** @brief texture coordinate */
 				glm::vec2		tc;
+				/** @brief normal mapping */
+				glm::vec3		tangent;
+				glm::vec3		binormal;
 		};
 		struct tri {
-			tri(shared_ptr<vertex>, shared_ptr<vertex>, shared_ptr<vertex>);
+			tri(std::shared_ptr<vertex>, std::shared_ptr<vertex>, std::shared_ptr<vertex>);
 
 			shared_ptr<vertex>		v_[3];
 
@@ -40,7 +43,7 @@ namespace math {
 			int	triangle_count();
 
 
-			vector< shared_ptr<tri> >		triangles_;
+			vector< std::shared_ptr<tri> >		triangles_;
 
 		};
 	}

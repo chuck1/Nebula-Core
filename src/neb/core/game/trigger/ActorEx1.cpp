@@ -8,11 +8,11 @@
 #include <neb/core/game/trigger/util/parent.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
-neb::game::trigger::ActorEx1::ActorEx1(shared_ptr<neb::game::trigger::util::parent> parent):
+neb::game::trigger::ActorEx1::ActorEx1(std::shared_ptr<neb::game::trigger::util::parent> parent):
 	neb::game::trigger::base(parent)
 {
 }
-void				neb::game::trigger::ActorEx1::connect(shared_ptr<neb::core::core::actor::base> actor) {
+void				neb::game::trigger::ActorEx1::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
 	
 	auto self(dynamic_pointer_cast<neb::game::trigger::ActorEx1>(shared_from_this()));
 	
