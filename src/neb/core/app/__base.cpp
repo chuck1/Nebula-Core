@@ -1,4 +1,5 @@
 #include <thread>
+#include <fstream>
 
 #include <gal/log/log.hpp>
 
@@ -49,5 +50,12 @@ void		neb::core::app::__base::__init() {
 	char* home = getenv("HOME");
 	if(home == 0) abort();
 	share_dir_ = std::string(home) + "/.local/share/nebula/box/";
+
 }
+
+
+
+
+
+
 
