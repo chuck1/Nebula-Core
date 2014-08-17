@@ -3,6 +3,8 @@
 
 // gru/config.hpp.in
 
+#define NEBULA_PYTHON_LIB "lib@nebula_python_NAME@"
+
 #define GLUTPP_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
 //#define GLUTPP_OBJECT_DIR "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME@/Graphics/objects"

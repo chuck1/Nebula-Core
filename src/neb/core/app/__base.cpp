@@ -36,13 +36,6 @@ void		neb::core::app::__base::__init() {
 	// console
 	console_.reset(new console_type);
 	console_->init();
-	try {
-		console_->main_namespace_["neb"] = boost::python::import("libnebula_python");
-	} catch(bp::error_already_set const &) {
-		std::cout << "unhandled execption\n";
-		// print all other errors to stderr
-		PyErr_Print();
-	}
 	flag_.set(neb::core::app::util::flag::INIT___BASE);
 
 	/** @todo export class to python to implement exit() */
