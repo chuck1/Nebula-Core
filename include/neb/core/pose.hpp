@@ -28,7 +28,7 @@ namespace neb { namespace core {
 			
 			glm::mat4		mat4_cast() const;
 
-			glm::vec4		pos_;
+			glm::vec3		pos_;
 			glm::quat		rot_;
 	};
 

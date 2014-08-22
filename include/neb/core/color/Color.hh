@@ -7,6 +7,8 @@
 
 #include <boost/serialization/nvp.hpp>
 
+#include <glm/glm.hpp>
+
 namespace neb {
 	namespace Color {
 		template <typename T> class color {
@@ -213,7 +215,9 @@ namespace neb {
 				operator T const * () const {
 					return (T*)this;
 				}
-
+				operator glm::vec4 () const {
+					return glm::vec4(r,g,b,a);
+				}
 				//constructors
 			public:
 				T	r;

@@ -18,17 +18,19 @@ void							neb::core::core::actor::util::parent::release() {
 
 }
 std::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::parent::getScene() {
-
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
-	auto scene(::std::dynamic_pointer_cast<neb::core::core::scene::base>(shared_from_this()));
+	auto scene = isSceneBase();
 
 	if(scene) return scene;
 
-	auto actor(::std::dynamic_pointer_cast<neb::core::core::actor::base>(shared_from_this()));
-
-	if(!actor) throw 0;
-
-	return actor->getScene();
+	auto actor = isActorBase();
+	
+	if(!actor) abort();
+	
+	auto parent = actor->parent_.lock();
+	assert(parent);
+	
+	return parent->getScene();
 }
 

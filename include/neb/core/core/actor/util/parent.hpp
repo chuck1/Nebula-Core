@@ -21,6 +21,7 @@ namespace neb { namespace core { namespace core { namespace actor { namespace ut
 	class parent:
 		virtual public neb::util::parent<neb::actor::__base>,
 		virtual public neb::core::core::scene::util::cast,
+		virtual public neb::core::core::actor::util::cast,
 		virtual public neb::core::Pose
 	{
 		public:

@@ -3,6 +3,7 @@
 
 #include <neb/core/interface/Pose.hh>
 #include <neb/core/util/parent.hpp>
+#include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/shape/util/cast.hpp>
 #include <neb/core/core/light/__base.hpp>
 
@@ -14,6 +15,7 @@ namespace neb { namespace core { namespace core { namespace light { namespace ut
 	{
 		public:
 			virtual ~parent() {}
+			std::weak_ptr<neb::core::core::scene::base>		getScene();
 	};
 }}}}}
 
