@@ -232,14 +232,16 @@ namespace neb {
 				//char	tb;	
 		};
 
-		template<typename T> color<T> white() { return color<T>(		1.0, 1.0, 1.0, 1.0); }
-		template<typename T> color<T> black() { return color<T>(		0.0, 0.0, 0.0, 1.0); }
+		template<typename T> color<T> rand() { color<T> c; c.rand(); return c; }
+		template<typename T> color<T> white() { return color<T>(	1.0, 1.0, 1.0, 1.0); }
+		template<typename T> color<T> black() { return color<T>(	0.0, 0.0, 0.0, 1.0); }
 		template<typename T> color<T> red() { return color<T>(		1.0, 0.0, 0.0, 1.0); }
-		template<typename T> color<T> green() { return color<T>(		0.0, 1.0, 0.0, 1.0); }
+		template<typename T> color<T> green() { return color<T>(	0.0, 1.0, 0.0, 1.0); }
 		template<typename T> color<T> blue() { return color<T>(		0.0, 0.0, 1.0, 1.0); }
 		template<typename T> color<T> cyan() { return color<T>(		0.0, 1.0, 1.0, 1.0); }
 		template<typename T> color<T> magenta() { return color<T>(	1.0, 0.0, 1.0, 1.0); }
 		template<typename T> color<T> yellow() { return color<T>(	1.0, 1.0, 0.0, 1.0); }
+		template<typename T> color<T> gray(float g) { return color<T>(	  g,   g,   g, 1.0); }
 	}
 }
 
