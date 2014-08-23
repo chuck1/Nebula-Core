@@ -27,6 +27,7 @@ namespace neb { namespace core { namespace core { namespace shape {
 			void			init();
 			void			release();
 			void			step(gal::etc::timestep const & ts);
+			virtual void		callbackPose(neb::core::pose const & pose_global) = 0;
 			/** @name Accessors @{ */
 			neb::core::pose						getPose();
 			neb::core::pose						getPoseGlobal();

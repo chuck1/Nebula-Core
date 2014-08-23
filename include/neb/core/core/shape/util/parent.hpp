@@ -28,6 +28,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace ut
 	{
 		public:
 			virtual ~parent() {}
+			void		callbackPose(neb::core::pose const & pose);
 	};
 }}}}}
 

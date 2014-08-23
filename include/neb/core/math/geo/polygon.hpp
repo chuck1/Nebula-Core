@@ -18,12 +18,12 @@ namespace math {
 		class vertex {
 			public:
 				vertex() {};
-				vertex(glm::vec3 np, glm::vec3 nn, glm::vec2 ntc, glm::vec3 ntangent, glm::vec3 nbinormal): p(np,1.0), n(nn), tc(ntc), tangent(ntangent), binormal(nbinormal) {}
+				vertex(glm::vec3 np, glm::vec3 nn, glm::vec2 ntc, glm::vec3 ntangent, glm::vec3 nbinormal): p(np), n(nn), tc(ntc), tangent(ntangent), binormal(nbinormal) {}
 				void		serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				void		serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 				void		print(int sl);
 				/** @brief position */
-				glm::vec4		p;
+				glm::vec3		p;
 				/** @brief normal */
 				glm::vec3		n;
 				/** @brief texture coordinate */

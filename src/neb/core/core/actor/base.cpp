@@ -60,6 +60,8 @@ neb::core::pose				neb::core::core::actor::base::getPoseGlobal() {
 void		neb::core::core::actor::base::setPose(neb::core::pose const & pose) {
 	pose_ = pose;
 	
+	neb::core::core::shape::util::parent::callbackPose(pose);
+	
 	flag_.set(neb::core::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
