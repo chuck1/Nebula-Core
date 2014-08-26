@@ -30,7 +30,7 @@ namespace neb {
 				}
 				void		init() {
 					gal_parent::map_.template for_each<0>([&] (iterator<0> it) {
-							it->ptr_->init();
+							it->ptr_->__init();
 							});
 
 				}

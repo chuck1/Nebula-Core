@@ -3,7 +3,7 @@
 
 neb::itf::shared::shared() {
 }
-void					neb::itf::shared::init() {
+void					neb::itf::shared::__init() {
 	gal::itf::shared::__init();
 }
 void					neb::itf::shared::release() {

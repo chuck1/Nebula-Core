@@ -75,16 +75,19 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	return actor;
 }
-weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCube(
-		neb::core::pose pose,
-		double size) {
+weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCuboid(
+		neb::core::core::actor::rigidbody::desc		actor_desc,
+		neb::core::core::shape::cuboid::desc		shape_desc)
+{
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
-	actor->pose_ = pose;
+
+	actor->pose_ = actor_desc.pose_;
+
 	actor->init();
 
 	// shape
-	auto shape = actor->createShapeCube(neb::core::pose(), size);
+	auto shape = actor->createShapeCube(shape_desc);
 
 	/// @todo consider implementing refresh-type function instead
 	actor->init();

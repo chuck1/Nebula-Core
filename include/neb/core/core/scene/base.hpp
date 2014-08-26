@@ -13,6 +13,8 @@
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
+#include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/core/core/shape/cuboid/desc.hpp>
 
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 
@@ -63,16 +65,17 @@ namespace neb { namespace core { namespace core {
 				*/
 				virtual wbase				createActorLightPoint(
 						glm::vec3 p);
-
 				/** @brief create rigidstatic cube
 				 *
 				 * @note typeof returned actor will be
 				 * determined by final implementation of this
 				 */
 				wbase			createActorRigidStaticCube(
-						neb::core::pose pose, double size);
-				wbase			createActorRigidDynamicCube(
-						neb::core::pose pose, double size);
+						neb::core::pose pose,
+						double size);
+				wbase			createActorRigidDynamicCuboid(
+						neb::core::core::actor::rigidbody::desc,
+						neb::core::core::shape::cuboid::desc);
 				/** @brief create rigidstatic
 				 *
 				 * @note typeof returned actor will be

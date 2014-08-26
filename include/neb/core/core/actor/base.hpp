@@ -16,6 +16,7 @@
 #include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/shape/util/parent.hpp>
+#include <neb/core/core/shape/cuboid/desc.hpp>
 #include <neb/core/math/Serialization/glm.hpp>
 
 namespace neb { namespace core { namespace core { namespace actor {
@@ -48,8 +49,8 @@ namespace neb { namespace core { namespace core { namespace actor {
 		public:
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
 					neb::core::pose pose) = 0;
-			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBox(
-					neb::core::pose pose, glm::vec3 size) = 0;
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCuboid(
+					neb::core::core::shape::cuboid::desc) = 0;
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCube(
 					neb::core::pose pose, double size);
 		public:
