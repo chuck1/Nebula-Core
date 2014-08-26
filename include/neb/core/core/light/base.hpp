@@ -53,7 +53,7 @@ namespace neb { namespace core { namespace core { namespace light {
 		public:
 
 
-			weak_ptr<neb::core::core::light::util::parent>		parent_;
+			std::weak_ptr<neb::core::core::light::util::parent>	parent_;
 
 			neb::core::core::light::util::flag			flag_;
 
