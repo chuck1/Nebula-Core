@@ -65,6 +65,8 @@ namespace neb { namespace core { namespace core {
 				*/
 				virtual wbase				createActorLightPoint(
 						glm::vec3 p);
+				virtual wbase				createActorLightDirectional(
+						glm::vec3 p);
 				/** @brief create rigidstatic cube
 				 *
 				 * @note typeof returned actor will be

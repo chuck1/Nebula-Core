@@ -4,7 +4,7 @@
 namespace neb { namespace core { namespace core { namespace actor { namespace rigidbody {
 
 	struct desc {
-		
+		desc() {}
 		desc(neb::core::pose pose):
 			pose_(pose)
 		{}

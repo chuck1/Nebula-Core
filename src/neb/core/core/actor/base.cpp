@@ -82,9 +82,10 @@ void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
 weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeCube(
 		neb::core::pose pose, double size) {
 	
-	neb::core::core::shape::cuboid::desc desc;
-	desc.pose_ = pose;
-	desc.scale_ = glm::vec3(size);
+	neb::core::core::shape::cuboid::desc desc(
+			pose,
+			glm::vec3(size)
+			);
 	
 	auto shape = createShapeCuboid(desc);
 	

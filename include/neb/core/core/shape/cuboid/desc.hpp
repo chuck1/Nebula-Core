@@ -5,6 +5,11 @@ namespace neb { namespace core { namespace core { namespace shape { namespace cu
 
 	struct desc {
 		
+		desc(neb::core::pose pose, glm::vec3 scale):
+			pose_(pose),
+			scale_(scale),
+			density_(1.0)
+		{}
 		desc(glm::vec3 scale):
 			scale_(scale),
 			density_(1.0)

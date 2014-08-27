@@ -13,7 +13,7 @@
 
 neb::core::core::shape::base::base(std::shared_ptr<neb::core::core::shape::util::parent> parent):
 	parent_(parent),
-	s_(1,1,1)
+	scale_(1.0)
 {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	assert(parent);

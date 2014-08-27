@@ -87,7 +87,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 	actor->init();
 
 	// shape
-	auto shape = actor->createShapeCube(shape_desc);
+	auto shape = actor->createShapeCuboid(shape_desc);
 
 	/// @todo consider implementing refresh-type function instead
 	actor->init();
@@ -104,6 +104,16 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	// light
 	auto light = shape->createLightPoint();
+
+	return actor;	
+}
+weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorLightDirectional(glm::vec3 p)
+{
+	auto actor = createActorBase(neb::core::pose()).lock();
+
+	auto shape = actor->createShapeBase(neb::core::pose()).lock();
+
+	auto light = shape->createLightDirectional(p);
 
 	return actor;	
 }

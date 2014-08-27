@@ -33,13 +33,14 @@ namespace neb { namespace core { namespace core { namespace shape {
 			neb::core::pose						getPoseGlobal();
 			/** @} */
 			virtual weak_ptr<neb::core::core::light::base>		createLightPoint() = 0;
+			virtual weak_ptr<neb::core::core::light::base>		createLightDirectional(glm::vec3) = 0;
 		public:
 			template<class Archive>	void	serialize(
 					Archive & ar, unsigned int const & version)
 			{
 				ar & boost::serialization::make_nvp("flag",flag_);
 				ar & boost::serialization::make_nvp("pose",pose_);
-				ar & boost::serialization::make_nvp("s",s_);
+				ar & boost::serialization::make_nvp("scale",scale_);
 				ar & boost::serialization::make_nvp("image",image_);
 				ar & boost::serialization::make_nvp("normal",normal_);
 			}
@@ -52,11 +53,11 @@ namespace neb { namespace core { namespace core { namespace shape {
 			/** @brief pose */
 			neb::core::pose					pose_;
 			/** @brief scale */
-			glm::vec3					s_;
+			glm::vec3					scale_;
 			/** @brief Name of image file */
-			string				image_;
+			string						image_;
 			/** @brief Name of normal map file */
-			string				normal_;
+			string						normal_;
 		public:
 
 
