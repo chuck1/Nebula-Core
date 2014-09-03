@@ -27,13 +27,14 @@ namespace neb { namespace core { namespace core { namespace light {
 			virtual void			step(gal::etc::timestep const & ts);
 
 			neb::core::pose			getPose();
+			neb::core::pose			getPoseGlobal();
 			glm::vec4			getPos();
 		private:
 			template<class Archive> void		serializeTemplate(
 					Archive & ar, unsigned int const & version) {
 				ar & boost::serialization::make_nvp("i",i_);
 				ar & boost::serialization::make_nvp("flag",flag_);
-				ar & boost::serialization::make_nvp("pos",pos_);
+				//ar & boost::serialization::make_nvp("pos",pos_);
 				/*
 				   ar & boost::serialization::make_nvp("atten_const",atten_const_);
 				   ar & boost::serialization::make_nvp("atten_linear",atten_linear_);
@@ -56,9 +57,9 @@ namespace neb { namespace core { namespace core { namespace light {
 			std::weak_ptr<neb::core::core::light::util::parent>	parent_;
 
 			neb::core::core::light::util::flag			flag_;
+			
+			neb::core::pose						pose_;
 
-			// position
-			glm::vec3						pos_;
 	};
 }}}}
 
