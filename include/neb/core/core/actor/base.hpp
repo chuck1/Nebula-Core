@@ -60,7 +60,7 @@ namespace neb { namespace core { namespace core { namespace actor {
 			 */
 			template<class Archive> void				serialize(
 					Archive & ar, unsigned int const & version) {
-				ar & boost::serialization::make_nvp("i", i_);
+				//ar & boost::serialization::make_nvp("i", i_);
 
 				serializeData(ar, version);
 

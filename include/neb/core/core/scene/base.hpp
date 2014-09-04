@@ -39,13 +39,13 @@ namespace neb { namespace core { namespace core {
 				virtual  void			serialize(
 						boost::archive::polymorphic_iarchive & ar,
 						unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
+					//ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 				}
 				virtual void			serialize(
 						boost::archive::polymorphic_oarchive & ar,
 						unsigned int const & version) {
-					ar & boost::serialization::make_nvp("i",i_);
+					//ar & boost::serialization::make_nvp("i",i_);
 					ar & boost::serialization::make_nvp("flag",flag_);
 				}
 			public:

@@ -25,7 +25,7 @@ void		neb::Timer::actor::Release::doSomething() {
 	auto parent = actor->parent_.lock();
 	assert(parent);
 	
-	parent->erase(actor->i_);
+	parent->erase(actor->_M_index);
 }
 
 

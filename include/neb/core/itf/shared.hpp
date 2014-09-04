@@ -26,7 +26,7 @@ namespace neb {
 				 *
 				 */
 				virtual ~shared() {}
-				virtual void					__init();
+				//virtual void					__init() = 0;
 				virtual void					release();
 				virtual void					step(gal::etc::timestep const & ts);
 

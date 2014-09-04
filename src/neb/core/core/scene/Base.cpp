@@ -48,13 +48,15 @@ void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::
 }
 void		neb::core::core::scene::base::step(gal::etc::timestep const & ts) {
 
-	typedef neb::core::core::actor::util::parent A;
+	typedef neb::util::parent<neb::actor::__base> A;
+	
+	A::step(ts);
 
-	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			auto actor = std::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);
-			assert(actor);
-			actor->step(ts);
-			});
+//	A::map_.for_each([&] (A::map_type::pointer p) {
+//			auto actor = std::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);
+//			assert(actor);
+//			actor->step(ts);
+//			});
 
 }
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCube(

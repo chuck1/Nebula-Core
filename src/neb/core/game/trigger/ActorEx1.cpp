@@ -40,7 +40,7 @@ void				neb::game::trigger::ActorEx1::doSomething() {
 	
 	assert(scene_parent);
 	
-	scene_parent->neb::core::core::scene::util::parent::erase(scene->i_);
+	scene_parent->neb::core::core::scene::util::parent::erase(scene->_M_index);
 	
 	// message
 	auto app = neb::core::app::__base::global();

@@ -32,7 +32,7 @@ namespace neb { namespace core { namespace core { namespace light {
 		private:
 			template<class Archive> void		serializeTemplate(
 					Archive & ar, unsigned int const & version) {
-				ar & boost::serialization::make_nvp("i",i_);
+				//ar & boost::serialization::make_nvp("i",i_);
 				ar & boost::serialization::make_nvp("flag",flag_);
 				//ar & boost::serialization::make_nvp("pos",pos_);
 				/*

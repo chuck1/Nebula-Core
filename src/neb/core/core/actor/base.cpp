@@ -67,16 +67,20 @@ void		neb::core::core::actor::base::setPose(neb::core::pose const & pose) {
 void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
-	typedef neb::core::core::actor::util::parent A;
-	typedef neb::core::core::shape::util::parent S;
+	//typedef neb::core::core::actor::util::parent A;
+	typedef neb::util::parent<neb::actor::__base> A;
+	typedef neb::util::parent<neb::core::core::shape::base> S;//core::core::shape::util::parent S;
 
-	A::map_.for_each<0>([&] (A::map_type::iterator<0> it) {
-			it->ptr_->step(ts);
-			});
+	A::step(ts);
+	S::step(ts);
 
-	S::map_.for_each<0>([&] (S::map_type::iterator<0> it) {
-			it->ptr_->step(ts);
-			});
+	//A::map_.for_each([&] (A::map_type::iterator it) {
+	//		it->ptr_->step(ts);
+	//		});
+
+	//S::map_.for_each([&] (S::map_type::iterator it) {
+	//		it->ptr_->step(ts);
+	//		});
 
 }
 weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeCube(
