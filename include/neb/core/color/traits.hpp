@@ -30,32 +30,48 @@ namespace neb { namespace core { namespace color {
 				c = nc;
 			}
 		}
-		unsigned char c;
+		operator unsigned int() const
+		{
+			return (unsigned int)c;
+		}
+		operator unsigned char() const
+		{
+			return c;
+		}
+		unsigned int	operator<<(unsigned int s) const
+		{
+			return (unsigned int)c << s;
+		}
+		unsigned char	c;
 	};
 
 	struct uchar6: uchar<6> {
+		uchar6(): uchar<6>(0) {}
 		uchar6(unsigned char nc): uchar<6>(c) {}
 	};
 
 	struct uchar8: uchar<8> {
+		uchar8(): uchar<8>(0) {}
 		uchar8(unsigned char nc): uchar<8>(c) {}
 	};
 
 
 	template<> struct traits<uchar6> {
+		typedef unsigned char		pod;
 		static const unsigned int	bits = 6;
-		static const unsigned char	min = 0;
-		static const unsigned char	max = 63;
-		static const unsigned char	rand() {
+		static const pod		min = 0;
+		static const pod		max = 63;
+		static const pod		rand() {
 			return ::rand() % 64;
 		}
 	};
 
 	template<> struct traits<uchar8> {
+		typedef unsigned char		pod;
 		static const unsigned int	bits = 8;
-		static const unsigned char	min = 0;
-		static const unsigned char	max = 255;
-		static const unsigned char	rand() {
+		static const pod		min = 0;
+		static const pod		max = 255;
+		static const pod		rand() {
 			return ::rand() % 256;
 		}
 	};
