@@ -16,6 +16,11 @@ shared_ptr<neb::core::app::__base>	neb::core::app::__base::global() {
 	assert(g_app_);
 	return g_app_;
 }
+
+neb::core::app::__base::~__base()
+{
+	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
+}
 void		neb::core::app::__base::__init() {
 
 	LOG(lg, neb::core::sl, debug) << __FUNCSIG__;

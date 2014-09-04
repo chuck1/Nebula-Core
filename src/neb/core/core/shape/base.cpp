@@ -18,7 +18,10 @@ neb::core::core::shape::base::base(std::shared_ptr<neb::core::core::shape::util:
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	assert(parent);
 }
-neb::core::core::shape::base::~base() {}
+neb::core::core::shape::base::~base()
+{
+	LOG(lg, neb::core::core::shape::sl, info) << __FUNCSIG__;
+}
 neb::core::pose				neb::core::core::shape::base::getPoseGlobal() {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	

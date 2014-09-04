@@ -25,8 +25,10 @@ neb::core::core::actor::base::~base() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 }
 void		neb::core::core::actor::base::init() {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 }
 void		neb::core::core::actor::base::release() {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 	
 	gal::itf::__release::release();
 	
