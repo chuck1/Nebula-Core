@@ -33,10 +33,10 @@ void neb::core::core::scene::base::release() {
 	
 	neb::core::core::actor::util::parent::clear();
 }
-neb::core::pose						neb::core::core::scene::base::getPose() {
+neb::core::pose						neb::core::core::scene::base::getPose() const {
 	return neb::core::pose();
 }		
-neb::core::pose						neb::core::core::scene::base::getPoseGlobal() {
+neb::core::pose						neb::core::core::scene::base::getPoseGlobal() const {
 	return neb::core::pose();
 }
 weak_ptr<neb::core::core::scene::util::parent>		neb::core::core::scene::base::getParent() {

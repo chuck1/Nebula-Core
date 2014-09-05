@@ -13,12 +13,12 @@ namespace neb {
 			virtual public neb::core::core::scene::util::parent
 		{
 			protected:
-				virtual void			__init();
+				virtual void				__init();
 			public:
-				virtual void			release() {}
+				virtual void				release() {}
 				static weak_ptr<neb::app::__core>	global();
-				neb::core::pose			getPose();
-				neb::core::pose			getPoseGlobal();
+				neb::core::pose				getPose() const;
+				neb::core::pose				getPoseGlobal() const;
 		};
 	}
 }

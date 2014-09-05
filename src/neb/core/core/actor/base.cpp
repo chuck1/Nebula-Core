@@ -12,15 +12,19 @@
 /** @file base
  */
 
-using namespace std;
 
-neb::core::core::actor::base::base(std::shared_ptr<neb::core::core::actor::util::parent> parent):
-	density_(10.0),
-	parent_(parent)
+neb::core::core::actor::base::base():
+	density_(10.0)
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+}
+/*neb::core::core::actor::base::base(std::shared_ptr<neb::core::core::actor::util::parent> parent):
+	gal::stl::child<parent_t>(parent.get()),
+	density_(10.0)
 {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 	assert(parent);
-}
+}*/
 neb::core::core::actor::base::~base() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 }
@@ -36,26 +40,20 @@ void		neb::core::core::actor::base::release() {
 	neb::core::core::shape::util::parent::clear();
 
 }
-std::shared_ptr<neb::core::core::actor::util::parent>	neb::core::core::actor::base::get_parent() {
+/*std::shared_ptr<neb::core::core::actor::util::parent>	neb::core::core::actor::base::get_parent() {
 	auto parent(parent_.lock());
 	assert(parent);
 	return parent;
-}
-neb::core::pose				neb::core::core::actor::base::getPose() {
+}*/
+neb::core::pose				neb::core::core::actor::base::getPose() const {
 	return pose_;
 }
-neb::core::pose				neb::core::core::actor::base::getPoseGlobal() {
+neb::core::pose				neb::core::core::actor::base::getPoseGlobal() const {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 	
-	neb::core::pose p;
+	parent_t const * const & parent = getParent();
 	
-	auto parent(parent_.lock());
-	
-	if(!parent) {
-		p = parent->getPoseGlobal() * getPose();
-	} else {
-		p = getPose();
-	}
+	auto p = parent->getPoseGlobal() * getPose();
 
 	return p;
 }

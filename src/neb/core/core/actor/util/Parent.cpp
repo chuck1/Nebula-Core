@@ -28,8 +28,7 @@ std::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::par
 	
 	if(!actor) abort();
 	
-	auto parent = actor->parent_.lock();
-	assert(parent);
+	auto parent = actor->getParent();
 	
 	return parent->getScene();
 }

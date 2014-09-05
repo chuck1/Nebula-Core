@@ -7,8 +7,7 @@ std::weak_ptr<neb::core::core::scene::base>		neb::core::core::light::util::paren
 	auto shape = isShapeBase();
 	assert(shape);
 	
-	auto parent = shape->parent_.lock();
-	assert(parent);
+	auto parent = shape->getParent();
 	
 	auto actor = parent->isActorBase();
 	if(actor) return actor->getScene();

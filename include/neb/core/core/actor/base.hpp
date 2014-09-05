@@ -9,6 +9,8 @@
 #include <boost/archive/polymorphic_oarchive.hpp>
 #include <boost/serialization/map.hpp>
 
+#include <gal/stl/child.hpp>
+
 #include <neb/core/pose.hpp>
 #include <neb/core/core/actor/__base.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
@@ -24,13 +26,15 @@ namespace neb { namespace core { namespace core { namespace actor {
 	class base:
 		virtual public neb::actor::__base,
 		virtual public neb::core::core::actor::util::parent,
-		virtual public neb::core::core::shape::util::parent
+		virtual public neb::core::core::shape::util::parent,
+		virtual public gal::stl::child<neb::core::core::actor::util::parent>
 	{
 		public:
+			typedef neb::core::core::actor::util::parent parent_t;
 			/** @brief default constructor */
-			//base();
+			base();
 			/** @brief constructor */
-			base(std::shared_ptr<neb::core::core::actor::util::parent> parent);
+			//base(std::shared_ptr<parent_t> parent);
 			virtual ~base();
 		public:
 			virtual void						init();
@@ -38,9 +42,9 @@ namespace neb { namespace core { namespace core { namespace actor {
 		public:
 			virtual void						step(gal::etc::timestep const & ts);
 		public:
-			virtual neb::core::pose					getPose();
-			virtual neb::core::pose					getPoseGlobal();
-			std::shared_ptr<neb::core::core::actor::util::parent>		get_parent();
+			virtual neb::core::pose					getPose() const;
+			virtual neb::core::pose					getPoseGlobal() const;
+			//std::shared_ptr<neb::core::core::actor::util::parent>		get_parent();
 			/** @brief set pose
 			 *
 			 * virtual because actor::local will add self to active transform list
@@ -104,7 +108,7 @@ namespace neb { namespace core { namespace core { namespace actor {
 			double							health_;
 		public:
 			/** @brief Parent */
-			weak_ptr<neb::core::core::actor::util::parent>		parent_;
+			//weak_ptr<neb::core::core::actor::util::parent>		parent_;
 	};
 }}}}
 

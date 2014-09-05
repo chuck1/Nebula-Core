@@ -11,32 +11,21 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
-neb::core::core::shape::base::base(std::shared_ptr<neb::core::core::shape::util::parent> parent):
-	parent_(parent),
+neb::core::core::shape::base::base():
 	scale_(1.0)
 {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
-	assert(parent);
 }
 neb::core::core::shape::base::~base()
 {
 	LOG(lg, neb::core::core::shape::sl, info) << __FUNCSIG__;
 }
-neb::core::pose				neb::core::core::shape::base::getPoseGlobal() {
+neb::core::pose				neb::core::core::shape::base::getPoseGlobal() const {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	
-	neb::core::pose m;
-	
-	auto parent = parent_.lock();
-	if(parent) {
-		m = parent->getPoseGlobal() * getPose();
-	} else {
-		m = getPose();
-	}
-
-	return m;
+	return getParent()->getPoseGlobal() * pose_;
 }
-neb::core::pose				neb::core::core::shape::base::getPose() {
+neb::core::pose				neb::core::core::shape::base::getPose() const {
 	return pose_;
 }
 void					neb::core::core::shape::base::init() {
@@ -48,15 +37,15 @@ void					neb::core::core::shape::base::init() {
 	// type
 
 	// program
-/*	if(image_.length() == 0) {
+	/*	if(image_.length() == 0) {
 		program_ = neb::program_name::LIGHT;
-	} else {
-		** @todo replace this with something better... *
-		//flag_.set(neb::core::core::shape::flag::e::IMAGE);
+		} else {
+	 ** @todo replace this with something better... *
+	//flag_.set(neb::core::core::shape::flag::e::IMAGE);
 
-		program_ = neb::program_name::IMAGE;
+	program_ = neb::program_name::IMAGE;
 	}
-*/
+	*/
 
 	neb::core::core::shape::util::parent::init();
 	neb::core::core::light::util::parent::init();

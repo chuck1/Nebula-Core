@@ -49,8 +49,8 @@ namespace neb { namespace core { namespace core {
 					ar & boost::serialization::make_nvp("flag",flag_);
 				}
 			public:
-				neb::core::pose						getPose();
-				neb::core::pose						getPoseGlobal();
+				neb::core::pose						getPose() const;
+				neb::core::pose						getPoseGlobal() const;
 
 				weak_ptr<neb::core::core::scene::util::parent>		getParent();
 			public:

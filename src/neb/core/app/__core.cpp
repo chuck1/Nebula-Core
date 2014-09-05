@@ -9,10 +9,10 @@ weak_ptr<neb::app::__core>	neb::app::__core::global() {
 }
 void				neb::app::__core::__init() {
 }
-neb::core::pose			neb::app::__core::getPose() {
+neb::core::pose			neb::app::__core::getPose() const {
 	return neb::core::pose();
 }
-neb::core::pose			neb::app::__core::getPoseGlobal() {
+neb::core::pose			neb::app::__core::getPoseGlobal() const {
 	return neb::core::pose();
 }
 
