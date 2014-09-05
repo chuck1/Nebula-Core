@@ -27,7 +27,7 @@ namespace neb {
 	template<typename T, typename U> std::shared_ptr<U>	is(std::shared_ptr<T> const & t)
 	{
 #if defined _DEBUG
-		U* u = std::dynamic_pointer_cast<U>(t);
+		std::shared_ptr<U> u = std::dynamic_pointer_cast<U>(t);
 		assert(u);
 		return u;
 #elif defined NDEBUG
