@@ -2,6 +2,7 @@
 #define NEB_CORE_UTIL_CAST_HPP
 
 #include <memory>
+#include <cassert>
 
 namespace neb {
 	

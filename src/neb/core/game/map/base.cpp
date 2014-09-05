@@ -7,7 +7,7 @@ void		neb::game::map::base::init() {
 
 	neb::core::core::scene::base::init();
 
-	auto spawn(sp::make_shared<neb::game::spawn::base>());
+	auto spawn(std::make_shared<neb::game::spawn::base>());
 
 	neb::game::spawn::util::parent::insert(spawn);
 

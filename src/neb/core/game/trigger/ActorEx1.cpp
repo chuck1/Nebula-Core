@@ -1,4 +1,4 @@
-
+#include <neb/core/util/cast.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/scene/base.hpp>
@@ -9,7 +9,7 @@
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
 neb::game::trigger::ActorEx1::ActorEx1(std::shared_ptr<neb::game::trigger::util::parent> parent):
-	neb::game::trigger::base(parent)
+	gal::stl::child<neb::game::trigger::util::parent>(parent.get())
 {
 }
 void				neb::game::trigger::ActorEx1::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
@@ -26,12 +26,9 @@ void				neb::game::trigger::ActorEx1::connect(std::shared_ptr<neb::core::core::a
 			);
 }
 void				neb::game::trigger::ActorEx1::doSomething() {
-	auto parent(parent_.lock());
-	assert(parent);
 	
-	auto game(dynamic_pointer_cast<neb::game::game::base>(parent));
-	assert(game);
-	
+	auto game = neb::is<parent_t, neb::game::game::base>(getParent());
+
 	auto scene(game->scene_.lock());
 	
 	if(!scene) return;

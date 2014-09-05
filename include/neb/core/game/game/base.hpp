@@ -4,23 +4,29 @@
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/game/game/util/decl.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
+#include <neb/core/game/ai/util/parent.hpp>
 
-using namespace std;
 
 namespace neb {
 	namespace game {
 		namespace game {
 			class base:
-				virtual public neb::game::trigger::util::parent
+				virtual public neb::game::trigger::util::parent,
+				virtual public neb::game::ai::util::parent
 			{
 				public:
+
+					virtual void		init() {}
+					virtual void		release() {}
+					virtual void		step(gal::etc::timestep const & ts);
+
 					/** @brief %Scene.
 					 * Currently a game is fully defined by a single scene.
 					 * The game will load a scene from an Xml file.
 					 */
-					weak_ptr<neb::core::core::scene::base>			scene_;
+					std::weak_ptr<neb::core::core::scene::base>			scene_;
 
-					weak_ptr<neb::game::game::util::parent>			parent_;
+					std::weak_ptr<neb::game::game::util::parent>			parent_;
 
 					//gal::map<std::shared_ptr<neb::Game::Player> >   players_;
 

@@ -9,7 +9,8 @@ namespace neb { namespace game { namespace spawn {
 		public:
 
 			neb::core::pose		pose_;
-
+			
+			virtual void		step(gal::etc::timestep const &) {}
 			
 	};
 

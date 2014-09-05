@@ -1,6 +1,8 @@
 #ifndef NEBULA_UTIL_PARENT_HPP
 #define NEBULA_UTIL_PARENT_HPP
 
+#include <iostream>
+
 #include <gal/stl/parent.hpp>
 #include <gal/etc/timestep.hpp>
 
@@ -36,12 +38,14 @@ namespace neb {
 				}
 				void		release()
 				{
-					gal_parent::map_.for_each([&] (pointer p) {
-							p->release();
-							});
+					assert(0);
+				//	gal_parent::map_.for_each([&] (pointer p) {
+				//			p->release();
+				//			});
 				}
 				void		step(gal::etc::timestep const & ts)
 				{
+					std::cout << __PRETTY_FUNCTION__ << std::endl;
 					gal_parent::map_.for_each([&] (pointer p) {
 							p->step(ts);
 							});
