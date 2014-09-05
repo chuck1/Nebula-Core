@@ -54,9 +54,8 @@ void					neb::core::core::shape::base::init() {
 void					neb::core::core::shape::base::release() {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
-	//neb::util::parent<neb::core::core::shape::base>::release();
-	neb::core::core::shape::util::parent::release();
-	neb::core::core::light::util::parent::release();
+	neb::core::core::shape::util::parent::map_.clear();
+	neb::core::core::light::util::parent::map_.clear();
 }
 void						neb::core::core::shape::base::step(
 		gal::etc::timestep const & ts)

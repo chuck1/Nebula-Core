@@ -45,7 +45,7 @@ namespace neb {
 				}
 				void		step(gal::etc::timestep const & ts)
 				{
-					std::cout << __PRETTY_FUNCTION__ << std::endl;
+					//std::cout << __PRETTY_FUNCTION__ << std::endl;
 					gal_parent::map_.for_each([&] (pointer p) {
 							p->step(ts);
 							});
