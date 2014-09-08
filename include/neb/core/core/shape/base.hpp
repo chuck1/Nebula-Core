@@ -31,11 +31,13 @@ namespace neb { namespace core { namespace core { namespace shape {
 			void			release();
 			void			step(gal::etc::timestep const & ts);
 			virtual void		callbackPose(neb::core::pose const & pose_global) = 0;
+			virtual void		__callbackPose(neb::core::pose const & pose_global);
 			/** @name Accessors @{ */
 			neb::core::pose						getPose() const;
 			neb::core::pose						getPoseGlobal() const;
 			/** @} */
 			virtual weak_ptr<neb::core::core::light::base>		createLightPoint() = 0;
+			virtual weak_ptr<neb::core::core::light::base>		createLightSpot(glm::vec3) = 0;
 			virtual weak_ptr<neb::core::core::light::base>		createLightDirectional(glm::vec3) = 0;
 		public:
 			template<class Archive>	void	serialize(

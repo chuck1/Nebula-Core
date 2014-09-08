@@ -5,9 +5,9 @@
 
 namespace neb { namespace core { namespace core { namespace scene { namespace util {
 	DEFINE_FLAG(flag,
-			((RAY_TRACE)		(1 << 1))
-			((LIGHTING)		(1 << 2))
-			((SHADOW)		(1 << 3))
+			((PHYSX_VISUALIZATION)		(1 << 1))
+			((LIGHTING)			(1 << 2))
+			((SHADOW)			(1 << 3))
 			((REFLECT)		(1 << 4))
 			((REFLECT_PLANAR)	(1 << 5))
 			((REFLECT_CURVED)	(1 << 6))

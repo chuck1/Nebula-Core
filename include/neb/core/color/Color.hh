@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
+#include <iostream>
 
 #include <boost/serialization/nvp.hpp>
 
@@ -155,6 +156,7 @@ namespace neb { namespace core { namespace color {
 						return y;
 						}*/
 			void					setRand() {
+				std::cout << __PRETTY_FUNCTION__ << std::endl;
 				r = traits<R>::rand();
 				g = traits<G>::rand();
 				b = traits<B>::rand();
@@ -307,6 +309,14 @@ namespace neb { namespace core { namespace color {
 			color_rgba(R const & nr, G const & ng, B const & nb, A const & na): BASE(nr, ng, nb, na) {}
 			//color_rgba(R nr, G ng, B nb, A na): BASE(nr, ng, nb, na) {}
 			color_rgba(const D & rhs): BASE(rhs) {}
+			D&	operator=(D const & d)
+			{
+				r = d.r;
+				g = d.g;
+				b = d.b;
+				a = d.a;
+				return *this;
+			}
 
 			/*operator uchar8* () const {
 				return (uchar8*)this;

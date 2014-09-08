@@ -97,6 +97,18 @@ weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShap
 	
 }
 
+weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeLightSpot(
+		neb::core::pose pose,
+		glm::vec3 direction)
+{
+	auto shape = createShapeBase(pose).lock();
+
+	shape->createLightSpot(direction);
+	
+	return shape;
+	
+}
+
 
 
 

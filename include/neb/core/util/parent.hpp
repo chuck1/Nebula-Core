@@ -32,9 +32,9 @@ namespace neb {
 				}
 				void		init()
 				{
-					gal_parent::map_.for_each([&] (pointer p) {
-							p->__init();
-							});
+			//		gal_parent::map_.for_each([&] (pointer p) {
+			//				p->__init();
+			//				});
 				}
 				void		release()
 				{

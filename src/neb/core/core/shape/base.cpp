@@ -28,6 +28,11 @@ neb::core::pose				neb::core::core::shape::base::getPoseGlobal() const {
 neb::core::pose				neb::core::core::shape::base::getPose() const {
 	return pose_;
 }
+void					neb::core::core::shape::base::__callbackPose(neb::core::pose const & gpose) {
+	auto pose = gpose * pose_;
+	neb::core::core::shape::util::parent::callbackPose(pose);
+	neb::core::core::light::util::parent::callbackPose(pose);
+}
 void					neb::core::core::shape::base::init() {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 

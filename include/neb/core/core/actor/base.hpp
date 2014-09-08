@@ -19,9 +19,16 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/shape/util/parent.hpp>
 #include <neb/core/core/shape/cuboid/desc.hpp>
+//#include <neb/core/core/shape/HeightField/desc.hpp>
 #include <neb/core/math/Serialization/glm.hpp>
 
-namespace neb { namespace core { namespace core { namespace actor {
+namespace neb { namespace core { namespace core {
+	
+	namespace shape { namespace HeightField {
+		class desc;
+	}}
+	
+	namespace actor {
 	/** @brief %base */
 	class base:
 		virtual public neb::actor::__base,
@@ -57,6 +64,10 @@ namespace neb { namespace core { namespace core { namespace actor {
 					neb::core::core::shape::cuboid::desc) = 0;
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCube(
 					neb::core::pose pose, double size);
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeHeightField(
+					neb::core::core::shape::HeightField::desc const &) = 0;
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeLightSpot(
+					neb::core::pose pose, glm::vec3 direction);
 		public:
 			/** @brief %Serialize
 			 * @param ar archive

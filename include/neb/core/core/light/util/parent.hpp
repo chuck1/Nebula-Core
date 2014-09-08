@@ -16,6 +16,8 @@ namespace neb { namespace core { namespace core { namespace light { namespace ut
 		public:
 			virtual ~parent() {}
 			std::weak_ptr<neb::core::core::scene::base>		getScene();
+
+			void							callbackPose(neb::core::pose const &);
 	};
 }}}}}
 

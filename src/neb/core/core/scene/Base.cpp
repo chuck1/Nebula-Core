@@ -77,6 +77,24 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	return actor;
 }
+weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCuboid(
+		neb::core::pose pose,
+		glm::vec3 size) {
+
+	auto actor = createActorRigidStaticUninitialized().lock();
+	actor->pose_ = pose;
+	actor->init();
+	
+	// create shape
+	
+	auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::desc(size));
+
+	// reinitialize in order to apply filtering to shape
+	/// @todo consider implementing refresh-type function instead
+	actor->init();
+
+	return actor;
+}
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCuboid(
 		neb::core::core::actor::rigidbody::desc		actor_desc,
 		neb::core::core::shape::cuboid::desc		shape_desc)
