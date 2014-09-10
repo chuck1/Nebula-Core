@@ -9,7 +9,6 @@
 
 #include <neb/core/app/util/Flag.hh>
 
-using namespace std;
 
 namespace neb {
 	namespace core {
@@ -28,11 +27,12 @@ namespace neb {
 				public:
 					boost::asio::io_service					ios_;
 					neb::core::app::util::flag				flag_;
-					static ::std::shared_ptr<neb::core::app::__base>	g_app_;
 					gal::etc::timestep					ts_;
-					shared_ptr<console_type>				console_;
+					std::shared_ptr<console_type>				console_;
 					
 					std::string						share_dir_;
+
+					static std::shared_ptr<neb::core::app::__base>		g_app_;
 			};
 		}
 	}

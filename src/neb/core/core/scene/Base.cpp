@@ -7,6 +7,7 @@
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/base.hpp>
+#include <neb/core/core/actor/rigidbody/desc.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/light/base.hpp>
 #include <neb/core/core/light/util/light_count.hpp>
@@ -96,13 +97,13 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 	return actor;
 }
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidDynamicCuboid(
-		neb::core::core::actor::rigidbody::desc		actor_desc,
-		neb::core::core::shape::cuboid::desc		shape_desc)
+		neb::core::core::actor::rigidbody::desc const &		actor_desc,
+		neb::core::core::shape::cuboid::desc const &		shape_desc)
 {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
 
-	actor->pose_ = actor_desc.pose_;
+	actor->pose_ = actor_desc.pose;
 
 	actor->init();
 
@@ -127,7 +128,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	return actor;	
 }
-weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorLightDirectional(glm::vec3 p)
+std::weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorLightDirectional(glm::vec3 p)
 {
 	auto actor = createActorBase(neb::core::pose()).lock();
 
@@ -136,6 +137,13 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 	auto light = shape->createLightDirectional(p);
 
 	return actor;	
+}
+std::weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActor(
+		neb::core::core::actor::desc const * const & desc
+		)
+{
+	assert(desc);
+	return desc->visit(this);
 }
 
 

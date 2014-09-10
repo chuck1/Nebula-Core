@@ -10,6 +10,10 @@ namespace neb { namespace core { namespace core {
 		class base;
 		class box;
 		class sphere;
+
+		namespace cuboid {
+			struct desc;
+		}
 	}
 }}}
 

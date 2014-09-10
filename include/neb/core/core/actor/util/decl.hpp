@@ -20,7 +20,15 @@ namespace neb { namespace core { namespace core {
 			};
 		};
 
+		namespace rigidbody {
+			struct desc;
+		}
+		namespace rigiddynamic {
+			struct desc;
+		}
+
 		class base;
+		class desc;
 
 		/** @brief util */
 		namespace util {

@@ -12,9 +12,11 @@
 #include <neb/core/core/scene/util/flag.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
+#include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
-#include <neb/core/core/actor/rigidbody/desc.hpp>
-#include <neb/core/core/shape/cuboid/desc.hpp>
+
+//#include <neb/core/core/actor/rigidbody/desc.hpp>
+//#include <neb/core/core/shape/cuboid/desc.hpp>
 
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 
@@ -63,6 +65,15 @@ namespace neb { namespace core { namespace core {
 						neb::core::pose pose) = 0;
 				/** @brief create empty actor with point light
 				*/
+				
+				virtual wbase				createActor(
+						neb::core::core::actor::desc const * const &
+						);
+				virtual wbase				createActorRigidDynamic(
+						neb::core::core::actor::rigiddynamic::desc const * const &
+						) = 0;
+
+
 				virtual wbase				createActorLightPoint(
 						glm::vec3 p);
 				virtual wbase				createActorLightDirectional(
@@ -75,8 +86,8 @@ namespace neb { namespace core { namespace core {
 						neb::core::pose pose,
 						double size);
 				wbase			createActorRigidDynamicCuboid(
-						neb::core::core::actor::rigidbody::desc,
-						neb::core::core::shape::cuboid::desc);
+						neb::core::core::actor::rigidbody::desc const &,
+						neb::core::core::shape::cuboid::desc const &);
 				/** @brief create rigidstatic
 				 *
 				 * @note typeof returned actor will be
@@ -92,11 +103,11 @@ namespace neb { namespace core { namespace core {
 				 *
 				 * @note WEAK
 				 */
-				weak_ptr<neb::core::core::scene::util::parent>			parent_;
+				std::weak_ptr<neb::core::core::scene::util::parent>			parent_;
 			public:
-				neb::core::core::scene::util::flag				flag_;
-				map< string, std::shared_ptr<neb::core::core::actor::base> >		actors_deferred_;
-				float								last_;
+				neb::core::core::scene::util::flag					flag_;
+				std::map< string, std::shared_ptr<neb::core::core::actor::base> >	actors_deferred_;
+				float									last_;
 		};
 	}
 }}}

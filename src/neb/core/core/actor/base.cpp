@@ -27,6 +27,10 @@ neb::core::core::actor::base::base():
 }*/
 neb::core::core::actor::base::~base() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+
+	assert(neb::core::core::actor::util::parent::map_.empty());
+	assert(neb::core::core::shape::util::parent::map_.empty());
+
 }
 void		neb::core::core::actor::base::init() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;

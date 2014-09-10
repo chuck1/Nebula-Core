@@ -22,8 +22,8 @@ namespace neb { namespace core {
 			pose		operator*(neb::core::pose const & rhs) const;
 
 			template<typename Archive> void		serialize(Archive & ar, unsigned int const & version) {
-				ar & pos_;
-				ar & rot_;
+				ar & boost::serialization::make_nvp("pos", pos_);
+				ar & boost::serialization::make_nvp("rot", rot_);
 			}
 			
 			glm::mat4		mat4_cast() const;

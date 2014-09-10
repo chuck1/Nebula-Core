@@ -39,7 +39,26 @@ neb::core::pose			neb::core::core::light::base::getPoseGlobal() {
 glm::vec4			neb::core::core::light::base::getPos() {
 	return glm::vec4(pose_.pos_, 1.0);
 }
+bool				neb::core::core::light::base::hasScene() const
+{
+	/** @todo deprecated */
+	auto parent = parent_.lock();
+	assert(parent);
+	
+	return parent->hasScene();
+}
+neb::core::core::scene::base*	neb::core::core::light::base::getScene()
+{
+	auto parent = parent_.lock();
+	assert(parent);
+	
+	auto p2 = std::dynamic_pointer_cast<neb::core::core::scene::base>(
+			parent->getScene().lock()
+			);
 
+	assert(p2);
+	return p2.get();
+}
 
 
 

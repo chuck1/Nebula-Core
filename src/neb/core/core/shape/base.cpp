@@ -52,8 +52,8 @@ void					neb::core::core::shape::base::init() {
 	}
 	*/
 
-	neb::core::core::shape::util::parent::init();
-	neb::core::core::light::util::parent::init();
+	//neb::core::core::shape::util::parent::init();
+	//neb::core::core::light::util::parent::init();
 
 }
 void					neb::core::core::shape::base::release() {

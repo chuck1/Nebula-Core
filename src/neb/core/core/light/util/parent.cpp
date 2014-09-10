@@ -4,6 +4,22 @@
 #include <neb/core/core/light/base.hpp>
 #include <neb/core/core/light/util/parent.hpp>
 
+bool							neb::core::core::light::util::parent::hasScene()
+{
+	auto shape = isShapeBase();
+	assert(shape);
+	
+	if(!shape->hasParent()) return false;
+
+	auto parent = shape->getParent();
+	
+	auto actor = parent->isActorBase();
+	if(actor) return actor->getScene();
+	
+	abort();
+	return std::weak_ptr<neb::core::core::scene::base>();
+}
+
 std::weak_ptr<neb::core::core::scene::base>		neb::core::core::light::util::parent::getScene() {
 	auto shape = isShapeBase();
 	assert(shape);

@@ -29,6 +29,9 @@ namespace neb { namespace core { namespace core { namespace light {
 			neb::core::pose			getPose();
 			neb::core::pose			getPoseGlobal();
 			glm::vec4			getPos();
+
+			bool				hasScene() const;
+			neb::core::core::scene::base*	getScene();
 		private:
 			template<class Archive> void		serializeTemplate(
 					Archive & ar, unsigned int const & version) {

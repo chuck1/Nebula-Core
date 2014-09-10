@@ -17,7 +17,8 @@ namespace neb { namespace game { namespace game { namespace util {
 			parent() {}
 			virtual ~parent() {}
 		protected:
-			virtual void				__init() {}
+			virtual void						__init();
+		public:
 	};
 
 

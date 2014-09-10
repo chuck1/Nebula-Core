@@ -69,24 +69,44 @@ namespace neb { namespace core { namespace core {
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeLightSpot(
 					neb::core::pose pose, glm::vec3 direction);
 		public:
-			/** @brief %Serialize
-			 * @param ar archive
-			 * @param version version
-			 */
-			template<class Archive> void				serialize(
-					Archive & ar, unsigned int const & version) {
+			virtual void				save(
+					boost::archive::polymorphic_oarchive & ar,
+					unsigned int const & version
+					) const
+			{
 				//ar & boost::serialization::make_nvp("i", i_);
 
-				serializeData(ar, version);
+				__save(ar, version);
+			}
+			virtual void				load(
+					boost::archive::polymorphic_iarchive & ar,
+					unsigned int const & version
+					)
+			{
+				//ar & boost::serialization::make_nvp("i", i_);
 
+				__load(ar, version);
+			}
+			template<class Archive> void						__save(
+					Archive & ar,
+					unsigned int const & version) const
+			{
+				ar & boost::serialization::make_nvp("flag",flag_);
+				ar & boost::serialization::make_nvp("name",name_);
+				ar & boost::serialization::make_nvp("pose",pose_);
+				ar & boost::serialization::make_nvp("normal",n_);
+				ar & boost::serialization::make_nvp("distance",d_);
+				ar & boost::serialization::make_nvp("velocity",velocity_);
+				ar & boost::serialization::make_nvp("density",density_);
 				ar & boost::serialization::make_nvp(
 						"actors", neb::core::core::actor::util::parent::map_);
 				ar & boost::serialization::make_nvp(
 						"shapes", neb::core::core::shape::util::parent::map_);
 			}
-			virtual void						serializeData(
-					boost::archive::polymorphic_oarchive & ar,
-					unsigned int const & version) {
+			template<class Archive> void						__load(
+					Archive & ar,
+					unsigned int const & version)
+			{
 				ar & boost::serialization::make_nvp("flag",flag_);
 				ar & boost::serialization::make_nvp("name",name_);
 				ar & boost::serialization::make_nvp("pose",pose_);
@@ -94,18 +114,12 @@ namespace neb { namespace core { namespace core {
 				ar & boost::serialization::make_nvp("distance",d_);
 				ar & boost::serialization::make_nvp("velocity",velocity_);
 				ar & boost::serialization::make_nvp("density",density_);
+				ar & boost::serialization::make_nvp(
+						"actors", neb::core::core::actor::util::parent::map_);
+				ar & boost::serialization::make_nvp(
+						"shapes", neb::core::core::shape::util::parent::map_);
 			}
-			virtual void						serializeData(
-					boost::archive::polymorphic_iarchive & ar,
-					unsigned int const & version) {
-				ar & boost::serialization::make_nvp("flag",flag_);
-				ar & boost::serialization::make_nvp("name",name_);
-				ar & boost::serialization::make_nvp("pose",pose_);
-				ar & boost::serialization::make_nvp("normal",n_);
-				ar & boost::serialization::make_nvp("distance",d_);
-				ar & boost::serialization::make_nvp("velocity",velocity_);
-				ar & boost::serialization::make_nvp("density",density_);
-			}
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			neb::core::core::actor::util::flag			flag_;
 			string							name_;
