@@ -31,7 +31,7 @@ namespace neb { namespace core { namespace core { namespace actor { namespace ut
 			virtual void						init();
 			virtual void						release();
 		public:
-			shared_ptr<neb::core::core::scene::base>			getScene();
+			//shared_ptr<neb::core::core::scene::base>			getScene();
 	};
 }}}}}
 

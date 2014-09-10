@@ -48,24 +48,57 @@ void		neb::core::core::actor::base::release() {
 	auto parent(parent_.lock());
 	assert(parent);
 	return parent;
-}*/
+	}*/
+bool							neb::core::core::actor::base::hasScene() const
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+	
+	if(!hasParent()) return false;
+
+	auto scene = dynamic_cast<neb::core::core::scene::base*>(getParent());
+
+	if(scene) return true;
+
+	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+	
+	assert(actor);
+	
+	return actor->hasScene();
+}
+neb::core::core::scene::base*				neb::core::core::actor::base::getScene() const
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+	
+	assert(hasParent());
+
+	auto scene = dynamic_cast<neb::core::core::scene::base*>(getParent());
+
+	if(scene) return scene;
+
+	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+	
+	assert(actor);
+	
+	return actor->getScene();
+}
+
 neb::core::pose				neb::core::core::actor::base::getPose() const {
 	return pose_;
 }
 neb::core::pose				neb::core::core::actor::base::getPoseGlobal() const {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
-	
+
 	parent_t const * const & parent = getParent();
-	
+
 	auto p = parent->getPoseGlobal() * getPose();
 
 	return p;
 }
 void		neb::core::core::actor::base::setPose(neb::core::pose const & pose) {
 	pose_ = pose;
-	
+
 	neb::core::core::shape::util::parent::callbackPose(pose);
-	
+
 	flag_.set(neb::core::core::actor::util::flag::E::SHOULD_UPDATE);
 }
 void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
@@ -89,16 +122,16 @@ void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
 }
 weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeCube(
 		neb::core::pose pose, double size) {
-	
+
 	neb::core::core::shape::cuboid::desc desc(
 			pose,
 			glm::vec3(size)
 			);
-	
+
 	auto shape = createShapeCuboid(desc);
-	
+
 	return shape;
-	
+
 }
 
 weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShapeLightSpot(
@@ -108,9 +141,9 @@ weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::createShap
 	auto shape = createShapeBase(pose).lock();
 
 	shape->createLightSpot(direction);
-	
+
 	return shape;
-	
+
 }
 
 

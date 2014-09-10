@@ -51,6 +51,9 @@ namespace neb { namespace core { namespace core {
 		public:
 			virtual neb::core::pose					getPose() const;
 			virtual neb::core::pose					getPoseGlobal() const;
+
+			bool							hasScene() const;
+			neb::core::core::scene::base*				getScene() const;
 			//std::shared_ptr<neb::core::core::actor::util::parent>		get_parent();
 			/** @brief set pose
 			 *

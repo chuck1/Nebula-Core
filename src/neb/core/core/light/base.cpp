@@ -52,12 +52,13 @@ neb::core::core::scene::base*	neb::core::core::light::base::getScene()
 	auto parent = parent_.lock();
 	assert(parent);
 	
-	auto p2 = std::dynamic_pointer_cast<neb::core::core::scene::base>(
-			parent->getScene().lock()
-			);
+//	auto p2 = std::dynamic_pointer_cast<neb::core::core::scene::base>(
+//			parent->getScene().lock()
+//			);
 
-	assert(p2);
-	return p2.get();
+//	assert(p2);
+//	return p2.get();
+	return parent->getScene().lock().get();
 }
 
 

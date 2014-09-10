@@ -8,6 +8,7 @@
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/util/debug.hpp>
+#include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
@@ -20,6 +21,36 @@ neb::core::core::shape::base::~base()
 {
 	LOG(lg, neb::core::core::shape::sl, info) << __FUNCSIG__;
 }
+
+bool							neb::core::core::shape::base::hasScene()
+{
+	if(!hasParent()) return false;
+
+	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	
+	if(shape) return shape->hasScene();
+
+	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+
+	assert(actor);
+	
+	return actor->hasScene();
+}
+
+neb::core::core::scene::base*				neb::core::core::shape::base::getScene()
+{
+	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	
+	if(shape) return shape->getScene();
+
+	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+
+	assert(actor);
+	
+	return actor->getScene();
+}
+
+
 neb::core::pose				neb::core::core::shape::base::getPoseGlobal() const {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	

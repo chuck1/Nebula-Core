@@ -33,6 +33,12 @@ namespace neb { namespace core { namespace core { namespace shape {
 			virtual void		callbackPose(neb::core::pose const & pose_global) = 0;
 			virtual void		__callbackPose(neb::core::pose const & pose_global);
 			/** @name Accessors @{ */
+
+
+			bool							hasScene();
+			neb::core::core::scene::base*				getScene();
+
+
 			neb::core::pose						getPose() const;
 			neb::core::pose						getPoseGlobal() const;
 			/** @} */

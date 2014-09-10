@@ -11,6 +11,7 @@
 #include <neb/core/math/Serialization/glm.hpp>
 #include <neb/core/pose.hpp>
 #include <neb/core/core/light/__base.hpp>
+#include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/core/light/util/Flag.hh>
 #include <neb/core/core/light/util/light_count.hpp>

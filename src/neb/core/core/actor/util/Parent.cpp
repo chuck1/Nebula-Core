@@ -17,19 +17,4 @@ void							neb::core::core::actor::util::parent::init() {
 void							neb::core::core::actor::util::parent::release() {
 
 }
-std::shared_ptr<neb::core::core::scene::base>		neb::core::core::actor::util::parent::getScene() {
-	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
-
-	auto scene = isSceneBase();
-
-	if(scene) return scene;
-
-	auto actor = isActorBase();
-	
-	if(!actor) abort();
-	
-	auto parent = actor->getParent();
-	
-	return parent->getScene();
-}
 
