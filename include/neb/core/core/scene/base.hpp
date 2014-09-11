@@ -66,9 +66,13 @@ namespace neb { namespace core { namespace core {
 				/** @brief create empty actor with point light
 				*/
 				
-				virtual wbase				createActor(
+				wbase					createActor(
 						neb::core::core::actor::desc const * const &
 						);
+				void					addActor(
+						std::shared_ptr<neb::core::core::actor::base> const &
+						);
+
 				virtual wbase				createActorRigidDynamic(
 						neb::core::core::actor::rigiddynamic::desc const * const &
 						) = 0;

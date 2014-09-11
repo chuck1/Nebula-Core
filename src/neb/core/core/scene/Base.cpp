@@ -18,6 +18,8 @@
 
 using namespace std;
 
+typedef neb::core::core::scene::base THIS;
+
 neb::core::core::scene::base::base(std::shared_ptr<neb::core::core::scene::util::parent> parent):
 	parent_(parent)
 {
@@ -144,6 +146,13 @@ std::weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::creat
 {
 	assert(desc);
 	return desc->visit(this);
+}
+void			THIS::addActor(
+		std::shared_ptr<neb::core::core::actor::base> const & actor
+		)
+{
+	insert(actor);
+	actor->init(this);
 }
 
 

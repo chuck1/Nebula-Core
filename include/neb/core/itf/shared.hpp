@@ -30,8 +30,6 @@ namespace neb {
 				virtual void					release();
 				virtual void					step(gal::etc::timestep const & ts) = 0;
 
-				virtual void					serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
-				virtual void					serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 		};
 	}
 }

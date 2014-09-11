@@ -5,8 +5,8 @@
 
 #include <boost/signals2.hpp>
 
-#include <boost/archive/polymorphic_iarchive.hpp>
-#include <boost/archive/polymorphic_oarchive.hpp>
+#include <boost/archive/polymorphic_xml_iarchive.hpp>
+#include <boost/archive/polymorphic_xml_oarchive.hpp>
 #include <boost/serialization/map.hpp>
 
 #include <gal/stl/child.hpp>
@@ -45,6 +45,7 @@ namespace neb { namespace core { namespace core {
 			virtual ~base();
 		public:
 			virtual void						init();
+			virtual void						init(neb::core::core::actor::util::parent* const &) = 0;
 			virtual void						release();
 		public:
 			virtual void						step(gal::etc::timestep const & ts);
@@ -72,41 +73,8 @@ namespace neb { namespace core { namespace core {
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeLightSpot(
 					neb::core::pose pose, glm::vec3 direction);
 		public:
-			virtual void				save(
-					boost::archive::polymorphic_oarchive & ar,
-					unsigned int const & version
-					) const
-			{
-				//ar & boost::serialization::make_nvp("i", i_);
 
-				__save(ar, version);
-			}
-			virtual void				load(
-					boost::archive::polymorphic_iarchive & ar,
-					unsigned int const & version
-					)
-			{
-				//ar & boost::serialization::make_nvp("i", i_);
-
-				__load(ar, version);
-			}
-			template<class Archive> void						__save(
-					Archive & ar,
-					unsigned int const & version) const
-			{
-				ar & boost::serialization::make_nvp("flag",flag_);
-				ar & boost::serialization::make_nvp("name",name_);
-				ar & boost::serialization::make_nvp("pose",pose_);
-				ar & boost::serialization::make_nvp("normal",n_);
-				ar & boost::serialization::make_nvp("distance",d_);
-				ar & boost::serialization::make_nvp("velocity",velocity_);
-				ar & boost::serialization::make_nvp("density",density_);
-				ar & boost::serialization::make_nvp(
-						"actors", neb::core::core::actor::util::parent::map_);
-				ar & boost::serialization::make_nvp(
-						"shapes", neb::core::core::shape::util::parent::map_);
-			}
-			template<class Archive> void						__load(
+			template<class Archive> void						serialize(
 					Archive & ar,
 					unsigned int const & version)
 			{
@@ -117,12 +85,13 @@ namespace neb { namespace core { namespace core {
 				ar & boost::serialization::make_nvp("distance",d_);
 				ar & boost::serialization::make_nvp("velocity",velocity_);
 				ar & boost::serialization::make_nvp("density",density_);
+
 				ar & boost::serialization::make_nvp(
 						"actors", neb::core::core::actor::util::parent::map_);
 				ar & boost::serialization::make_nvp(
 						"shapes", neb::core::core::shape::util::parent::map_);
 			}
-			BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 		public:
 			neb::core::core::actor::util::flag			flag_;
 			string							name_;

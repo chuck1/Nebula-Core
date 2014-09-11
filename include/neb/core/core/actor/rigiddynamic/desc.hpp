@@ -18,26 +18,16 @@ namespace neb { namespace core { namespace core { namespace actor { namespace ri
 	{
 		desc();
 		desc(neb::core::pose npose);
-		template<class Archive> void		__load(Archive & ar, unsigned int const & version)
+
+		template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 		{
-			//ar & boost::serialization::make_nvp("foo",foo);
+			BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::rigidbody::desc);
 		}
-		template<class Archive> void		__save(Archive & ar, unsigned int const & version) const
-		{
-			//ar & boost::serialization::make_nvp("foo",foo);
-		}
-		virtual void				load(
-				boost::archive::xml_iarchive & ar,
-				unsigned int const & version);
-		virtual void				save(
-				boost::archive::xml_oarchive & ar,
-				unsigned int const & version) const;
-		
+
 		virtual std::shared_ptr<neb::core::core::actor::base>		visit(
 				neb::core::core::scene::base * const scene
 				) const;
 
-		BOOST_SERIALIZATION_SPLIT_MEMBER();
 
 
 	};

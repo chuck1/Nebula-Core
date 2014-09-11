@@ -52,19 +52,15 @@ namespace neb {
 
 
 
-			//	void		init()
-			//	{
-			//		gal_parent::map_.for_each([&] (pointer p) {
-			//				p->__init();
-			//				});
-			//	}
-			//	void		release()
-			//	{
-			//		assert(0);
-				//	gal_parent::map_.for_each([&] (pointer p) {
-				//			p->release();
-				//			});
-			//	}
+				template<typename... A> void		init(A... a)
+				{
+					for(auto it = gal_parent::map_.begin(); it != gal_parent::map_.end(); ++it)
+					{
+						auto p = it->second.ptr_;
+						assert(p);
+						p->init(a...);
+					}
+				}
 			
 			
 				void		step(gal::etc::timestep const & ts)

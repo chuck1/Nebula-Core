@@ -32,7 +32,8 @@ neb::core::core::actor::base::~base() {
 	assert(neb::core::core::shape::util::parent::map_.empty());
 
 }
-void		neb::core::core::actor::base::init() {
+void		neb::core::core::actor::base::init()
+{
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 }
 void		neb::core::core::actor::base::release() {

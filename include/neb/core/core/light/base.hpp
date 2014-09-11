@@ -18,14 +18,15 @@
 #include <neb/core/util/decl.hpp>
 
 namespace neb { namespace core { namespace core { namespace light {
-	class base: public neb::core::light::__base {
+	class base: public neb::core::light::__base
+	{
 		public:
-			base(std::shared_ptr<neb::core::core::light::util::parent> parent);
+			base();
 
-			void				init();
+			virtual void			init(neb::core::core::light::util::parent * const & p) = 0;
 
-			virtual void			release();
-			virtual void			step(gal::etc::timestep const & ts);
+			//virtual void			release();
+			//virtual void			step(gal::etc::timestep const & ts);
 
 			neb::core::pose			getPose();
 			neb::core::pose			getPoseGlobal();
@@ -57,8 +58,6 @@ namespace neb { namespace core { namespace core { namespace light {
 			}
 		public:
 
-
-			std::weak_ptr<neb::core::core::light::util::parent>	parent_;
 
 			neb::core::core::light::util::flag			flag_;
 			
