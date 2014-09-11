@@ -11,9 +11,9 @@ namespace neb { namespace game { namespace map {
 		virtual public neb::game::spawn::util::parent
 	{
 		public:
-			base(std::shared_ptr<neb::core::core::scene::util::parent> parent);
+			base();
 			
-			virtual void		init();
+			virtual void		init(parent_t * const & p);
 			virtual void		release();
 	};
 

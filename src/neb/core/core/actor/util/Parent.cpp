@@ -11,10 +11,4 @@ neb::core::core::actor::util::parent::parent() {
 }
 neb::core::core::actor::util::parent::~parent() {
 }
-void							neb::core::core::actor::util::parent::init() {
-
-}
-void							neb::core::core::actor::util::parent::release() {
-
-}
 

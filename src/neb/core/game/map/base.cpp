@@ -1,16 +1,14 @@
 #include <neb/core/game/map/base.hpp>
 
-neb::game::map::base::base(std::shared_ptr<neb::core::core::scene::util::parent> parent):
-	neb::core::core::scene::base(parent)
+neb::game::map::base::base()
 {}
-void		neb::game::map::base::init() {
+void		neb::game::map::base::init(parent_t * const & p)
+{
 
-	neb::core::core::scene::base::init();
-
+	/** @todo move to createSpawn() */
 	auto spawn(std::make_shared<neb::game::spawn::base>());
 
 	neb::game::spawn::util::parent::insert(spawn);
-
 
 }
 void		neb::game::map::base::release() {

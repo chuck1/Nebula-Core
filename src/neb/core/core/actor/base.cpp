@@ -32,9 +32,12 @@ neb::core::core::actor::base::~base() {
 	assert(neb::core::core::shape::util::parent::map_.empty());
 
 }
-void		neb::core::core::actor::base::init()
+void		neb::core::core::actor::base::init(parent_t * const & p)
 {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+
+	neb::core::core::actor::util::parent::init(this);
+	neb::core::core::shape::util::parent::init(this);
 }
 void		neb::core::core::actor::base::release() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
@@ -75,10 +78,12 @@ neb::core::core::scene::base*				neb::core::core::actor::base::getScene() const
 	auto scene = dynamic_cast<neb::core::core::scene::base*>(getParent());
 
 	if(scene) return scene;
-
+	
 	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
 	
 	assert(actor);
+	
+	assert(actor != this);
 	
 	return actor->getScene();
 }

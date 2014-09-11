@@ -44,7 +44,6 @@ namespace neb { namespace core { namespace core {
 			//base(std::shared_ptr<parent_t> parent);
 			virtual ~base();
 		public:
-			virtual void						init();
 			virtual void						init(neb::core::core::actor::util::parent* const &) = 0;
 			virtual void						release();
 		public:

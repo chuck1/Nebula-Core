@@ -32,7 +32,7 @@ namespace neb { namespace core { namespace core { namespace shape {
 			typedef neb::core::core::shape::util::parent parent_t;
 			base();
 			virtual ~base();
-			void			init(parent_t * const &);
+			virtual void		init(parent_t * const &);
 			void			release();
 			void			step(gal::etc::timestep const & ts);
 			virtual void		callbackPose(neb::core::pose const & pose_global) = 0;

@@ -20,16 +20,20 @@ using namespace std;
 
 typedef neb::core::core::scene::base THIS;
 
-neb::core::core::scene::base::base(std::shared_ptr<neb::core::core::scene::util::parent> parent):
-	parent_(parent)
+neb::core::core::scene::base::base():
+	last_(0)
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
 }
-neb::core::core::scene::base::~base() {
+neb::core::core::scene::base::~base()
+{
 	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
 }
-void neb::core::core::scene::base::init() {
+void neb::core::core::scene::base::init(parent_t * const & p)
+{
 	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
+
+	neb::core::core::actor::util::parent::init(this);
 }
 void neb::core::core::scene::base::release() {
 	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
@@ -41,9 +45,6 @@ neb::core::pose						neb::core::core::scene::base::getPose() const {
 }		
 neb::core::pose						neb::core::core::scene::base::getPoseGlobal() const {
 	return neb::core::pose();
-}
-weak_ptr<neb::core::core::scene::util::parent>		neb::core::core::scene::base::getParent() {
-	return parent_;
 }
 void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::core::actor::base> actor) {
 
@@ -68,7 +69,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_ = pose;
-	actor->init();
+	actor->init(this);
 
 	// create shape
 
@@ -76,7 +77,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
-	actor->init();
+	actor->init(this);
 
 	return actor;
 }
@@ -86,7 +87,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_ = pose;
-	actor->init();
+	actor->init(this);
 	
 	// create shape
 	
@@ -94,7 +95,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
-	actor->init();
+	actor->init(this);
 
 	return actor;
 }
@@ -107,13 +108,13 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	actor->pose_ = actor_desc.pose;
 
-	actor->init();
+	actor->init(this);
 
 	// shape
 	auto shape = actor->createShapeCuboid(shape_desc);
 
 	/// @todo consider implementing refresh-type function instead
-	actor->init();
+	actor->init(this);
 
 	return actor;
 }
