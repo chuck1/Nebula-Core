@@ -23,6 +23,9 @@ namespace neb { namespace core { namespace core { namespace actor {
 		desc(neb::core::pose npose):
 			pose(npose)
 		{}
+
+		virtual void	release();
+
 		template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 		{
 			ar & BOOST_SERIALIZATION_NVP(pose);

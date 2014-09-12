@@ -12,6 +12,7 @@
 #include <neb/core/core/shape/desc.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 
+
 namespace neb { namespace core { namespace core { namespace actor { namespace rigiddynamic {
 
 	struct desc: neb::core::core::actor::rigidbody::desc
@@ -33,6 +34,7 @@ namespace neb { namespace core { namespace core { namespace actor { namespace ri
 	};
 
 }}}}}
+
 
 #endif
 

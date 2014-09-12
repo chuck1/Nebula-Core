@@ -16,6 +16,8 @@ namespace neb {
 				desc() {}
 				virtual ~desc() {}
 
+				virtual void				release() {}
+
 				template<class Archive> void		__load(Archive & ar, unsigned int const & version)
 				{
 					ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);

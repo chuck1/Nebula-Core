@@ -25,17 +25,15 @@ void				neb::game::trigger::ActorEx1::connect(std::shared_ptr<neb::core::core::a
 				).track_foreign(self)
 			);
 }
-void				neb::game::trigger::ActorEx1::doSomething() {
+void				neb::game::trigger::ActorEx1::doSomething()
+{
 	
 	auto game = neb::is<parent_t, neb::game::game::base>(getParent());
-
 	auto scene(game->scene_.lock());
 	
 	if(!scene) return;
 
-	auto scene_parent = scene->getParent().lock();
-	
-	assert(scene_parent);
+	auto scene_parent = scene->getParent();
 	
 	scene_parent->neb::core::core::scene::util::parent::erase(scene->_M_index);
 	

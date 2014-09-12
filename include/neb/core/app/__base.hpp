@@ -24,6 +24,7 @@ namespace neb {
 					void							__init();
 				public:
 					static std::shared_ptr<neb::core::app::__base>		global();
+					static bool						is_valid();
 				public:
 					boost::asio::io_service					ios_;
 					neb::core::app::util::flag				flag_;

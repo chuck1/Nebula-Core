@@ -20,3 +20,4 @@ std::shared_ptr<neb::core::core::actor::base>		neb::core::core::actor::rigiddyna
 	return scene->createActorRigidDynamic(this).lock();
 }
 
+

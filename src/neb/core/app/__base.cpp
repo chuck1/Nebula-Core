@@ -16,6 +16,10 @@ shared_ptr<neb::core::app::__base>	neb::core::app::__base::global() {
 	assert(g_app_);
 	return g_app_;
 }
+bool					neb::core::app::__base::is_valid()
+{
+	return (bool)g_app_;
+}
 
 neb::core::app::__base::~__base()
 {
