@@ -52,9 +52,7 @@ void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::
 }
 void		neb::core::core::scene::base::step(gal::etc::timestep const & ts) {
 
-	typedef neb::util::parent<neb::actor::__base> A;
-	
-	A::step(ts);
+	actors::step(ts);
 
 //	A::map_.for_each([&] (A::map_type::pointer p) {
 //			auto actor = std::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);

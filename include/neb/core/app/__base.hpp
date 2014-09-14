@@ -21,7 +21,7 @@ namespace neb {
 						gal::console::backend::python> console_type;
 					virtual ~__base();
 				protected:
-					void							__init();
+					virtual void						init();
 				public:
 					static std::shared_ptr<neb::core::app::__base>		global();
 					static bool						is_valid();

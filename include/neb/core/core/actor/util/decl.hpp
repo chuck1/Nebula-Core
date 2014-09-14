@@ -4,8 +4,10 @@
 #include <memory>
 
 namespace neb { namespace core { namespace core {
+
 	/** @brief %actor */
 	namespace actor {
+
 		struct mode_create {
 			enum e {
 				NOW,
@@ -27,6 +29,7 @@ namespace neb { namespace core { namespace core {
 			struct desc;
 		}
 
+		class __base;
 		class base;
 		class desc;
 
@@ -35,6 +38,7 @@ namespace neb { namespace core { namespace core {
 			class parent;
 		}
 	}
+
 }}}
 
 #endif

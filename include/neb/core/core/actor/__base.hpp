@@ -3,26 +3,29 @@
 
 #include <boost/thread.hpp>
 
+#include <gal/stl/child.hpp>
+
 #include <neb/core/itf/shared.hpp>
 #include <neb/core/itf/serializable.hpp>
 
+#include <neb/core/type_traits.hpp>
 
-namespace neb {
+namespace neb { namespace core { namespace core { namespace actor {
 
-	namespace core { namespace core { namespace actor { namespace util {
+	namespace util {
 		class parent;
-	}}}}
-
-
-	namespace actor {
-		class __base:
-			virtual public neb::itf::shared,
-			virtual public neb::serializable
-		{
-			public:
-				virtual void		init(neb::core::core::actor::util::parent * const & p) = 0;
-		};
 	}
-}
+
+	class __base:
+		virtual public neb::itf::shared,
+		virtual public neb::serializable,
+		virtual public neb::type_traits<__base>::child_t
+	{
+		public:
+			typedef type_traits<__base>::parent_t parent_t;
+
+			virtual void		init(parent_t * const & p) = 0;
+	};
+}}}}
 
 #endif

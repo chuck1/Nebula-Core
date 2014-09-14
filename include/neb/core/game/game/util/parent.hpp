@@ -11,7 +11,7 @@ namespace neb { namespace game { namespace game { namespace util {
 	/** @brief parent
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::game::game::base>
+		virtual public neb::util::parent<neb::game::game::base, parent>
 	{
 		public:
 			parent() {}

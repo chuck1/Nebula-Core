@@ -19,7 +19,7 @@ namespace neb { namespace core { namespace core { namespace actor { namespace ut
 	 * abstract class for parent of an %actor
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::actor::__base>,
+		virtual public neb::util::parent<neb::core::core::actor::__base, parent>,
 		virtual public neb::core::core::scene::util::cast,
 		virtual public neb::core::core::actor::util::cast,
 		virtual public neb::core::Pose

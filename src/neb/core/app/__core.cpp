@@ -34,7 +34,7 @@ void				neb::app::__core::__init() {
 }
 void				neb::app::__core::__release()
 {
-	neb::util::parent<neb::core::core::scene::base>::clear();
+	neb::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
 }
 void				neb::app::__core::__step(gal::etc::timestep const & ts)
 {
@@ -57,7 +57,7 @@ std::shared_ptr<neb::game::game::base>		neb::app::__core::createGame(
 
 	neb::game::game::util::parent::insert(g);
 	
-	g->init();
+	g->init(this);
 	
 	return g;
 }

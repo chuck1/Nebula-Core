@@ -94,9 +94,7 @@ neb::core::pose				neb::core::core::actor::base::getPose() const {
 neb::core::pose				neb::core::core::actor::base::getPoseGlobal() const {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
-	parent_t const * const & parent = getParent();
-
-	auto p = parent->getPoseGlobal() * getPose();
+	auto p = getParent()->getPoseGlobal() * getPose();
 
 	return p;
 }
@@ -111,11 +109,9 @@ void		neb::core::core::actor::base::step(gal::etc::timestep const & ts) {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
 	//typedef neb::core::core::actor::util::parent A;
-	typedef neb::util::parent<neb::actor::__base> A;
-	typedef neb::util::parent<neb::core::core::shape::base> S;//core::core::shape::util::parent S;
 
-	A::step(ts);
-	S::step(ts);
+	actors::step(ts);
+	shapes::step(ts);
 
 	//A::map_.for_each([&] (A::map_type::iterator it) {
 	//		it->ptr_->step(ts);

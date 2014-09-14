@@ -25,7 +25,8 @@ neb::core::app::__base::~__base()
 {
 	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
 }
-void		neb::core::app::__base::__init() {
+void		neb::core::app::__base::init()
+{
 
 	LOG(lg, neb::core::sl, debug) << __FUNCSIG__;
 	

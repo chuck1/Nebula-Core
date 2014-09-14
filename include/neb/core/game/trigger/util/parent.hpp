@@ -13,12 +13,9 @@ namespace neb { namespace game { namespace trigger { namespace util {
 	 * abstract class for parent of an @Actor
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::game::trigger::base>
+		virtual public neb::util::parent<neb::game::trigger::base, parent>
 	{
 		public:
-			parent() {}
-			virtual ~parent() {}
-
 			virtual void						init() {}
 	};
 }}}}

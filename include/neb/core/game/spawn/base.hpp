@@ -5,16 +5,24 @@
 
 namespace neb { namespace game { namespace spawn {
 
-	class base: virtual public neb::itf::shared {
+	namespace util {
+		class parent;
+	}
+
+	class base: virtual public neb::itf::shared
+	{
+
 		public:
+			typedef neb::game::spawn::util::parent parent_t;
 
 			neb::core::pose		pose_;
-			
+
+			virtual void		init(parent_t * const & p);			
 			virtual void		step(gal::etc::timestep const &) {}
-			
+
 	};
 
-	
+
 }}}
 
 #endif

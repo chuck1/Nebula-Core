@@ -17,7 +17,7 @@ namespace neb { namespace game { namespace spawn { namespace util {
 	 * abstract class for parent of an @Actor
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::game::spawn::base>
+		virtual public neb::util::parent<neb::game::spawn::base, parent>
 	{
 		public:
 			parent() {}

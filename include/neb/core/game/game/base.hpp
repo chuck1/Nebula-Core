@@ -10,15 +10,20 @@
 namespace neb {
 	namespace game {
 		namespace game {
+			namespace util {
+				class parent;
+			}
 
 			class base:
+				virtual public gal::stl::child<neb::game::game::util::parent>,
 				virtual public neb::game::trigger::util::parent,
 				virtual public neb::game::ai::util::parent
 			{
 				public:
-
-					virtual void		init() {}
-					virtual void		release() {}
+					typedef neb::game::game::util::parent parent_t;
+					
+					virtual void		init(parent_t * const &);
+					virtual void		release();
 					virtual void		step(gal::etc::timestep const & ts);
 
 					/** @brief %Scene.
@@ -26,8 +31,6 @@ namespace neb {
 					 * The game will load a scene from an Xml file.
 					 */
 					std::weak_ptr<neb::core::core::scene::base>			scene_;
-
-					std::weak_ptr<neb::game::game::util::parent>			parent_;
 
 					//gal::map<std::shared_ptr<neb::Game::Player> >   players_;
 

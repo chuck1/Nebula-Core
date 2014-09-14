@@ -21,7 +21,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace ut
 	 * @note inheritance of neb::util::parent is non-virtual
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::core::core::shape::base>,
+		virtual public neb::util::parent<neb::core::core::shape::base, parent>,
 		virtual public neb::core::core::actor::util::cast,
 		virtual public neb::core::core::shape::util::cast,
 		virtual public neb::core::Pose

@@ -9,7 +9,7 @@
 
 namespace neb { namespace core { namespace core { namespace light { namespace util {
 	class parent:
-		virtual public neb::util::parent<neb::core::light::__base>,
+		virtual public neb::util::parent<neb::core::light::__base, parent>,
 		virtual public neb::core::core::shape::util::cast,
 		virtual public neb::core::Pose
 	{

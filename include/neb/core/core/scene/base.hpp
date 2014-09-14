@@ -36,6 +36,8 @@ namespace neb { namespace core { namespace core {
 		{
 			public:
 				typedef neb::core::core::scene::util::parent parent_t;
+				typedef neb::util::parent<neb::core::core::actor::__base, neb::core::core::actor::util::parent>		actors;
+
 				base();
 				virtual ~base();
 				virtual void			init(parent_t * const & p);
