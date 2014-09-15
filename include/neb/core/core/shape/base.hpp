@@ -51,10 +51,10 @@ namespace neb { namespace core { namespace core { namespace shape {
 			virtual weak_ptr<neb::core::core::light::base>		createLightSpot(glm::vec3) = 0;
 			virtual weak_ptr<neb::core::core::light::base>		createLightDirectional(glm::vec3) = 0;
 		public:
-			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
+/*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
 			virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}
 			virtual void	load(ba::xml_iarchive & ar, unsigned int const &) {}
-			virtual void	save(ba::xml_oarchive & ar, unsigned int const &) const {}
+			virtual void	save(ba::xml_oarchive & ar, unsigned int const &) const {}*/
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();

@@ -46,18 +46,10 @@ namespace neb { namespace core { namespace core {
 				virtual void			step(gal::etc::timestep const & ts);
 				/** @} */
 
-				virtual  void			serialize(
-						boost::archive::polymorphic_iarchive & ar,
-						unsigned int const & version) {
-					//ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("flag",flag_);
-				}
-				virtual void			serialize(
-						boost::archive::polymorphic_oarchive & ar,
-						unsigned int const & version) {
-					//ar & boost::serialization::make_nvp("i",i_);
-					ar & boost::serialization::make_nvp("flag",flag_);
-				}
+				virtual void				load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+				virtual void				save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
+				BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 			public:
 				neb::core::pose						getPose() const;
 				neb::core::pose						getPoseGlobal() const;

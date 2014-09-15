@@ -77,15 +77,13 @@ namespace neb {
 							neb::core::pose pose, glm::vec3 direction);
 				public:
 
-					template<class Archive> void						serialize(
+					template<class Archive> void					__serialize(
 							Archive & ar,
 							unsigned int const & version)
 					{
 						ar & boost::serialization::make_nvp("flag",flag_);
-						ar & boost::serialization::make_nvp("name",name_);
+						//ar & boost::serialization::make_nvp("name",name_);
 						ar & boost::serialization::make_nvp("pose",pose_);
-						ar & boost::serialization::make_nvp("normal",n_);
-						ar & boost::serialization::make_nvp("distance",d_);
 						ar & boost::serialization::make_nvp("velocity",velocity_);
 						ar & boost::serialization::make_nvp("density",density_);
 
@@ -95,14 +93,13 @@ namespace neb {
 								"shapes", neb::core::core::shape::util::parent::map_);
 					}
 
+					virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
+					virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
+					BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 				public:
 					neb::core::core::actor::util::flag			flag_;
-					string							name_;
 					neb::core::pose						pose_;
-					/** @brief Normal for planes. */
-					glm::vec3						n_;
-					/** @brief Distance for planes. */
-					float							d_;
 					glm::vec3						velocity_;
 					float							density_;
 					double							health_;

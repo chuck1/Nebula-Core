@@ -24,6 +24,11 @@ namespace neb { namespace core {
 			public:
 				virtual void		init(neb::core::core::light::util::parent * const & p) = 0;
 				virtual void		callbackPose(neb::core::pose const &) = 0;
+
+				virtual void		load(ba::polymorphic_iarchive & ar, unsigned int const &) = 0;
+				virtual void		save(ba::polymorphic_oarchive & ar, unsigned int const &) const = 0;
+				BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 		};
 
 	}}

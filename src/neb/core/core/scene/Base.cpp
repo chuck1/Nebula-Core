@@ -47,8 +47,9 @@ neb::core::pose						neb::core::core::scene::base::getPoseGlobal() const {
 	return neb::core::pose();
 }
 void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::core::actor::base> actor) {
-
-	actors_deferred_[actor->name_] = actor;
+	/** @todo deprecated */
+	abort();
+	//actors_deferred_[actor->name_] = actor;
 }
 void		neb::core::core::scene::base::step(gal::etc::timestep const & ts) {
 
@@ -152,6 +153,20 @@ void			THIS::addActor(
 {
 	insert(actor);
 	actor->init(this);
+}
+void			THIS::load(
+		boost::archive::polymorphic_iarchive & ar,
+		unsigned int const & version)
+{
+	ar & boost::serialization::make_nvp("flag",flag_);
+	ar & boost::serialization::make_nvp("actors",neb::core::core::actor::util::parent::map_);
+}
+void			THIS::save(
+		boost::archive::polymorphic_oarchive & ar,
+		unsigned int const & version) const
+{
+	ar & boost::serialization::make_nvp("flag",flag_);
+	ar & boost::serialization::make_nvp("actors",neb::core::core::actor::util::parent::map_);
 }
 
 

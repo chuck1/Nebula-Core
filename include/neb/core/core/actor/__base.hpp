@@ -25,6 +25,11 @@ namespace neb { namespace core { namespace core { namespace actor {
 			typedef type_traits<__base>::parent_t parent_t;
 
 			virtual void		init(parent_t * const & p) = 0;
+
+			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &) = 0;
+			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const = 0;
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 	};
 }}}}
 
