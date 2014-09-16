@@ -13,6 +13,7 @@ namespace neb { namespace core { namespace input {
 		virtual public gal::itf::shared
 	{
 		public:
+			virtual ~sink();
 
 			void		connectKeyFun(std::shared_ptr<neb::core::input::source> const & src, int i);
 			void		connectCharFun(std::shared_ptr<neb::core::input::source> const & src, int i);

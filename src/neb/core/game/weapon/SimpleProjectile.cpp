@@ -27,6 +27,7 @@ neb::game::weapon::SimpleProjectile::SimpleProjectile() {
 void			neb::game::weapon::SimpleProjectile::connect(
 		std::shared_ptr<neb::core::input::source> src)
 {
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
 	connectKeyFun(src, 20);
 }
 int			neb::game::weapon::SimpleProjectile::key_fun(
