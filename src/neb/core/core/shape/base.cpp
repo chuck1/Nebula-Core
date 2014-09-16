@@ -93,7 +93,8 @@ void					neb::core::core::shape::base::init(neb::core::core::shape::util::parent
 	neb::core::core::light::util::parent::init(this);
 
 }
-void					neb::core::core::shape::base::release() {
+void					neb::core::core::shape::base::release()
+{
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
 	neb::core::core::shape::util::parent::map_.clear();

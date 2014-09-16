@@ -10,6 +10,7 @@
 #include <boost/serialization/map.hpp>
 
 #include <neb/core/pose.hpp>
+#include <neb/core/filter.hpp>
 #include <neb/core/core/actor/__base.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/flag.hpp>
@@ -19,6 +20,8 @@
 #include <neb/core/core/shape/cuboid/desc.hpp>
 //#include <neb/core/core/shape/HeightField/desc.hpp>
 #include <neb/core/math/Serialization/glm.hpp>
+
+#include <neb/core/game/weapon/util/parent.hpp>
 
 namespace neb {
 
@@ -34,7 +37,8 @@ namespace neb {
 			class base:
 				virtual public neb::core::core::actor::__base,
 				virtual public neb::core::core::actor::util::parent,
-				virtual public neb::core::core::shape::util::parent
+				virtual public neb::core::core::shape::util::parent,
+				virtual public neb::game::weapon::util::parent
 			{
 				public:
 					typedef neb::util::parent<neb::core::core::actor::__base, neb::core::core::actor::util::parent>		actors;
@@ -103,6 +107,9 @@ namespace neb {
 					glm::vec3						velocity_;
 					float							density_;
 					double							health_;
+					neb::phx::filter::data					simulation_;
+					neb::phx::filter::data					scene_query_;
+
 				public:
 					/** @brief Parent */
 					//weak_ptr<neb::core::core::actor::util::parent>		parent_;
