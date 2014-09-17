@@ -7,17 +7,22 @@ namespace neb { namespace core { namespace core { namespace shape { namespace He
 		desc() {}
 		desc(neb::core::pose pose, glm::vec3 scale):
 			pose_(pose),
-			scale_(scale),
-			density_(1.0)
+			scale_(scale)
 		{}
 		desc(glm::vec3 scale):
-			scale_(scale),
-			density_(1.0)
+			scale_(scale)
 		{}
 
 		neb::core::pose		pose_;
 		glm::vec3		scale_;
-		float			density_;
+
+
+		unsigned int	i1;
+		unsigned int	i2;
+		unsigned int	i3;
+		float		f1;
+		float		f2;
+		float		f3;
 	};
 
 }}}}}
