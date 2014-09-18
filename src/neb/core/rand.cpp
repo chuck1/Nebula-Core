@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstdlib>
 
+#include <neb/core/app/__base.hpp>
 #include <neb/core/rand.hpp>
 
 int random_index = 0;
@@ -13,10 +14,19 @@ unsigned int* randoms = 0;
 
 void myrand_read(std::string f, unsigned int s)
 {
+	auto app = neb::core::app::__base::global();
+	
+	f = app->share_dir_ + f;
+	
 	std::string line;
 	std::ifstream ifs;
 	ifs.open(f);
-	assert(ifs.is_open());
+
+	if(!ifs.is_open())
+	{
+		std::cout << f << std::endl;
+		abort();
+	}
 	for(unsigned int i = s; i < (s + LEN); i++)
 	{
 		getline(ifs, line);
@@ -26,8 +36,8 @@ void myrand_read(std::string f, unsigned int s)
 }
 
 static const char * myrand_files[2]  = {
-	"../../../../../media/random/0.txt",
-	"../../../../../media/random/1.txt"
+	"media/random/0.txt",
+	"media/random/1.txt"
 };
 
 unsigned int myrand()

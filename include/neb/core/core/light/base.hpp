@@ -46,16 +46,13 @@ namespace neb { namespace core { namespace core { namespace light {
 				   ar & boost::serialization::make_nvp("atten_quad",atten_quad_);*/
 			}
 		public:
-			virtual void				serialize(
+			virtual void				load(
 					boost::archive::polymorphic_iarchive & ar,
-					unsigned int const & version) {
-				serializeTemplate(ar, version);
-			}
-			virtual void				serialize(
+					unsigned int const & version);
+			virtual void				save(
 					boost::archive::polymorphic_oarchive & ar,
-					unsigned int const & version) {
-				serializeTemplate(ar, version);
-			}
+					unsigned int const & version) const;
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 
 

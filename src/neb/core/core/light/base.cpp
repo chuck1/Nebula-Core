@@ -8,6 +8,8 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
+typedef neb::core::core::light::base THIS;
+
 neb::core::core::light::base::base()
 {
 }
@@ -45,6 +47,20 @@ neb::core::core::scene::base*	neb::core::core::light::base::getScene()
 	assert(shape);
 	
 	return shape->getScene();
+}
+void		THIS::load(
+		boost::archive::polymorphic_iarchive & ar,
+		unsigned int const & version)
+{
+	serializeTemplate(ar, version);
+	ar & BOOST_SERIALIZATION_NVP(pose_);
+}
+void		THIS::save(
+		boost::archive::polymorphic_oarchive & ar,
+		unsigned int const & version) const
+{
+	const_cast<THIS*>(this)->serializeTemplate(ar, version);
+	ar & BOOST_SERIALIZATION_NVP(pose_);
 }
 
 

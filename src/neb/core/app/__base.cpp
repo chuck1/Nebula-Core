@@ -52,8 +52,8 @@ void		neb::core::app::__base::init()
 	
 	char* home = getenv("HOME");
 	if(home == 0) abort();
-	share_dir_ = std::string(home) + "/.local/share/nebula/box/";
-
+	//share_dir_ = std::string(home) + "/.local/share/nebula/box/";
+	share_dir_ = "";
 }
 
 
