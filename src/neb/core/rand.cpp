@@ -2,29 +2,46 @@
 #include <fstream>
 #include <string>
 #include <cassert>
+#include <cstdlib>
 
 #include <neb/core/rand.hpp>
 
 int random_index = 0;
 unsigned int* randoms = 0;
 
-unsigned int myrand()
+#define LEN 10000
+
+void myrand_read(std::string f, unsigned int s)
 {
 	std::string line;
+	std::ifstream ifs;
+	ifs.open(f);
+	assert(ifs.is_open());
+	for(unsigned int i = s; i < (s + LEN); i++)
+	{
+		getline(ifs, line);
+		randoms[i] = atoi(line.c_str());
+		std::cout << line << std::endl;
+	}
+}
+
+static const char * myrand_files[2]  = {
+	"../../../../../media/random/0.txt",
+	"../../../../../media/random/1.txt"
+};
+
+unsigned int myrand()
+{
 	if(randoms == 0)
 	{
-		randoms = new unsigned int[10000];
-		std::ifstream ifs;
-		ifs.open("../../../../../media/random/0.txt");
-		assert(ifs.is_open());
-		for(unsigned int i = 0; i < 10000; i++)
-		{
-			getline(ifs, line);
-			randoms[i] = atoi(line.c_str());
-			std::cout << line << std::endl;
-		}
+		int num_files = sizeof(myrand_files) / sizeof(char*);
+		randoms = new unsigned int[num_files * LEN];
+		for(int i = 0; i < num_files; i++)
+			myrand_read(myrand_files[i], i * LEN);
 	}
 
-	return randoms[random_index++];
+	if(random_index < (2 * LEN)) return randoms[random_index++];
+	
+	return (::rand() % 10000);
 }
 
