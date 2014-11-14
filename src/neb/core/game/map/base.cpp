@@ -11,6 +11,8 @@ void		neb::game::map::base::init(parent_t * const & p)
 	neb::game::spawn::util::parent::insert(spawn);
 
 }
-void		neb::game::map::base::release() {
+void		neb::game::map::base::release()
+{
+	neb::game::spawn::util::parent::clear();
 }
 

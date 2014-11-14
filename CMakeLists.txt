@@ -8,12 +8,11 @@ PROJECT(nebula_core)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
+SET(SHARED True)
+
 FIND_PACKAGE(glfw)
 
-FIND_PACKAGE(galaxy 0 COMPONENTS
-	log
-	console
-	REQUIRED)
+FIND_PACKAGE(galaxy 0 COMPONENTS std log console REQUIRED)
 
 INCLUDE(cmh_boost)
 FIND_PACKAGE(Boost 1.55 COMPONENTS
@@ -29,8 +28,9 @@ include_directories("../glm")
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
 SET(libs
-	#galaxy_log_0_so_db
-	#galaxy_console_0_so_db
+	#galaxy_log_0
+	#galaxy_console_0
+	${galaxy_LIBRARIES}
 	#/scratch/usr/lib/libboost_serialization.so.1.55.0
 	)
 

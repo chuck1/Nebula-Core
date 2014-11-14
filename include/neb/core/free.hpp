@@ -71,7 +71,7 @@ template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
 		abort();
 	}
 
-	gal::stl::wrapper<T> w(NEB_MOD_DIR);
+	gal::stl::wrapper<T> w;
 
 	boost::archive::polymorphic_xml_iarchive ar(ifs);
 
