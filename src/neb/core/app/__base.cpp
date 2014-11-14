@@ -2,21 +2,21 @@
 #include <fstream>
 
 #include <gal/log/log.hpp>
+#include <gal/dll/helper_info.hpp>
 
 #include <neb/core/util/debug.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 
-using namespace std;
 
-shared_ptr<neb::core::app::__base>	neb::core::app::__base::g_app_;
+std::shared_ptr<neb::core::app::__base>		neb::core::app::__base::g_app_;
 
-shared_ptr<neb::core::app::__base>	neb::core::app::__base::global() {
+std::shared_ptr<neb::core::app::__base>		neb::core::app::__base::global() {
 	assert(g_app_);
 	return g_app_;
 }
-bool					neb::core::app::__base::is_valid()
+bool						neb::core::app::__base::is_valid()
 {
 	return (bool)g_app_;
 }
@@ -49,6 +49,10 @@ void		neb::core::app::__base::init()
 	flag_.set(neb::core::app::util::flag::INIT___BASE);
 
 	/** @todo export class to python to implement exit() */
+
+	// module search path
+	gal::dll::helper_info::search_path_ = NEB_MOD_DIR;
+
 }
 
 

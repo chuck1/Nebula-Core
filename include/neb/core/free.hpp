@@ -3,6 +3,9 @@
 
 #include <gal/stl/wrapper.hpp>
 
+
+#include <neb/core/util/config.hpp>
+
 template<typename B, typename D> void	makeDefaultFunc()
 {
 
@@ -68,7 +71,7 @@ template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
 		abort();
 	}
 
-	gal::stl::wrapper<T> w;
+	gal::stl::wrapper<T> w(NEB_MOD_DIR);
 
 	boost::archive::polymorphic_xml_iarchive ar(ifs);
 
