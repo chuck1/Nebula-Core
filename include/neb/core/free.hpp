@@ -8,6 +8,7 @@
 
 template<typename B, typename D> void	makeDefaultFunc()
 {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -21,6 +22,7 @@ template<typename B, typename D> void	makeDefaultFunc()
 }
 template<typename B, typename D> void	makeDLLFunc()
 {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -46,6 +48,8 @@ template<typename B, typename D> void	makeDLLFunc()
 }
 template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_name, std::string object_name)
 {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+
 	std::cout << "B " << typeid(B).name() << " " << typeid(B).hash_code() << std::endl;
 	std::cout << "D " << typeid(D).name() << " " << typeid(D).hash_code() << std::endl;
 
