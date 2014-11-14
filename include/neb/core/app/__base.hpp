@@ -31,8 +31,6 @@ namespace neb {
 					gal::etc::timestep					ts_;
 					std::shared_ptr<console_type>				console_;
 					
-					std::string						share_dir_;
-
 					static std::shared_ptr<neb::core::app::__base>		g_app_;
 			};
 		}

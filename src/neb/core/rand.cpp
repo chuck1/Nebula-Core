@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstdlib>
 
+#include <neb/core/util/config.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/rand.hpp>
 
@@ -16,7 +17,7 @@ void myrand_read(std::string f, unsigned int s)
 {
 	auto app = neb::core::app::__base::global();
 	
-	f = app->share_dir_ + f;
+	f = std::string(NEB_SHARE_DIR) + f;
 	
 	std::string line;
 	std::ifstream ifs;

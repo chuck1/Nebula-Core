@@ -49,11 +49,6 @@ void		neb::core::app::__base::init()
 	flag_.set(neb::core::app::util::flag::INIT___BASE);
 
 	/** @todo export class to python to implement exit() */
-	
-	char* home = getenv("HOME");
-	if(home == 0) abort();
-	//share_dir_ = std::string(home) + "/.local/share/nebula/box/";
-	share_dir_ = "";
 }
 
 

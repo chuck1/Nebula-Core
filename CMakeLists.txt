@@ -9,6 +9,7 @@ INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
 FIND_PACKAGE(glfw)
+FIND_PACKAGE(glm)
 
 FIND_PACKAGE(galaxy 0 COMPONENTS
 	log
