@@ -5,7 +5,7 @@
 
 #include <neb/core/util/decl.hpp>
 #include <neb/core/itf/shared.hpp>
-#include <neb/core/game/trigger/util/parent.hpp>
+#include <neb/core/game/trigger/util/decl.hpp>
 
 namespace neb { namespace core { namespace game { namespace trigger {
 

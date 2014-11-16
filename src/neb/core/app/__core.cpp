@@ -3,13 +3,16 @@
 
 #include <neb/core/app/__core.hpp>
 
-weak_ptr<neb::app::__core>	neb::app::__core::global() {
-	auto app(dynamic_pointer_cast<neb::app::__core>(g_app_));
+typedef neb::core::app::__core THIS;
+
+std::weak_ptr<nc::app::__core>	THIS::global()
+{
+	auto app(dynamic_pointer_cast<THIS>(g_app_));
 	assert(app);
 	return app;
 }
-void				neb::app::__core::__init() {
-
+void				THIS::__init()
+{
 	typedef neb::core::core::actor::desc T;
 	typedef neb::core::core::actor::rigidbody::desc D;
 
@@ -32,22 +35,22 @@ void				neb::app::__core::__init() {
 	}
 
 }
-void				neb::app::__core::__release()
+void				THIS::__release()
 {
 	neb::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
 }
-void				neb::app::__core::__step(gal::etc::timestep const & ts)
+void				THIS::__step(gal::etc::timestep const & ts)
 {
 	neb::core::core::scene::util::parent::step(ts);
 	neb::game::game::util::parent::step(ts);
 }
-neb::core::pose			neb::app::__core::getPose() const {
+neb::core::pose			THIS::getPose() const {
 	return neb::core::pose();
 }
-neb::core::pose			neb::app::__core::getPoseGlobal() const {
+neb::core::pose			THIS::getPoseGlobal() const {
 	return neb::core::pose();
 }
-std::shared_ptr<neb::game::game::base>		neb::app::__core::createGame(
+std::shared_ptr<neb::game::game::base>		THIS::createGame(
 		neb::game::game::desc const & desc
 		)
 {

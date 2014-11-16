@@ -13,7 +13,7 @@ namespace neb { namespace core { namespace game { namespace ai { namespace util 
 	 * abstract class for parent of a shape
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::core::game::ai::base, parent>
+		virtual public nc::util::parent<nc::game::ai::base, parent>
 	{
 		public:
 			virtual ~parent() {}

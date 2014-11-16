@@ -8,30 +8,25 @@
 
 namespace neb { namespace core { namespace app {
 	class __core:
-		virtual public neb::core::app::__base,
-		virtual public neb::core::core::scene::util::parent,
-		virtual public neb::game::game::util::parent
+		virtual public nc::app::__base,
+		virtual public nc::core::scene::util::parent,
+		virtual public nc::game::game::util::parent
 	{
 		protected:
-			virtual void				__init();
-			virtual void				__release();
-			void					__step(gal::etc::timestep const &);
+			//virtual void					__init();
+			//virtual void					__release();
+			//void						__step(gal::etc::timestep const &);
 		public:
-			static weak_ptr<neb::app::__core>	global();
-			neb::core::pose				getPose() const;
-			neb::core::pose				getPoseGlobal() const;
-
-
-			std::shared_ptr<neb::game::game::base>			createGame(
-					neb::game::game::desc const &
+			static std::weak_ptr<nc::app::__core>		global();
+			neb::core::math::pose				getPose() const;
+			neb::core::math::pose				getPoseGlobal() const;
+			std::shared_ptr<nc::game::game::base>		createGame(
+					nc::game::game::desc const &
 					);
 	};
-
 }}}
 
 #endif
-
-
 
 
 

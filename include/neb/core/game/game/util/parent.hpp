@@ -3,26 +3,22 @@
 
 #include <gal/itf/shared.hpp>
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/game/game/base.hpp>
 
 namespace neb { namespace core { namespace game { namespace game { namespace util {
-
-
 	/** @brief parent
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::game::game::base, parent>
+		virtual public nc::util::parent<nc::game::game::base, parent>
 	{
 		public:
 			parent() {}
 			virtual ~parent() {}
 		protected:
-			virtual void						__init();
+			virtual void				__init();
 		public:
 	};
-
-
-
 }}}}}
 
 #endif

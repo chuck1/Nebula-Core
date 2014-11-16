@@ -10,7 +10,7 @@
 namespace neb { namespace core { namespace game { namespace ai {
 
 	class base:
-		virtual public neb::itf::shared
+		virtual public nc::itf::shared
 	{
 		public:
 
