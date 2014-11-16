@@ -3,6 +3,7 @@
 
 #include <neb/core/math/geo/polygon.hpp>
 
+namespace neb { namespace core {
 namespace math {
 	namespace geo {
 		struct quad: polygon {
@@ -13,6 +14,7 @@ namespace math {
 		};
 	}
 }
+}}
 
 #endif
 

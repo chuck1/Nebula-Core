@@ -4,8 +4,8 @@
 namespace neb { namespace core { namespace core { namespace shape { namespace cuboid {
 
 	struct desc {
-		
-		desc(neb::core::pose pose, glm::vec3 scale):
+
+		desc(neb::core::math::pose pose, glm::vec3 scale):
 			pose_(pose),
 			scale_(scale),
 			density_(1.0)
@@ -15,9 +15,9 @@ namespace neb { namespace core { namespace core { namespace shape { namespace cu
 			density_(1.0)
 		{}
 
-		neb::core::pose		pose_;
-		glm::vec3		scale_;
-		float			density_;
+		neb::core::math::pose		pose_;
+		glm::vec3			scale_;
+		float				density_;
 	};
 
 }}}}}

@@ -14,7 +14,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace He
 			h(10.0),
 			hs(1.0)
 		{}
-		desc(neb::core::pose pose, glm::vec3 scale):
+		desc(neb::core::math::pose pose, glm::vec3 scale):
 			pose_(pose),
 			scale_(scale),
 			i1(1),
@@ -38,7 +38,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace He
 			hs(1.0)
 		{}
 
-		neb::core::pose		pose_;
+		neb::core::math::pose	pose_;
 		glm::vec3		scale_;
 
 

@@ -3,7 +3,6 @@
 
 #include <gal/stl/wrapper.hpp>
 
-
 #include <neb/core/util/config.hpp>
 
 template<typename B, typename D> void	makeDefaultFunc()

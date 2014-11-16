@@ -4,7 +4,7 @@
 #include <neb/core/core/light/base.hpp>
 #include <neb/core/core/light/util/parent.hpp>
 
-void							neb::core::core::light::util::parent::callbackPose(neb::core::pose const & parent_gpose) {
+void							neb::core::core::light::util::parent::callbackPose(neb::core::math::pose const & parent_gpose) {
 	
 	auto lamb = [&] (map_type::pointer p) {
 		//auto shape = std::dynamic_pointer_cast<neb::core::core::shape::base>(p);

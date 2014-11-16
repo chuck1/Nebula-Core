@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 
-namespace neb { namespace core { namespace color {
+namespace neb { namespace core { namespace math { namespace color {
 
 	template<int BITS> struct uchar;
 	
@@ -126,7 +126,7 @@ namespace neb { namespace core { namespace color {
 		}
 	};
 
-}}}
+}}}}
 
 #endif
 

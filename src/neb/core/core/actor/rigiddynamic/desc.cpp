@@ -7,7 +7,7 @@
 neb::core::core::actor::rigiddynamic::desc::desc()
 {
 }
-neb::core::core::actor::rigiddynamic::desc::desc(neb::core::pose npose):
+neb::core::core::actor::rigiddynamic::desc::desc(neb::core::math::pose npose):
 	neb::core::core::actor::rigidbody::desc(npose)
 {
 }

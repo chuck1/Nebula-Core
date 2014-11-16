@@ -1,11 +1,13 @@
 #ifndef NEB_CORE_MATH_HEIGHT_FIELD_HPP
 #define NEB_CORE_MATH_HEIGHT_FIELD_HPP
 
-namespace neb { namespace math {
+namespace neb { namespace core { namespace math {
+
 	struct HeightField
 	{
 
 		HeightField(unsigned int r, unsigned int c);
+
 		void			alloc();
 		void			createRandom();
 		float const		min() const;
@@ -17,7 +19,7 @@ namespace neb { namespace math {
 		float const		get(int i, int j) const;
 		float			get(int i, int j);
 		void			operator+=(HeightField const & hf);
-		
+
 		HeightField*		mipmap(int down);
 
 		void			slope(float dx, float dy);
@@ -29,5 +31,6 @@ namespace neb { namespace math {
 		float*			_M_dzdy;
 	};
 
-}}
+}}}
+
 #endif

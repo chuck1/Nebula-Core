@@ -2,19 +2,27 @@
 #define NEBULA_SHAPE_UTIL_TYPES_HH
 
 namespace neb { namespace core { namespace core {
+
 	/** @brief %shape */	
 	namespace shape {
-		namespace util {
+		namespace util
+		{
 			class parent;
 		}
 		class base;
 		class box;
 		class sphere;
 
-		namespace cuboid {
+		namespace cuboid
+		{
 			struct desc;
 		}
+		namespace HeightField
+		{
+			class desc;
+		}
 	}
+
 }}}
 
 #endif

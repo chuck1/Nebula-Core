@@ -6,13 +6,14 @@
 //#include <neb/core/math/geo/polygon.hpp>
 //#include <neb/core/math/geo/quad.hpp>
 
-namespace math {
-	namespace geo {
+namespace neb { namespace core {
+	namespace math {
+		namespace geo {
 
-		class triangle;
-		class polygon;
+			class triangle;
+			class polygon;
 
-		struct polyhedron {
+			struct polyhedron {
 				enum
 				{
 					PER_FACE_NORMAL
@@ -27,30 +28,31 @@ namespace math {
 				unsigned int	nbPolys_;
 
 				unsigned int	flag_;
-		};
-		class polyhedron_convex: public polyhedron
-		{
-		};
-		class sphere: public polyhedron_convex
-		{
-			public:
-				sphere(float,int,int);
-		};
-		class wedge: public polyhedron_convex
-		{
+			};
+			class polyhedron_convex: public polyhedron
+			{
+			};
+			class sphere: public polyhedron_convex
+			{
+				public:
+					sphere(float,int,int);
+			};
+			class wedge: public polyhedron_convex
+			{
 
-		};
-		class tetrahedron: public polyhedron_convex
-		{
+			};
+			class tetrahedron: public polyhedron_convex
+			{
 
-		};
-		class cuboid: public polyhedron_convex
-		{
-			public:
-				cuboid(float,float,float);
-		};
+			};
+			class cuboid: public polyhedron_convex
+			{
+				public:
+					cuboid(float,float,float);
+			};
+		}
 	}
-}
+}}
 
 #endif
 

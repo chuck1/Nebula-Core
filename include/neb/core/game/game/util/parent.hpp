@@ -5,7 +5,7 @@
 
 #include <neb/core/game/game/base.hpp>
 
-namespace neb { namespace game { namespace game { namespace util {
+namespace neb { namespace core { namespace game { namespace game { namespace util {
 
 
 	/** @brief parent
@@ -23,7 +23,7 @@ namespace neb { namespace game { namespace game { namespace util {
 
 
 
-}}}}
+}}}}}
 
 #endif
 

@@ -8,7 +8,7 @@
 
 #include <gal/itf/shared.hpp>
 
-#include <neb/core/interface/Pose.hh>
+#include <neb/core/itf/Pose.hh>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/cast.hpp>
 #include <neb/core/core/shape/util/cast.hpp>
@@ -21,14 +21,14 @@ namespace neb { namespace core { namespace core { namespace shape { namespace ut
 	 * @note inheritance of neb::util::parent is non-virtual
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::core::core::shape::base, parent>,
+		virtual public neb::core::util::parent<neb::core::core::shape::base, parent>,
 		virtual public neb::core::core::actor::util::cast,
 		virtual public neb::core::core::shape::util::cast,
-		virtual public neb::core::Pose
+		virtual public neb::core::itf::Pose
 	{
 		public:
 			virtual ~parent() {}
-			void		callbackPose(neb::core::pose const & pose);
+			void		callbackPose(neb::core::math::pose const & pose);
 	};
 }}}}}
 

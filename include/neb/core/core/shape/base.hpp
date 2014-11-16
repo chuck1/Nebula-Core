@@ -22,8 +22,8 @@
 
 namespace neb { namespace core { namespace core { namespace shape {
 	class base:
-		virtual public neb::itf::shared,
-		virtual public neb::serializable,
+		virtual public neb::core::itf::shared,
+		virtual public neb::core::itf::serializable,
 		virtual public neb::core::core::shape::util::parent,
 		virtual public neb::core::core::light::util::parent,
 		virtual public gal::stl::child<neb::core::core::shape::util::parent>
@@ -35,8 +35,8 @@ namespace neb { namespace core { namespace core { namespace shape {
 			virtual void		init(parent_t * const &);
 			void			release();
 			void			step(gal::etc::timestep const & ts);
-			virtual void		callbackPose(neb::core::pose const & pose_global) = 0;
-			virtual void		__callbackPose(neb::core::pose const & pose_global);
+			virtual void		callbackPose(neb::core::math::pose const & pose_global) = 0;
+			virtual void		__callbackPose(neb::core::math::pose const & pose_global);
 			/** @name Accessors @{ */
 
 
@@ -44,8 +44,8 @@ namespace neb { namespace core { namespace core { namespace shape {
 			neb::core::core::scene::base*				getScene();
 
 
-			neb::core::pose						getPose() const;
-			neb::core::pose						getPoseGlobal() const;
+			neb::core::math::pose						getPose() const;
+			neb::core::math::pose						getPoseGlobal() const;
 			/** @} */
 			virtual weak_ptr<neb::core::core::light::base>		createLightPoint() = 0;
 			virtual weak_ptr<neb::core::core::light::base>		createLightSpot(glm::vec3) = 0;
@@ -86,7 +86,7 @@ namespace neb { namespace core { namespace core { namespace shape {
 		public:
 			neb::core::core::shape::util::flag		flag_;
 			/** @brief pose */
-			neb::core::pose					pose_;
+			neb::core::math::pose					pose_;
 			/** @brief scale */
 			glm::vec3					scale_;
 			/** @brief Name of image file */

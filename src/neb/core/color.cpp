@@ -1,12 +1,10 @@
 
 
-#include <neb/core/color/Color.hh>
-#include <neb/core/color/traits.hpp>
+#include <neb/core/math/color/color.hpp>
+#include <neb/core/math/color/traits.hpp>
 
 
-
-
-namespace neb { namespace core { namespace color {
+namespace neb { namespace core { namespace math { namespace color {
 
 
 
@@ -37,5 +35,5 @@ namespace neb { namespace core { namespace color {
 		return (float)f;
 	}
 
-}}}
+}}}}
 

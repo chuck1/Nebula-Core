@@ -27,7 +27,7 @@ namespace neb {
 
 // traits
 
-namespace neb {
+namespace neb { namespace core {
 
 	template<typename T> struct type_traits {};
 
@@ -44,7 +44,7 @@ namespace neb {
 	};
 	
 
-}
+}}
 
 #endif
 

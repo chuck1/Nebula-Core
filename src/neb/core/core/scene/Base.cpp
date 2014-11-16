@@ -40,11 +40,11 @@ void neb::core::core::scene::base::release() {
 	
 	neb::core::core::actor::util::parent::clear();
 }
-neb::core::pose						neb::core::core::scene::base::getPose() const {
-	return neb::core::pose();
+neb::core::math::pose						neb::core::core::scene::base::getPose() const {
+	return neb::core::math::pose();
 }		
-neb::core::pose						neb::core::core::scene::base::getPoseGlobal() const {
-	return neb::core::pose();
+neb::core::math::pose						neb::core::core::scene::base::getPoseGlobal() const {
+	return neb::core::math::pose();
 }
 void						neb::core::core::scene::base::add_deferred(std::shared_ptr<neb::core::core::actor::base> actor) {
 	/** @todo deprecated */
@@ -63,7 +63,7 @@ void		neb::core::core::scene::base::step(gal::etc::timestep const & ts) {
 
 }
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCube(
-		neb::core::pose pose,
+		neb::core::math::pose pose,
 		double size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -72,7 +72,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 
 	// create shape
 
-	auto shape = actor->createShapeCube(neb::core::pose(), size);
+	auto shape = actor->createShapeCube(neb::core::math::pose(), size);
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -81,7 +81,7 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 	return actor;
 }
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorRigidStaticCuboid(
-		neb::core::pose pose,
+		neb::core::math::pose pose,
 		glm::vec3 size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -120,10 +120,10 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorLightPoint(glm::vec3 p) {
 
 	// actor
-	auto actor = createActorBase(neb::core::pose(p)).lock();
+	auto actor = createActorBase(neb::core::math::pose(p)).lock();
 
 	// shape	
-	auto shape = actor->createShapeBase(neb::core::pose()).lock();
+	auto shape = actor->createShapeBase(neb::core::math::pose()).lock();
 
 	// light
 	auto light = shape->createLightPoint();
@@ -132,9 +132,9 @@ weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActo
 }
 std::weak_ptr<neb::core::core::actor::base>		neb::core::core::scene::base::createActorLightDirectional(glm::vec3 p)
 {
-	auto actor = createActorBase(neb::core::pose()).lock();
+	auto actor = createActorBase(neb::core::math::pose()).lock();
 
-	auto shape = actor->createShapeBase(neb::core::pose()).lock();
+	auto shape = actor->createShapeBase(neb::core::math::pose()).lock();
 
 	auto light = shape->createLightDirectional(p);
 

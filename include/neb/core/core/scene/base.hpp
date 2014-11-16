@@ -10,6 +10,8 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
+
+#include <neb/core/util/decl.hpp>
 #include <neb/core/core/scene/util/flag.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
@@ -35,8 +37,8 @@ namespace neb { namespace core { namespace core {
 			virtual public neb::core::core::actor::util::parent
 		{
 			public:
-				typedef neb::core::core::scene::util::parent parent_t;
-				typedef neb::util::parent<neb::core::core::actor::__base, neb::core::core::actor::util::parent>		actors;
+				typedef nc::core::scene::util::parent									parent_t;
+				typedef nc::util::parent<neb::core::core::actor::__base, neb::core::core::actor::util::parent>		actors;
 
 				base();
 				virtual ~base();
@@ -51,43 +53,60 @@ namespace neb { namespace core { namespace core {
 				BOOST_SERIALIZATION_SPLIT_MEMBER();
 
 			public:
-				neb::core::pose						getPose() const;
-				neb::core::pose						getPoseGlobal() const;
+				neb::core::math::pose						getPose() const;
+				neb::core::math::pose						getPoseGlobal() const;
 
 			public:
+				/** @brief
+				 *
+				 */
 				void					add_deferred(
 						shared_ptr<neb::core::core::actor::base>);
 				/** @name convenience functions
 				 * @{
 				 */
 				virtual wbase				createActorBase(
-						neb::core::pose pose) = 0;
+						neb::core::math::pose pose) = 0;
 				/** @brief create empty actor with point light
 				*/
-				
 				wbase					createActor(
-						neb::core::core::actor::desc const * const &
-						);
+						neb::core::core::actor::desc const * const &);
+				/** @brief
+				 *
+				 */
 				void					addActor(
-						std::shared_ptr<neb::core::core::actor::base> const &
-						);
-
+						std::shared_ptr<neb::core::core::actor::base> const &);
+				/** @brief
+				 *
+				 */
 				virtual wbase				createActorRigidDynamic(
-						neb::core::core::actor::rigiddynamic::desc const * const &
-						) = 0;
-
-
+						neb::core::core::actor::rigiddynamic::desc const * const &) = 0;
+				/** @brief
+				 *
+				 */
 				virtual wbase				createActorLightPoint(
 						glm::vec3 p);
+				/** @brief
+				 *
+				 */
 				virtual wbase				createActorLightDirectional(
 						glm::vec3 p);
 
+				/** @brief
+				 *
+				 */
 				wbase			createActorRigidStaticCuboid(
-						neb::core::pose,
+						neb::core::math::pose,
 						glm::vec3);
+				/** @brief
+				 *
+				 */
 				wbase			createActorRigidStaticCube(
-						neb::core::pose pose,
+						neb::core::math::pose pose,
 						double size);
+				/** @brief
+				 *
+				 */
 				wbase			createActorRigidDynamicCuboid(
 						neb::core::core::actor::rigidbody::desc const &,
 						neb::core::core::shape::cuboid::desc const &);

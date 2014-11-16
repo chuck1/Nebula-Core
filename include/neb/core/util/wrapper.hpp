@@ -7,9 +7,10 @@
 
 #include <neb/core/itf/shared.hpp>
 
-namespace neb {
-	namespace stl {
-		class wrapper: virtual public gal::stl::wrapper<neb::itf::shared> {
+/*
+namespace neb { namespace { namespace stl {
+
+		class wrapper: virtual public gal::stl::wrapper<neb::core::itf::shared> {
 			public:
 				wrapper();
 				wrapper(std::shared_ptr<neb::itf::shared> s);
@@ -17,6 +18,8 @@ namespace neb {
 				virtual void		release();
 				virtual void		step(gal::etc::timestep const & ts);
 		};
-	}
-}
+
+}}
+*/
+
 #endif

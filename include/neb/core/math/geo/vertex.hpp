@@ -11,7 +11,7 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 
-
+namespace neb { namespace core {
 namespace math {
 	namespace geo {
 		class vertex {
@@ -33,6 +33,7 @@ namespace math {
 		};
 	}
 }
+}}
 
 #endif
 

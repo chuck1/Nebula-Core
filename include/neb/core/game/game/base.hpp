@@ -7,8 +7,7 @@
 #include <neb/core/game/ai/util/parent.hpp>
 
 
-namespace neb {
-	namespace game {
+namespace neb { namespace core { namespace game {
 		namespace game {
 			namespace util {
 				class parent;
@@ -37,7 +36,7 @@ namespace neb {
 			};
 		}
 	}
-}
+}}
 
 
 #endif

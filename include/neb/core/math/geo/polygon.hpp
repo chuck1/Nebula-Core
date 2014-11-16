@@ -12,7 +12,7 @@
 #include <boost/serialization/shared_ptr.hpp>
 
 
-
+namespace neb { namespace core {
 namespace math {
 	namespace geo {
 
@@ -38,6 +38,7 @@ namespace math {
 		};
 	}
 }
+}}
 
 #endif
 

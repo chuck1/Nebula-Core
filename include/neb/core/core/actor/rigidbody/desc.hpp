@@ -8,7 +8,7 @@
 
 #include <gal/itf/shared.hpp>
 
-#include <neb/core/pose.hpp>
+#include <neb/core/math/pose.hpp>
 #include <neb/core/core/shape/desc.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
@@ -20,7 +20,7 @@ namespace neb { namespace core { namespace core { namespace actor {
 	struct desc: gal::itf::shared
 	{
 		desc() {}
-		desc(neb::core::pose npose):
+		desc(neb::core::math::pose npose):
 			pose(npose)
 		{}
 
@@ -30,19 +30,20 @@ namespace neb { namespace core { namespace core { namespace actor {
 		{
 			ar & BOOST_SERIALIZATION_NVP(pose);
 		}
+		
 		virtual std::shared_ptr<neb::core::core::actor::base>		visit(
 				neb::core::core::scene::base * const scene
 				) const;
 
 
-		neb::core::pose		pose;
+		neb::core::math::pose		pose;
 
 	};
 	namespace rigidbody {
 
 		struct desc: neb::core::core::actor::desc {
 			desc() {}
-			desc(neb::core::pose npose):
+			desc(neb::core::math::pose npose):
 				neb::core::core::actor::desc(npose)
 			{}
 			template<class Archive> void		serialize(Archive & ar, unsigned int const & version)

@@ -4,7 +4,7 @@
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/game/spawn/util/parent.hpp>
 
-namespace neb { namespace game { namespace map {
+namespace neb { namespace core { namespace game { namespace map {
 
 	class base:
 		virtual public neb::core::core::scene::base,
@@ -19,7 +19,7 @@ namespace neb { namespace game { namespace map {
 
 
 
-}}}
+}}}}
 
 
 #endif

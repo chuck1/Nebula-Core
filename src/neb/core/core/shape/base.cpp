@@ -14,21 +14,21 @@
 
 typedef neb::core::core::shape::base THIS;
 
-neb::core::core::shape::base::base():
+THIS::base():
 	scale_(1.0)
 {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 }
-neb::core::core::shape::base::~base()
+THIS::~base()
 {
 	LOG(lg, neb::core::core::shape::sl, info) << __FUNCSIG__;
 }
 
-bool							neb::core::core::shape::base::hasScene()
+bool							THIS::hasScene()
 {
 	if(!hasParent()) return false;
 
-	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	auto shape = dynamic_cast<THIS*>(getParent());
 	
 	if(shape) return shape->hasScene();
 
@@ -39,9 +39,9 @@ bool							neb::core::core::shape::base::hasScene()
 	return actor->hasScene();
 }
 
-neb::core::core::scene::base*				neb::core::core::shape::base::getScene()
+neb::core::core::scene::base*				THIS::getScene()
 {
-	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	auto shape = dynamic_cast<THIS*>(getParent());
 	
 	if(shape) return shape->getScene();
 
@@ -53,26 +53,26 @@ neb::core::core::scene::base*				neb::core::core::shape::base::getScene()
 }
 
 
-neb::core::pose				neb::core::core::shape::base::getPoseGlobal() const {
+neb::core::math::pose				THIS::getPoseGlobal() const {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	
 	return getParent()->getPoseGlobal() * pose_;
 }
-neb::core::pose				neb::core::core::shape::base::getPose() const {
+neb::core::math::pose				THIS::getPose() const {
 	return pose_;
 }
-void					neb::core::core::shape::base::__callbackPose(neb::core::pose const & gpose) {
+void					THIS::__callbackPose(neb::core::math::pose const & gpose) {
 	auto pose = gpose * pose_;
 	neb::core::core::shape::util::parent::callbackPose(pose);
 	neb::core::core::light::util::parent::callbackPose(pose);
 }
-void					neb::core::core::shape::base::init(neb::core::core::shape::util::parent * const & p)
+void					THIS::init(neb::core::core::shape::util::parent * const & p)
 {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 	
 	setParent(p);
 	
-	//auto me = std::dynamic_pointer_cast<neb::core::core::shape::base>(shared_from_this());
+	//auto me = std::dynamic_pointer_cast<THIS>(shared_from_this());
 
 	//auto scene = get_parent()->get_scene();
 
@@ -93,14 +93,14 @@ void					neb::core::core::shape::base::init(neb::core::core::shape::util::parent
 	neb::core::core::light::util::parent::init(this);
 
 }
-void					neb::core::core::shape::base::release()
+void					THIS::release()
 {
 	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
 
 	neb::core::core::shape::util::parent::map_.clear();
 	neb::core::core::light::util::parent::map_.clear();
 }
-void						neb::core::core::shape::base::step(
+void						THIS::step(
 		gal::etc::timestep const & ts)
 {
 	neb::core::core::shape::util::parent::step(ts);

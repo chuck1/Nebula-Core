@@ -17,9 +17,9 @@ namespace neb { namespace core { namespace core { namespace actor {
 	}
 
 	class __base:
-		virtual public neb::itf::shared,
-		virtual public neb::serializable,
-		virtual public neb::type_traits<__base>::child_t
+		virtual public neb::core::itf::shared,
+		virtual public neb::core::itf::serializable,
+		virtual public neb::core::type_traits<__base>::child_t
 	{
 		public:
 			typedef type_traits<__base>::parent_t parent_t;

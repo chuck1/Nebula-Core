@@ -7,9 +7,9 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/core/color/Color.hh>
-#include <neb/core/math/Serialization/glm.hpp>
-#include <neb/core/pose.hpp>
+#include <neb/core/math/color/color.hpp>
+#include <neb/core/math/serialization/glm.hpp>
+#include <neb/core/math/pose.hpp>
 #include <neb/core/core/light/__base.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/light/util/decl.hpp>
@@ -18,7 +18,8 @@
 #include <neb/core/util/decl.hpp>
 
 namespace neb { namespace core { namespace core { namespace light {
-	class base: public neb::core::light::__base
+
+	class base: public neb::core::core::light::__base
 	{
 		public:
 			base();
@@ -28,15 +29,16 @@ namespace neb { namespace core { namespace core { namespace light {
 			//virtual void			release();
 			//virtual void			step(gal::etc::timestep const & ts);
 
-			neb::core::pose			getPose();
-			neb::core::pose			getPoseGlobal();
+			neb::core::math::pose			getPose();
+			neb::core::math::pose			getPoseGlobal();
 			glm::vec4			getPos();
 
 			bool				hasScene() const;
 			neb::core::core::scene::base*	getScene();
 		private:
 			template<class Archive> void		serializeTemplate(
-					Archive & ar, unsigned int const & version) {
+					Archive & ar, unsigned int const & version)
+			{
 				//ar & boost::serialization::make_nvp("i",i_);
 				ar & boost::serialization::make_nvp("flag",flag_);
 				//ar & boost::serialization::make_nvp("pos",pos_);
@@ -57,8 +59,8 @@ namespace neb { namespace core { namespace core { namespace light {
 
 
 			neb::core::core::light::util::flag			flag_;
-			
-			neb::core::pose						pose_;
+
+			neb::core::math::pose					pose_;
 
 	};
 }}}}

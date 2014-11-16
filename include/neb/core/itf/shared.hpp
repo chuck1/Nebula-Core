@@ -10,29 +10,28 @@
 #include <gal/itf/shared.hpp>
 #include <gal/etc/timestep.hpp>
 
-namespace neb {
-	namespace itf {
-		/** @brief %shared.
-		 *
-		 * Avoid multiple enabled_shared_from_this bases.
-		 * Provide common base for working with factory and map.
-		 * Supply type info.
-		 *
-		 */
-		class shared: virtual public gal::itf::shared {
-			public:
-				shared();
-				/** @brief destructor
-				 *
-				 */
-				virtual ~shared() {}
-				//virtual void					__init() = 0;
-				virtual void					release();
-				virtual void					step(gal::etc::timestep const & ts) = 0;
+namespace neb { namespace core { namespace itf {
+	/** @brief %shared.
+	 *
+	 * Avoid multiple enabled_shared_from_this bases.
+	 * Provide common base for working with factory and map.
+	 * Supply type info.
+	 *
+	 */
+	class shared: virtual public gal::itf::shared {
+		public:
+			shared();
+			/** @brief destructor
+			 *
+			 */
+			virtual ~shared() {}
+			//virtual void					__init() = 0;
+			virtual void					release();
+			virtual void					step(gal::etc::timestep const & ts) = 0;
 
-		};
-	}
-}
+	};
+
+}}}
 
 #endif
 

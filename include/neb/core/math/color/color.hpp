@@ -10,7 +10,7 @@
 
 #include <glm/glm.hpp>
 
-#include <neb/core/color/traits.hpp>
+#include <neb/core/math/color/traits.hpp>
 
 template<typename T> T clamp(T a, T b, T c) {
 	if(a > c) {
@@ -21,7 +21,7 @@ template<typename T> T clamp(T a, T b, T c) {
 	return a;
 }
 
-namespace neb { namespace core { namespace color {
+namespace neb { namespace core { namespace math { namespace color {
 
 
 	template<typename F, typename T> T	convert(F f);
@@ -334,7 +334,7 @@ namespace neb { namespace core { namespace color {
 
 	typedef fcolor color;
 
-}}}
+}}}}
 
 /*
    void			step(T time) {

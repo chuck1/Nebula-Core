@@ -7,7 +7,7 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
-namespace neb { namespace game { namespace ai {
+namespace neb { namespace core { namespace game { namespace ai {
 
 	class base:
 		virtual public neb::itf::shared
@@ -24,7 +24,7 @@ namespace neb { namespace game { namespace ai {
 	};
 
 
-}}}
+}}}}
 
 #endif
 

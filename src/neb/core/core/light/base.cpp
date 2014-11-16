@@ -10,15 +10,15 @@
 
 typedef neb::core::core::light::base THIS;
 
-neb::core::core::light::base::base()
+THIS::base()
 {
 }
-neb::core::pose			neb::core::core::light::base::getPose() {
+neb::core::math::pose		THIS::getPose() {
 	LOG(lg, neb::core::core::light::sl, debug) << __FUNCSIG__;
 	
 	return pose_;
 }
-neb::core::pose			neb::core::core::light::base::getPoseGlobal()
+neb::core::math::pose		THIS::getPoseGlobal()
 {
 	LOG(lg, neb::core::core::light::sl, debug) << __FUNCSIG__;
 	
@@ -26,10 +26,10 @@ neb::core::pose			neb::core::core::light::base::getPoseGlobal()
 	
 	return p;
 }
-glm::vec4			neb::core::core::light::base::getPos() {
+glm::vec4			THIS::getPos() {
 	return glm::vec4(pose_.pos_, 1.0);
 }
-bool				neb::core::core::light::base::hasScene() const
+bool				THIS::hasScene() const
 {
 	if(!hasParent()) return false;
 
@@ -39,7 +39,7 @@ bool				neb::core::core::light::base::hasScene() const
 	
 	return shape->hasScene();
 }
-neb::core::core::scene::base*	neb::core::core::light::base::getScene()
+neb::core::core::scene::base*	THIS::getScene()
 {
 	
 	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());

@@ -2,19 +2,16 @@
 #define NEBULA_GAME_SPAWN_BASE_HPP
 
 #include <neb/core/itf/shared.hpp>
-#include <neb/core/pose.hpp>
+#include <neb/core/math/pose.hpp>
+#include <neb/core/game/spawn/util/decl.hpp>
 
-namespace neb { namespace game { namespace spawn {
+namespace neb { namespace core { namespace game { namespace spawn {
 
-	namespace util {
-		class parent;
-	}
-
-	class base: virtual public neb::itf::shared
+	class base: virtual public nc::itf::shared
 	{
 
 		public:
-			typedef neb::game::spawn::util::parent parent_t;
+			typedef nc::game::spawn::util::parent parent_t;
 
 			neb::core::pose		pose_;
 
@@ -24,6 +21,6 @@ namespace neb { namespace game { namespace spawn {
 	};
 
 
-}}}
+}}}}
 
 #endif

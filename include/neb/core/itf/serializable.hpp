@@ -10,7 +10,8 @@
 
 namespace ba = boost::archive;
 
-namespace neb {
+namespace neb { namespace core { namespace itf {
+
 	class serializable
 	{
 		public:
@@ -26,6 +27,7 @@ namespace neb {
 
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 	};
-}
+
+}}}
 
 #endif

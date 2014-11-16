@@ -6,14 +6,14 @@
 
 #include <neb/core/game/ai/base.hpp>
 
-namespace neb { namespace game { namespace ai { namespace util {
+namespace neb { namespace core { namespace game { namespace ai { namespace util {
 
 
 	/** @brief @Parent
 	 * abstract class for parent of a shape
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::game::ai::base, parent>
+		virtual public neb::util::parent<neb::core::game::ai::base, parent>
 	{
 		public:
 			virtual ~parent() {}
@@ -21,7 +21,7 @@ namespace neb { namespace game { namespace ai { namespace util {
 
 
 
-}}}}
+}}}}}
 
 #endif
 

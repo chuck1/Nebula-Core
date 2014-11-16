@@ -9,61 +9,61 @@
 
 #include <neb/core/itf/shared.hpp>
 
-namespace neb {
-	namespace util {
-		template<typename CHILD, typename PARENT> class parent:
-			virtual public gal::stl::parent<CHILD>
-		{
-			public:
-				typedef gal::stl::parent<CHILD>						gal_parent;
-				typedef typename gal::stl::parent<CHILD>::map_type			map_type;
-				typedef typename map_type::iterator					iterator;
-				typedef typename map_type::pointer					pointer;
-				typedef std::shared_ptr<CHILD>	shared;
-				typedef std::weak_ptr<CHILD>	weak;
-				
-				// create
-				template<typename U> std::weak_ptr<U>				create()
+namespace neb { namespace core { namespace util {
+
+	template<typename CHILD, typename PARENT> class parent:
+		virtual public gal::stl::parent<CHILD>
+	{
+		public:
+			typedef gal::stl::parent<CHILD>						gal_parent;
+			typedef typename gal::stl::parent<CHILD>::map_type			map_type;
+			typedef typename map_type::iterator					iterator;
+			typedef typename map_type::pointer					pointer;
+			typedef std::shared_ptr<CHILD>	shared;
+			typedef std::weak_ptr<CHILD>	weak;
+
+			// create
+			template<typename U> std::weak_ptr<U>				create()
+			{
+				std::shared_ptr<U> u(new U, gal::stl::deleter<U>());
+
+				gal_parent::insert(u);
+
+				u->init(dynamic_cast<PARENT*>(this));
+
+				return u;
+			}
+			// insert
+			void								insert(shared t)
+			{
+				gal_parent::insert(t);
+				t->init(dynamic_cast<PARENT*>(this));
+			}
+
+
+
+
+			template<typename... A> void		init(A... a)
+			{
+				for(auto it = gal_parent::map_.begin(); it != gal_parent::map_.end(); ++it)
 				{
-					std::shared_ptr<U> u(new U, gal::stl::deleter<U>());
-					
-					gal_parent::insert(u);
-
-					u->init(dynamic_cast<PARENT*>(this));
-
-					return u;
+					auto p = it->second.ptr_;
+					assert(p);
+					p->init(a...);
 				}
-				// insert
-				void								insert(shared t)
-				{
-					gal_parent::insert(t);
-					t->init(dynamic_cast<PARENT*>(this));
-				}
+			}
 
 
+			void		step(gal::etc::timestep const & ts)
+			{
+				//std::cout << __PRETTY_FUNCTION__ << std::endl;
+				gal_parent::map_.for_each([&] (pointer p) {
+						p->step(ts);
+						});
+			}
 
+	};
 
-				template<typename... A> void		init(A... a)
-				{
-					for(auto it = gal_parent::map_.begin(); it != gal_parent::map_.end(); ++it)
-					{
-						auto p = it->second.ptr_;
-						assert(p);
-						p->init(a...);
-					}
-				}
-			
-			
-				void		step(gal::etc::timestep const & ts)
-				{
-					//std::cout << __PRETTY_FUNCTION__ << std::endl;
-					gal_parent::map_.for_each([&] (pointer p) {
-							p->step(ts);
-							});
-				}
-
-		};
-	}
-}
+}}}
 
 #endif
