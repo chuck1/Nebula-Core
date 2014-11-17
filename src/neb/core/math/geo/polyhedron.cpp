@@ -1,13 +1,16 @@
 #include <cstdlib>
 #include <cassert>
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/math/geo/polygon.hpp>
 #include <neb/core/math/geo/polyhedron.hh>
 
-math::geo::polyhedron::polyhedron(): polygons_(NULL), nbPolys_(0)
+typedef neb::core::math::geo::polyhedron THIS;
+
+THIS::polyhedron(): polygons_(NULL), nbPolys_(0)
 {
 }
-unsigned int		math::geo::polyhedron::getNbTriangles()
+unsigned int			THIS::getNbTriangles()
 {
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
 	assert(polygons_);
@@ -21,7 +24,7 @@ unsigned int		math::geo::polyhedron::getNbTriangles()
 
 	return n;
 }
-math::geo::triangle*		math::geo::polyhedron::getTriangles()
+nc::math::geo::triangle*	THIS::getTriangles()
 {
 	
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;

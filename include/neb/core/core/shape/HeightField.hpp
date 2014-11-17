@@ -1,5 +1,8 @@
-#ifndef NEB_CORE_CORE_SHAPE_HEIGHT_FIELD_HH
-#define NEB_CORE_CORE_SHAPE_HEIGHT_FIELD_HH
+#ifndef NEB_CORE_CORE_SHAPE_HEIGHT_FIELD_HPP
+#define NEB_CORE_CORE_SHAPE_HEIGHT_FIELD_HPP
+
+#include <neb/core/core/shape/base.hpp>
+#include <neb/core/core/shape/HeightField/desc.hpp>
 
 namespace neb { namespace core { namespace core { namespace shape { namespace HeightField {
 
@@ -18,9 +21,8 @@ namespace neb { namespace core { namespace core { namespace shape { namespace He
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &) = 0;
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const = 0;
 
-
-			physx::PxReal				min_y_;
-			physx::PxReal				max_y_;
+			float				min_y_;
+			float				max_y_;
 
 			neb::core::core::shape::HeightField::desc	desc_;
 	};

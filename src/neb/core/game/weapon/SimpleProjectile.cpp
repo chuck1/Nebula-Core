@@ -22,15 +22,17 @@
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/game/weapon/SimpleProjectile.hpp>
 
-neb::game::weapon::SimpleProjectile::SimpleProjectile() {
+typedef neb::core::game::weapon::SimpleProjectile THIS;
+
+THIS::SimpleProjectile() {
 }
-void			neb::game::weapon::SimpleProjectile::connect(
+void			THIS::connect(
 		std::shared_ptr<neb::core::input::source> src)
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
 	connectKeyFun(src, 20);
 }
-int			neb::game::weapon::SimpleProjectile::key_fun(
+int			THIS::key_fun(
 		std::shared_ptr<neb::core::input::source> src,
 		int key,
 		int,
@@ -52,7 +54,7 @@ int			neb::game::weapon::SimpleProjectile::key_fun(
 
 	return 0;
 }
-void			neb::game::weapon::SimpleProjectile::fire()
+void			THIS::fire()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
 	
@@ -78,10 +80,6 @@ void			neb::game::weapon::SimpleProjectile::fire()
 	proj->simulation_.word1 = neb::phx::filter::filter::RIGID_AGAINST;
 	proj->simulation_.word2 = neb::phx::filter::filter::type::PROJECTILE;
 	proj->simulation_.word3 = neb::phx::filter::filter::PROJECTILE_AGAINST;
-
-
-
-
 
 
 	// initialize position and velocity

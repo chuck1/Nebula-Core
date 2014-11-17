@@ -3,7 +3,8 @@
 #include <neb/core/math/geo/polyhedron.hh>
 
 //math::geo::thin_cyl::cylinder(float 
-math::geo::sphere::sphere(float r, int slices, int stacks) {
+neb::core::math::geo::sphere::sphere(float r, int slices, int stacks)
+{
 /*	
 	printf( "tris:  %i\n"
 		"quads: %i\n",nt_,nq_);

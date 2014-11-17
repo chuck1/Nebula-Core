@@ -1,18 +1,20 @@
 #include <neb/core/game/map/base.hpp>
 
-neb::game::map::base::base()
+typedef neb::core::game::map::base THIS;
+
+THIS::base()
 {}
-void		neb::game::map::base::init(parent_t * const & p)
+void		THIS::init(parent_t * const & p)
 {
 
 	/** @todo move to createSpawn() */
-	auto spawn(std::make_shared<neb::game::spawn::base>());
+	auto spawn(std::make_shared<nc::game::spawn::base>());
 
-	neb::game::spawn::util::parent::insert(spawn);
+	nc::game::spawn::util::parent::insert(spawn);
 
 }
-void		neb::game::map::base::release()
+void		THIS::release()
 {
-	neb::game::spawn::util::parent::clear();
+	nc::game::spawn::util::parent::clear();
 }
 

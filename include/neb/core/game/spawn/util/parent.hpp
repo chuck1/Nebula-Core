@@ -11,13 +11,11 @@
 #include <neb/core/game/spawn/base.hpp>
 
 namespace neb { namespace core { namespace game { namespace spawn { namespace util {
-
-
 	/** @brief @Parent
 	 * abstract class for parent of an @Actor
 	 */
 	class parent:
-		virtual public neb::util::parent<neb::core::game::spawn::base, parent>
+		virtual public nc::util::parent<nc::game::spawn::base, parent>
 	{
 		public:
 			parent() {}
@@ -25,9 +23,6 @@ namespace neb { namespace core { namespace game { namespace spawn { namespace ut
 
 			virtual void						init() {}
 	};
-
-
-
 }}}}}
 
 #endif

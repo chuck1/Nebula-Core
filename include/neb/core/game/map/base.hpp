@@ -7,8 +7,8 @@
 namespace neb { namespace core { namespace game { namespace map {
 
 	class base:
-		virtual public neb::core::core::scene::base,
-		virtual public neb::game::spawn::util::parent
+		virtual public nc::core::scene::base,
+		virtual public nc::game::spawn::util::parent
 	{
 		public:
 			base();

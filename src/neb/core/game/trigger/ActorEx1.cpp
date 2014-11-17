@@ -8,34 +8,36 @@
 #include <neb/core/game/trigger/util/parent.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
-neb::game::trigger::ActorEx1::ActorEx1(std::shared_ptr<neb::game::trigger::util::parent> parent):
-	gal::stl::child<neb::game::trigger::util::parent>(parent.get())
+typedef neb::core::game::trigger::ActorEx1 THIS;
+
+THIS::ActorEx1(std::shared_ptr<nc::game::trigger::util::parent> parent):
+	gal::stl::child<nc::game::trigger::util::parent>(parent.get())
 {
 }
-void				neb::game::trigger::ActorEx1::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
+void				THIS::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
 	
-	auto self(dynamic_pointer_cast<neb::game::trigger::ActorEx1>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 	
 	typedef boost::signals2::signal<void()> signal_type;
 
 	actor->sig_release_.connect(
 			signal_type::slot_type(
-				&neb::game::trigger::ActorEx1::doSomething,
+				&THIS::doSomething,
 				self
 				).track_foreign(self)
 			);
 }
-void				neb::game::trigger::ActorEx1::doSomething()
+void				THIS::doSomething()
 {
 	
-	auto game = neb::is<parent_t, neb::game::game::base>(getParent());
+	auto game = neb::is<parent_t, nc::game::game::base>(getParent());
 	auto scene(game->scene_.lock());
 	
 	if(!scene) return;
 
 	auto scene_parent = scene->getParent();
 	
-	scene_parent->neb::core::core::scene::util::parent::erase(scene->_M_index);
+	scene_parent->nc::core::scene::util::parent::erase(scene->_M_index);
 	
 	// message
 	auto app = neb::core::app::__base::global();

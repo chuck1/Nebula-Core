@@ -1,19 +1,22 @@
+#include <neb/core/util/decl.hpp>
 #include <neb/core/math/geo/polygon.hpp>
 
-math::geo::polygon::polygon(): triangles_(NULL), nbTriangles_(0)
+typedef neb::core::math::geo::polygon THIS;
+
+THIS::polygon(): triangles_(NULL), nbTriangles_(0)
 {
 }
-math::geo::triangle*	math::geo::polygon::getTriangles()
+nc::math::geo::triangle*	THIS::getTriangles()
 {
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
 	return triangles_;
 }
-unsigned int		math::geo::polygon::getNbTriangles()
+unsigned int		THIS::getNbTriangles()
 {
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;
 	return nbTriangles_;
 }
-void			math::geo::polygon::setTriangles(math::geo::triangle* triangles, unsigned int nbTriangles)
+void			THIS::setTriangles(nc::math::geo::triangle* triangles, unsigned int nbTriangles)
 {
 	triangles_ = triangles;
 	nbTriangles_ = nbTriangles;

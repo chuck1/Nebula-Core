@@ -37,28 +37,30 @@ void				THIS::__init()
 }
 void				THIS::__release()
 {
-	neb::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
+	nc::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
 }
 void				THIS::__step(gal::etc::timestep const & ts)
 {
-	neb::core::core::scene::util::parent::step(ts);
-	neb::game::game::util::parent::step(ts);
+	nc::core::scene::util::parent::step(ts);
+	nc::game::game::util::parent::step(ts);
 }
-neb::core::pose			THIS::getPose() const {
-	return neb::core::pose();
+neb::core::math::pose				THIS::getPose() const
+{
+	return neb::core::math::pose();
 }
-neb::core::pose			THIS::getPoseGlobal() const {
-	return neb::core::pose();
+neb::core::math::pose				THIS::getPoseGlobal() const
+{
+	return neb::core::math::pose();
 }
-std::shared_ptr<neb::game::game::base>		THIS::createGame(
-		neb::game::game::desc const & desc
+std::shared_ptr<nc::game::game::base>		THIS::createGame(
+		nc::game::game::desc const & desc
 		)
 {
-	typedef neb::game::game::base T;
+	typedef nc::game::game::base T;
 	
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
-	neb::game::game::util::parent::insert(g);
+	nc::game::game::util::parent::insert(g);
 	
 	g->init(this);
 	

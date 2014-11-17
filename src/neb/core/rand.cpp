@@ -6,7 +6,7 @@
 
 #include <neb/core/util/config.hpp>
 #include <neb/core/app/__base.hpp>
-#include <neb/core/rand.hpp>
+#include <neb/core/math/rand.hpp>
 
 int random_index = 0;
 unsigned int* randoms = 0;
