@@ -12,12 +12,12 @@ namespace neb { namespace core { namespace timer { namespace actor {
 	/** @brief
 	 *
 	 */
-	class base:
-		public std::enable_shared_from_this<base>
+	class Base:
+		public std::enable_shared_from_this<Base>
 	{
 		public:
-			base(std::shared_ptr<neb::core::core::actor::base> actor, double);
-			virtual ~base();
+			Base(std::shared_ptr<neb::core::core::actor::base> actor, double);
+			virtual ~Base();
 			/** @brief
 			 * what to do when timer expires
 			 */
