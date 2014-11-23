@@ -31,9 +31,12 @@ namespace neb { namespace core { namespace game { namespace game {
 				boost::archive::xml_oarchive & ar,
 				unsigned int const & version) const {}
 
-		virtual std::shared_ptr<neb::game::game::base>		visit(
-				neb::app::__core * const
-				) const { return std::shared_ptr<neb::game::game::base>(); }
+		virtual std::shared_ptr<neb::core::game::game::base>		visit(
+				neb::core::app::__core * const
+				) const
+		{
+			return std::shared_ptr<neb::core::game::game::base>();
+		}
 
 		BOOST_SERIALIZATION_SPLIT_MEMBER();
 

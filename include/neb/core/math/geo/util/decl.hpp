@@ -4,11 +4,11 @@
 namespace neb { namespace core { namespace math {
 	namespace geo
 	{
-		namespace HeightField
-		{
-			class Base;
-			class desc;
-		}
+	}
+	namespace HeightField
+	{
+		class Base;
+		class desc;
 	}
 }}}
 

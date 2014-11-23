@@ -29,7 +29,7 @@ void		neb::core::timer::actor::Base::activate()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
-	timer_.async_wait(boost::bind(&neb::Timer::actor::base::doSomething, shared_from_this()));
+	timer_.async_wait(boost::bind(&neb::core::timer::actor::Base::doSomething, shared_from_this()));
 }
 
 

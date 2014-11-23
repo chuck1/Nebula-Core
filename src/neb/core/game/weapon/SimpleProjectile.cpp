@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <neb/core/timer/Actor/Release.hpp>
+#include <neb/core/timer/actor/Release.hpp>
 
 //#include <neb/gfx/window/Base.hh>
 
@@ -129,7 +129,7 @@ void			THIS::fire()
 
 	// release timer
 	
-	auto t = sp::make_shared<neb::Timer::actor::Release>(proj, scene->last_ + 5.0);
+	auto t = sp::make_shared<nc::timer::actor::Release>(proj, scene->last_ + 5.0);
 
 	LOG(lg, neb::core::sl, debug) << t.use_count();
 	

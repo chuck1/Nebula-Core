@@ -1,16 +1,16 @@
 #include <iomanip>
 #include <iostream>
-#include <neb/core/math/rand.hpp>
-#include <neb/core/math/HeightField.hpp>
 #include <limits>
 #include <type_traits>
 #include <cmath>
 #include <cassert>
 
-typedef neb::core::math::HeightField THIS;
+#include <neb/core/math/rand.hpp>
+#include <neb/core/math/HeightField.hpp>
 
+typedef neb::core::math::HeightField::Base THIS;
 
-THIS::HeightField(unsigned int r, unsigned int c)
+THIS::Base(unsigned int r, unsigned int c)
 {
 	_M_r = r;
 	_M_c = c;
