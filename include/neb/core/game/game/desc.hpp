@@ -8,39 +8,40 @@ namespace neb { namespace core { namespace game { namespace game {
 	class desc:
 		public gal::itf::shared
 	{
-		desc() {}
-		virtual ~desc() {}
+		public:
+			desc() {}
+			virtual ~desc() {}
 
-		virtual void				release() {}
+			virtual void				release() {}
 
-		template<class Archive> void		__load(Archive & ar, unsigned int const & version)
-		{
-			ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
-		}
+			template<class Archive> void		__load(Archive & ar, unsigned int const & version)
+			{
+				ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
+			}
 
-		template<class Archive> void		__save(Archive & ar, unsigned int const & version) const
-		{
-			ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
-		}
+			template<class Archive> void		__save(Archive & ar, unsigned int const & version) const
+			{
+				ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
+			}
 
-		virtual void				load(
-				boost::archive::xml_iarchive & ar,
-				unsigned int const & version) {}
+			virtual void				load(
+					boost::archive::xml_iarchive & ar,
+					unsigned int const & version) {}
 
-		virtual void				save(
-				boost::archive::xml_oarchive & ar,
-				unsigned int const & version) const {}
+			virtual void				save(
+					boost::archive::xml_oarchive & ar,
+					unsigned int const & version) const {}
 
-		virtual std::shared_ptr<neb::core::game::game::base>		visit(
-				neb::core::app::__core * const
-				) const
-		{
-			return std::shared_ptr<neb::core::game::game::base>();
-		}
+			virtual std::shared_ptr<neb::core::game::game::base>		visit(
+					neb::core::app::__core * const
+					) const
+			{
+				return std::shared_ptr<neb::core::game::game::base>();
+			}
 
-		BOOST_SERIALIZATION_SPLIT_MEMBER();
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
 
-		std::string		sceneDllFile;
+			std::string		sceneDllFile;
 
 	};
 
