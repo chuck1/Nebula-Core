@@ -38,8 +38,8 @@ void		neb::core::core::actor::base::init(parent_t * const & p)
 {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
-	neb::core::core::actor::util::parent::init(this);
-	neb::core::core::shape::util::parent::init(this);
+	neb::core::core::actor::util::parent::initChildren(this);
+	neb::core::core::shape::util::parent::initChildren(this);
 }
 void		neb::core::core::actor::base::release() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;

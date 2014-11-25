@@ -89,8 +89,8 @@ void					THIS::init(neb::core::core::shape::util::parent * const & p)
 	}
 	*/
 
-	neb::core::core::shape::util::parent::init(this);
-	neb::core::core::light::util::parent::init(this);
+	neb::core::core::shape::util::parent::initChildren(this);
+	neb::core::core::light::util::parent::initChildren(this);
 
 }
 void					THIS::release()

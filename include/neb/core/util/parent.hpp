@@ -43,7 +43,7 @@ namespace neb { namespace core { namespace util {
 
 
 
-			template<typename... A> void		init(A... a)
+			template<typename... A> void		initChildren(A... a)
 			{
 				for(auto it = gal_parent::map_.begin(); it != gal_parent::map_.end(); ++it)
 				{

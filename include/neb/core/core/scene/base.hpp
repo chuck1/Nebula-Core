@@ -42,8 +42,9 @@ namespace neb { namespace core { namespace core {
 
 				base();
 				virtual ~base();
-				virtual void			init(parent_t * const & p);
-				virtual void			release();
+				virtual void			init(parent_t * const & p) = 0;
+				void				__init(parent_t * const & p);
+				void				__release();
 				/** @name Main Loop @{ */
 				virtual void			step(gal::etc::timestep const & ts);
 				/** @} */
