@@ -41,7 +41,6 @@ bool				THIS::hasScene() const
 }
 neb::core::core::scene::base*	THIS::getScene()
 {
-	
 	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
 	
 	assert(shape);
