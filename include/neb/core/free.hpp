@@ -1,6 +1,8 @@
 #ifndef NEB_CORE_FREE_HPP
 #define NEB_CORE_FREE_HPP
 
+#include <boost/archive/polymorphic_xml_iarchive.hpp>
+
 #include <gal/stl/wrapper.hpp>
 
 #include <neb/core/util/config.hpp>
