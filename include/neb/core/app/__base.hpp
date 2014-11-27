@@ -8,28 +8,40 @@
 #include <gal/console/console.hpp>
 
 #include <neb/core/app/util/Flag.hh>
-
+#include <neb/core/core/scene/util/decl.hpp>
 
 namespace neb { namespace core { namespace app {
 
 	/** @brief %base */
-	class __base {
+	class __base
+	{
 		public:
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
+			/***/
 			virtual ~__base();
 		protected:
+			/***/
 			virtual void						init();
 		public:
+			/***/
 			static std::shared_ptr<neb::core::app::__base>		global();
+			/***/
 			static bool						is_valid();
-		public:
+			/***/
+			virtual std::weak_ptr<neb::core::core::scene::base>	createScene() = 0;
+			/***/
+			virtual std::weak_ptr<neb::core::core::scene::base>	createSceneDLL(std::string) = 0;
+			/***/
 			boost::asio::io_service					ios_;
+			/***/
 			neb::core::app::util::flag				flag_;
+			/***/
 			gal::etc::timestep					ts_;
+			/***/
 			std::shared_ptr<console_type>				console_;
-
+			/***/
 			static std::shared_ptr<neb::core::app::__base>		g_app_;
 	};
 
