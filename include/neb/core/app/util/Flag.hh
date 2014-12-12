@@ -12,6 +12,7 @@ namespace neb {
 					((INIT___BASE)(1 << 1))
 					((INIT_GLEW)(1 << 2))
 					((INIT_GLFW)(1 << 3))
+					((FIRST_CONTEXT)(1 << 4))
 					)
 			}
 		}
