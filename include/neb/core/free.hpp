@@ -5,15 +5,15 @@
 
 #include <gal/stl/wrapper.hpp>
 
+#include <neb/core/util/log.hpp>
 #include <neb/core/util/config.hpp>
 
 template<typename B, typename D> void	makeDefaultFunc()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
-
 
 	std::function< std::shared_ptr<B>() > f(
 			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
@@ -23,7 +23,7 @@ template<typename B, typename D> void	makeDefaultFunc()
 }
 template<typename B, typename D> void	makeDLLFunc()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -49,10 +49,10 @@ template<typename B, typename D> void	makeDLLFunc()
 }
 template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_name, std::string object_name)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
-	std::cout << "B " << typeid(B).name() << " " << typeid(B).hash_code() << std::endl;
-	std::cout << "D " << typeid(D).name() << " " << typeid(D).hash_code() << std::endl;
+	LOG(lg, neb::core::sl, debug) << "B " << typeid(B).name() << " " << typeid(B).hash_code();
+	LOG(lg, neb::core::sl, debug) << "D " << typeid(D).name() << " " << typeid(D).hash_code();
 
 	typedef gal::dll::helper<D>	H;
 	
@@ -68,6 +68,8 @@ template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_
 }
 template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
 {
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+
 	std::ifstream ifs;
 	ifs.open(filename);
 	if(!ifs.is_open())
