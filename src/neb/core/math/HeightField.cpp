@@ -5,7 +5,6 @@
 #include <cmath>
 #include <cassert>
 
-#include <neb/core/math/rand.hpp>
 #include <neb/core/math/HeightField.hpp>
 
 typedef neb::core::math::HeightField::Base THIS;
@@ -28,7 +27,7 @@ void	THIS::createRandom()
 
 	for(unsigned int j = 0; j < _M_c; j++) {
 		for(unsigned int i = 0; i < _M_r; i++) {
-			_M_z[at(i,j)] = (float)myrand();
+			_M_z[at(i,j)] = (float)(rand() % 10000);
 		}
 	}
 
