@@ -11,8 +11,8 @@ namespace neb { namespace core { namespace core { namespace scene { namespace ut
 	/** @brief parent
 	*/
 	class parent:
-		virtual public nc::util::parent<nc::core::scene::base, parent>,
-		virtual public nc::itf::Pose
+		virtual public neb::core::util::parent<nc::core::scene::base, parent>,
+		virtual public neb::core::itf::Pose
 	{
 		public:
 	};

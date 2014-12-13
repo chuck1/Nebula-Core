@@ -40,7 +40,7 @@ void				THIS::doSomething()
 	scene_parent->nc::core::scene::util::parent::erase(scene->_M_index);
 	
 	// message
-	auto app = neb::core::app::__base::global();
+	auto app = neb::core::app::base::global();
 	if(app->console_) app->console_->operator<<("you won!");
 
 	//scene->getParent()->erase(scene->i_);

@@ -9,24 +9,39 @@
 
 #include <neb/core/app/util/Flag.hh>
 #include <neb/core/core/scene/util/decl.hpp>
+#include <neb/core/core/scene/util/parent.hpp>
+#include <neb/core/game/game/util/parent.hpp>
+#include <neb/core/game/game/util/decl.hpp>
 
 namespace neb { namespace core { namespace app {
-
 	/** @brief %base */
-	class __base
+	class base:
+		virtual public neb::core::core::scene::util::parent,
+		virtual public neb::core::game::game::util::parent
 	{
 		public:
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
 			/***/
-			virtual ~__base();
-		protected:
+			virtual ~base();
 			/***/
-			virtual void						init();
+			neb::core::math::pose					getPose() const;
+			/***/
+			neb::core::math::pose					getPoseGlobal() const;
+			/***/
+			std::shared_ptr<neb::core::game::game::base>		createGame(
+					neb::core::game::game::desc const &
+					);
+		protected:
+			//virtual void						init();
+		protected:
+			void							__init();
+			void							__release();
+			void							__step(gal::etc::timestep const &);
 		public:
 			/***/
-			static std::shared_ptr<neb::core::app::__base>		global();
+			static std::shared_ptr<neb::core::app::base>		global();
 			/***/
 			static bool						is_valid();
 			/***/
@@ -42,7 +57,7 @@ namespace neb { namespace core { namespace app {
 			/***/
 			std::shared_ptr<console_type>				console_;
 			/***/
-			static std::shared_ptr<neb::core::app::__base>		g_app_;
+			static std::shared_ptr<neb::core::app::base>		g_app_;
 	};
 
 }}}

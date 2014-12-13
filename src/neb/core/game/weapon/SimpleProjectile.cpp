@@ -58,7 +58,7 @@ void			THIS::fire()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
 	
-	auto app(neb::core::app::__base::global());
+	auto app(neb::core::app::base::global());
 
 	if((app->ts_.time - last_) < cooldown_) return;
 	last_ = app->ts_.time;
