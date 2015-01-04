@@ -15,7 +15,7 @@ namespace neb { namespace core { namespace core {
 
 		namespace cuboid
 		{
-			struct desc;
+			struct Desc;
 		}
 		namespace HeightField
 		{

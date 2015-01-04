@@ -110,7 +110,7 @@ namespace neb { namespace core { namespace core {
 				 */
 				wbase			createActorRigidDynamicCuboid(
 						neb::core::core::actor::rigidbody::desc const &,
-						neb::core::core::shape::cuboid::desc const &);
+						neb::core::core::shape::cuboid::Desc const &);
 				/** @brief create rigidstatic
 				 *
 				 * @note typeof returned actor will be

@@ -127,7 +127,7 @@ std::weak_ptr<neb::core::core::shape::base>		neb::core::core::actor::base::creat
 		neb::core::math::pose const & pose,
 		double size)
 {
-	neb::core::core::shape::cuboid::desc desc(
+	neb::core::core::shape::cuboid::Desc desc(
 			pose,
 			glm::vec3(size)
 			);

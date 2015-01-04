@@ -119,7 +119,7 @@ void			THIS::fire()
 
 	// shape
 	auto shape = proj->createShapeCuboid(
-			neb::core::core::shape::cuboid::desc(glm::vec3(size_))
+			neb::core::core::shape::cuboid::Desc(glm::vec3(size_))
 			);
 
 	proj->init(scene);

@@ -91,7 +91,7 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCuboid(
 	
 	// create shape
 	
-	auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::desc(size));
+	auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::Desc(size));
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -101,7 +101,7 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCuboid(
 }
 weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidDynamicCuboid(
 		neb::core::core::actor::rigidbody::desc const &		actor_desc,
-		neb::core::core::shape::cuboid::desc const &		shape_desc)
+		neb::core::core::shape::cuboid::Desc const &		shape_desc)
 {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
