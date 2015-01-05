@@ -1,6 +1,8 @@
 #ifndef NEB_CORE_CORE_SHAPE_CUBOID_DESC_HPP
 #define NEB_CORE_CORE_SHAPE_CUBOID_DESC_HPP
 
+#include <neb/core/math/pose.hpp>
+
 namespace neb { namespace core { namespace core { namespace shape { namespace cuboid {
 
 	struct Desc {
@@ -12,6 +14,10 @@ namespace neb { namespace core { namespace core { namespace shape { namespace cu
 		{}
 		Desc(glm::vec3 scale):
 			scale_(scale),
+			density_(1.0)
+		{}
+		Desc():
+			scale_(1.0),
 			density_(1.0)
 		{}
 
