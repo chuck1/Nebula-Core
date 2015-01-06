@@ -80,11 +80,6 @@ namespace neb { namespace core { namespace core {
 				/** @brief
 				 *
 				 */
-				virtual wbase				createActorRigidDynamic(
-						neb::core::core::actor::rigiddynamic::desc const * const &) = 0;
-				/** @brief
-				 *
-				 */
 				virtual wbase				createActorLightPoint(
 						glm::vec3 p);
 				/** @brief
@@ -105,6 +100,15 @@ namespace neb { namespace core { namespace core {
 				wbase			createActorRigidStaticCube(
 						neb::core::math::pose pose,
 						double size);
+				/** @brief
+				 *
+				 */
+				virtual wbase		createActorRigidDynamic() = 0;
+				/** @brief
+				 *
+				 */
+				virtual wbase		createActorRigidDynamic(
+						neb::core::core::actor::rigiddynamic::desc const * const &) = 0;
 				/** @brief
 				 *
 				 */

@@ -25,7 +25,9 @@ namespace neb { namespace core { namespace core {
 		namespace rigidbody {
 			struct desc;
 		}
-		namespace rigiddynamic {
+		namespace rigiddynamic
+		{
+			class base;
 			struct desc;
 		}
 
