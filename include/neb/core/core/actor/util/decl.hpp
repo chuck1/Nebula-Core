@@ -22,6 +22,10 @@ namespace neb { namespace core { namespace core {
 			};
 		};
 
+		namespace rigidactor
+		{
+			class base;
+		}
 		namespace rigidbody {
 			struct desc;
 		}
