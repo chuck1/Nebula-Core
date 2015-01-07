@@ -28,7 +28,12 @@ namespace neb { namespace core { namespace core {
 		namespace rigiddynamic
 		{
 			class base;
-			struct desc;
+			class desc;
+		}
+		namespace rigidstatic
+		{
+			class base;
+			class desc;
 		}
 
 		class __base;
