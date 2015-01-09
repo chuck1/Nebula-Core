@@ -32,7 +32,7 @@ namespace neb { namespace core { namespace core {
 		namespace rigiddynamic
 		{
 			class base;
-			class desc;
+			class Desc;
 		}
 		namespace rigidstatic
 		{

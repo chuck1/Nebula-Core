@@ -15,10 +15,10 @@
 
 namespace neb { namespace core { namespace core { namespace actor { namespace rigiddynamic {
 
-	struct desc: neb::core::core::actor::rigidbody::desc
+	struct Desc: neb::core::core::actor::rigidbody::desc
 	{
-		desc();
-		desc(neb::core::math::pose npose);
+		Desc();
+		Desc(neb::core::math::pose npose);
 
 		template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 		{

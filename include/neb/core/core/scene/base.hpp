@@ -108,7 +108,7 @@ namespace neb { namespace core { namespace core {
 				 *
 				 */
 				virtual wbase		createActorRigidDynamic(
-						neb::core::core::actor::rigiddynamic::desc const * const &) = 0;
+						neb::core::core::actor::rigiddynamic::Desc const * const &) = 0;
 				/** @brief
 				 *
 				 */

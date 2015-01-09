@@ -2,17 +2,17 @@
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/core/actor/rigiddynamic/desc.hpp>
 
+typedef neb::core::core::actor::rigiddynamic::Desc THIS;
 
-
-neb::core::core::actor::rigiddynamic::desc::desc()
+THIS::Desc()
 {
 }
-neb::core::core::actor::rigiddynamic::desc::desc(neb::core::math::pose npose):
+THIS::Desc(neb::core::math::pose npose):
 	neb::core::core::actor::rigidbody::desc(npose)
 {
 }
 
-std::shared_ptr<neb::core::core::actor::base>		neb::core::core::actor::rigiddynamic::desc::visit(
+std::shared_ptr<neb::core::core::actor::base>		THIS::Desc::visit(
 		neb::core::core::scene::base * const scene
 		) const
 {
