@@ -6,7 +6,7 @@
 namespace neb { namespace core { namespace core { namespace actor { namespace rigiddynamic {
 
 	class base:
-		public neb::core::core::actor::rigidactor::base
+		virtual public neb::core::core::actor::rigidactor::base
 	{
 
 	};
