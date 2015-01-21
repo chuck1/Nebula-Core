@@ -57,6 +57,8 @@ namespace neb { namespace core { namespace app {
 			/***/
 			std::shared_ptr<console_type>				console_;
 			/***/
+			std::vector< std::string >				_M_preloop_scripts_python;
+			/***/
 			static std::shared_ptr<neb::core::app::base>		g_app_;
 	};
 

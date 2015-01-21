@@ -61,6 +61,13 @@ namespace neb { namespace core { namespace util {
 						p->step(ts);
 						});
 			}
+			void		preloop()
+			{
+				auto l = [] (pointer p) {
+					p->preloop();
+				};
+				gal_parent::map_.for_each(l);
+			}
 
 	};
 
