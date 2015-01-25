@@ -7,6 +7,7 @@
 
 #include <gal/console/console.hpp>
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/app/util/Flag.hh>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
@@ -44,6 +45,8 @@ namespace neb { namespace core { namespace app {
 			static std::shared_ptr<neb::core::app::base>		global();
 			/***/
 			static bool						is_valid();
+			/***/
+			virtual std::weak_ptr<neb::core::window::base>		createWindow() = 0;
 			/***/
 			virtual std::weak_ptr<neb::core::core::scene::base>	createScene() = 0;
 			/***/

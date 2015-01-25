@@ -17,6 +17,19 @@ namespace neb
 		}
 	}
 
+	namespace gui
+	{
+		namespace layout
+		{
+			class Base;
+		}
+	}
+
+	namespace window
+	{
+		class Base;
+	}
+
 	/** @brief %net */
 	/*namespace net {
 	  class server;
