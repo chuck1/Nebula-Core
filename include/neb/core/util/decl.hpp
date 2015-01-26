@@ -15,28 +15,23 @@ namespace neb
 		{
 			class base;
 		}
-	}
+		namespace gui
+		{
+			namespace layout
+			{
+				class Base;
+			}
+		}
 
-	namespace gui
-	{
-		namespace layout
+		namespace window
+		{
+			class Base;
+		}
+		namespace drawable
 		{
 			class Base;
 		}
 	}
-
-	namespace window
-	{
-		class Base;
-	}
-
-	/** @brief %net */
-	/*namespace net {
-	  class server;
-	  class client;
-	  class communicating;
-	  }*/
-
 }
 
 namespace nc = neb::core;

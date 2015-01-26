@@ -46,7 +46,7 @@ namespace neb { namespace core { namespace app {
 			/***/
 			static bool						is_valid();
 			/***/
-			virtual std::weak_ptr<neb::core::window::base>		createWindow() = 0;
+			virtual std::weak_ptr<neb::core::window::Base>		createWindow() = 0;
 			/***/
 			virtual std::weak_ptr<neb::core::core::scene::base>	createScene() = 0;
 			/***/
