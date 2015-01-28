@@ -1,6 +1,7 @@
 #ifndef NEB_CORE_CONTEXT_FBOM_HPP
 #define NEB_CORE_CONTEXT_FBOM_HPP
 
+#include <neb/core/itf/shared.hpp>
 #include <neb/core/context/Base.hpp>
 #include <neb/core/environ/util/decl.hpp>
 

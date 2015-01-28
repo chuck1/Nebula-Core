@@ -1,16 +1,13 @@
 #ifndef NEB_CORE_ENVIRON_SHADOW_DIRECTIONAL_HPP
 #define NEB_CORE_ENVIRON_SHADOW_DIRECTIONAL_HPP
 
-#include <neb/core/environ/Base.hpp>
-#include <neb/core/itf/shared.hpp>
+#include <neb/core/environ/shadow/Base.hpp>
 
 namespace neb { namespace core { namespace environ { namespace shadow {
 	class Directional:
-		virtual public neb::core::environ::Base
+		virtual public neb::core::environ::shadow::Base
 	{
 		public:
-			virtual void		setLight(std::shared_ptr<neb::core::itf::shared> light) = 0;
-			virtual void		setSceneEnviron(std::shared_ptr<neb::core::environ::Base> environ) = 0;
 	};
 }}}}
 

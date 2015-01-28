@@ -1,8 +1,11 @@
 #ifndef NEB_CORE_FREE_HPP
 #define NEB_CORE_FREE_HPP
 
+#include <fstream>
+
 #include <boost/archive/polymorphic_xml_iarchive.hpp>
 
+#include <gal/stl/deleter.hpp>
 #include <gal/stl/wrapper.hpp>
 
 #include <neb/core/util/log.hpp>

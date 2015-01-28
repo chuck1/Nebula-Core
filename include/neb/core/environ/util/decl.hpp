@@ -3,6 +3,7 @@
 
 namespace neb { namespace core { namespace environ {
 	class Base;
+	class SceneDefault;
 	namespace shadow
 	{
 		class Point;

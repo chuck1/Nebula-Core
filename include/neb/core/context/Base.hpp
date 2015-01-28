@@ -7,7 +7,8 @@ namespace neb { namespace core { namespace context {
 	class Base
 	{
 		public:
-			virtual void		setDrawable(std::shared_ptr<neb::core::drawable::Base>);
+			virtual void		render() = 0;
+			virtual void		setDrawable(std::shared_ptr<neb::core::drawable::Base>) = 0;
 	};
 }}}
 
