@@ -37,6 +37,7 @@ namespace neb { namespace core { namespace window {
 			virtual void		step(gal::etc::timestep const & ts) = 0;
 			/** @} */
 			virtual void		resize() = 0;
+			virtual void		makeCurrent() = 0;
 
 			virtual void		callback_window_pos_fun(GLFWwindow*,int,int) = 0;
 			virtual void		callback_window_size_fun(GLFWwindow*,int,int) = 0;
