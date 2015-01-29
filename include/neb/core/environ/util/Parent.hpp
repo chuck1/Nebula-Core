@@ -1,6 +1,8 @@
 #ifndef NEB_CORE_ENVIRON_UTIL_PARENT_HPP
 #define NEB_CORE_ENVIRON_UTIL_PARENT_HPP
 
+#include <memory>
+
 #include <neb/core/environ/util/decl.hpp>
 //#include <neb/core/util/parent.hpp>
 
