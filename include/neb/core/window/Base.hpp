@@ -47,6 +47,9 @@ namespace neb { namespace core { namespace window {
 			virtual void		callback_key_fun(GLFWwindow*,int,int,int,int) = 0;
 			virtual void		callbackCharFun(GLFWwindow*,unsigned int) = 0;
 
+			virtual int		get_width() = 0;
+			virtual int		get_height() = 0;
+
 			/*
 			virtual std::weak_ptr<neb::core::context::FBO>		createContextFBO() = 0;
 			virtual std::weak_ptr<neb::core::context::FBOM>		createContextFBOMulti() = 0;

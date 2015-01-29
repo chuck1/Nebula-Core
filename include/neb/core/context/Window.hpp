@@ -10,10 +10,11 @@ namespace neb { namespace core { namespace context {
 	{
 		public:
 			typedef neb::core::environ::Base EB;
+			typedef neb::core::environ::Two ET;
 			typedef neb::core::environ::SceneDefault ESD;
 			typedef neb::core::environ::shadow::Directional E;
 
-			virtual std::weak_ptr<EB>		createEnvironTwo() = 0;
+			virtual std::weak_ptr<ET>		createEnvironTwo() = 0;
 			virtual std::weak_ptr<ESD>		createEnvironSceneDefault() = 0;
 			virtual std::weak_ptr<E>		createEnvironShadowDirectional() = 0;
 
