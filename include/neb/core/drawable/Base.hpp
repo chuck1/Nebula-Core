@@ -5,6 +5,7 @@ namespace neb { namespace core { namespace drawable {
 	class Base
 	{
 		public:
+			virtual ~Base() = 0;
 	};
 }}}
 

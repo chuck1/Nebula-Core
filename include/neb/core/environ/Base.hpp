@@ -5,7 +5,7 @@ namespace neb { namespace core { namespace environ {
 	class Base
 	{
 		public:
-			virtual ~Base();
+			virtual ~Base() = 0;
 	};
 }}}
 

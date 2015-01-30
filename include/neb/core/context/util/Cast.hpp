@@ -4,8 +4,6 @@
 #include <neb/core/itf/shared.hpp>
 #include <neb/core/context/util/decl.hpp>
 
-#include <neb/gfx/util/decl.hpp>
-
 namespace neb { namespace core { namespace context { namespace util {
 	/** @brief %Cast
 	 */
