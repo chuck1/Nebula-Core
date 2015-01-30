@@ -14,9 +14,11 @@ namespace neb { namespace core { namespace context {
 			typedef neb::core::environ::SceneDefault ESD;
 			typedef neb::core::environ::shadow::Directional E;
 
+			/*
 			virtual std::weak_ptr<ET>		createEnvironTwo() = 0;
 			virtual std::weak_ptr<ESD>		createEnvironSceneDefault() = 0;
 			virtual std::weak_ptr<E>		createEnvironShadowDirectional() = 0;
+			*/
 
 			//virtual void				setTexture(std::shared_ptr<neb::core::itf::shared> texture);
 	};
