@@ -3,12 +3,14 @@
 
 #include <memory>
 
+#include <neb/core/context/util/Cast.hpp>
 #include <neb/core/environ/util/decl.hpp>
-//#include <neb/core/util/parent.hpp>
+#include <neb/core/util/parent.hpp>
 
 namespace neb { namespace core { namespace environ { namespace util {
-	class Parent
-		//virtual public neb::core::util::parent<neb::core::context::Base, Parent>
+	class Parent:
+		virtual public neb::core::util::parent<neb::core::environ::Base, Parent>,
+		virtual public neb::core::context::util::Cast
 	{
 		public:
 			virtual std::weak_ptr<neb::core::environ::Two>				createEnvironTwo() = 0;
