@@ -40,7 +40,10 @@ INCLUDE(cmh_library)
 
 l = Library("nebula_core")
 
-l.require(["galaxy_std", "galaxy_log"])
+l.require([
+    "galaxy_std",
+    "galaxy_log",
+    "galaxy_console"])
 
 l.make()
 
