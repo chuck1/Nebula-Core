@@ -11,9 +11,11 @@ namespace neb { namespace core { namespace context {
 	{
 		public:
 			typedef neb::core::environ::shadow::Directional E;
-			virtual std::weak_ptr<E>		createEnvironShadowDirectional();
-			virtual void				setTexture(std::shared_ptr<neb::core::itf::shared> texture);
+
+			virtual std::weak_ptr<E>		createEnvironShadowDirectional() = 0;
+			virtual void				setTexture(std::shared_ptr<neb::core::itf::shared> texture) = 0;
 	};
 }}}
 
 #endif
+
