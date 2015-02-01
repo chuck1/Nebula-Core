@@ -38,7 +38,7 @@ SET(libs
 INCLUDE(cmh_library)
 """
 
-l = Library("nebula_core")
+l = Static("nebula_core")
 
 l.require([
     "galaxy_std",
