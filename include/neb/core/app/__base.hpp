@@ -9,6 +9,7 @@
 
 #include <neb/core/util/decl.hpp>
 #include <neb/core/app/util/Flag.hh>
+#include <neb/core/context/util/decl.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/game/game/util/parent.hpp>
@@ -47,6 +48,10 @@ namespace neb { namespace core { namespace app {
 			static bool						is_valid();
 			/***/
 			virtual std::weak_ptr<neb::core::window::Base>		createWindow() = 0;
+			/***/
+			virtual std::weak_ptr<neb::core::gui::layout::Base>	createLayout(
+					std::shared_ptr<neb::core::window::Base> window,
+					std::shared_ptr<neb::core::context::Base> context) = 0;
 			/***/
 			virtual std::weak_ptr<neb::core::core::scene::base>	createScene() = 0;
 			/***/
