@@ -7,8 +7,8 @@
 
 #define NEBULA_PYTHON_LIB "lib@nebula_python_NAME@"
 
-#define NEB_MOD_DIR "@NEB_MOD_DIR@"
-#define NEB_SHARE_DIR "@NEB_SHARE_DIR@"
+#define NEB_MOD_DIR   "{{ NEB_MOD_DIR }}"
+#define NEB_SHARE_DIR "{{ NEB_SHARE_DIR }}"
 
 #define GLUTPP_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
