@@ -3,8 +3,6 @@
 
 #include <memory>
 
-
-
 /** @brief root namespace for @gru */
 namespace neb
 {
@@ -13,7 +11,7 @@ namespace neb
 		/** @brief %app */
 		namespace app
 		{
-			class base;
+			class Base;
 		}
 		namespace gui
 		{

@@ -17,7 +17,7 @@
 
 namespace neb { namespace core { namespace app {
 	/** @brief %base */
-	class base:
+	class Base:
 		virtual public neb::core::core::scene::util::parent,
 		virtual public neb::core::game::game::util::parent
 	{
@@ -26,7 +26,7 @@ namespace neb { namespace core { namespace app {
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
 			/***/
-			virtual ~base();
+			virtual ~Base();
 			/***/
 			neb::core::math::pose					getPose() const;
 			/***/
@@ -43,7 +43,7 @@ namespace neb { namespace core { namespace app {
 			void							__step(gal::etc::timestep const &);
 		public:
 			/***/
-			static std::shared_ptr<neb::core::app::base>		global();
+			static std::shared_ptr<neb::core::app::Base>		global();
 			/***/
 			static bool						is_valid();
 			/***/
@@ -67,7 +67,7 @@ namespace neb { namespace core { namespace app {
 			/***/
 			std::vector< std::string >				_M_preloop_scripts_python;
 			/***/
-			static std::shared_ptr<neb::core::app::base>		g_app_;
+			static std::shared_ptr<neb::core::app::Base>		g_app_;
 	};
 
 }}}
