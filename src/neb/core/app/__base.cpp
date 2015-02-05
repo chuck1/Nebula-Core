@@ -10,28 +10,27 @@
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 
-#include <neb/core/app/__core.hpp>
-
 typedef neb::core::app::base THIS;
 
 std::shared_ptr<THIS>		THIS::g_app_;
 
 std::shared_ptr<THIS>		THIS::global()
 {
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::core::sl, debug) << "&g_app_  = " << &g_app_;
+	LOG(lg, neb::core::sl, debug) << "g_app_   = " << g_app_.get();
+
 	assert(g_app_);
 	return g_app_;
 }
-
 bool			THIS::is_valid()
 {
 	return (bool)g_app_;
 }
-
 THIS::~base()
 {
 	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
 }
-
 void			THIS::__init()
 {
 
@@ -86,14 +85,11 @@ void			THIS::__init()
 	}
 
 }
-
-
-
-void				THIS::__release()
+void						THIS::__release()
 {
 	nc::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
 }
-void				THIS::__step(gal::etc::timestep const & ts)
+void						THIS::__step(gal::etc::timestep const & ts)
 {
 	nc::core::scene::util::parent::step(ts);
 	nc::game::game::util::parent::step(ts);
@@ -107,8 +103,7 @@ neb::core::math::pose				THIS::getPoseGlobal() const
 	return neb::core::math::pose();
 }
 std::shared_ptr<nc::game::game::base>		THIS::createGame(
-		nc::game::game::desc const & desc
-		)
+		nc::game::game::desc const & desc)
 {
 	typedef nc::game::game::base T;
 	
