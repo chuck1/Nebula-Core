@@ -10,7 +10,7 @@
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 
-typedef neb::core::app::base THIS;
+typedef neb::core::app::Base THIS;
 
 std::shared_ptr<THIS>		THIS::g_app_;
 
@@ -27,7 +27,7 @@ bool			THIS::is_valid()
 {
 	return (bool)g_app_;
 }
-THIS::~base()
+THIS::~Base()
 {
 	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
 }

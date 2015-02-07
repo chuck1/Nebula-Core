@@ -11,13 +11,13 @@
 neb::core::timer::actor::Base::Base(
 		std::shared_ptr<neb::core::core::actor::base> actor,
 		double seconds):
-	timer_(neb::core::app::base::global()->ios_,
+	timer_(neb::core::app::Base::global()->ios_,
 			boost::posix_time::seconds(seconds)),
 	actor_(actor)
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
-	assert(!neb::core::app::base::global()->ios_.stopped());
+	assert(!neb::core::app::Base::global()->ios_.stopped());
 	
 	// cannot do this: shared_from_this shouldnt be used in ctor??
 	
