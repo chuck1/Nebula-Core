@@ -33,7 +33,7 @@ namespace neb { namespace core { namespace game { namespace game {
 					unsigned int const & version) const {}
 
 			virtual std::shared_ptr<neb::core::game::game::base>		visit(
-					neb::core::app::base * const
+					neb::core::app::Base * const
 					) const
 			{
 				return std::shared_ptr<neb::core::game::game::base>();

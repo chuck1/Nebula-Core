@@ -14,12 +14,14 @@
 #include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/game/util/decl.hpp>
+#include <neb/core/window/util/Parent.hpp>
 
 namespace neb { namespace core { namespace app {
 	/** @brief %base */
 	class Base:
 		virtual public neb::core::core::scene::util::parent,
-		virtual public neb::core::game::game::util::parent
+		virtual public neb::core::game::game::util::parent,
+		virtual public neb::core::window::util::Parent
 	{
 		public:
 			typedef gal::console::temp<
@@ -32,7 +34,9 @@ namespace neb { namespace core { namespace app {
 			/***/
 			neb::core::math::pose					getPoseGlobal() const;
 			/***/
-			std::shared_ptr<neb::core::game::game::base>		createGame(
+			std::weak_ptr<neb::core::game::game::base>		createGame();
+			/***/
+			std::weak_ptr<neb::core::game::game::base>		createGame(
 					neb::core::game::game::desc const &
 					);
 		protected:
