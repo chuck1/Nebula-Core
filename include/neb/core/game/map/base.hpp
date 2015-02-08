@@ -4,11 +4,11 @@
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/game/spawn/util/parent.hpp>
 
-namespace neb { namespace core { namespace game { namespace map {
+namespace neb { namespace fnd { namespace game { namespace map {
 
 	class base:
-		virtual public nc::core::scene::base,
-		virtual public nc::game::spawn::util::parent
+		virtual public neb::fnd::core::scene::base,
+		virtual public neb::fnd::game::spawn::util::parent
 	{
 		public:
 			base();

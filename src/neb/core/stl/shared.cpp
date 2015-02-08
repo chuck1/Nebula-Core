@@ -1,11 +1,11 @@
 
 #include <neb/core/itf/shared.hpp>
 
-neb::core::itf::shared::shared()
+neb::fnd::itf::shared::shared()
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::core::itf::shared::release()
+void				neb::fnd::itf::shared::release()
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

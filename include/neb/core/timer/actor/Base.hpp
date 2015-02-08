@@ -5,21 +5,21 @@
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/timer/Base.hpp>
 
-namespace neb { namespace core { namespace timer { namespace actor {
+namespace neb { namespace fnd { namespace timer { namespace actor {
 	/** @brief
 	 */
 	class Base:
-		virtual public neb::core::timer::Base
+		virtual public neb::fnd::timer::Base
 	{
 		public:
-			Base(std::shared_ptr<neb::core::core::actor::base> actor, double);
+			Base(std::shared_ptr<neb::fnd::core::actor::base> actor, double);
 			virtual ~Base();
 			/** @brief
 			 * what to do when timer expires
 			 */
 			virtual void						doSomething() = 0;
 			void 							activate();
-			std::weak_ptr<neb::core::core::actor::base>		actor_;
+			std::weak_ptr<neb::fnd::core::actor::base>		actor_;
 	};
 }}}}
 

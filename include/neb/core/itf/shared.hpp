@@ -10,7 +10,7 @@
 #include <gal/itf/shared.hpp>
 #include <gal/etc/timestep.hpp>
 
-namespace neb { namespace core { namespace itf {
+namespace neb { namespace fnd { namespace itf {
 	/** @brief %shared.
 	 *
 	 * Avoid multiple enabled_shared_from_this bases.

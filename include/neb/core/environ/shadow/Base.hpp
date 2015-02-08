@@ -5,13 +5,13 @@
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/itf/shared.hpp>
 
-namespace neb { namespace core { namespace environ { namespace shadow {
+namespace neb { namespace fnd { namespace environ { namespace shadow {
 	class Base:
-		virtual public neb::core::environ::Base
+		virtual public neb::fnd::environ::Base
 	{
 		public:
-			virtual void		setLight(std::shared_ptr<neb::core::core::light::base> light) = 0;
-			virtual void		setSceneEnviron(std::shared_ptr<neb::core::environ::Base> environ) = 0;
+			virtual void		setLight(std::shared_ptr<neb::fnd::core::light::base> light) = 0;
+			virtual void		setSceneEnviron(std::shared_ptr<neb::fnd::environ::Base> environ) = 0;
 	};
 }}}}
 

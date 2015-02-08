@@ -12,20 +12,20 @@ namespace neb { namespace util {
 		{
 			static const char * func = "combiner::operator()";
 
-			LOG(lg, neb::core::sl, debug) << func;
+			LOG(lg, neb::fnd::sl, debug) << func;
 
 			result_type f;
 			
 			while (first != last)
 			{
-				LOG(lg, neb::core::sl, debug) << func << " first";
+				LOG(lg, neb::fnd::sl, debug) << func << " first";
 				f = *first;
 				
-				LOG(lg, neb::core::sl, debug) << func << " *first=" << f;
+				LOG(lg, neb::fnd::sl, debug) << func << " *first=" << f;
 				
 				if(f) break;
 
-				LOG(lg, neb::core::sl, debug) << func << " inc";
+				LOG(lg, neb::fnd::sl, debug) << func << " inc";
 				++first;
 			}
 

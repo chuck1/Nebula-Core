@@ -13,20 +13,20 @@
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 
 
-namespace neb { namespace core { namespace core { namespace actor { namespace rigiddynamic {
+namespace neb { namespace fnd { namespace core { namespace actor { namespace rigiddynamic {
 
-	struct Desc: neb::core::core::actor::rigidbody::desc
+	struct Desc: neb::fnd::core::actor::rigidbody::desc
 	{
 		Desc();
-		Desc(neb::core::math::pose npose);
+		Desc(neb::fnd::math::pose npose);
 
 		template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 		{
-			BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::rigidbody::desc);
+			BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::rigidbody::desc);
 		}
 
-		virtual std::shared_ptr<neb::core::core::actor::base>		visit(
-				neb::core::core::scene::base * const scene
+		virtual std::shared_ptr<neb::fnd::core::actor::base>		visit(
+				neb::fnd::core::scene::base * const scene
 				) const;
 
 

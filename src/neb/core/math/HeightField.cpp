@@ -7,7 +7,7 @@
 
 #include <neb/core/math/HeightField.hpp>
 
-typedef neb::core::math::HeightField::Base THIS;
+typedef neb::fnd::math::HeightField::Base THIS;
 
 THIS::Base(unsigned int r, unsigned int c)
 {

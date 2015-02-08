@@ -5,7 +5,7 @@
 
 #include <neb/core/util/combiner.hpp>
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 
 	namespace input {
 		class source;
@@ -13,7 +13,7 @@ namespace neb { namespace core {
 		namespace signals
 		{
 			typedef int							ret_type;
-			typedef std::shared_ptr<neb::core::input::source> const &	wnd_type;
+			typedef std::shared_ptr<neb::fnd::input::source> const &	wnd_type;
 
 			typedef boost::signals2::signal<ret_type (wnd_type, int,int,int),	neb::util::combiner>	MouseButtonFun;
 			typedef boost::signals2::signal<ret_type (wnd_type, double,double),	neb::util::combiner>	CursorPosFun;

@@ -3,7 +3,7 @@
 
 #include <gal/etc/flag.hpp>
 
-namespace neb { namespace core { namespace core { namespace shape { namespace util {
+namespace neb { namespace fnd { namespace core { namespace shape { namespace util {
 	DEFINE_FLAG(flag,
 			((FOO)(1 << 0))
 		   )

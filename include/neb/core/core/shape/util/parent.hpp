@@ -8,27 +8,27 @@
 
 #include <gal/itf/shared.hpp>
 
-#include <neb/core/itf/Pose.hh>
+#include <neb/core/itf/Pose.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/Cast.hpp>
 #include <neb/core/core/shape/util/cast.hpp>
 #include <neb/core/util/parent.hpp>
 
-namespace neb { namespace core { namespace core { namespace shape { namespace util {
+namespace neb { namespace fnd { namespace core { namespace shape { namespace util {
 	/** @brief %parent
 	 * abstract class for parent of a shape
 	 *
 	 * @note inheritance of neb::util::parent is non-virtual
 	 */
 	class parent:
-		virtual public neb::core::util::parent<neb::core::core::shape::base, parent>,
-		virtual public neb::core::core::actor::util::Cast,
-		virtual public neb::core::core::shape::util::cast,
-		virtual public neb::core::itf::Pose
+		virtual public neb::fnd::util::parent<neb::fnd::core::shape::base, parent>,
+		virtual public neb::fnd::core::actor::util::Cast,
+		virtual public neb::fnd::core::shape::util::cast,
+		virtual public neb::fnd::itf::Pose
 	{
 		public:
 			virtual ~parent() {}
-			void		callbackPose(neb::core::math::pose const & pose);
+			void		callbackPose(neb::fnd::math::pose const & pose);
 	};
 }}}}}
 

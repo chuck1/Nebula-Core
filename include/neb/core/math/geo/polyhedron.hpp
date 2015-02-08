@@ -6,7 +6,7 @@
 //#include <neb/core/math/geo/polygon.hpp>
 //#include <neb/core/math/geo/quad.hpp>
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 	namespace math {
 		namespace geo {
 

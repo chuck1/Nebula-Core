@@ -7,7 +7,7 @@
 #include <neb/core/math/serialization/glm.hpp>
 #include <neb/core/util/log.hpp>
 
-typedef neb::core::math::geo::vertex THIS;
+typedef neb::fnd::math::geo::vertex THIS;
 
 void			THIS::serialize(
 		boost::archive::polymorphic_iarchive & ar,
@@ -27,7 +27,7 @@ void			THIS::serialize(
 }
 void			THIS::print(int sl)
 {
-	LOG(lg, neb::core::sl, (severity_level)sl)
+	LOG(lg, neb::fnd::sl, (severity_level)sl)
 		<< std::setw(4) << " "
 		<< std::setw(4) << "p"
 		<< std::setw(8) << p[0]

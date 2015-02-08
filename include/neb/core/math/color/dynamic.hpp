@@ -6,9 +6,9 @@
 #include <neb/core/math/color.hpp>
 
 
-namespace neb { namespace core { namespace math { namespace color {
+namespace neb { namespace fnd { namespace math { namespace color {
 
-	template <typename T, class R, class G, class B> class Dynamic: neb::core::math::color::color<T> {
+	template <typename T, class R, class G, class B> class Dynamic: neb::fnd::math::color::color<T> {
 		public:
 			/*	struct type {
 				enum e: char {

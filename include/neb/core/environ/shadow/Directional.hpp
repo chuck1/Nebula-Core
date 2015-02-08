@@ -3,9 +3,9 @@
 
 #include <neb/core/environ/shadow/Base.hpp>
 
-namespace neb { namespace core { namespace environ { namespace shadow {
+namespace neb { namespace fnd { namespace environ { namespace shadow {
 	class Directional:
-		virtual public neb::core::environ::shadow::Base
+		virtual public neb::fnd::environ::shadow::Base
 	{
 		public:
 	};

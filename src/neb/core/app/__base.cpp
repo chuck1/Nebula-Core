@@ -10,15 +10,15 @@
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 
-typedef neb::core::app::Base THIS;
+typedef neb::fnd::app::Base THIS;
 
 std::shared_ptr<THIS>		THIS::g_app_;
 /*
 std::shared_ptr<THIS>		THIS::global()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
-	LOG(lg, neb::core::sl, debug) << "&g_app_  = " << &g_app_;
-	LOG(lg, neb::core::sl, debug) << "g_app_   = " << g_app_.get();
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << "&g_app_  = " << &g_app_;
+	LOG(lg, neb::fnd::sl, debug) << "g_app_   = " << g_app_.get();
 
 	assert(g_app_);
 	return g_app_;
@@ -30,30 +30,30 @@ bool			THIS::is_valid()
 }
 THIS::~Base()
 {
-	LOG(lg, neb::core::sl, info) << __FUNCSIG__;
+	LOG(lg, neb::fnd::sl, info) << __FUNCSIG__;
 }
 void			THIS::__init()
 {
 
-	LOG(lg, neb::core::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::sl, debug) << __FUNCSIG__;
 	
-	assert(!flag_.any(neb::core::app::util::flag::INIT___BASE));
+	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
 
 	// boost asio ioservice
-	LOG(lg, neb::core::sl, debug) << "launch ios thread";
+	LOG(lg, neb::fnd::sl, debug) << "launch ios thread";
 
 	std::thread t([&](){
 			boost::asio::io_service::work w(ios_);
 			ios_.run();
 
-			LOG(lg, neb::core::sl, debug) << "ios stopped";
+			LOG(lg, neb::fnd::sl, debug) << "ios stopped";
 			});
 	t.detach();
 
 	// console
 	console_.reset(new console_type);
 	console_->init();
-	flag_.set(neb::core::app::util::flag::INIT___BASE);
+	flag_.set(neb::fnd::app::util::flag::INIT___BASE);
 
 	/** @todo export class to python to implement exit() */
 
@@ -64,8 +64,8 @@ void			THIS::__init()
 	/*
 	 * register some types for serialization
 	 */
-	typedef neb::core::core::actor::desc T;
-	typedef neb::core::core::actor::rigidbody::desc D;
+	typedef neb::fnd::core::actor::desc T;
+	typedef neb::fnd::core::actor::rigidbody::desc D;
 
 	gal::itf::shared::register_type(std::type_index(typeid(T)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -88,41 +88,44 @@ void			THIS::__init()
 }
 void						THIS::__release()
 {
-	nc::util::parent<neb::core::core::scene::base, neb::core::core::scene::util::parent>::clear();
+	typedef neb::fnd::core::scene::base S;
+	typedef neb::fnd::core::scene::util::parent P;
+
+	neb::fnd::util::parent<S, P>::clear();
 }
 void						THIS::__step(gal::etc::timestep const & ts)
 {
-	nc::core::scene::util::parent::step(ts);
-	nc::game::game::util::parent::step(ts);
+	neb::fnd::core::scene::util::parent::step(ts);
+	neb::fnd::game::game::util::parent::step(ts);
 }
-neb::core::math::pose				THIS::getPose() const
+neb::fnd::math::pose				THIS::getPose() const
 {
-	return neb::core::math::pose();
+	return neb::fnd::math::pose();
 }
-neb::core::math::pose				THIS::getPoseGlobal() const
+neb::fnd::math::pose				THIS::getPoseGlobal() const
 {
-	return neb::core::math::pose();
+	return neb::fnd::math::pose();
 }
-std::weak_ptr<neb::core::game::game::base>		THIS::createGame()
+std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 {
-	typedef nc::game::game::base T;
+	typedef neb::fnd::game::game::base T;
 	
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
-	neb::core::game::game::util::parent::insert(g);
+	neb::fnd::game::game::util::parent::insert(g);
 	
 	g->init(this);
 	
 	return g;
 }
-std::weak_ptr<neb::core::game::game::base>		THIS::createGame(
-		neb::core::game::game::desc const & desc)
+std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
+		neb::fnd::game::game::desc const & desc)
 {
-	typedef nc::game::game::base T;
+	typedef neb::fnd::game::game::base T;
 	
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
-	neb::core::game::game::util::parent::insert(g);
+	neb::fnd::game::game::util::parent::insert(g);
 	
 	g->init(this);
 	

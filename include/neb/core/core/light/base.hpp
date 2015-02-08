@@ -13,28 +13,28 @@
 #include <neb/core/core/light/__base.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/light/util/decl.hpp>
-#include <neb/core/core/light/util/Flag.hh>
+#include <neb/core/core/light/util/Flag.hpp>
 #include <neb/core/core/light/util/light_count.hpp>
 #include <neb/core/util/decl.hpp>
 
-namespace neb { namespace core { namespace core { namespace light {
+namespace neb { namespace fnd { namespace core { namespace light {
 
-	class base: public neb::core::core::light::__base
+	class base: public neb::fnd::core::light::__base
 	{
 		public:
 			base();
 
-			virtual void			init(neb::core::core::light::util::parent * const & p) = 0;
+			virtual void			init(neb::fnd::core::light::util::parent * const & p) = 0;
 
 			//virtual void			release();
 			//virtual void			step(gal::etc::timestep const & ts);
 
-			neb::core::math::pose			getPose();
-			neb::core::math::pose			getPoseGlobal();
+			neb::fnd::math::pose			getPose();
+			neb::fnd::math::pose			getPoseGlobal();
 			glm::vec4			getPos();
 
 			bool				hasScene() const;
-			neb::core::core::scene::base*	getScene();
+			neb::fnd::core::scene::base*	getScene();
 		private:
 			template<class Archive> void		serializeTemplate(
 					Archive & ar, unsigned int const & version)
@@ -56,11 +56,9 @@ namespace neb { namespace core { namespace core { namespace light {
 					unsigned int const & version) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
+			neb::fnd::core::light::util::flag			flag_;
 
-
-			neb::core::core::light::util::flag			flag_;
-
-			neb::core::math::pose					pose_;
+			neb::fnd::math::pose					pose_;
 
 	};
 }}}}

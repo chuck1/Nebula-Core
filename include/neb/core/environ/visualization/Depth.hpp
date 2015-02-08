@@ -3,11 +3,11 @@
 
 #include <neb/core/environ/Base.hpp>
 
-namespace neb { namespace core { namespace environ { namespace visualization {
+namespace neb { namespace fnd { namespace environ { namespace visualization {
 	/** @brief base
 	 */
 	class Depth:
-		virtual public neb::core::environ::Base
+		virtual public neb::fnd::environ::Base
 	{
 	};
 }}}}

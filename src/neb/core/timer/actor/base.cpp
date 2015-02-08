@@ -7,14 +7,14 @@
 
 #include <neb/core/app/Base.hpp>
 
-typedef neb::core::timer::actor::Base THIS;
+typedef neb::fnd::timer::actor::Base THIS;
 
 THIS::Base(
-		std::shared_ptr<neb::core::core::actor::base> actor,
+		std::shared_ptr<neb::fnd::core::actor::base> actor,
 		double seconds):
 	actor_(actor)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 	
 	auto app = getParent();
 	assert(app);
@@ -25,7 +25,7 @@ THIS::Base(
 
 	assert(!app->ios_.stopped());
 
-	//auto app = std::dynamic_pointer_cast<neb::core::app::Base>(getParent());
+	//auto app = std::dynamic_pointer_cast<neb::fnd::app::Base>(getParent());
 
 	app->ios_.stopped();
 
@@ -35,7 +35,7 @@ THIS::Base(
 }
 THIS::~Base()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 }
 
 

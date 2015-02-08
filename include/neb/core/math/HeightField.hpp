@@ -1,7 +1,7 @@
 #ifndef NEB_CORE_MATH_HEIGHT_FIELD_HPP
 #define NEB_CORE_MATH_HEIGHT_FIELD_HPP
 
-namespace neb { namespace core { namespace math { namespace HeightField {
+namespace neb { namespace fnd { namespace math { namespace HeightField {
 
 	class Base
 	{

@@ -3,7 +3,7 @@
 
 #include <gal/etc/flag.hpp>
 
-namespace neb { namespace core { namespace core { namespace scene { namespace util {
+namespace neb { namespace fnd { namespace core { namespace scene { namespace util {
 	DEFINE_FLAG(flag,
 			((PHYSX_VISUALIZATION)		(1 << 1))
 			((LIGHTING)			(1 << 2))

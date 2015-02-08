@@ -10,7 +10,7 @@
 /*
 namespace neb { namespace { namespace stl {
 
-		class wrapper: virtual public gal::stl::wrapper<neb::core::itf::shared> {
+		class wrapper: virtual public gal::stl::wrapper<neb::fnd::itf::shared> {
 			public:
 				wrapper();
 				wrapper(std::shared_ptr<neb::itf::shared> s);

@@ -15,12 +15,12 @@
 
 namespace ba = boost::archive;
 
-namespace neb { namespace core { namespace core { namespace actor {
+namespace neb { namespace fnd { namespace core { namespace actor {
 
 	struct desc: gal::itf::shared
 	{
 		desc() {}
-		desc(neb::core::math::pose npose):
+		desc(neb::fnd::math::pose npose):
 			pose(npose)
 		{}
 
@@ -31,29 +31,29 @@ namespace neb { namespace core { namespace core { namespace actor {
 			ar & BOOST_SERIALIZATION_NVP(pose);
 		}
 		
-		virtual std::shared_ptr<neb::core::core::actor::base>		visit(
-				neb::core::core::scene::base * const scene
+		virtual std::shared_ptr<neb::fnd::core::actor::base>		visit(
+				neb::fnd::core::scene::base * const scene
 				) const;
 
 
-		neb::core::math::pose		pose;
+		neb::fnd::math::pose		pose;
 
 	};
 	namespace rigidbody {
 
-		struct desc: neb::core::core::actor::desc {
+		struct desc: neb::fnd::core::actor::desc {
 			desc() {}
-			desc(neb::core::math::pose npose):
-				neb::core::core::actor::desc(npose)
+			desc(neb::fnd::math::pose npose):
+				neb::fnd::core::actor::desc(npose)
 			{}
 			template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 			{
-				ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::desc);
+				ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::desc);
 				ar & boost::serialization::make_nvp("foo",foo);
 			}
 			
-			virtual std::shared_ptr<neb::core::core::actor::base>		visit(
-					neb::core::core::scene::base * const scene
+			virtual std::shared_ptr<neb::fnd::core::actor::base>		visit(
+					neb::fnd::core::scene::base * const scene
 					) const;
 
 

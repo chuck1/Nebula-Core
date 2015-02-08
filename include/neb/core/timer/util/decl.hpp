@@ -1,7 +1,7 @@
 #ifndef NEBULA_TIMER_TYPES_HPP
 #define NEBULA_TIMER_TYPES_HPP
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 
 	namespace timer
 	{

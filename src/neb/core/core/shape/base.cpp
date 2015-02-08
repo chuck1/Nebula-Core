@@ -12,16 +12,16 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
-typedef neb::core::core::shape::base THIS;
+typedef neb::fnd::core::shape::base THIS;
 
 THIS::base():
 	scale_(1.0)
 {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 }
 THIS::~base()
 {
-	LOG(lg, neb::core::core::shape::sl, info) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, info) << __FUNCSIG__;
 }
 
 bool							THIS::hasScene()
@@ -32,20 +32,20 @@ bool							THIS::hasScene()
 	
 	if(shape) return shape->hasScene();
 
-	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+	auto actor = dynamic_cast<neb::fnd::core::actor::base*>(getParent());
 
 	assert(actor);
 	
 	return actor->hasScene();
 }
 
-neb::core::core::scene::base*				THIS::getScene()
+neb::fnd::core::scene::base*				THIS::getScene()
 {
 	auto shape = dynamic_cast<THIS*>(getParent());
 	
 	if(shape) return shape->getScene();
 
-	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+	auto actor = dynamic_cast<neb::fnd::core::actor::base*>(getParent());
 
 	assert(actor);
 	
@@ -53,22 +53,22 @@ neb::core::core::scene::base*				THIS::getScene()
 }
 
 
-neb::core::math::pose				THIS::getPoseGlobal() const {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+neb::fnd::math::pose				THIS::getPoseGlobal() const {
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	
 	return getParent()->getPoseGlobal() * pose_;
 }
-neb::core::math::pose				THIS::getPose() const {
+neb::fnd::math::pose				THIS::getPose() const {
 	return pose_;
 }
-void					THIS::__callbackPose(neb::core::math::pose const & gpose) {
+void					THIS::__callbackPose(neb::fnd::math::pose const & gpose) {
 	auto pose = gpose * pose_;
-	neb::core::core::shape::util::parent::callbackPose(pose);
-	neb::core::core::light::util::parent::callbackPose(pose);
+	neb::fnd::core::shape::util::parent::callbackPose(pose);
+	neb::fnd::core::light::util::parent::callbackPose(pose);
 }
-void					THIS::init(neb::core::core::shape::util::parent * const & p)
+void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	
 	setParent(p);
 	
@@ -83,37 +83,37 @@ void					THIS::init(neb::core::core::shape::util::parent * const & p)
 		program_ = neb::program_name::LIGHT;
 		} else {
 	 ** @todo replace this with something better... *
-	//flag_.set(neb::core::core::shape::flag::e::IMAGE);
+	//flag_.set(neb::fnd::core::shape::flag::e::IMAGE);
 
 	program_ = neb::program_name::IMAGE;
 	}
 	*/
 
-	neb::core::core::shape::util::parent::initChildren(this);
-	neb::core::core::light::util::parent::initChildren(this);
+	neb::fnd::core::shape::util::parent::initChildren(this);
+	neb::fnd::core::light::util::parent::initChildren(this);
 
 }
 void					THIS::release()
 {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 
-	neb::core::core::shape::util::parent::map_.clear();
-	neb::core::core::light::util::parent::map_.clear();
+	neb::fnd::core::shape::util::parent::map_.clear();
+	neb::fnd::core::light::util::parent::map_.clear();
 }
 void						THIS::step(
 		gal::etc::timestep const & ts)
 {
-	neb::core::core::shape::util::parent::step(ts);
-	neb::core::core::light::util::parent::step(ts);
+	neb::fnd::core::shape::util::parent::step(ts);
+	neb::fnd::core::light::util::parent::step(ts);
 }
 void	THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	__serialize(ar, v);
 }
 void	THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 {
-	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	const_cast<THIS*>(this)->__serialize(ar, v);
 }
 

@@ -1,7 +1,7 @@
 #ifndef NEB_CORE_CORE_LIGHT_UTIL_DECL_HPP
 #define NEB_CORE_CORE_LIGHT_UTIL_DECL_HPP
 
-namespace neb { namespace core { namespace core {
+namespace neb { namespace fnd { namespace core {
 
 	/** @brief %light */
 	namespace light

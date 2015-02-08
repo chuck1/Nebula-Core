@@ -27,13 +27,13 @@ namespace neb {
 
 // traits
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 
 	template<typename T> struct type_traits {};
 
-	template<> struct type_traits<neb::core::core::actor::__base>
+	template<> struct type_traits<neb::fnd::core::actor::__base>
 	{
-		typedef neb::core::core::actor::util::parent			parent_t;
+		typedef neb::fnd::core::actor::util::parent			parent_t;
 		typedef gal::stl::child<parent_t>				child_t;
 	};
 

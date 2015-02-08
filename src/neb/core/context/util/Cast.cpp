@@ -4,26 +4,26 @@
 #include <neb/core/context/FBO.hpp>
 #include <neb/core/context/FBOM.hpp>
 
-typedef neb::core::context::util::Cast THIS;
+typedef neb::fnd::context::util::Cast THIS;
 
-std::shared_ptr<neb::core::context::Base>			THIS::is_fnd_context_Base()
+std::shared_ptr<neb::fnd::context::Base>			THIS::is_fnd_context_Base()
 {
-	auto c = std::dynamic_pointer_cast<neb::core::context::Base>(shared_from_this());
+	auto c = std::dynamic_pointer_cast<neb::fnd::context::Base>(shared_from_this());
 	return c;
 }
-std::shared_ptr<neb::core::context::Window>			THIS::is_fnd_context_Window()
+std::shared_ptr<neb::fnd::context::Window>			THIS::is_fnd_context_Window()
 {
-	auto c = std::dynamic_pointer_cast<neb::core::context::Window>(shared_from_this());
+	auto c = std::dynamic_pointer_cast<neb::fnd::context::Window>(shared_from_this());
 	return c;
 }
-std::shared_ptr<neb::core::context::FBO>			THIS::is_fnd_context_FBO()
+std::shared_ptr<neb::fnd::context::FBO>			THIS::is_fnd_context_FBO()
 {
-	auto c = std::dynamic_pointer_cast<neb::core::context::FBO>(shared_from_this());
+	auto c = std::dynamic_pointer_cast<neb::fnd::context::FBO>(shared_from_this());
 	return c;
 }
-std::shared_ptr<neb::core::context::FBOM>			THIS::is_fnd_context_FBOM()
+std::shared_ptr<neb::fnd::context::FBOM>			THIS::is_fnd_context_FBOM()
 {
-	auto c = std::dynamic_pointer_cast<neb::core::context::FBOM>(shared_from_this());
+	auto c = std::dynamic_pointer_cast<neb::fnd::context::FBOM>(shared_from_this());
 	return c;
 }
 

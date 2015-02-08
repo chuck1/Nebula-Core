@@ -3,7 +3,7 @@
 
 #include <exception>
 
-namespace neb { namespace core { namespace except {
+namespace neb { namespace fnd { namespace except {
 	class NotImplemented: public std::exception
 	{
 		public:

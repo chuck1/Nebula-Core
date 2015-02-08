@@ -3,7 +3,7 @@
 
 #include <gal/etc/flag.hpp>
 
-namespace neb { namespace core { namespace core { namespace light { namespace util {
+namespace neb { namespace fnd { namespace core { namespace light { namespace util {
 	DEFINE_FLAG(flag,
 			((SHOULD_RELEASE)(1 << 0))
 		   )

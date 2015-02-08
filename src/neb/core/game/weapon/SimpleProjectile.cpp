@@ -22,25 +22,25 @@
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/game/weapon/SimpleProjectile.hpp>
 
-typedef neb::core::game::weapon::SimpleProjectile THIS;
+typedef neb::fnd::game::weapon::SimpleProjectile THIS;
 
 THIS::SimpleProjectile()
 {
 }
 void			THIS::connect(
-		std::shared_ptr<neb::core::input::source> src)
+		std::shared_ptr<neb::fnd::input::source> src)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
 	connectKeyFun(src, 20);
 }
 int			THIS::key_fun(
-		std::shared_ptr<neb::core::input::source> src,
+		std::shared_ptr<neb::fnd::input::source> src,
 		int key,
 		int,
 		int action,
 		int mods)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
 
 	int key_fire = GLFW_KEY_SPACE;
 
@@ -57,9 +57,9 @@ int			THIS::key_fun(
 }
 void			THIS::fire()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
 	
-	//auto app(neb::core::app::Base::global());
+	//auto app(neb::fnd::app::Base::global());
 	auto app = get_app();
 
 	if((app->ts_.time - last_) < cooldown_) return;
@@ -67,10 +67,10 @@ void			THIS::fire()
 	
 	// create projectile actor
 
-	auto actor = dynamic_cast<neb::core::core::actor::base*>(getParent());
+	auto actor = dynamic_cast<neb::fnd::core::actor::base*>(getParent());
 	assert(actor);
 
-	auto scene = dynamic_cast<neb::core::core::scene::base*>(actor->getScene());
+	auto scene = dynamic_cast<neb::fnd::core::scene::base*>(actor->getScene());
 
 	auto proj_base = scene->createActorRigidDynamicUninitialized().lock();
 
@@ -120,19 +120,19 @@ void			THIS::fire()
 
 	// shape
 	auto shape = proj->createShapeCuboid(
-			neb::core::core::shape::cuboid::Desc(glm::vec3(size_))
+			neb::fnd::core::shape::cuboid::Desc(glm::vec3(size_))
 			);
 
 	proj->init(scene);
 	//proj->setupFiltering();
 
 	// release timer
-	auto t = std::make_shared<neb::core::timer::actor::Release>(proj, scene->last_ + 5.0);
+	auto t = std::make_shared<neb::fnd::timer::actor::Release>(proj, scene->last_ + 5.0);
 
-	LOG(lg, neb::core::sl, debug) << t.use_count();
+	LOG(lg, neb::fnd::sl, debug) << t.use_count();
 	
 	t->activate();
 
-	LOG(lg, neb::core::sl, debug) << t.use_count();
+	LOG(lg, neb::fnd::sl, debug) << t.use_count();
 }
 

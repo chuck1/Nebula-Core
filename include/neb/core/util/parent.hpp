@@ -9,7 +9,7 @@
 
 #include <neb/core/itf/shared.hpp>
 
-namespace neb { namespace core { namespace util {
+namespace neb { namespace fnd { namespace util {
 
 	template<typename CHILD, typename PARENT> class parent:
 		virtual public gal::stl::parent<CHILD>

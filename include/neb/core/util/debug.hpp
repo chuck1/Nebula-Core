@@ -4,7 +4,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/map.hpp>
 
-namespace neb { namespace core { namespace util {
+namespace neb { namespace fnd { namespace util {
 
 	class debug_options {
 		public:

@@ -1,7 +1,7 @@
 #ifndef PHYSX_GAME_WEAPON_UTIL_DECL_HPP
 #define PHYSX_GAME_WEAPON_UTIL_DECL_HPP
 
-namespace neb { namespace core { namespace game {
+namespace neb { namespace fnd { namespace game {
 
 	/** @brief weapon */	
 	namespace weapon {

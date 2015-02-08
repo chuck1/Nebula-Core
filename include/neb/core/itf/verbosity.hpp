@@ -3,7 +3,7 @@
 
 #include <gal/log/log.hpp>
 
-namespace neb { namespace core { namespace itf {
+namespace neb { namespace fnd { namespace itf {
 	/**/
 	class verbosity
 	{

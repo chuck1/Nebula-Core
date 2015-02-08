@@ -10,7 +10,7 @@
 
 namespace ba = boost::archive;
 
-namespace neb { namespace core { namespace itf {
+namespace neb { namespace fnd { namespace itf {
 
 	class serializable
 	{

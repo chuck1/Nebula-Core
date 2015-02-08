@@ -10,13 +10,13 @@
 #include <neb/gfx/environ/three.hpp>
 #include <neb/gfx/environ/single.hpp>
 
-namespace neb { namespace core { namespace environ {
+namespace neb { namespace fnd { namespace environ {
 	/** @brief base
 	 *
 	 * Abstract class that contains functions and data needed to render a specific kind of drawable.
 	 */
 	class SceneDefault:
-		virtual public neb::core::environ::Base
+		virtual public neb::fnd::environ::Base
 	{
 		/*
 		public:
@@ -33,7 +33,7 @@ namespace neb { namespace core { namespace environ {
 					std::shared_ptr<neb::gfx::context::base> context);
 
 			std::weak_ptr<neb::gfx::camera::view::ridealong>		createViewridealong(
-					std::weak_ptr<neb::core::core::actor::base> actor);
+					std::weak_ptr<neb::fnd::core::actor::base> actor);
 		public:
 		*/
 	};

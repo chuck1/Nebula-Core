@@ -3,10 +3,10 @@
 
 #include <neb/core/core/actor/rigidactor/base.hpp>
 
-namespace neb { namespace core { namespace core { namespace actor { namespace rigiddynamic {
+namespace neb { namespace fnd { namespace core { namespace actor { namespace rigiddynamic {
 
 	class base:
-		virtual public neb::core::core::actor::rigidactor::base
+		virtual public neb::fnd::core::actor::rigidactor::base
 	{
 
 	};

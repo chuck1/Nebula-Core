@@ -8,13 +8,13 @@
 #include <neb/core/game/trigger/util/parent.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
 
-typedef neb::core::game::trigger::ActorEx1 THIS;
+typedef neb::fnd::game::trigger::ActorEx1 THIS;
 
-THIS::ActorEx1(std::shared_ptr<nc::game::trigger::util::parent> parent):
-	gal::stl::child<nc::game::trigger::util::parent>(parent.get())
+THIS::ActorEx1(std::shared_ptr<neb::fnd::game::trigger::util::parent> parent):
+	gal::stl::child<neb::fnd::game::trigger::util::parent>(parent.get())
 {
 }
-void				THIS::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
+void			THIS::connect(std::shared_ptr<neb::fnd::core::actor::base> actor) {
 	
 	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 	
@@ -27,19 +27,20 @@ void				THIS::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
 				).track_foreign(self)
 			);
 }
-void				THIS::doSomething()
+void			THIS::doSomething()
 {
-	auto game = neb::is<parent_t, nc::game::game::base>(getParent());
+	auto game = neb::is<parent_t, neb::fnd::game::game::base>(getParent());
 	auto scene(game->scene_.lock());
 	
 	if(!scene) return;
 
 	auto scene_parent = scene->getParent();
 	
-	scene_parent->nc::core::scene::util::parent::erase(scene->_M_index);
+	scene_parent->neb::fnd::core::scene::util::parent::erase(scene->_M_index);
 	
 	// message
-	auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
+	auto app = get_app();
 	
 	if(app->console_) app->console_->operator<<("you won!");
 	

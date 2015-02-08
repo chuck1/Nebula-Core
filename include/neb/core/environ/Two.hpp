@@ -3,13 +3,13 @@
 
 #include <neb/core/environ/Base.hpp>
 
-namespace neb { namespace core { namespace environ {
+namespace neb { namespace fnd { namespace environ {
 	/** @brief base
 	 *
 	 * Abstract class that contains functions and data needed to render a specific kind of drawable
 	 */
 	class Two:
-		virtual public neb::core::environ::Base
+		virtual public neb::fnd::environ::Base
 	{
 		public:
 			//virtual void		render(std::shared_ptr<neb::gfx::context::base> context) = 0;

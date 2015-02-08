@@ -10,13 +10,13 @@
 #include <neb/core/util/decl.hpp>
 #include <neb/core/itf/shared.hpp>
 
-namespace neb { namespace core { namespace timer {
+namespace neb { namespace fnd { namespace timer {
 	/** @brief
 	 *
 	 */
 	class Base:
-		virtual public neb::core::itf::shared,
-		virtual public gal::stl::child<neb::core::app::Base>
+		virtual public neb::fnd::itf::shared,
+		virtual public gal::stl::child<neb::fnd::app::Base>
 	{
 		public:
 			virtual void				step(gal::etc::timestep const & ts);

@@ -5,7 +5,7 @@
 
 #include <gal/itf/shared.hpp>
 
-namespace neb { namespace core { namespace input {
+namespace neb { namespace fnd { namespace input {
 
 	class source;
 
@@ -15,23 +15,23 @@ namespace neb { namespace core { namespace input {
 		public:
 			virtual ~sink();
 
-			void		connectKeyFun(std::shared_ptr<neb::core::input::source> const & src, int i);
-			void		connectCharFun(std::shared_ptr<neb::core::input::source> const & src, int i);
-			void		connectMouseButtonFun(std::shared_ptr<neb::core::input::source> const & src, int i);
+			void		connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
+			void		connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
+			void		connectMouseButtonFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
 
 			virtual int			mouseButtonFun(
-					std::shared_ptr<neb::core::input::source> const &,
+					std::shared_ptr<neb::fnd::input::source> const &,
 					int button,
 					int action,
 					int mods);
 			virtual int			keyFun(
-					std::shared_ptr<neb::core::input::source> const &,
+					std::shared_ptr<neb::fnd::input::source> const &,
 					int,
 					int,
 					int,
 					int);
 			virtual int			charFun(
-					std::shared_ptr<neb::core::input::source> const &,
+					std::shared_ptr<neb::fnd::input::source> const &,
 					unsigned int codepoint);
 
 			// connections

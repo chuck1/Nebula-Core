@@ -1,7 +1,7 @@
 #ifndef NEBULA_SHAPE_UTIL_TYPES_HH
 #define NEBULA_SHAPE_UTIL_TYPES_HH
 
-namespace neb { namespace core { namespace core {
+namespace neb { namespace fnd { namespace core {
 
 	/** @brief %shape */	
 	namespace shape {

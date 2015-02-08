@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace neb { namespace core { namespace core {
+namespace neb { namespace fnd { namespace core {
 
 	/** @brief %actor */
 	namespace actor {

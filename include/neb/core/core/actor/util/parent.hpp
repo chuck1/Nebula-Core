@@ -12,24 +12,24 @@
 #include <neb/core/core/actor/util/Cast.hpp>
 #include <neb/core/core/scene/util/cast.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
-#include <neb/core/itf/Pose.hh>
+#include <neb/core/itf/Pose.hpp>
 
-namespace neb { namespace core { namespace core { namespace actor { namespace util {
+namespace neb { namespace fnd { namespace core { namespace actor { namespace util {
 	/** @brief %arent
 	 * abstract class for parent of an %actor
 	 */
 	class parent:
-		virtual public neb::core::util::parent<neb::core::core::actor::__base, parent>,
-		virtual public neb::core::core::scene::util::cast,
-		virtual public neb::core::core::actor::util::Cast,
-		virtual public neb::core::itf::Pose
+		virtual public neb::fnd::util::parent<neb::fnd::core::actor::__base, parent>,
+		virtual public neb::fnd::core::scene::util::cast,
+		virtual public neb::fnd::core::actor::util::Cast,
+		virtual public neb::fnd::itf::Pose
 	{
 		public:
 			parent();
 			virtual ~parent();
 
 		public:
-			//shared_ptr<neb::core::core::scene::base>			getScene();
+			//shared_ptr<neb::fnd::core::scene::base>			getScene();
 	};
 }}}}}
 

@@ -18,36 +18,36 @@
 
 using namespace std;
 
-typedef neb::core::core::scene::base THIS;
+typedef neb::fnd::core::scene::base THIS;
 
 THIS::base():
 	last_(0)
 {
-	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
 }
 THIS::~base()
 {
-	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
 }
 void			THIS::__init(parent_t * const & p)
 {
-	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
 
-	neb::core::core::actor::util::parent::initChildren(this);
+	neb::fnd::core::actor::util::parent::initChildren(this);
 }
 void			THIS::__release()
 {
-	LOG(lg, neb::core::core::scene::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
 	
-	neb::core::core::actor::util::parent::clear();
+	neb::fnd::core::actor::util::parent::clear();
 }
-neb::core::math::pose						THIS::getPose() const {
-	return neb::core::math::pose();
+neb::fnd::math::pose						THIS::getPose() const {
+	return neb::fnd::math::pose();
 }		
-neb::core::math::pose						THIS::getPoseGlobal() const {
-	return neb::core::math::pose();
+neb::fnd::math::pose						THIS::getPoseGlobal() const {
+	return neb::fnd::math::pose();
 }
-void						THIS::add_deferred(std::shared_ptr<neb::core::core::actor::base> actor) {
+void						THIS::add_deferred(std::shared_ptr<neb::fnd::core::actor::base> actor) {
 	/** @todo deprecated */
 	abort();
 	//actors_deferred_[actor->name_] = actor;
@@ -57,14 +57,14 @@ void		THIS::step(gal::etc::timestep const & ts) {
 	actors::step(ts);
 
 //	A::map_.for_each([&] (A::map_type::pointer p) {
-//			auto actor = std::dynamic_pointer_cast<neb::core::core::actor::base>(it->ptr_);
+//			auto actor = std::dynamic_pointer_cast<neb::fnd::core::actor::base>(it->ptr_);
 //			assert(actor);
 //			actor->step(ts);
 //			});
 
 }
-weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCube(
-		neb::core::math::pose pose,
+weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
+		neb::fnd::math::pose pose,
 		double size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -73,7 +73,7 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCube(
 
 	// create shape
 
-	auto shape = actor->createShapeCube(neb::core::math::pose(), size);
+	auto shape = actor->createShapeCube(neb::fnd::math::pose(), size);
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -81,8 +81,8 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCube(
 
 	return actor;
 }
-weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCuboid(
-		neb::core::math::pose pose,
+weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
+		neb::fnd::math::pose pose,
 		glm::vec3 size) {
 
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -91,7 +91,7 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCuboid(
 	
 	// create shape
 	
-	auto shape = actor->createShapeCuboid(neb::core::core::shape::cuboid::Desc(size));
+	auto shape = actor->createShapeCuboid(neb::fnd::core::shape::cuboid::Desc(size));
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -99,9 +99,9 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidStaticCuboid(
 
 	return actor;
 }
-weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidDynamicCuboid(
-		neb::core::core::actor::rigidbody::desc const &		actor_desc,
-		neb::core::core::shape::cuboid::Desc const &		shape_desc)
+weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidDynamicCuboid(
+		neb::fnd::core::actor::rigidbody::desc const &		actor_desc,
+		neb::fnd::core::shape::cuboid::Desc const &		shape_desc)
 {
 
 	auto actor = createActorRigidDynamicUninitialized().lock();
@@ -118,38 +118,38 @@ weak_ptr<neb::core::core::actor::base>		THIS::createActorRigidDynamicCuboid(
 
 	return actor;
 }
-weak_ptr<neb::core::core::actor::base>		THIS::createActorLightPoint(glm::vec3 p) {
+weak_ptr<neb::fnd::core::actor::base>		THIS::createActorLightPoint(glm::vec3 p) {
 
 	// actor
-	auto actor = createActorBase(neb::core::math::pose(p)).lock();
+	auto actor = createActorBase(neb::fnd::math::pose(p)).lock();
 
 	// shape	
-	auto shape = actor->createShapeBase(neb::core::math::pose()).lock();
+	auto shape = actor->createShapeBase(neb::fnd::math::pose()).lock();
 
 	// light
 	auto light = shape->createLightPoint();
 
 	return actor;	
 }
-std::weak_ptr<neb::core::core::actor::base>		THIS::createActorLightDirectional(glm::vec3 p)
+std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorLightDirectional(glm::vec3 p)
 {
-	auto actor = createActorBase(neb::core::math::pose()).lock();
+	auto actor = createActorBase(neb::fnd::math::pose()).lock();
 
-	auto shape = actor->createShapeBase(neb::core::math::pose()).lock();
+	auto shape = actor->createShapeBase(neb::fnd::math::pose()).lock();
 
 	auto light = shape->createLightDirectional(p);
 
 	return actor;	
 }
-std::weak_ptr<neb::core::core::actor::base>		THIS::createActor(
-		neb::core::core::actor::desc const * const & desc
+std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActor(
+		neb::fnd::core::actor::desc const * const & desc
 		)
 {
 	assert(desc);
 	return desc->visit(this);
 }
 void			THIS::addActor(
-		std::shared_ptr<neb::core::core::actor::base> const & actor
+		std::shared_ptr<neb::fnd::core::actor::base> const & actor
 		)
 {
 	insert(actor);
@@ -160,14 +160,14 @@ void			THIS::load(
 		unsigned int const & version)
 {
 	ar & boost::serialization::make_nvp("flag",flag_);
-	ar & boost::serialization::make_nvp("actors",neb::core::core::actor::util::parent::map_);
+	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
 }
 void			THIS::save(
 		boost::archive::polymorphic_oarchive & ar,
 		unsigned int const & version) const
 {
 	ar & boost::serialization::make_nvp("flag",flag_);
-	ar & boost::serialization::make_nvp("actors",neb::core::core::actor::util::parent::map_);
+	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
 }
 
 

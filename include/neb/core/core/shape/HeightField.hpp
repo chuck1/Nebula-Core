@@ -4,13 +4,13 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/shape/HeightField/desc.hpp>
 
-namespace neb { namespace core { namespace core { namespace shape { namespace HeightField {
+namespace neb { namespace fnd { namespace core { namespace shape { namespace HeightField {
 
 	class Base:
-		virtual public neb::core::core::shape::base
+		virtual public neb::fnd::core::shape::base
 	{
 		public:
-			typedef neb::core::core::shape::util::parent parent_t;
+			typedef neb::fnd::core::shape::util::parent parent_t;
 
 			Base();
 			
@@ -24,7 +24,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace He
 			float				min_y_;
 			float				max_y_;
 
-			neb::core::core::shape::HeightField::desc	desc_;
+			neb::fnd::core::shape::HeightField::desc	desc_;
 	};
 
 

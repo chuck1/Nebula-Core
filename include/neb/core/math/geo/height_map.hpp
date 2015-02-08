@@ -1,7 +1,7 @@
 #ifndef __MATH_GEO_HEIGHT_MAP_HPP__
 #define __MATH_GEO_HEIGHT_MAP_HPP__
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 	namespace math {
 		namespace geo {
 			class vertex;

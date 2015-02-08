@@ -6,14 +6,14 @@
 
 using namespace std;
 
-namespace neb { namespace core { namespace core { namespace scene { namespace util {
+namespace neb { namespace fnd { namespace core { namespace scene { namespace util {
 	/** @brief %cast
 	 */
 	class cast:
-		virtual public neb::core::itf::shared
+		virtual public neb::fnd::itf::shared
 	{
 		public:
-			shared_ptr<neb::core::core::scene::base>		isSceneBase();
+			shared_ptr<neb::fnd::core::scene::base>		isSceneBase();
 	};
 }}}}}
 

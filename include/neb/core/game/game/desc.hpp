@@ -3,7 +3,7 @@
 
 #include <neb/core/game/game/util/decl.hpp>
 
-namespace neb { namespace core { namespace game { namespace game {
+namespace neb { namespace fnd { namespace game { namespace game {
 
 	class desc:
 		public gal::itf::shared
@@ -32,11 +32,11 @@ namespace neb { namespace core { namespace game { namespace game {
 					boost::archive::xml_oarchive & ar,
 					unsigned int const & version) const {}
 
-			virtual std::shared_ptr<neb::core::game::game::base>		visit(
-					neb::core::app::Base * const
+			virtual std::shared_ptr<neb::fnd::game::game::base>		visit(
+					neb::fnd::app::Base * const
 					) const
 			{
-				return std::shared_ptr<neb::core::game::game::base>();
+				return std::shared_ptr<neb::fnd::game::game::base>();
 			}
 
 			BOOST_SERIALIZATION_SPLIT_MEMBER();

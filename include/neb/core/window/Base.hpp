@@ -13,17 +13,17 @@
 #include <neb/core/context/util/Parent.hpp>
 #include <neb/core/window/util/decl.hpp>
 
-namespace neb { namespace core { namespace window {
+namespace neb { namespace fnd { namespace window {
 
 	class Base:
-		virtual public gal::stl::child<neb::core::window::util::Parent>,
-		virtual public neb::core::context::util::Parent,
-		virtual public neb::core::input::source,
-		virtual public neb::core::input::callback
+		virtual public gal::stl::child<neb::fnd::window::util::Parent>,
+		virtual public neb::fnd::context::util::Parent,
+		virtual public neb::fnd::input::source,
+		virtual public neb::fnd::input::callback
 	{
 		public:
-			typedef neb::core::window::util::Parent parent_t;
-			typedef neb::core::util::parent<neb::core::context::Base, neb::core::context::util::Parent> contexts;
+			typedef neb::fnd::window::util::Parent parent_t;
+			typedef neb::fnd::util::parent<neb::fnd::context::Base, neb::fnd::context::util::Parent> contexts;
 			
 			//base();
 			virtual ~Base() = 0;
@@ -51,10 +51,10 @@ namespace neb { namespace core { namespace window {
 			virtual int		get_height() = 0;
 
 			/*
-			virtual std::weak_ptr<neb::core::context::FBO>		createContextFBO() = 0;
-			virtual std::weak_ptr<neb::core::context::FBOM>		createContextFBOMulti() = 0;
-			virtual std::weak_ptr<neb::core::context::Window>	createContextWindow() = 0;
-			virtual std::weak_ptr<neb::core::context::Window>	createContextVisDepth() = 0;
+			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO() = 0;
+			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti() = 0;
+			virtual std::weak_ptr<neb::fnd::context::Window>	createContextWindow() = 0;
+			virtual std::weak_ptr<neb::fnd::context::Window>	createContextVisDepth() = 0;
 			*/
 	};
 }}}

@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-#include <neb/core/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/polyhedron.hpp>
 
 //math::geo::thin_cyl::cylinder(float 
-neb::core::math::geo::sphere::sphere(float r, int slices, int stacks)
+neb::fnd::math::geo::sphere::sphere(float r, int slices, int stacks)
 {
 /*	
 	printf( "tris:  %i\n"

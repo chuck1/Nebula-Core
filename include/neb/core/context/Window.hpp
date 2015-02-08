@@ -4,15 +4,15 @@
 #include <neb/core/context/Base.hpp>
 #include <neb/core/environ/util/decl.hpp>
 
-namespace neb { namespace core { namespace context {
+namespace neb { namespace fnd { namespace context {
 	class Window:
-		virtual public neb::core::context::Base
+		virtual public neb::fnd::context::Base
 	{
 		public:
-			typedef neb::core::environ::Base EB;
-			typedef neb::core::environ::Two ET;
-			typedef neb::core::environ::SceneDefault ESD;
-			typedef neb::core::environ::shadow::Directional E;
+			typedef neb::fnd::environ::Base EB;
+			typedef neb::fnd::environ::Two ET;
+			typedef neb::fnd::environ::SceneDefault ESD;
+			typedef neb::fnd::environ::shadow::Directional E;
 
 			/*
 			virtual std::weak_ptr<ET>		createEnvironTwo() = 0;
@@ -20,7 +20,7 @@ namespace neb { namespace core { namespace context {
 			virtual std::weak_ptr<E>		createEnvironShadowDirectional() = 0;
 			*/
 
-			//virtual void				setTexture(std::shared_ptr<neb::core::itf::shared> texture);
+			//virtual void				setTexture(std::shared_ptr<neb::fnd::itf::shared> texture);
 	};
 }}}
 

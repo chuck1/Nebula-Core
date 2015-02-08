@@ -5,21 +5,21 @@
 
 #include <neb/core/math/serialization/glm.hpp>
 
-namespace neb { namespace core { namespace math {
+namespace neb { namespace fnd { namespace math {
 	/** @brief %pose
 	*
 	*/
 	class pose {
 		public:
 			pose();
-			pose(neb::core::math::pose const & rhs);
-			pose(neb::core::math::pose&& rhs);
+			pose(neb::fnd::math::pose const & rhs);
+			pose(neb::fnd::math::pose&& rhs);
 			pose(glm::vec3 p, glm::quat q);
 			pose(glm::vec3 p);
 			pose(glm::quat q);
 
-			pose&		operator=(neb::core::math::pose const & rhs);
-			pose		operator*(neb::core::math::pose const & rhs) const;
+			pose&		operator=(neb::fnd::math::pose const & rhs);
+			pose		operator*(neb::fnd::math::pose const & rhs) const;
 
 			template<typename Archive> void		serialize(Archive & ar, unsigned int const & version) {
 				ar & boost::serialization::make_nvp("pos", pos_);

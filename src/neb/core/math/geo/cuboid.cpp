@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 #include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/polyhedron.hpp>
 #include <neb/core/math/geo/quad.hpp>
 
-neb::core::math::geo::cuboid::cuboid(float x, float y, float z)
+neb::fnd::math::geo::cuboid::cuboid(float x, float y, float z)
 {
 	polygons_ = new math::geo::polygon[6];
 	nbPolys_ = 6;

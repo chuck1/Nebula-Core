@@ -5,7 +5,7 @@
 
 #include <neb/core/input/signals.hpp>
 
-namespace neb { namespace core { namespace input {
+namespace neb { namespace fnd { namespace input {
 
 	class sink;
 
@@ -19,9 +19,9 @@ namespace neb { namespace core { namespace input {
 			// input signals
 			struct
 			{
-				neb::core::input::signals::KeyFun		keyFun_;
-				neb::core::input::signals::MouseButtonFun	mouseButtonFun_;
-				neb::core::input::signals::CharFun		charFun_;
+				neb::fnd::input::signals::KeyFun		keyFun_;
+				neb::fnd::input::signals::MouseButtonFun	mouseButtonFun_;
+				neb::fnd::input::signals::CharFun		charFun_;
 			} sig_;
 			
 			

@@ -6,15 +6,15 @@
 #include <neb/core/math/pose.hpp>
 #include <neb/core/game/spawn/util/decl.hpp>
 
-namespace neb { namespace core { namespace game { namespace spawn {
+namespace neb { namespace fnd { namespace game { namespace spawn {
 
 	class base:
-		virtual public nc::itf::shared
+		virtual public neb::fnd::itf::shared
 	{
 		public:
-			typedef nc::game::spawn::util::parent parent_t;
+			typedef neb::fnd::game::spawn::util::parent parent_t;
 
-			neb::core::math::pose		pose_;
+			neb::fnd::math::pose		pose_;
 
 			virtual void			init(parent_t * const & p);			
 			virtual void			step(gal::etc::timestep const &);

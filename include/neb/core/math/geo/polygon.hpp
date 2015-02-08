@@ -12,7 +12,7 @@
 #include <boost/serialization/shared_ptr.hpp>
 
 
-namespace neb { namespace core {
+namespace neb { namespace fnd {
 namespace math {
 	namespace geo {
 

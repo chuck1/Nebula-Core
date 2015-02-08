@@ -7,19 +7,19 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
-namespace neb { namespace core { namespace game { namespace ai {
+namespace neb { namespace fnd { namespace game { namespace ai {
 
 	class base:
-		virtual public nc::itf::shared
+		virtual public neb::fnd::itf::shared
 	{
 		public:
 
 			void							step(gal::etc::timestep const & ts);
 		public:
-			std::weak_ptr<neb::core::core::actor::base>		actor_;
+			std::weak_ptr<neb::fnd::core::actor::base>		actor_;
 			/** @brief target
 			 */
-			std::weak_ptr<neb::core::core::actor::base>		target_;
+			std::weak_ptr<neb::fnd::core::actor::base>		target_;
 
 	};
 

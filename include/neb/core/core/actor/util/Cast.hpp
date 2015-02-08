@@ -5,12 +5,12 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
-namespace neb { namespace core { namespace core { namespace actor { namespace util {
+namespace neb { namespace fnd { namespace core { namespace actor { namespace util {
 	class Cast:
 		virtual public gal::itf::shared
 	{
 		public:
-			std::shared_ptr<neb::core::core::actor::base>			is_fnd_actor_base();
+			std::shared_ptr<neb::fnd::core::actor::base>			is_fnd_actor_base();
 	};
 }}}}}
 

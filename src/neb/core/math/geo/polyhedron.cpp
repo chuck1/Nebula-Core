@@ -3,9 +3,9 @@
 
 #include <neb/core/util/decl.hpp>
 #include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/polyhedron.hpp>
 
-typedef neb::core::math::geo::polyhedron THIS;
+typedef neb::fnd::math::geo::polyhedron THIS;
 
 THIS::polyhedron(): polygons_(NULL), nbPolys_(0)
 {
@@ -24,7 +24,7 @@ unsigned int			THIS::getNbTriangles()
 
 	return n;
 }
-nc::math::geo::triangle*	THIS::getTriangles()
+neb::fnd::math::geo::triangle*	THIS::getTriangles()
 {
 	
 	std::cout << __PRETTY_FUNCTION__ << this << std::endl;

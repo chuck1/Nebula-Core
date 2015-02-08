@@ -1,7 +1,7 @@
 #ifndef NEBULA_GAME_TRIGGER_UTIL_DECL_HPP
 #define NEBULA_GAME_TRIGGER_UTIL_DECL_HPP
 
-namespace neb { namespace core { namespace game {
+namespace neb { namespace fnd { namespace game {
 	/** @brief trigger */
 	namespace trigger
 	{

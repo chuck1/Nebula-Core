@@ -8,19 +8,19 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
-typedef neb::core::core::light::base THIS;
+typedef neb::fnd::core::light::base THIS;
 
 THIS::base()
 {
 }
-neb::core::math::pose		THIS::getPose() {
-	LOG(lg, neb::core::core::light::sl, debug) << __FUNCSIG__;
+neb::fnd::math::pose		THIS::getPose() {
+	LOG(lg, neb::fnd::core::light::sl, debug) << __FUNCSIG__;
 	
 	return pose_;
 }
-neb::core::math::pose		THIS::getPoseGlobal()
+neb::fnd::math::pose		THIS::getPoseGlobal()
 {
-	LOG(lg, neb::core::core::light::sl, debug) << __FUNCSIG__;
+	LOG(lg, neb::fnd::core::light::sl, debug) << __FUNCSIG__;
 	
 	auto p = getParent()->getPoseGlobal() * pose_;
 	
@@ -33,15 +33,15 @@ bool				THIS::hasScene() const
 {
 	if(!hasParent()) return false;
 
-	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	auto shape = dynamic_cast<neb::fnd::core::shape::base*>(getParent());
 	
 	assert(shape);
 	
 	return shape->hasScene();
 }
-neb::core::core::scene::base*	THIS::getScene()
+neb::fnd::core::scene::base*	THIS::getScene()
 {
-	auto shape = dynamic_cast<neb::core::core::shape::base*>(getParent());
+	auto shape = dynamic_cast<neb::fnd::core::shape::base*>(getParent());
 	
 	assert(shape);
 	

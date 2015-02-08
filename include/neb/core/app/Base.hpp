@@ -17,13 +17,13 @@
 #include <neb/core/window/util/Parent.hpp>
 #include <neb/core/timer/util/Parent.hpp>
 
-namespace neb { namespace core { namespace app {
+namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
-		virtual public neb::core::core::scene::util::parent,
-		virtual public neb::core::game::game::util::parent,
-		virtual public neb::core::window::util::Parent,
-		virtual public neb::core::timer::util::Parent
+		virtual public neb::fnd::core::scene::util::parent,
+		virtual public neb::fnd::game::game::util::parent,
+		virtual public neb::fnd::window::util::Parent,
+		virtual public neb::fnd::timer::util::Parent
 	{
 		public:
 			typedef gal::console::temp<
@@ -32,14 +32,14 @@ namespace neb { namespace core { namespace app {
 			/***/
 			virtual ~Base();
 			/***/
-			neb::core::math::pose					getPose() const;
+			neb::fnd::math::pose					getPose() const;
 			/***/
-			neb::core::math::pose					getPoseGlobal() const;
+			neb::fnd::math::pose					getPoseGlobal() const;
 			/***/
-			std::weak_ptr<neb::core::game::game::base>		createGame();
+			std::weak_ptr<neb::fnd::game::game::base>		createGame();
 			/***/
-			std::weak_ptr<neb::core::game::game::base>		createGame(
-					neb::core::game::game::desc const &
+			std::weak_ptr<neb::fnd::game::game::base>		createGame(
+					neb::fnd::game::game::desc const &
 					);
 		protected:
 			//virtual void						init();
@@ -51,19 +51,19 @@ namespace neb { namespace core { namespace app {
 			/***/
 			static bool						is_valid();
 			/***/
-			virtual std::weak_ptr<neb::core::window::Base>		createWindow() = 0;
+			virtual std::weak_ptr<neb::fnd::window::Base>		createWindow() = 0;
 			/***/
-			virtual std::weak_ptr<neb::core::gui::layout::Base>	createLayout(
-					std::shared_ptr<neb::core::window::Base> window,
-					std::shared_ptr<neb::core::context::Base> context) = 0;
+			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
+					std::shared_ptr<neb::fnd::window::Base> window,
+					std::shared_ptr<neb::fnd::context::Base> context) = 0;
 			/***/
-			virtual std::weak_ptr<neb::core::core::scene::base>	createScene() = 0;
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene() = 0;
 			/***/
-			virtual std::weak_ptr<neb::core::core::scene::base>	createSceneDLL(std::string) = 0;
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string) = 0;
 			/***/
 			boost::asio::io_service					ios_;
 			/***/
-			neb::core::app::util::flag				flag_;
+			neb::fnd::app::util::flag				flag_;
 			/***/
 			gal::etc::timestep					ts_;
 			/***/
@@ -71,7 +71,7 @@ namespace neb { namespace core { namespace app {
 			/***/
 			std::vector< std::string >				_M_preloop_scripts_python;
 			/***/
-			static std::shared_ptr<neb::core::app::Base>		g_app_;
+			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
 	};
 
 }}}

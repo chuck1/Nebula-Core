@@ -1,9 +1,9 @@
 #include <neb/core/game/trigger/base.hpp>
 
-neb::core::game::trigger::base::base()
+neb::fnd::game::trigger::base::base()
 {
 }
-void	neb::core::game::trigger::base::step(gal::etc::timestep const &)
+void	neb::fnd::game::trigger::base::step(gal::etc::timestep const &)
 {
 }
 

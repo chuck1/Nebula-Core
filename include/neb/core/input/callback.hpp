@@ -2,7 +2,7 @@
 #define NEB_CORE_INPUT_CALLBACK_HPP
 
 
-namespace neb { namespace core { namespace input {
+namespace neb { namespace fnd { namespace input {
 
 	namespace func
 	{

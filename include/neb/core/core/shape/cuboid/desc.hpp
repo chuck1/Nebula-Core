@@ -3,11 +3,11 @@
 
 #include <neb/core/math/pose.hpp>
 
-namespace neb { namespace core { namespace core { namespace shape { namespace cuboid {
+namespace neb { namespace fnd { namespace core { namespace shape { namespace cuboid {
 
 	struct Desc {
 
-		Desc(neb::core::math::pose pose, glm::vec3 scale):
+		Desc(neb::fnd::math::pose pose, glm::vec3 scale):
 			pose_(pose),
 			scale_(scale),
 			density_(1.0)
@@ -21,7 +21,7 @@ namespace neb { namespace core { namespace core { namespace shape { namespace cu
 			density_(1.0)
 		{}
 
-		neb::core::math::pose		pose_;
+		neb::fnd::math::pose		pose_;
 		glm::vec3			scale_;
 		float				density_;
 	};

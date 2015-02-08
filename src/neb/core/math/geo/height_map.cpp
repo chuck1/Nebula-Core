@@ -1,9 +1,9 @@
 
-#include <neb/core/math/geo/height_map.hh>
-#include <neb/core/math/geo/polyhedron.hh>
+#include <neb/core/math/geo/height_map.hpp>
+#include <neb/core/math/geo/polyhedron.hpp>
 
 
-neb::core::math::geo::height_map::height_map(int nx, int ny) {
+neb::fnd::math::geo::height_map::height_map(int nx, int ny) {
 //	vertices_ = new vertex[(nx+1)*(ny+1)];
 //	tris_     = new tri[nx*ny*2];
 }

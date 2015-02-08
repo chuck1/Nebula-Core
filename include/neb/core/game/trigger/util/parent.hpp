@@ -9,17 +9,18 @@
 #include <neb/core/game/trigger/base.hpp>
 #include <neb/core/game/game/util/Cast.hpp>
 
-namespace neb { namespace core { namespace game { namespace trigger { namespace util {
+namespace neb { namespace fnd { namespace game { namespace trigger { namespace util {
 
 	/** @brief @Parent
 	 * abstract class for parent of an @Actor
 	 */
 	class parent:
-		virtual public nc::util::parent<nc::game::trigger::base, parent>,
-		virtual public neb::core::game::game::util::Cast
+		virtual public neb::fnd::util::parent<neb::fnd::game::trigger::base, parent>,
+		virtual public neb::fnd::game::game::util::Cast
 	{
 		public:
-			virtual void						init() {}
+			virtual void				init();
+			neb::fnd::app::Base* const		get_app();
 	};
 
 }}}}}

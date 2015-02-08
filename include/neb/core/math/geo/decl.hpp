@@ -1,7 +1,7 @@
 #ifndef NEBULA_MATH_GEO_DECL_HPP
 #define NEBULA_MATH_GEO_DECL_HPP
 
-namespace neb { namespace core { namespace math { 
+namespace neb { namespace fnd { namespace math { 
 
 	namespace geo
 	{

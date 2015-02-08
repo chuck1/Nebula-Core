@@ -4,12 +4,12 @@
 #include <neb/core/itf/shared.hpp>
 #include <neb/core/window/util/decl.hpp>
 
-namespace neb { namespace core { namespace window { namespace util {
+namespace neb { namespace fnd { namespace window { namespace util {
 	class Cast:
-		virtual public neb::core::itf::shared
+		virtual public neb::fnd::itf::shared
 	{
 		public:
-			std::shared_ptr<neb::core::window::Base>		is_fnd_window_base();
+			std::shared_ptr<neb::fnd::window::Base>		is_fnd_window_base();
 	};
 
 }}}}

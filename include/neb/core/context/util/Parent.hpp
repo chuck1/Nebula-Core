@@ -5,16 +5,16 @@
 #include <neb/core/util/parent.hpp>
 #include <neb/core/window/util/Cast.hpp>
 
-namespace neb { namespace core { namespace context { namespace util {
+namespace neb { namespace fnd { namespace context { namespace util {
 	class Parent:
-		virtual public neb::core::util::parent<neb::core::context::Base, Parent>,
-		virtual public neb::core::window::util::Cast
+		virtual public neb::fnd::util::parent<neb::fnd::context::Base, Parent>,
+		virtual public neb::fnd::window::util::Cast
 	{
 		public:
-			typedef neb::core::context::Window C_W;
+			typedef neb::fnd::context::Window C_W;
 		public:
-			virtual std::weak_ptr<neb::core::context::FBO>		createContextFBO() = 0;
-			virtual std::weak_ptr<neb::core::context::FBOM>		createContextFBOMulti() = 0;
+			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO() = 0;
+			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti() = 0;
 			virtual std::weak_ptr<C_W>				createContextWindow() = 0;
 			virtual std::weak_ptr<C_W>				createContextVisDepth() = 0;
 

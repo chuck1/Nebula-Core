@@ -3,11 +3,11 @@
 
 #include <neb/core/environ/Base.hpp>
 
-namespace neb { namespace core { namespace environ { namespace visualization {
+namespace neb { namespace fnd { namespace environ { namespace visualization {
 	/** @brief Normal
 	 */
 	class Normal:
-		virtual public neb::core::environ::Base
+		virtual public neb::fnd::environ::Base
 	{
 		public:
 			typedef std::shared_ptr<neb::gfx::glsl::program::base>		program_shared;

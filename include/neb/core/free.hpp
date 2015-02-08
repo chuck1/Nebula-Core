@@ -13,7 +13,7 @@
 
 template<typename B, typename D> void	makeDefaultFunc()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -26,7 +26,7 @@ template<typename B, typename D> void	makeDefaultFunc()
 }
 template<typename B, typename D> void	makeDLLFunc()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	gal::itf::shared::register_type(std::type_index(typeid(B)));
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
@@ -52,10 +52,10 @@ template<typename B, typename D> void	makeDLLFunc()
 }
 template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_name, std::string object_name)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
-	LOG(lg, neb::core::sl, debug) << "B " << typeid(B).name() << " " << typeid(B).hash_code();
-	LOG(lg, neb::core::sl, debug) << "D " << typeid(D).name() << " " << typeid(D).hash_code();
+	LOG(lg, neb::fnd::sl, debug) << "B " << typeid(B).name() << " " << typeid(B).hash_code();
+	LOG(lg, neb::fnd::sl, debug) << "D " << typeid(D).name() << " " << typeid(D).hash_code();
 
 	typedef gal::dll::helper<D>	H;
 	
@@ -71,7 +71,7 @@ template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_
 }
 template<typename T> std::shared_ptr<T>		loadXML(std::string filename)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	std::ifstream ifs;
 	ifs.open(filename);

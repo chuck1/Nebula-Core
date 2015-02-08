@@ -6,7 +6,7 @@
 /** @brief root namespace for @gru */
 namespace neb
 {
-	namespace core
+	namespace fnd
 	{	
 		/** @brief %app */
 		namespace app
@@ -32,13 +32,4 @@ namespace neb
 	}
 }
 
-namespace nc = neb::core;
-
 #endif
-
-
-
-
-
-
-

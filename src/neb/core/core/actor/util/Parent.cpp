@@ -7,8 +7,8 @@
 #include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/core/scene/base.hpp>
 
-neb::core::core::actor::util::parent::parent() {
+neb::fnd::core::actor::util::parent::parent() {
 }
-neb::core::core::actor::util::parent::~parent() {
+neb::fnd::core::actor::util::parent::~parent() {
 }
 

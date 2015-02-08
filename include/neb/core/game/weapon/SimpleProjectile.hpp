@@ -3,16 +3,16 @@
 
 #include <neb/core/game/weapon/base.hpp>
 
-namespace neb { namespace core { namespace game { namespace weapon {
+namespace neb { namespace fnd { namespace game { namespace weapon {
 	class SimpleProjectile:
-		virtual public neb::core::game::weapon::base
+		virtual public neb::fnd::game::weapon::base
 	{
 		public:
 			SimpleProjectile();
 			virtual void		connect(
-					std::shared_ptr<neb::core::input::source> window);
+					std::shared_ptr<neb::fnd::input::source> window);
 			virtual int		key_fun(
-					std::shared_ptr<neb::core::input::source> window, int, int, int, int);
+					std::shared_ptr<neb::fnd::input::source> window, int, int, int, int);
 			virtual void		fire();
 			double			size_;
 			double			velocity_;

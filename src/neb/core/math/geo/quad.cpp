@@ -1,7 +1,7 @@
 #include <neb/core/math/geo/vertex.hpp>
 #include <neb/core/math/geo/quad.hpp>
 
-neb::core::math::geo::rectangle::rectangle(glm::vec3 center, glm::vec3 x, glm::vec3 n, float w, float h)
+neb::fnd::math::geo::rectangle::rectangle(glm::vec3 center, glm::vec3 x, glm::vec3 n, float w, float h)
 {
 	glm::vec3 y = glm::cross(n,x);
 	

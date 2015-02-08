@@ -10,16 +10,16 @@
 
 #include <neb/core/type_traits.hpp>
 
-namespace neb { namespace core { namespace core { namespace actor {
+namespace neb { namespace fnd { namespace core { namespace actor {
 
 	namespace util {
 		class parent;
 	}
 
 	class __base:
-		virtual public neb::core::itf::shared,
-		virtual public neb::core::itf::serializable,
-		virtual public neb::core::type_traits<__base>::child_t
+		virtual public neb::fnd::itf::shared,
+		virtual public neb::fnd::itf::serializable,
+		virtual public neb::fnd::type_traits<__base>::child_t
 	{
 		public:
 			typedef type_traits<__base>::parent_t parent_t;

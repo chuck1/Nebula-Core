@@ -21,7 +21,7 @@ template<typename T> T clamp(T a, T b, T c) {
 	return a;
 }
 
-namespace neb { namespace core { namespace math { namespace color {
+namespace neb { namespace fnd { namespace math { namespace color {
 
 
 	template<typename F, typename T> T	convert(F f);

@@ -3,16 +3,16 @@
 
 #include <neb/core/timer/actor/Base.hpp>
 
-namespace neb { namespace core { namespace timer { namespace actor {
+namespace neb { namespace fnd { namespace timer { namespace actor {
 	/** @brief
 	 */
 	class Release:
-		virtual public neb::core::timer::actor::Base
+		virtual public neb::fnd::timer::actor::Base
 	{
 		public:
 			/** @brief
 			 */
-			Release(std::shared_ptr<neb::core::core::actor::base>, double);
+			Release(std::shared_ptr<neb::fnd::core::actor::base>, double);
 			/** @brief
 			 */
 			virtual void		doSomething();
