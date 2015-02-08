@@ -9,8 +9,8 @@
 namespace neb { namespace core { namespace game { namespace game {
 	class base:
 		virtual public gal::stl::child<nc::game::game::util::parent>,
-		virtual public nc::game::trigger::util::parent,
-		virtual public nc::game::ai::util::parent
+		virtual public neb::core::game::trigger::util::parent,
+		virtual public neb::core::game::ai::util::parent
 	{
 		public:
 			typedef nc::game::game::util::parent parent_t;

@@ -15,13 +15,15 @@
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/game/util/decl.hpp>
 #include <neb/core/window/util/Parent.hpp>
+#include <neb/core/timer/util/Parent.hpp>
 
 namespace neb { namespace core { namespace app {
 	/** @brief %base */
 	class Base:
 		virtual public neb::core::core::scene::util::parent,
 		virtual public neb::core::game::game::util::parent,
-		virtual public neb::core::window::util::Parent
+		virtual public neb::core::window::util::Parent,
+		virtual public neb::core::timer::util::Parent
 	{
 		public:
 			typedef gal::console::temp<
@@ -46,8 +48,6 @@ namespace neb { namespace core { namespace app {
 			void							__release();
 			void							__step(gal::etc::timestep const &);
 		public:
-			/***/
-			static std::shared_ptr<neb::core::app::Base>		global();
 			/***/
 			static bool						is_valid();
 			/***/

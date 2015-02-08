@@ -11,7 +11,7 @@
 #include <neb/core/util/debug.hpp>
 #include <neb/core/util/log.hpp>
 
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 /*#include <neb/phx/filter.hpp>
 #include <neb/phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
@@ -24,7 +24,8 @@
 
 typedef neb::core::game::weapon::SimpleProjectile THIS;
 
-THIS::SimpleProjectile() {
+THIS::SimpleProjectile()
+{
 }
 void			THIS::connect(
 		std::shared_ptr<neb::core::input::source> src)
@@ -58,7 +59,8 @@ void			THIS::fire()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;;
 	
-	auto app(neb::core::app::Base::global());
+	//auto app(neb::core::app::Base::global());
+	auto app = get_app();
 
 	if((app->ts_.time - last_) < cooldown_) return;
 	last_ = app->ts_.time;
@@ -114,7 +116,6 @@ void			THIS::fire()
 	
 	proj->velocity_ += actor->velocity_;
 
-
 	proj->init(scene);
 
 	// shape
@@ -125,19 +126,13 @@ void			THIS::fire()
 	proj->init(scene);
 	//proj->setupFiltering();
 
-
-
 	// release timer
-	
-	auto t = sp::make_shared<nc::timer::actor::Release>(proj, scene->last_ + 5.0);
+	auto t = std::make_shared<neb::core::timer::actor::Release>(proj, scene->last_ + 5.0);
 
 	LOG(lg, neb::core::sl, debug) << t.use_count();
 	
 	t->activate();
 
 	LOG(lg, neb::core::sl, debug) << t.use_count();
-	
-	
 }
-
 

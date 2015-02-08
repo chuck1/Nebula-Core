@@ -5,7 +5,7 @@
 #include <gal/dll/helper_info.hpp>
 
 #include <neb/core/util/debug.hpp>
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
@@ -13,7 +13,7 @@
 typedef neb::core::app::Base THIS;
 
 std::shared_ptr<THIS>		THIS::g_app_;
-
+/*
 std::shared_ptr<THIS>		THIS::global()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
@@ -23,6 +23,7 @@ std::shared_ptr<THIS>		THIS::global()
 	assert(g_app_);
 	return g_app_;
 }
+*/
 bool			THIS::is_valid()
 {
 	return (bool)g_app_;

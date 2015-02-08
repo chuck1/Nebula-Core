@@ -1,19 +1,15 @@
-#ifndef __NEBULA_TIMER_ACTOR_BASE_
-#define __NEBULA_TIMER_ACTOR_BASE_
+#ifndef NEB_FND_TIMER_ACTOR_BASE_HPP
+#define NEB_FND_TIMER_ACTOR_BASE_HPP
 
-
-#include <boost/asio.hpp>
-#include <boost/bind.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
 
 #include <neb/core/core/actor/util/decl.hpp>
+#include <neb/core/timer/Base.hpp>
 
 namespace neb { namespace core { namespace timer { namespace actor {
 	/** @brief
-	 *
 	 */
 	class Base:
-		public std::enable_shared_from_this<Base>
+		virtual public neb::core::timer::Base
 	{
 		public:
 			Base(std::shared_ptr<neb::core::core::actor::base> actor, double);
@@ -23,11 +19,8 @@ namespace neb { namespace core { namespace timer { namespace actor {
 			 */
 			virtual void						doSomething() = 0;
 			void 							activate();
-			boost::asio::deadline_timer				timer_;
 			std::weak_ptr<neb::core::core::actor::base>		actor_;
-			double							time_;
 	};
-
 }}}}
 
 #endif

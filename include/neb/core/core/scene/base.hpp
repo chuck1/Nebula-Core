@@ -10,7 +10,6 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-
 #include <neb/core/util/decl.hpp>
 #include <neb/core/core/scene/util/flag.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
@@ -21,13 +20,9 @@
 //#include <neb/core/core/actor/rigidbody/desc.hpp>
 //#include <neb/core/core/shape/cuboid/desc.hpp>
 
-
-
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 
-namespace neb { namespace core { namespace core {
-
-	namespace scene {
+namespace neb { namespace core { namespace core { namespace scene {
 		/** 
 		 * @ingroup group_core
 		 * @brief Base
@@ -39,7 +34,6 @@ namespace neb { namespace core { namespace core {
 			public:
 				typedef nc::core::scene::util::parent									parent_t;
 				typedef nc::util::parent<neb::core::core::actor::__base, neb::core::core::actor::util::parent>		actors;
-
 				base();
 				virtual ~base();
 				virtual void			init(parent_t * const & p) = 0;
@@ -48,16 +42,12 @@ namespace neb { namespace core { namespace core {
 				/** @name Main Loop @{ */
 				virtual void			step(gal::etc::timestep const & ts);
 				/** @} */
-
 				virtual void				load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void				save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
 				BOOST_SERIALIZATION_SPLIT_MEMBER();
-
 			public:
-				neb::core::math::pose						getPose() const;
-				neb::core::math::pose						getPoseGlobal() const;
-
-			public:
+				neb::core::math::pose			getPose() const;
+				neb::core::math::pose			getPoseGlobal() const;
 				/** @brief
 				 *
 				 */
@@ -130,12 +120,6 @@ namespace neb { namespace core { namespace core {
 				std::map< string, std::shared_ptr<neb::core::core::actor::base> >	actors_deferred_;
 				float									last_;
 		};
-	}
-}}}
+}}}}
 
 #endif
-
-
-
-
-

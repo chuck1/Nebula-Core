@@ -1,5 +1,5 @@
 #include <neb/core/util/cast.hpp>
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
@@ -29,7 +29,6 @@ void				THIS::connect(std::shared_ptr<neb::core::core::actor::base> actor) {
 }
 void				THIS::doSomething()
 {
-	
 	auto game = neb::is<parent_t, nc::game::game::base>(getParent());
 	auto scene(game->scene_.lock());
 	
@@ -41,8 +40,9 @@ void				THIS::doSomething()
 	
 	// message
 	auto app = neb::core::app::Base::global();
+	
 	if(app->console_) app->console_->operator<<("you won!");
-
+	
 	//scene->getParent()->erase(scene->i_);
 	
 //	auto gp(game->parent_.lock());

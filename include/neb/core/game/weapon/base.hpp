@@ -10,7 +10,6 @@
 //#include <neb/phx/core/actor/util/decl.hpp>
 
 namespace neb { namespace core { namespace game { namespace weapon {
-
 	class base:
 		virtual public neb::core::itf::shared,
 		virtual public neb::core::input::sink,
@@ -19,13 +18,12 @@ namespace neb { namespace core { namespace game { namespace weapon {
 		public:
 			typedef nc::game::weapon::util::parent parent_t;
 			base();
+			virtual std::shared_ptr<neb::core::app::Base>	get_app();
 			virtual void					init(parent_t * const & p);
-
 			virtual void					step(gal::etc::timestep const &) {}
 			virtual void					connect(std::shared_ptr<neb::core::input::source> src) = 0;
 			virtual int					key_fun(std::shared_ptr<neb::core::input::source> window, int, int, int, int) = 0;
 			virtual void					fire() = 0;
-
 			/** @brief last
 			 *
 			 * last time weapon was fired
@@ -34,12 +32,7 @@ namespace neb { namespace core { namespace game { namespace weapon {
 			/** @brief cooldown
 			 */
 			double						cooldown_;
-
-
 	};
-
 }}}}
 
 #endif
-
-
