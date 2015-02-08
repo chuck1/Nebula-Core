@@ -5,11 +5,11 @@
 
 #include <gal/etc/flag.hpp>
 //#include <gal/stl/map.hpp>
-#include <gal/stl/child.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
+#include <neb/core/tmp/Child.hpp>
 #include <neb/core/util/decl.hpp>
 #include <neb/core/core/scene/util/flag.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
@@ -28,7 +28,7 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 		 * @brief Base
 		 */
 		class base:
-			virtual public gal::stl::child<neb::fnd::core::scene::util::parent>,
+			virtual public neb::fnd::tmp::Child<neb::fnd::core::scene::util::parent>,
 			virtual public neb::fnd::core::actor::util::parent
 		{
 			public:

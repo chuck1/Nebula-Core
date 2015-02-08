@@ -5,6 +5,7 @@
 
 #include <neb/core/context/util/Cast.hpp>
 #include <neb/core/environ/util/decl.hpp>
+#include <neb/core/util/decl.hpp>
 #include <neb/core/util/parent.hpp>
 
 namespace neb { namespace fnd { namespace environ { namespace util {
@@ -13,6 +14,7 @@ namespace neb { namespace fnd { namespace environ { namespace util {
 		virtual public neb::fnd::context::util::Cast
 	{
 		public:
+			neb::fnd::app::Base* const						get_app();
 			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo() = 0;
 			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault() = 0;
 			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint() = 0;

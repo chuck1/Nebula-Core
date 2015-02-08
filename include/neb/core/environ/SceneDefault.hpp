@@ -20,8 +20,8 @@ namespace neb { namespace fnd { namespace environ {
 	{
 		/*
 		public:
-			typedef std::shared_ptr<neb::gfx::glsl::program::base>	program_shared;
-			typedef std::shared_ptr<neb::gfx::camera::view::base>		view_shared;
+			typedef std::shared_ptr<neb::gfx::glsl::program::Base>	program_shared;
+			typedef std::shared_ptr<neb::gfx::camera::view::Base>		view_shared;
 			typedef std::shared_ptr<neb::gfx::camera::proj::base>		proj_shared;
 		public:
 		

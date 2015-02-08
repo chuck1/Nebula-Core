@@ -14,6 +14,7 @@
 #include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/game/util/decl.hpp>
+#include <neb/core/glsl/program/util/decl.hpp>
 #include <neb/core/window/util/Parent.hpp>
 #include <neb/core/timer/util/Parent.hpp>
 
@@ -60,6 +61,9 @@ namespace neb { namespace fnd { namespace app {
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene() = 0;
 			/***/
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string) = 0;
+			/***/
+			std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text();
+			std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3();
 			/***/
 			boost::asio::io_service					ios_;
 			/***/
