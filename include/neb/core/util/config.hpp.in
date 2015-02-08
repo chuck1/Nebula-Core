@@ -5,7 +5,7 @@
 
 //#define NEBULA_PYTHON_LIB "lib nebula_python_NAME"
 
-#define NEB_MOD_DIR   "{{ master_config_dir }}/components/ext/build"
+#define NEB_MOD_DIR   "{{ master_config_dir }}/components/ext/"
 #define NEB_SHARE_DIR "{{ master_config_dir }}/share"
 
 //#define NEB_INSTALL_DIR " CMAKE_INSTALL_PREFIX "

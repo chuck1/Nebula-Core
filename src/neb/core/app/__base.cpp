@@ -102,14 +102,26 @@ neb::core::math::pose				THIS::getPoseGlobal() const
 {
 	return neb::core::math::pose();
 }
-std::shared_ptr<nc::game::game::base>		THIS::createGame(
-		nc::game::game::desc const & desc)
+std::weak_ptr<neb::core::game::game::base>		THIS::createGame()
 {
 	typedef nc::game::game::base T;
 	
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
-	nc::game::game::util::parent::insert(g);
+	neb::core::game::game::util::parent::insert(g);
+	
+	g->init(this);
+	
+	return g;
+}
+std::weak_ptr<neb::core::game::game::base>		THIS::createGame(
+		neb::core::game::game::desc const & desc)
+{
+	typedef nc::game::game::base T;
+	
+	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
+
+	neb::core::game::game::util::parent::insert(g);
 	
 	g->init(this);
 	
