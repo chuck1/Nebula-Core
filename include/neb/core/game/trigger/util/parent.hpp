@@ -20,6 +20,7 @@ namespace neb { namespace fnd { namespace game { namespace trigger { namespace u
 	{
 		public:
 			virtual void				init();
+			virtual void				step(gal::etc::timestep const & ts);
 			neb::fnd::app::Base* const		get_app();
 	};
 

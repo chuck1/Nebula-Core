@@ -17,7 +17,7 @@ namespace neb { namespace fnd { namespace input {
 			{
 				struct
 				{
-					func::keyFun	F1_;
+					neb::fnd::input::func::keyFun		F1_;
 				} key_press_;
 			} callback_;
 
