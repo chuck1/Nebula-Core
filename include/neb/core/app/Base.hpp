@@ -63,6 +63,7 @@ namespace neb { namespace fnd { namespace app {
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string) = 0;
 			/***/
 			std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text();
+			std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex();
 			std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3();
 			/***/
 			boost::asio::io_service					ios_;

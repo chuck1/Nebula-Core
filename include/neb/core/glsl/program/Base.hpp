@@ -22,6 +22,7 @@ namespace neb { namespace fnd { namespace glsl { namespace program {
 			virtual void		use() const = 0;
 			//void			locate();
 			//void			scanUniforms();
+			virtual int		get_attrib_table_value(int key) const = 0;
 			virtual int		get_uniform_table_value(int key) const = 0;
 	};
 }}}}
