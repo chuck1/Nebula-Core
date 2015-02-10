@@ -7,8 +7,9 @@
 
 #include <neb/core/itf/shared.hpp>
 #include <neb/core/itf/serializable.hpp>
-
+#include <neb/core/tmp/Child.hpp>
 #include <neb/core/type_traits.hpp>
+#include <neb/core/core/actor/util/parent.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace actor {
 
@@ -19,10 +20,9 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 	class __base:
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::itf::serializable,
-		virtual public neb::fnd::type_traits<__base>::child_t
+		virtual public neb::fnd::tmp::Child<neb::fnd::core::actor::util::parent>
 	{
 		public:
-			typedef type_traits<__base>::parent_t parent_t;
 
 			virtual void		init(parent_t * const & p) = 0;
 
