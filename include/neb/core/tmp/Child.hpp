@@ -10,6 +10,7 @@ namespace neb { namespace fnd { namespace tmp {
 		virtual public gal::stl::child<T>
 	{
 		public:
+			typedef neb::fnd::tmp::Child<T> CHILD;
 			neb::fnd::app::Base*	get_app()
 			{
 				auto p = gal::stl::child<T>::getParent();
@@ -21,6 +22,7 @@ namespace neb { namespace fnd { namespace tmp {
 		virtual public gal::stl::child<neb::fnd::app::Base>
 	{
 		public:
+			typedef neb::fnd::tmp::Child<neb::fnd::app::Base> CHILD;
 			neb::fnd::app::Base*	get_app()
 			{
 				auto app = gal::stl::child<neb::fnd::app::Base>::getParent();

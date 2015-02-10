@@ -10,8 +10,7 @@
 
 #include <gal/etc/timestep.hpp>
 
-#include <gal/stl/child.hpp>
-
+#include <neb/core/tmp/Child.hpp>
 #include <neb/core/itf/serializable.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/shape/util/parent.hpp>
@@ -26,7 +25,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		virtual public neb::fnd::itf::serializable,
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::core::light::util::parent,
-		virtual public gal::stl::child<neb::fnd::core::shape::util::parent>
+		virtual public neb::fnd::tmp::Child<neb::fnd::core::shape::util::parent>
 	{
 		public:
 			typedef neb::fnd::core::shape::util::parent parent_t;
