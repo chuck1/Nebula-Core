@@ -11,11 +11,11 @@ namespace neb { namespace fnd { namespace tmp {
 	{
 		public:
 			typedef neb::fnd::tmp::Child<T> CHILD;
-			neb::fnd::app::Base*	get_app()
+			neb::fnd::app::Base*	get_fnd_app()
 			{
 				auto p = gal::stl::child<T>::getParent();
 				assert(p);
-				return p->get_app();
+				return p->get_fnd_app();
 			}
 	};
 	template<> class Child<neb::fnd::app::Base>:
@@ -23,7 +23,7 @@ namespace neb { namespace fnd { namespace tmp {
 	{
 		public:
 			typedef neb::fnd::tmp::Child<neb::fnd::app::Base> CHILD;
-			neb::fnd::app::Base*	get_app()
+			neb::fnd::app::Base*	get_fnd_app()
 			{
 				auto app = gal::stl::child<neb::fnd::app::Base>::getParent();
 				assert(app);

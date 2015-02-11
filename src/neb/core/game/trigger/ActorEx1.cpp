@@ -40,7 +40,7 @@ void			THIS::doSomething()
 	
 	// message
 	//auto app = neb::fnd::app::Base::global();
-	auto app = get_app();
+	auto app = get_fnd_app();
 	
 	if(app->console_) app->console_->operator<<("you won!");
 	

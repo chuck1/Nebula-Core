@@ -15,7 +15,7 @@ namespace neb { namespace fnd { namespace core { namespace scene { namespace uti
 		virtual public neb::fnd::itf::Pose
 	{
 		public:
-			neb::fnd::app::Base* const		get_app() const;
+			neb::fnd::app::Base* const		get_fnd_app();
 	};
 }}}}}
 

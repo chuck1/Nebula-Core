@@ -27,8 +27,9 @@ namespace neb { namespace fnd { namespace core { namespace shape { namespace uti
 		virtual public neb::fnd::itf::Pose
 	{
 		public:
-			virtual ~parent() {}
-			void		callbackPose(neb::fnd::math::pose const & pose);
+			virtual ~parent();
+			void				callbackPose(neb::fnd::math::pose const & pose);
+			neb::fnd::app::Base * const	get_fnd_app();
 	};
 }}}}}
 

@@ -14,7 +14,7 @@ namespace neb { namespace fnd { namespace environ { namespace util {
 		virtual public neb::fnd::context::util::Cast
 	{
 		public:
-			neb::fnd::app::Base* const						get_app();
+			neb::fnd::app::Base* const						get_fnd_app();
 			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo() = 0;
 			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault() = 0;
 			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint() = 0;
