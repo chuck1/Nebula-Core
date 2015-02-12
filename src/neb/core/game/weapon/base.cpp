@@ -1,11 +1,17 @@
-
 #include <neb/core/game/weapon/base.hpp>
 
-neb::fnd::game::weapon::base::base():
+typedef neb::fnd::game::weapon::base THIS;
+
+THIS::base():
 	last_(0),
 	cooldown_(1.0)
-{}
-void		neb::fnd::game::weapon::base::init(parent_t * const & p)
+{
+}
+void		THIS::init(parent_t * const & p)
+{
+	setParent(p);
+}
+void		THIS::step(gal::etc::timestep const &)
 {
 }
 

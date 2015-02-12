@@ -14,7 +14,8 @@ namespace neb { namespace fnd { namespace game { namespace weapon { namespace ut
 		virtual public neb::fnd::core::actor::util::Cast
 	{
 		public:
-			virtual ~parent() {}
+			virtual ~parent();
+			neb::fnd::app::Base * const		get_fnd_app();
 	};
 }}}}}
 

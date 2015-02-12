@@ -60,7 +60,7 @@ void			THIS::fire()
 	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
 	
 	//auto app(neb::fnd::app::Base::global());
-	auto app = get_app();
+	auto app = get_fnd_app();
 
 	if((app->ts_.time - last_) < cooldown_) return;
 	last_ = app->ts_.time;
