@@ -1,3 +1,4 @@
+#include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/shape/util/parent.hpp>
 
@@ -21,5 +22,13 @@ void		THIS::callbackPose(neb::fnd::math::pose const & parent_gpose)
 	
 	map_.for_each(lambda_shape);
 }
+neb::fnd::app::Base * const	THIS::get_fnd_app()
+{
+	auto a = is_fnd_actor_base();
+	if(a) return a->get_fnd_app();
 
+	auto s = isShapeBase();
+	assert(s);
+	return s->get_fnd_app();
+}
 
