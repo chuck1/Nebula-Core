@@ -28,6 +28,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		virtual public neb::fnd::tmp::Child<neb::fnd::core::shape::util::parent>
 	{
 		public:
+			using CHILD::get_fnd_app;
 			typedef neb::fnd::core::shape::util::parent parent_t;
 			base();
 			virtual ~base();

@@ -1,6 +1,7 @@
 #ifndef NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 #define NEBULA_CORE_LIGHT_UTIL_PARENT_HH
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/itf/Pose.hpp>
 #include <neb/core/util/parent.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
@@ -18,8 +19,8 @@ namespace neb { namespace fnd { namespace core { namespace light { namespace uti
 			virtual ~parent() {}
 			//bool							hasScene();
 			//std::weak_ptr<neb::fnd::core::scene::base>		getScene();
-
 			void							callbackPose(neb::fnd::math::pose const &);
+			neb::fnd::app::Base * const				get_fnd_app();
 	};
 
 }}}}}

@@ -12,7 +12,7 @@ namespace neb { namespace fnd { namespace glsl { namespace program {
 	{
 		public:
 			//Base(std::string);
-			virtual ~Base() = 0;
+			virtual ~Base();
 			virtual void		step(gal::etc::timestep const & ts);
 			//virtual void		init();
 			//void			restoreDefaultShaderFlags();

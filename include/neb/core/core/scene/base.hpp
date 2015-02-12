@@ -32,6 +32,7 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 			virtual public neb::fnd::core::actor::util::parent
 		{
 			public:
+				using CHILD::get_fnd_app;
 				typedef neb::fnd::core::scene::util::parent									parent_t;
 				typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>		actors;
 				base();

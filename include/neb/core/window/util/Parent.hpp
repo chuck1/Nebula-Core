@@ -1,6 +1,7 @@
 #ifndef NEBULA_CORE_WINDOW_UTIL_PARENT_HH
 #define NEBULA_CORE_WINDOW_UTIL_PARENT_HH
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/util/parent.hpp>
 #include <neb/core/window/Base.hpp>
 
@@ -11,6 +12,7 @@ namespace neb { namespace fnd { namespace window { namespace util {
 	{
 		public:
 			virtual void		render() = 0;
+			neb::fnd::app::Base * const		get_fnd_app();
 	};
 }}}}
 

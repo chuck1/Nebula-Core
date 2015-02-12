@@ -27,7 +27,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace uti
 		public:
 			parent();
 			virtual ~parent();
-			neb::fnd::app::Base*		get_fnd_app();
+			neb::fnd::app::Base * const		get_fnd_app();
 		public:
 			//shared_ptr<neb::fnd::core::scene::base>			getScene();
 	};
