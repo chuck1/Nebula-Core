@@ -6,7 +6,7 @@
 #include <gal/itf/shared.hpp>
 
 #include <neb/core/util/parent.hpp>
-
+#include <neb/core/util/decl.hpp>
 #include <neb/core/core/actor/__base.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/Cast.hpp>
@@ -27,7 +27,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace uti
 		public:
 			parent();
 			virtual ~parent();
-			neb::fnd::app::Base*		get_app();
+			neb::fnd::app::Base*		get_fnd_app();
 		public:
 			//shared_ptr<neb::fnd::core::scene::base>			getScene();
 	};

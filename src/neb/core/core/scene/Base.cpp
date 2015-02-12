@@ -16,8 +16,6 @@
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
 
-using namespace std;
-
 typedef neb::fnd::core::scene::base THIS;
 
 THIS::base():

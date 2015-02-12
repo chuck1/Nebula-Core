@@ -106,7 +106,8 @@ void		neb::fnd::core::actor::base::setPose(neb::fnd::math::pose const & pose) {
 
 	flag_.set(neb::fnd::core::actor::util::flag::E::SHOULD_UPDATE);
 }
-void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts) {
+void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts)
+{
 	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
 
 	//typedef neb::fnd::core::actor::util::parent A;

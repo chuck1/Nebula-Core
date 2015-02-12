@@ -20,38 +20,32 @@
 #include <neb/core/core/shape/util/parent.hpp>
 #include <neb/core/core/shape/cuboid/desc.hpp>
 #include <neb/core/math/serialization/glm.hpp>
-
 #include <neb/core/game/weapon/util/parent.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace actor {
-
 	/** @brief %base */
 	class base:
 		virtual public neb::fnd::core::actor::__base,
+		virtual public neb::fnd::itf::serializable,
 		virtual public neb::fnd::core::actor::util::parent,
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::game::weapon::util::parent
 	{
 		public:
+			using CHILD::get_fnd_app;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>		actors;
 			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>		shapes;
-
-		public:
 			//typedef neb::fnd::core::actor::__base> parent_t;
 			/** @brief default constructor */
 			base();
 			/** @brief constructor */
 			//base(std::shared_ptr<parent_t> parent);
 			virtual ~base();
-		public:
 			virtual void						init(parent_t * const &) = 0;
 			virtual void						release();
-		public:
 			virtual void						step(gal::etc::timestep const & ts);
-		public:
-			virtual neb::fnd::math::pose					getPose() const;
-			virtual neb::fnd::math::pose					getPoseGlobal() const;
-
+			virtual neb::fnd::math::pose				getPose() const;
+			virtual neb::fnd::math::pose				getPoseGlobal() const;
 			bool							hasScene() const;
 			neb::fnd::core::scene::base*				getScene() const;
 			//std::shared_ptr<neb::fnd::core::actor::util::parent>		get_parent();
@@ -60,7 +54,6 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 * virtual because actor::local will add self to active transform list
 			 */
 			virtual void						setPose(neb::fnd::math::pose const & pose);
-		public:
 			/** @brief
 			 *
 			 */
@@ -88,8 +81,6 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeLightSpot(
 					neb::fnd::math::pose const & pose,
 					glm::vec3 direction);
-		public:
-
 			template<class Archive> void					__serialize(
 					Archive & ar,
 					unsigned int const & version)
@@ -105,22 +96,16 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 				ar & boost::serialization::make_nvp(
 						"shapes", neb::fnd::core::shape::util::parent::map_);
 			}
-
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
-
-		public:
 			neb::fnd::core::actor::util::flag			flag_;
-
 			neb::fnd::math::pose					pose_;
 			glm::vec3						velocity_;
 			float							density_;
 			double							health_;
-
 			neb::phx::filter::data					simulation_;
 			neb::phx::filter::data					scene_query_;
-
 		public:
 			/** @brief Parent */
 			//weak_ptr<neb::fnd::core::actor::util::parent>		parent_;
@@ -128,4 +113,3 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 }}}}
 
 #endif
-
