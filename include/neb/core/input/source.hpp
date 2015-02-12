@@ -4,11 +4,9 @@
 #include <glm/glm.hpp>
 
 #include <neb/core/input/signals.hpp>
+#include <neb/core/input/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace input {
-
-	class sink;
-
 	class source
 	{
 		public:
@@ -23,13 +21,7 @@ namespace neb { namespace fnd { namespace input {
 				neb::fnd::input::signals::MouseButtonFun	mouseButtonFun_;
 				neb::fnd::input::signals::CharFun		charFun_;
 			} sig_;
-			
-			
-			
-
 	};
-
 }}}
 
 #endif
-
