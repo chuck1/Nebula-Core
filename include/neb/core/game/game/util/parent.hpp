@@ -13,8 +13,9 @@ namespace neb { namespace fnd { namespace game { namespace game { namespace util
 		virtual public neb::fnd::util::parent<neb::fnd::game::game::base, parent>
 	{
 		public:
-			parent() {}
-			virtual ~parent() {}
+			parent();
+			virtual ~parent();
+			neb::fnd::app::Base * const		get_fnd_app();
 		protected:
 			virtual void				__init();
 		public:

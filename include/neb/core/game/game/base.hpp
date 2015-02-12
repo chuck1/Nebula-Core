@@ -8,11 +8,12 @@
 
 namespace neb { namespace fnd { namespace game { namespace game {
 	class base:
-		virtual public gal::stl::child<neb::fnd::game::game::util::parent>,
+		virtual public neb::fnd::tmp::Child<neb::fnd::game::game::util::parent>,
 		virtual public neb::fnd::game::trigger::util::parent,
 		virtual public neb::fnd::game::ai::util::parent
 	{
 		public:
+			using CHILD::get_fnd_app;
 			typedef neb::fnd::game::game::util::parent parent_t;
 			virtual void					init(parent_t * const &);
 			virtual void					release();
