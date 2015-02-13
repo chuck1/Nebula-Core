@@ -47,9 +47,9 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 			neb::fnd::math::pose						getPose() const;
 			neb::fnd::math::pose						getPoseGlobal() const;
 			/** @} */
-			virtual weak_ptr<neb::fnd::core::light::base>		createLightPoint() = 0;
-			virtual weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3) = 0;
-			virtual weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3) = 0;
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightPoint() = 0;
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3) = 0;
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3) = 0;
 		public:
 /*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
 			virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}
@@ -63,15 +63,12 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 					Archive & ar, unsigned int const & version)
 			{
 				LOG(lg, neb::fnd::core::shape::sl, debug) << __PRETTY_FUNCTION__;
-	
 				ar & boost::serialization::make_nvp("flag",flag_);
 				ar & boost::serialization::make_nvp("pose",pose_);
 				ar & boost::serialization::make_nvp("scale",scale_);
 				ar & boost::serialization::make_nvp("image",image_);
 				ar & boost::serialization::make_nvp("normal",normal_);
-
 				//ar & BOOST::SERIALIZATION::make_NVP("lights", neb::fnd::core::light::util::parent::map_);
-
 				ar & boost::serialization::make_nvp(
 						"shapes",
 						neb::fnd::core::shape::util::parent::map_
@@ -80,22 +77,17 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 						"lights",
 						neb::fnd::core::light::util::parent::map_
 						);
-
 			}
-
 		public:
 			neb::fnd::core::shape::util::flag		flag_;
 			/** @brief pose */
-			neb::fnd::math::pose					pose_;
+			neb::fnd::math::pose				pose_;
 			/** @brief scale */
 			glm::vec3					scale_;
 			/** @brief Name of image file */
-			string						image_;
+			std::string					image_;
 			/** @brief Name of normal map file */
-			string						normal_;
-		public:
-
-
+			std::string					normal_;
 	};
 }}}}
 
