@@ -6,8 +6,8 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
-#include <gru/config.hpp>
-#include <gru/shape/desc.hpp>
+//#include <gru/config.hpp>
+//#include <gru/shape/desc.hpp>
 
 namespace neb { namespace fnd { namespace flow { namespace event { namespace actor {
 

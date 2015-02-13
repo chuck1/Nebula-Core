@@ -4,7 +4,6 @@
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/debug.hpp>
 #include <neb/core/util/log.hpp>
-
 #include <neb/core/app/Base.hpp>
 
 typedef neb::fnd::timer::actor::Base THIS;

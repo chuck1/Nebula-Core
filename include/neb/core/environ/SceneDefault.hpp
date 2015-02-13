@@ -2,14 +2,15 @@
 #define NEBULA_FND_ENVIRON_SCENE_DEF_HPP
 
 #include <neb/core/core/actor/util/decl.hpp>
-#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/core/environ/Base.hpp>
 
+/*
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/camera/util/decl.hpp>
 #include <neb/gfx/glsl/util/decl.hpp>
 #include <neb/gfx/environ/three.hpp>
 #include <neb/gfx/environ/single.hpp>
-
+*/
 namespace neb { namespace fnd { namespace environ {
 	/** @brief base
 	 *

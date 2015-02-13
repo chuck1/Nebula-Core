@@ -12,7 +12,7 @@ namespace neb { namespace fnd { namespace game { namespace trigger {
 			ActorEx1(std::shared_ptr<neb::fnd::game::trigger::util::parent> parent);
 
 			virtual void						connect(
-					shared_ptr<neb::fnd::core::actor::base> actor);
+					std::shared_ptr<neb::fnd::core::actor::base> actor);
 
 			virtual void						doSomething();
 	};

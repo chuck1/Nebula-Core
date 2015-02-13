@@ -9,6 +9,7 @@
 #include <gal/itf/shared.hpp>
 
 #include <neb/core/game/spawn/base.hpp>
+#include <neb/core/util/parent.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace spawn { namespace util {
 	/** @brief @Parent

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 namespace neb { namespace fnd { namespace math { namespace color {
 

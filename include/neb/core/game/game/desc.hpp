@@ -1,6 +1,12 @@
 #ifndef NEBULA_GAME_GAME_DESC_HPP
 #define NEBULA_GAME_GAME_DESC_HPP
 
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+
+#include <gal/itf/shared.hpp>
+
+#include <neb/core/util/decl.hpp>
 #include <neb/core/game/game/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace game {

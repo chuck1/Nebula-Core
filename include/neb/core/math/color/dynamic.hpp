@@ -3,12 +3,11 @@
 
 #include <stdlib.h>
 
-#include <neb/core/math/color.hpp>
-
+#include <neb/core/math/color/color.hpp>
 
 namespace neb { namespace fnd { namespace math { namespace color {
 
-	template <typename T, class R, class G, class B> class Dynamic: neb::fnd::math::color::color<T> {
+	template <typename TR, typename TG, typename TB, typename TA, class R, class G, class B> class Dynamic: neb::fnd::math::color::color_rgba<TR, TG, TB, TA> {
 		public:
 			/*	struct type {
 				enum e: char {
@@ -23,8 +22,8 @@ namespace neb { namespace fnd { namespace math { namespace color {
 				//fr = fg = fb = 0.0;
 				//tr = tg = tb = type::e::CONST;
 			}
-			Dynamic(T nr, T ng, T nb, T na): color<T>(nr,ng,nb,na) {}
-			Dynamic(T newr, T newg, T newb, T newA, char newtr, char newtg, char newtb) {
+			Dynamic(TR nr, TG ng, TB nb, TA na): color_rgba<TR,TB,TG,TA>(nr,ng,nb,na) {}
+			Dynamic(TR newr, TG newg, TB newb, TA newA, char newtr, char newtg, char newtb) {
 				/*
 				   tr = newtr;
 				   tg = newtg;
@@ -86,7 +85,7 @@ namespace neb { namespace fnd { namespace math { namespace color {
 				   a = newA;
 				 */
 			}
-			Dynamic(const color<T> & rhs): color<T>(rhs) {
+			Dynamic(const color_rgba<TR,TB,TG,TA> & rhs): color_rgba<TR,TB,TG,TA>(rhs) {
 
 				/*	fr = rhs.fr;
 					fg = rhs.fg;
@@ -99,12 +98,13 @@ namespace neb { namespace fnd { namespace math { namespace color {
 
 			~Dynamic() {}
 
-			void			step(T time) {
+			void			step(double time)
+			{
 				//MATH_DEBUG_1_FUNCTION;
 
-				color<T>::r = r_.step(time);
-				color<T>::g = g_.step(time);
-				color<T>::b = b_.step(time);
+				color_rgba<TR,TB,TG,TA>::r = r_.step(time);
+				color_rgba<TR,TB,TG,TA>::g = g_.step(time);
+				color_rgba<TR,TB,TG,TA>::b = b_.step(time);
 				/*
 				   switch(tr) {
 				   case type::e::CONST:
@@ -141,16 +141,16 @@ namespace neb { namespace fnd { namespace math { namespace color {
 				   }*/
 
 			}
-			math::Color::color<T>		operator*(T f) {
-				math::Color::color<T> ret(*this);
+			math::color::color_rgba<TR,TB,TG,TA>		operator*(double f) {
+				math::color::color_rgba<TR,TB,TG,TA> ret(*this);
 				ret *= f;
 				return ret;
 			}
-			operator T* () const {
-				return (T*)this;
+			operator double* () const {
+				return (double*)this;
 			}
-			operator T const * () const {
-				return (T*)this;
+			operator double const * () const {
+				return (double*)this;
 			}
 
 			//constructors

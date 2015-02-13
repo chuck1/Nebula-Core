@@ -8,6 +8,7 @@
 
 #include <gal/itf/shared.hpp>
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/itf/Pose.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/Cast.hpp>

@@ -11,6 +11,6 @@ namespace neb { namespace fnd {
 			class Release;
 		}
 	}
-}
+}}
 
 #endif

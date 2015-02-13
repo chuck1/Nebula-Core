@@ -1,6 +1,8 @@
 #ifndef PHYSX_FILTER_HPP
 #define PHYSX_FILTER_HPP
 
+#include <map>
+
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 

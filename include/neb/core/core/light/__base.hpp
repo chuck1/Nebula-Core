@@ -3,6 +3,7 @@
 
 #include <gal/stl/child.hpp>
 
+#include <neb/core/math/pose.hpp>
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/itf/shared.hpp>
 #include <neb/core/itf/serializable.hpp>

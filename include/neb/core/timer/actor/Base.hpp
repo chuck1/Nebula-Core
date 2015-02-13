@@ -18,7 +18,7 @@ namespace neb { namespace fnd { namespace timer { namespace actor {
 			 * what to do when timer expires
 			 */
 			virtual void						doSomething() = 0;
-			void 							activate();
+			//void 							activate();
 			std::weak_ptr<neb::fnd::core::actor::base>		actor_;
 	};
 }}}}
