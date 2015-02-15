@@ -1,6 +1,7 @@
 #ifndef NEB_CORE_CONTEXT_UTIL_PARENT_HH
 #define NEB_CORE_CONTEXT_UTIL_PARENT_HH
 
+#include <neb/core/util/decl.hpp>
 #include <neb/core/context/util/decl.hpp>
 #include <neb/core/util/parent.hpp>
 #include <neb/core/window/util/Cast.hpp>
@@ -12,16 +13,14 @@ namespace neb { namespace fnd { namespace context { namespace util {
 	{
 		public:
 			typedef neb::fnd::context::Window C_W;
-		public:
+			neb::fnd::app::Base * const				get_fnd_app();
 			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO() = 0;
 			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti() = 0;
 			virtual std::weak_ptr<C_W>				createContextWindow() = 0;
 			virtual std::weak_ptr<C_W>				createContextVisDepth() = 0;
-
-			virtual std::weak_ptr<C_W>		createContextTwo() = 0;
-			virtual std::weak_ptr<C_W>		createContextThree() = 0;
-			virtual std::weak_ptr<C_W>		createContextNormalMap() = 0;
-
+			virtual std::weak_ptr<C_W>				createContextTwo() = 0;
+			virtual std::weak_ptr<C_W>				createContextThree() = 0;
+			virtual std::weak_ptr<C_W>				createContextNormalMap() = 0;
 	};
 }}}}
 

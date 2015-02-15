@@ -4,8 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gal/stl/child.hpp>
-
+#include <neb/core/tmp/Child.hpp>
 #include <neb/core/input/source.hpp>
 #include <neb/core/input/callback.hpp>
 #include <neb/core/itf/shared.hpp>
@@ -16,12 +15,13 @@
 namespace neb { namespace fnd { namespace window {
 
 	class Base:
-		virtual public gal::stl::child<neb::fnd::window::util::Parent>,
+		virtual public neb::fnd::tmp::Child<neb::fnd::window::util::Parent>,
 		virtual public neb::fnd::context::util::Parent,
 		virtual public neb::fnd::input::source,
 		virtual public neb::fnd::input::callback
 	{
 		public:
+			using CHILD::get_fnd_app;
 			typedef neb::fnd::window::util::Parent parent_t;
 			typedef neb::fnd::util::parent<neb::fnd::context::Base, neb::fnd::context::util::Parent> contexts;
 			
