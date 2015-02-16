@@ -21,6 +21,7 @@
 #include <neb/core/core/shape/cuboid/desc.hpp>
 #include <neb/core/math/serialization/glm.hpp>
 #include <neb/core/game/weapon/util/parent.hpp>
+#include <neb/core/game/weapon/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace actor {
 	/** @brief %base */
@@ -81,6 +82,11 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeLightSpot(
 					neb::fnd::math::pose const & pose,
 					glm::vec3 direction);
+			std::weak_ptr<neb::fnd::game::weapon::SimpleProjectile>		createWeaponSimpleProjectile(
+					std::shared_ptr<neb::fnd::input::source> src,
+					double size,
+					double damage,
+					double velocity);
 			template<class Archive> void					__serialize(
 					Archive & ar,
 					unsigned int const & version)

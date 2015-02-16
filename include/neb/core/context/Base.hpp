@@ -20,6 +20,7 @@ namespace neb { namespace fnd { namespace context {
 			virtual void		render() = 0;
 			virtual void		setDrawable(std::shared_ptr<neb::fnd::drawable::Base>) = 0;
 			virtual void		setEnviron(std::shared_ptr<neb::fnd::environ::Base>) = 0;
+			virtual std::shared_ptr<neb::fnd::environ::Base>	get_environ() = 0;
 	};
 }}}
 

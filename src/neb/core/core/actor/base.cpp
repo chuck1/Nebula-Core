@@ -8,6 +8,7 @@
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/scene/base.hpp>
+#include <neb/core/game/weapon/SimpleProjectile.hpp>
 
 typedef neb::fnd::core::actor::base THIS;
 
@@ -163,6 +164,30 @@ void			THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 
 	const_cast<THIS*>(this)->__serialize(ar, v);
+}
+typedef neb::fnd::game::weapon::SimpleProjectile Weapon;
+std::weak_ptr<Weapon>			THIS::createWeaponSimpleProjectile(
+		std::shared_ptr<neb::fnd::input::source> src,
+		double size,
+		double damage,
+		double velocity)
+{
+	//auto self(isPxActorBase());
+	
+	std::shared_ptr<Weapon> weap(new Weapon());
+
+	//weap->actor_ = self;
+	weap->setParent(this);
+
+	weap->connect(src);
+
+	weap->velocity_ = velocity;
+	weap->size_ = size;
+	weap->damage_ = damage;
+
+	neb::fnd::game::weapon::util::parent::insert(weap);
+
+	return weap;
 }
 
 
