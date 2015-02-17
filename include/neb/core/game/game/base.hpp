@@ -4,12 +4,14 @@
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/game/game/util/decl.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
+#include <neb/core/game/map/util/Parent.hpp>
 #include <neb/core/game/ai/util/parent.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace game {
 	class base:
 		virtual public neb::fnd::tmp::Child<neb::fnd::game::game::util::parent>,
 		virtual public neb::fnd::game::trigger::util::parent,
+		virtual public neb::fnd::game::map::util::Parent,
 		virtual public neb::fnd::game::ai::util::parent
 	{
 		public:

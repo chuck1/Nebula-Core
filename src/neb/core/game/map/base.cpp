@@ -1,9 +1,10 @@
 #include <neb/core/game/map/base.hpp>
 
-typedef neb::fnd::game::map::base THIS;
+typedef neb::fnd::game::map::Base THIS;
 
-THIS::base()
-{}
+THIS::Base()
+{
+}
 void		THIS::init(parent_t * const & p)
 {
 
