@@ -16,6 +16,7 @@
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
+#include <neb/core/drawable/Base.hpp>
 
 //#include <neb/core/core/actor/rigidbody/desc.hpp>
 //#include <neb/core/core/shape/cuboid/desc.hpp>
@@ -29,7 +30,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 		 */
 		class base:
 			virtual public neb::fnd::tmp::Child<neb::fnd::core::scene::util::parent>,
-			virtual public neb::fnd::core::actor::util::parent
+			virtual public neb::fnd::core::actor::util::parent,
+			virtual public neb::fnd::drawable::Base
 		{
 			public:
 				using CHILD::get_fnd_app;
