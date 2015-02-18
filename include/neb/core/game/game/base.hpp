@@ -10,7 +10,6 @@
 namespace neb { namespace fnd { namespace game { namespace game {
 	class base:
 		virtual public neb::fnd::tmp::Child<neb::fnd::game::game::util::parent>,
-		virtual public neb::fnd::game::trigger::util::parent,
 		virtual public neb::fnd::game::map::util::Parent,
 		virtual public neb::fnd::game::ai::util::parent
 	{
@@ -24,7 +23,7 @@ namespace neb { namespace fnd { namespace game { namespace game {
 			 * Currently a game is fully defined by a single scene.
 			 * The game will load a scene from an Xml file.
 			 */
-			std::weak_ptr<neb::fnd::core::scene::base>		scene_;
+			//std::weak_ptr<neb::fnd::core::scene::base>		scene_;
 			//gal::map<std::shared_ptr<neb::Game::Player> >   players_;
 	};
 }}}}

@@ -7,7 +7,7 @@
 
 #include <neb/core/util/parent.hpp>
 #include <neb/core/game/trigger/base.hpp>
-#include <neb/core/game/game/util/Cast.hpp>
+#include <neb/core/game/map/util/Cast.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace trigger { namespace util {
 
@@ -16,7 +16,7 @@ namespace neb { namespace fnd { namespace game { namespace trigger { namespace u
 	 */
 	class parent:
 		virtual public neb::fnd::util::parent<neb::fnd::game::trigger::base, parent>,
-		virtual public neb::fnd::game::game::util::Cast
+		virtual public neb::fnd::game::map::util::Cast
 	{
 		public:
 			virtual void				init();
