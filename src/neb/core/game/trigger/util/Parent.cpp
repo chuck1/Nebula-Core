@@ -1,5 +1,6 @@
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/game/base.hpp>
+#include <neb/core/game/map/base.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
 
 typedef neb::fnd::game::trigger::util::parent THIS;
@@ -10,12 +11,12 @@ void				THIS::init()
 void				THIS::step(gal::etc::timestep const & ts)
 {
 }
-neb::fnd::app::Base* const		THIS::get_fnd_app()
+neb::fnd::app::Base* const	THIS::get_fnd_app()
 {
-	auto game = is_fnd_game_game_base();
+	auto map = is_fnd_game_map_base();
 
-	assert(game);
+	assert(map);
 
-	return game->get_fnd_app();
+	return map->get_fnd_app();
 }
 

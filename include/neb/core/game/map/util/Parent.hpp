@@ -16,6 +16,9 @@ namespace neb { namespace fnd { namespace game { namespace map { namespace util 
 	{
 		public:
 			virtual ~Parent();
+			typedef neb::fnd::game::map::Base M;
+			virtual std::weak_ptr<M>	create_map_dll(std::string & s);
+			neb::fnd::app::Base*		get_fnd_app();
 	};
 }}}}}
 

@@ -9,7 +9,7 @@ namespace neb { namespace fnd { namespace game { namespace map { namespace util 
 		virtual public neb::fnd::itf::shared
 	{
 		public:
-			typedef neb::fnd::game::map::base G;
+			typedef neb::fnd::game::map::Base G;
 			virtual std::shared_ptr<G>	is_fnd_game_map_base();
 	};
 }}}}}

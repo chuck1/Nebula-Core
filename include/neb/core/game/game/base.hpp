@@ -10,15 +10,15 @@
 namespace neb { namespace fnd { namespace game { namespace game {
 	class base:
 		virtual public neb::fnd::tmp::Child<neb::fnd::game::game::util::parent>,
-		virtual public neb::fnd::game::map::util::Parent,
-		virtual public neb::fnd::game::ai::util::parent
+		virtual public neb::fnd::game::map::util::Parent
 	{
 		public:
 			using CHILD::get_fnd_app;
 			typedef neb::fnd::game::game::util::parent parent_t;
-			virtual void					init(parent_t * const &);
-			virtual void					release();
-			virtual void					step(gal::etc::timestep const & ts);
+			virtual void				init(parent_t * const &);
+			virtual void				release();
+			virtual void				step(
+					gal::etc::timestep const & ts);
 			/** @brief %Scene.
 			 * Currently a game is fully defined by a single scene.
 			 * The game will load a scene from an Xml file.

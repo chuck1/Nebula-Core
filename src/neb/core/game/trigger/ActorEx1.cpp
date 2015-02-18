@@ -3,7 +3,7 @@
 #include <neb/core/core/actor/base.hpp>
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
-#include <neb/core/game/game/base.hpp>
+#include <neb/core/game/map/base.hpp>
 #include <neb/core/game/game/util/parent.hpp>
 #include <neb/core/game/trigger/util/parent.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
@@ -29,11 +29,10 @@ void			THIS::connect(std::shared_ptr<neb::fnd::core::actor::base> actor) {
 }
 void			THIS::doSomething()
 {
-	auto game = neb::is<parent_t, neb::fnd::game::game::base>(getParent());
-	auto scene(game->scene_.lock());
-	
-	if(!scene) return;
+	auto map = getParent()->is_fnd_game_map_base();
 
+	auto scene = map->get_scene();
+	
 	auto scene_parent = scene->getParent();
 	
 	scene_parent->neb::fnd::core::scene::util::parent::erase(scene->_M_index);
