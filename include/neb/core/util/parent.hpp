@@ -39,8 +39,10 @@ namespace neb { namespace fnd { namespace util {
 				gal_parent::insert(t);
 				t->init(dynamic_cast<PARENT*>(this));
 			}
-
-
+			void								insert_no_init(shared t)
+			{
+				gal_parent::insert(t);
+			}
 
 
 			template<typename... A> void		initChildren(A... a)

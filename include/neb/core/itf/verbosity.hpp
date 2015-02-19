@@ -26,6 +26,6 @@ namespace neb { namespace fnd { namespace itf {
 	};
 }}}
 
-template<typename T> int neb::fnd::itf::verbosity<T>::_M_severity_level = 0;
+template<typename T> int neb::fnd::itf::verbosity<T>::_M_severity_level = 1;
 
 #endif

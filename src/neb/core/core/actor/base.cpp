@@ -90,17 +90,20 @@ neb::fnd::core::scene::base*				neb::fnd::core::actor::base::getScene() const
 
 	return actor->getScene();
 }
-neb::fnd::math::pose				neb::fnd::core::actor::base::getPose() const {
+neb::fnd::math::pose				neb::fnd::core::actor::base::getPose() const
+{
 	return pose_;
 }
-neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const {
+neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
+{
 	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
 
 	auto p = getParent()->getPoseGlobal() * getPose();
 
 	return p;
 }
-void		neb::fnd::core::actor::base::setPose(neb::fnd::math::pose const & pose) {
+void		neb::fnd::core::actor::base::setPose(neb::fnd::math::pose const & pose)
+{
 	pose_ = pose;
 
 	neb::fnd::core::shape::util::parent::callbackPose(pose);

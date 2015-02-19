@@ -67,6 +67,12 @@ weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_ = pose;
+
+	printf("fnd::scene p = %16f %16f %16f\n",
+			actor->pose_.pos_.x,
+			actor->pose_.pos_.y,
+			actor->pose_.pos_.z);
+
 	actor->init(this);
 
 	// create shape
@@ -81,10 +87,17 @@ weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 }
 weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 		neb::fnd::math::pose pose,
-		glm::vec3 size) {
-
+		glm::vec3 size)
+{
 	auto actor = createActorRigidStaticUninitialized().lock();
+
 	actor->pose_ = pose;
+
+	printf("fnd::scene p = %16f %16f %16f\n",
+			actor->pose_.pos_.x,
+			actor->pose_.pos_.y,
+			actor->pose_.pos_.z);
+
 	actor->init(this);
 	
 	// create shape
