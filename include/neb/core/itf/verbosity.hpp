@@ -8,13 +8,16 @@ namespace neb { namespace fnd { namespace itf {
 	class verbosity
 	{
 	protected:
-		verbosity(): severity_level_(warning) {}
-		template<typename... A> void	printv(int sev,
+		verbosity();
+		template<typename... A>
+		void			printv(
+				int sev,
 				const char * format, A... a)
 		{
-			if(sev >= severity_level_) printf(format, a...);
+			if(sev >= _M_severity_level) printf(format, a...);
 		}
-		int				severity_level_;
+	public:
+		static int		_M_severity_level;
 	};
 }}}
 
