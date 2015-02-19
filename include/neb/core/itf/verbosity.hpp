@@ -4,11 +4,16 @@
 #include <gal/log/log.hpp>
 
 namespace neb { namespace fnd { namespace itf {
-	/**/
+	/*
+	 * the CRTP is used to dsambiguate multiple inheritances of this class
+	 */
+	template<typename T>
 	class verbosity
 	{
 	protected:
-		verbosity();
+		verbosity()
+		{
+		}
 		template<typename... A>
 		void			printv(
 				int sev,
@@ -20,5 +25,7 @@ namespace neb { namespace fnd { namespace itf {
 		static int		_M_severity_level;
 	};
 }}}
+
+template<typename T> int neb::fnd::itf::verbosity<T>::_M_severity_level = 0;
 
 #endif

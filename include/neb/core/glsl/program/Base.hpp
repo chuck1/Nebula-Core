@@ -7,8 +7,8 @@
 namespace neb { namespace fnd { namespace glsl { namespace program {
 	/**/
 	class Base:
-		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::itf::verbosity
+		public neb::fnd::itf::verbosity<neb::fnd::glsl::program::Base>,
+		virtual public neb::fnd::itf::shared
 	{
 		public:
 			//Base(std::string);
