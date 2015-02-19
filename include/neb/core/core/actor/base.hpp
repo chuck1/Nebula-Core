@@ -15,6 +15,7 @@
 #include <neb/core/core/actor/util/decl.hpp>
 #include <neb/core/core/actor/util/flag.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
+#include <neb/core/core/actor/util/Cast.hpp>
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/core/shape/util/parent.hpp>
@@ -28,6 +29,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 	class base:
 		virtual public neb::fnd::core::actor::__base,
 		virtual public neb::fnd::itf::serializable,
+		virtual public neb::fnd::core::actor::util::Cast,
 		virtual public neb::fnd::core::actor::util::parent,
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::game::weapon::util::parent
@@ -55,6 +57,10 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 * virtual because actor::local will add self to active transform list
 			 */
 			virtual void						setPose(neb::fnd::math::pose const & pose);
+			/*
+			 * set pose in physics
+			 */
+			virtual void						set_pose(neb::fnd::math::pose const & pose);
 			/** @brief
 			 *
 			 */

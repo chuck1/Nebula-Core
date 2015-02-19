@@ -11,6 +11,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace uti
 	{
 		public:
 			std::shared_ptr<neb::fnd::core::actor::base>			is_fnd_actor_base();
+			std::shared_ptr<neb::fnd::core::actor::rigidactor::base>	is_fnd_actor_rigidactor_base();
 	};
 }}}}}
 

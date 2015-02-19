@@ -19,10 +19,11 @@ namespace neb { namespace fnd { namespace game { namespace spawn { namespace uti
 		virtual public neb::fnd::util::parent<neb::fnd::game::spawn::base, parent>
 	{
 		public:
-			parent() {}
-			virtual ~parent() {}
-
-			virtual void						init() {}
+			parent();
+			virtual ~parent();
+			virtual void		init();
+			virtual void		spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor);
+			std::weak_ptr<neb::fnd::game::spawn::base>		create_spawn(neb::fnd::math::pose pose);
 	};
 }}}}}
 
