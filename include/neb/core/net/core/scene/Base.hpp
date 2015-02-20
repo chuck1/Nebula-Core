@@ -3,10 +3,12 @@
 
 #include <neb/core/tmp/Child.hpp>
 #include <neb/core/net/util/decl.hpp>
+#include <neb/core/itf/shared.hpp>
 
 namespace neb { namespace fnd { namespace net { namespace core { namespace scene {
 	typedef neb::fnd::core::scene::base FND;
 	class Base:
+		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::tmp::Child<FND>
 	{
 		public:

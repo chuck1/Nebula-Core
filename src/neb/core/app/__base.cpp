@@ -9,6 +9,7 @@
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/core/net/core/scene/Base.hpp>
 
 typedef neb::fnd::app::Base THIS;
 
@@ -131,7 +132,17 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 	
 	return g;
 }
+void							THIS::open_network_plugin(std::string filename)
+{
+	typedef neb::fnd::net::core::scene::Base S;
 
+	std::shared_ptr<H> h(new H(filename));
+	h->open();
+	
+	// the integer argument will indicate local or remote
+	h->template add<S, int>("scene");
+	
+}
 
 
 

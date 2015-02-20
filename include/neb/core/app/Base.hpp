@@ -66,6 +66,8 @@ namespace neb { namespace fnd { namespace app {
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			/***/
+			void							open_network_plugin(std::string filename);
+			/***/
 			boost::asio::io_service					ios_;
 			/***/
 			neb::fnd::app::util::flag				flag_;
@@ -77,6 +79,19 @@ namespace neb { namespace fnd { namespace app {
 			std::vector< std::string >				_M_preloop_scripts_python;
 			/***/
 			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
+			typedef gal::dll::helper<gal::itf::shared> H;
+			/*
+			 * shared library helper for networking plugin
+			 */
+			std::shared_ptr<H>					_M_network_plugin;
+			/*
+			 * shared library helper for networking plugin
+			 */
+			std::shared_ptr<H>					_M_physics_plugin;
+			/*
+			 * shared library helper for networking plugin
+			 */
+			std::shared_ptr<H>					_M_graphics_plugin;
 	};
 
 }}}
