@@ -58,7 +58,7 @@ void			THIS::__init()
 	/** @todo export class to python to implement exit() */
 
 	// module search path
-	gal::dll::helper_info::search_path_ = NEB_MOD_DIR;
+	//gal::dll::helper_info::search_path_ = NEB_MOD_DIR;
 
 
 	/*

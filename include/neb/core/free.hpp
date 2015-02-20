@@ -42,9 +42,9 @@ template<typename HB, typename B, typename D> void	makeDLLFunc(std::string class
 		
 		h->open();
 		
-		h->add<D>(class_name);
+		h->template add<D>(class_name);
 		
-		std::shared_ptr<B> b = h->make_shared<D>();
+		std::shared_ptr<B> b = h->template make_shared<D>();
 		
 		return b;
 	};
