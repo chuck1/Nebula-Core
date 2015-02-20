@@ -30,17 +30,17 @@ THIS::SimpleProjectile()
 void			THIS::connect(
 		std::shared_ptr<neb::fnd::input::source> src)
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
+	printv(info, "%s\n", __PRETTY_FUNCTION__);
 	connectKeyFun(src, 20);
 }
-int			THIS::key_fun(
+int			THIS::keyFun(
 		std::shared_ptr<neb::fnd::input::source> src,
 		int key,
 		int,
 		int action,
 		int mods)
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
+	printv(info, "%s\n", __PRETTY_FUNCTION__);
 
 	int key_fire = GLFW_KEY_SPACE;
 
@@ -57,7 +57,7 @@ int			THIS::key_fun(
 }
 void			THIS::fire()
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;;
+	printv(info, "%s\n", __PRETTY_FUNCTION__);
 	
 	//auto app(neb::fnd::app::Base::global());
 	auto app = get_fnd_app();

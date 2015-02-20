@@ -22,7 +22,7 @@ namespace neb { namespace fnd { namespace game { namespace weapon {
 			virtual void					step(gal::etc::timestep const &);
 			virtual void					connect(
 					std::shared_ptr<SOURCE> src) = 0;
-			virtual int					key_fun(
+			virtual int					keyFun(
 					std::shared_ptr<SOURCE> window, int, int, int, int) = 0;
 			virtual void					fire() = 0;
 			/** @brief last
