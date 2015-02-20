@@ -18,6 +18,7 @@
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/core/light/util/parent.hpp>
 #include <neb/core/core/light/util/light_count.hpp>
+#include <neb/core/plug/gfx/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace shape {
 	class base:
@@ -92,6 +93,10 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 			std::string					image_;
 			/** @brief Name of normal map file */
 			std::string					normal_;
+			/*
+			 * graphics implementation
+			 */
+			std::shared_ptr<neb::fnd::plug::gfx::core::shape::Base>		_M_graphics_object;
 	};
 }}}}
 

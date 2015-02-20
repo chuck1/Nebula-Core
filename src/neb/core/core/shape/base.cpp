@@ -12,6 +12,8 @@
 #include <neb/core/core/shape/base.hpp>
 #include <neb/core/core/light/base.hpp>
 
+#include <neb/core/plug/gfx/core/shape/Base.hpp>
+
 typedef neb::fnd::core::shape::base THIS;
 
 THIS::base():
@@ -67,6 +69,9 @@ void			THIS::__set_pose_data(
 	auto pose = gpose * pose_;
 	neb::fnd::core::shape::util::parent::callbackPose(pose);
 	neb::fnd::core::light::util::parent::callbackPose(pose);
+
+	if(_M_graphics_pbject)
+		_M_graphics_object->visit_set_pose_data(this, pose);
 }
 void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 {
