@@ -75,14 +75,14 @@ void			THIS::__init()
 				[]() { return std::shared_ptr<T>(new T()); }
 				);
 
-		gal::stl::factory<T>::default_factory_->add(typeid(T).hash_code(), f);
+		gal::stl::factory<T>::default_factory_->add<T>(f);
 	}
 	{
 		std::function< std::shared_ptr<T>() > f(
 				[]() { return std::shared_ptr<D>(new D()); }
 				);
 
-		gal::stl::factory<T>::default_factory_->add(typeid(D).hash_code(), f);
+		gal::stl::factory<T>::default_factory_->add<D>(f);
 	}
 
 }

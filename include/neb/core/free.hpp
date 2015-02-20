@@ -7,6 +7,7 @@
 
 #include <gal/stl/deleter.hpp>
 #include <gal/stl/wrapper.hpp>
+#include <gal/dll/helper.hpp>
 
 #include <neb/core/util/log.hpp>
 #include <neb/core/util/config.hpp>
@@ -22,9 +23,9 @@ template<typename B, typename D> void	makeDefaultFunc()
 			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
 			);
 
-	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
+	gal::stl::factory<B>::default_factory_->template add<D>(f);
 }
-template<typename B, typename D> void	makeDLLFunc()
+template<typename HB, typename B, typename D> void	makeDLLFunc(std::string class_name)
 {
 	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
@@ -32,23 +33,25 @@ template<typename B, typename D> void	makeDLLFunc()
 	gal::itf::shared::register_type(std::type_index(typeid(D)));
 	
 	//typedef neb::fin::gfx_phx::core::scene::base		D;
-	typedef gal::dll::helper<D>				H;
+	typedef gal::dll::helper<HB>				H;
 	//typedef gal::dll::deleter				DEL;
 	
-	auto lamb = [](gal::dll::helper_info& hi) {
-		
-		std::shared_ptr<H> h(new H(hi.file_name, hi.object_name));
+	auto lamb = [&](gal::dll::helper_info& hi)
+	{
+		std::shared_ptr<H> h(new H(hi.file_name));
 		
 		h->open();
 		
-		std::shared_ptr<B> d = h->make_shared();
-
-		return d;
+		h->add<D>(class_name);
+		
+		std::shared_ptr<B> b = h->make_shared<D>();
+		
+		return b;
 	};
 
 	std::function< std::shared_ptr<B>(gal::dll::helper_info&) > f(lamb);
 
-	gal::stl::factory<B>::default_factory_->add(typeid(D).hash_code(), f);
+	gal::stl::factory<B>::default_factory_->template add<D>(f);
 }
 template<typename B, typename D> gal::stl::wrapper<B>		loadDLL(std::string file_name, std::string object_name)
 {

@@ -23,10 +23,13 @@ std::weak_ptr<THIS::M>	THIS::create_map_dll(std::string & s)
 	typedef neb::fnd::game::map::Base		T;
 	typedef gal::dll::helper<T>			H;
 
-	std::shared_ptr<H> h(new H(s, "map"));
-	h->open();
+	std::shared_ptr<H> h(new H(s));
 
-	std::shared_ptr<T> map = h->make_shared();
+	h->open();
+	
+	h->add<T>("map");
+	
+	std::shared_ptr<T> map = h->make_shared<T>();
 
 	//neb::fnd::game::map::util::parent::insert(scene);
 	insert(map);
