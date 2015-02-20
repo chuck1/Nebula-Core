@@ -5,6 +5,9 @@
 
 #include <gal/itf/shared.hpp>
 
+#include <neb/core/itf/verbosity.hpp>
+#include <neb/core/input/util/decl.hpp>
+
 namespace neb { namespace fnd { namespace input {
 	class sink:
 		public neb::fnd::itf::verbosity<neb::fnd::input::sink>,

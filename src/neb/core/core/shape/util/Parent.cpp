@@ -7,9 +7,11 @@ typedef neb::fnd::core::shape::util::parent THIS;
 THIS::~parent()
 {
 }
-void		THIS::callbackPose(neb::fnd::math::pose const & parent_gpose)
+void				THIS::callbackPose(
+		neb::fnd::math::pose const & parent_gpose)
 {
-	auto lambda_shape = [&] (map_type::pointer p) {
+	auto lambda_shape = [&] (map_type::pointer p)
+	{
 		//auto shape = std::dynamic_pointer_cast<neb::fnd::core::shape::base>(p);
 		//assert(shape);
 		
@@ -17,7 +19,7 @@ void		THIS::callbackPose(neb::fnd::math::pose const & parent_gpose)
 
 		auto gpose = parent_gpose * shape->pose_;
 
-		shape->callbackPose(gpose);
+		shape->v_set_pose_data(gpose);
 	};
 	
 	map_.for_each(lambda_shape);

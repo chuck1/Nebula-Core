@@ -35,8 +35,12 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 			virtual void		init(parent_t * const &);
 			void			release();
 			void			step(gal::etc::timestep const & ts);
-			virtual void		callbackPose(neb::fnd::math::pose const & pose_global) = 0;
-			virtual void		__callbackPose(neb::fnd::math::pose const & pose_global);
+			virtual void		v_set_pose_data(
+					neb::fnd::math::pose const & pose_global) = 0;
+		protected:
+			void			__set_pose_data(
+					neb::fnd::math::pose const & pose_global);
+		public:
 			/** @name Accessors @{ */
 
 
@@ -51,10 +55,10 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3) = 0;
 			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3) = 0;
 		public:
-/*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
-			virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}
-			virtual void	load(ba::xml_iarchive & ar, unsigned int const &) {}
-			virtual void	save(ba::xml_oarchive & ar, unsigned int const &) const {}*/
+			/*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
+						virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}
+						virtual void	load(ba::xml_iarchive & ar, unsigned int const &) {}
+						virtual void	save(ba::xml_oarchive & ar, unsigned int const &) const {}*/
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();

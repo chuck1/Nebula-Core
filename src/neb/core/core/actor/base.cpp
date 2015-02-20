@@ -102,17 +102,19 @@ neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
 
 	return p;
 }
-void		neb::fnd::core::actor::base::setPose(neb::fnd::math::pose const & pose)
+void			neb::fnd::core::actor::base::v_set_pose_data(
+		neb::fnd::math::pose const & pose)
+{
+	__set_pose_data(pose);
+}
+void			neb::fnd::core::actor::base::__set_pose_data(
+		neb::fnd::math::pose const & pose)
 {
 	pose_ = pose;
 
 	neb::fnd::core::shape::util::parent::callbackPose(pose);
 
 	flag_.set(neb::fnd::core::actor::util::flag::E::SHOULD_UPDATE);
-}
-void		neb::fnd::core::actor::base::set_pose(neb::fnd::math::pose const & pose)
-{
-	pose_ = pose;
 }
 void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts)
 {

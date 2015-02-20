@@ -51,17 +51,19 @@ neb::fnd::core::scene::base*				THIS::getScene()
 	
 	return actor->getScene();
 }
-
-
-neb::fnd::math::pose				THIS::getPoseGlobal() const {
+neb::fnd::math::pose				THIS::getPoseGlobal() const
+{
 	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	
 	return getParent()->getPoseGlobal() * pose_;
 }
-neb::fnd::math::pose				THIS::getPose() const {
+neb::fnd::math::pose				THIS::getPose() const
+{
 	return pose_;
 }
-void					THIS::__callbackPose(neb::fnd::math::pose const & gpose) {
+void			THIS::__set_pose_data(
+		neb::fnd::math::pose const & gpose)
+{
 	auto pose = gpose * pose_;
 	neb::fnd::core::shape::util::parent::callbackPose(pose);
 	neb::fnd::core::light::util::parent::callbackPose(pose);
@@ -91,7 +93,6 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	neb::fnd::core::shape::util::parent::initChildren(this);
 	neb::fnd::core::light::util::parent::initChildren(this);
-
 }
 void					THIS::release()
 {
@@ -106,12 +107,16 @@ void						THIS::step(
 	neb::fnd::core::shape::util::parent::step(ts);
 	neb::fnd::core::light::util::parent::step(ts);
 }
-void	THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
+void			THIS::load(
+		ba::polymorphic_iarchive & ar,
+		unsigned int const & v)
 {
 	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	__serialize(ar, v);
 }
-void	THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
+void			THIS::save(
+		ba::polymorphic_oarchive & ar,
+		unsigned int const & v) const
 {
 	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
 	const_cast<THIS*>(this)->__serialize(ar, v);

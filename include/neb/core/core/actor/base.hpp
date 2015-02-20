@@ -52,15 +52,17 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			bool							hasScene() const;
 			neb::fnd::core::scene::base*				getScene() const;
 			//std::shared_ptr<neb::fnd::core::actor::util::parent>		get_parent();
-			/** @brief set pose
-			 *
+			/** @brief set pose data
+			 * set the pose variable after calculating physics
+			 * 
 			 * virtual because actor::local will add self to active transform list
 			 */
-			virtual void						setPose(neb::fnd::math::pose const & pose);
-			/*
-			 * set pose in physics
-			 */
-			virtual void						set_pose(neb::fnd::math::pose const & pose);
+			virtual void							v_set_pose_data(
+					neb::fnd::math::pose const & pose);
+		protected:
+			void								__set_pose_data(
+					neb::fnd::math::pose const & pose);
+		public:
 			/** @brief
 			 *
 			 */
