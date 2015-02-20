@@ -17,6 +17,7 @@
 #include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/drawable/Base.hpp>
+#include <neb/core/net/util/decl.hpp>
 
 //#include <neb/core/core/actor/rigidbody/desc.hpp>
 //#include <neb/core/core/shape/cuboid/desc.hpp>
@@ -122,6 +123,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				neb::fnd::core::scene::util::flag					flag_;
 				std::map< string, std::shared_ptr<neb::fnd::core::actor::base> >	actors_deferred_;
 				float									last_;
+			protected:
+				std::shared_ptr<neb::fnd::net::core::scene::Base>			_M_network_object;
 		};
 }}}}
 
