@@ -10,6 +10,7 @@
 #include <neb/core/util/log.hpp>
 #include <neb/core/core/actor/rigidbody/desc.hpp>
 #include <neb/core/net/core/scene/Base.hpp>
+#include <neb/core/plug/gfx/core/shape/Base.hpp>
 
 typedef neb::fnd::app::Base THIS;
 
@@ -86,6 +87,9 @@ void			THIS::__init()
 		gal::stl::factory<T>::default_factory_->add<D>(f);
 	}
 
+
+	// plugins
+	open_graphics_plugin("../plugin/gfx1/build/dynamic/libnebula_plugin_gfx1.so");
 }
 void						THIS::__release()
 {
