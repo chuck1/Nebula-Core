@@ -66,6 +66,8 @@ namespace neb { namespace fnd { namespace app {
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			/***/
+			void							open_graphics_plugin(std::string filename);
+			/***/
 			void							open_network_plugin(std::string filename);
 			/***/
 			boost::asio::io_service					ios_;
@@ -85,11 +87,11 @@ namespace neb { namespace fnd { namespace app {
 			 */
 			std::shared_ptr<H>					_M_network_plugin;
 			/*
-			 * shared library helper for networking plugin
+			 * shared library helper for physics plugin
 			 */
 			std::shared_ptr<H>					_M_physics_plugin;
 			/*
-			 * shared library helper for networking plugin
+			 * shared library helper for graphics plugin
 			 */
 			std::shared_ptr<H>					_M_graphics_plugin;
 	};

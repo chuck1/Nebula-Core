@@ -132,15 +132,27 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 	
 	return g;
 }
+void							THIS::open_graphics_plugin(std::string filename)
+{
+	typedef neb::fnd::plug::gfx::core::shape::Base S;
+
+	_M_graphics_plugin.reset(new H(filename));
+	
+	_M_graphics_plugin->open();
+	
+	// the integer argument will indicate local or remote
+	_M_graphics_plugin->template add<S, int>("shape");
+}
 void							THIS::open_network_plugin(std::string filename)
 {
 	typedef neb::fnd::net::core::scene::Base S;
 
-	std::shared_ptr<H> h(new H(filename));
-	h->open();
+	_M_network_plugin.reset(new H(filename));
+
+	_M_network_plugin->open();
 	
 	// the integer argument will indicate local or remote
-	h->template add<S, int>("scene");
+	_M_network_plugin->template add<S, int>("scene");
 	
 }
 
