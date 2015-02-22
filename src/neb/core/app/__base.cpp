@@ -144,8 +144,7 @@ void							THIS::open_graphics_plugin(std::string filename)
 	
 	_M_graphics_plugin->open();
 	
-	// the integer argument will indicate local or remote
-	_M_graphics_plugin->template add<S, int>("shape");
+	_M_graphics_plugin->template add<S>("shape");
 }
 void							THIS::open_network_plugin(std::string filename)
 {

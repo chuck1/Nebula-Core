@@ -61,10 +61,10 @@ void		THIS::step(gal::etc::timestep const & ts) {
 //			});
 
 }
-weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
+std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 		neb::fnd::math::pose pose,
-		double size) {
-
+		double size)
+{
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_ = pose;
 
@@ -85,7 +85,7 @@ weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 
 	return actor;
 }
-weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
+std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 		neb::fnd::math::pose pose,
 		glm::vec3 size)
 {
