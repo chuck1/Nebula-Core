@@ -8,7 +8,8 @@ namespace neb { namespace fnd { namespace gui { namespace layout {
 		virtual public neb::fnd::itf::shared
 	{
 		public:
-			virtual ~Base() {}
+			virtual ~Base();
+			void		connect(std::shared_ptr<neb::fnd::input::source> const & src);
 	};
 }}}}
 

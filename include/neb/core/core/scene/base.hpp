@@ -18,6 +18,7 @@
 #include <neb/core/core/actor/util/parent.hpp>
 #include <neb/core/drawable/Base.hpp>
 #include <neb/core/net/util/decl.hpp>
+#include <neb/core/plug/gfx/util/decl.hpp>
 
 //#include <neb/core/core/actor/rigidbody/desc.hpp>
 //#include <neb/core/core/shape/cuboid/desc.hpp>
@@ -125,6 +126,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				float									last_;
 			protected:
 				std::shared_ptr<neb::fnd::net::core::scene::Base>			_M_network_object;
+				std::shared_ptr<neb::fnd::plug::gfx::core::scene::Base>			_M_graphics_object;
+				//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
 		};
 }}}}
 

@@ -18,6 +18,8 @@
 #include <neb/core/window/util/Parent.hpp>
 #include <neb/core/timer/util/Parent.hpp>
 
+#include <neb/core/plug/gfx/util/decl.hpp>
+
 namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
@@ -48,6 +50,7 @@ namespace neb { namespace fnd { namespace app {
 			void							__init();
 			void							__release();
 			void							__step(gal::etc::timestep const &);
+			void							render();
 		public:
 			/***/
 			static bool						is_valid();
@@ -62,9 +65,9 @@ namespace neb { namespace fnd { namespace app {
 			/***/
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string) = 0;
 			/***/
-			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
-			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
-			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
+			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
+			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
+			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			/***/
 			void							open_graphics_plugin(std::string filename);
 			/***/
@@ -94,6 +97,7 @@ namespace neb { namespace fnd { namespace app {
 			 * shared library helper for graphics plugin
 			 */
 			std::shared_ptr<H>					_M_graphics_plugin;
+			std::shared_ptr<neb::fnd::plug::gfx::app::Base>		_M_graphics_object;
 	};
 
 }}}

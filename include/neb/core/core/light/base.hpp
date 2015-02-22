@@ -7,34 +7,36 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
+#include <neb/core/tmp/Child.hpp>
+#include <neb/core/itf/shared.hpp>
+#include <neb/core/itf/serializable.hpp>
 #include <neb/core/math/color/color.hpp>
 #include <neb/core/math/serialization/glm.hpp>
 #include <neb/core/math/pose.hpp>
-#include <neb/core/core/light/__base.hpp>
 #include <neb/core/core/scene/util/decl.hpp>
 #include <neb/core/core/light/util/decl.hpp>
 #include <neb/core/core/light/util/Flag.hpp>
 #include <neb/core/core/light/util/light_count.hpp>
 #include <neb/core/util/decl.hpp>
+#include <neb/core/plug/gfx/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace light {
-
-	class base: public neb::fnd::core::light::__base
+	class base:
+		virtual public neb::fnd::itf::shared,
+		virtual public neb::fnd::itf::serializable,
+		virtual public neb::fnd::tmp::Child<neb::fnd::core::light::util::parent>
 	{
 		public:
 			base();
-
-			virtual void			init(neb::fnd::core::light::util::parent * const & p) = 0;
-
-			//virtual void			release();
-			//virtual void			step(gal::etc::timestep const & ts);
-
+			virtual void				v_set_pose_data(neb::fnd::math::pose const &);
+			virtual void				init(neb::fnd::core::light::util::parent * const & p);
+			//virtual void				release();
+			virtual void				step(gal::etc::timestep const & ts);
 			neb::fnd::math::pose			getPose();
 			neb::fnd::math::pose			getPoseGlobal();
-			glm::vec4			getPos();
-
-			bool				hasScene() const;
-			neb::fnd::core::scene::base*	getScene();
+			glm::vec4				getPos();
+			bool					hasScene() const;
+			neb::fnd::core::scene::base*		getScene();
 		private:
 			template<class Archive> void		serializeTemplate(
 					Archive & ar, unsigned int const & version)
@@ -59,6 +61,8 @@ namespace neb { namespace fnd { namespace core { namespace light {
 			neb::fnd::core::light::util::flag			flag_;
 
 			neb::fnd::math::pose					pose_;
+
+			std::shared_ptr<neb::fnd::plug::gfx::core::light::Base>		_M_graphics_object;
 
 	};
 }}}}

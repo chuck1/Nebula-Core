@@ -2,7 +2,4 @@
 
 typedef neb::fnd::environ::Base THIS;
 
-THIS::~Base()
-{
-}
 

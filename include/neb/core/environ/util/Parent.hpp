@@ -15,12 +15,12 @@ namespace neb { namespace fnd { namespace environ { namespace util {
 	{
 		public:
 			neb::fnd::app::Base* const						get_fnd_app();
-			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo() = 0;
-			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault() = 0;
-			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint() = 0;
-			virtual std::weak_ptr<neb::fnd::environ::shadow::Directional>		createEnvironShadowDirectional() = 0;
-			virtual std::weak_ptr<neb::fnd::environ::visualization::Depth>		createEnvironVisualizationDepth() = 0;
-			virtual std::weak_ptr<neb::fnd::environ::visualization::Normal>	createEnvironVisualizationNormal() = 0;
+			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo();
+			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>			createEnvironShadowPoint();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Directional>		createEnvironShadowDirectional();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Depth>		createEnvironVisualizationDepth();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Normal>		createEnvironVisualizationNormal();
 	};
 }}}}
 

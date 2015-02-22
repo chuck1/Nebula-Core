@@ -15,8 +15,10 @@ namespace neb { namespace fnd { namespace environ {
 	{
 		public:
 			typedef std::weak_ptr<neb::fnd::camera::view::Ridealong>	view_ridealong_weak;
-			virtual view_ridealong_weak		create_view_ridealong(
-					std::weak_ptr<neb::fnd::core::actor::base> actor) = 0;
+			virtual void					init(parent_t * const & p);
+			virtual void					release();
+			virtual view_ridealong_weak			create_view_ridealong(
+					std::weak_ptr<neb::fnd::core::actor::base> actor);
 	};
 }}}
 

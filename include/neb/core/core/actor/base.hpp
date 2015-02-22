@@ -121,8 +121,9 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			neb::phx::filter::data					simulation_;
 			neb::phx::filter::data					scene_query_;
 		public:
-			/** @brief Parent */
-			//weak_ptr<neb::fnd::core::actor::util::parent>		parent_;
+			std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
+			//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
+			//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
 	};
 }}}}
 

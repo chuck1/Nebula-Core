@@ -8,6 +8,8 @@ namespace neb { namespace fnd { namespace environ { namespace shadow {
 		virtual public neb::fnd::environ::shadow::Base
 	{
 		public:
+			virtual void		init(parent_t * const & p);
+			virtual void		release();
 	};
 }}}}
 

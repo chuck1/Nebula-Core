@@ -13,10 +13,12 @@ namespace neb { namespace fnd { namespace context {
 			typedef neb::fnd::environ::shadow::Point ESP;
 			typedef neb::fnd::environ::shadow::Directional ESD;
 
-			virtual std::weak_ptr<ESP>		createEnvironShadowPoint() = 0;
-			virtual std::weak_ptr<ESD>		createEnvironShadowDirectional() = 0;
+			virtual std::weak_ptr<ESP>		createEnvironShadowPoint();
+			virtual std::weak_ptr<ESD>		createEnvironShadowDirectional();
 
-			virtual void				setTexture(std::shared_ptr<neb::fnd::itf::shared> texture) = 0;
+			virtual void				setTexture(std::shared_ptr<neb::fnd::itf::shared> texture);
+
+			virtual void		init(parent_t * const parent);
 	};
 }}}
 

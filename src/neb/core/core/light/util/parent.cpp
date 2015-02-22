@@ -16,7 +16,7 @@ void			THIS::callbackPose(neb::fnd::math::pose const & parent_gpose)
 
 		auto gpose = parent_gpose * light->pose_;
 
-		light->callbackPose(gpose);
+		light->v_set_pose_data(gpose);
 	};
 	
 	map_.for_each(lamb);

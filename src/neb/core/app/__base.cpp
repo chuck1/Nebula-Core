@@ -158,6 +158,12 @@ void							THIS::open_network_plugin(std::string filename)
 	_M_network_plugin->template add<S, int>("scene");
 	
 }
+void			THIS::render()
+{
+	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+
+	neb::fnd::window::util::Parent::render();
+}
 
 
 
