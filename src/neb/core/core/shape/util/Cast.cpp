@@ -1,6 +1,6 @@
-#include <neb/core/core/shape/util/decl.hpp>
-#include <neb/core/core/shape/util/cast.hpp>
-#include <neb/core/core/shape/base.hpp>
+#include <neb/fnd/core/shape/util/decl.hpp>
+#include <neb/fnd/core/shape/util/cast.hpp>
+#include <neb/fnd/core/shape/base.hpp>
 
 typedef neb::fnd::core::shape::util::cast THIS;
 

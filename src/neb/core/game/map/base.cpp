@@ -1,4 +1,4 @@
-#include <neb/core/game/map/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
 typedef neb::fnd::game::map::Base THIS;
 

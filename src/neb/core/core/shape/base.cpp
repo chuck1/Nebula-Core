@@ -4,15 +4,15 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/util/config.hpp>
-#include <neb/core/util/log.hpp>
-#include <neb/core/util/debug.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/light/base.hpp>
+#include <neb/fnd/math/geo/polygon.hpp>
+#include <neb/fnd/util/config.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/util/debug.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/light/base.hpp>
 
-#include <neb/core/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
 typedef neb::fnd::core::shape::base THIS;
 

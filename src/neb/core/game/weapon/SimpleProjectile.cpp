@@ -4,23 +4,23 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <neb/core/timer/actor/Release.hpp>
+#include <neb/fnd/timer/actor/Release.hpp>
 
 //#include <neb/gfx/window/Base.hh>
 
-#include <neb/core/util/debug.hpp>
-#include <neb/core/util/log.hpp>
+#include <neb/fnd/util/debug.hpp>
+#include <neb/fnd/util/log.hpp>
 
-#include <neb/core/app/Base.hpp>
+#include <neb/fnd/app/Base.hpp>
 /*#include <neb/phx/filter.hpp>
 #include <neb/phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/core/shape/box.hpp>
 */
-#include <neb/core/util/log.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/game/weapon/SimpleProjectile.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 
 typedef neb::fnd::game::weapon::SimpleProjectile THIS;
 

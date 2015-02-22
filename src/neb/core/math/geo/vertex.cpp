@@ -2,10 +2,10 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/core/util/debug.hpp>
-#include <neb/core/math/geo/vertex.hpp>
-#include <neb/core/math/serialization/glm.hpp>
-#include <neb/core/util/log.hpp>
+#include <neb/fnd/util/debug.hpp>
+#include <neb/fnd/math/geo/vertex.hpp>
+#include <neb/fnd/math/serialization/glm.hpp>
+#include <neb/fnd/util/log.hpp>
 
 typedef neb::fnd::math::geo::vertex THIS;
 

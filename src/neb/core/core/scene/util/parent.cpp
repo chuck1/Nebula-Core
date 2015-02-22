@@ -1,6 +1,6 @@
 
-#include <neb/core/core/scene/util/parent.hpp>
-#include <neb/core/app/Base.hpp>
+#include <neb/fnd/core/scene/util/parent.hpp>
+#include <neb/fnd/app/Base.hpp>
 
 typedef neb::fnd::core::scene::util::parent THIS;
 

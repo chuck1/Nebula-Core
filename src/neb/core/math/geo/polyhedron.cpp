@@ -1,9 +1,9 @@
 #include <cstdlib>
 #include <cassert>
 
-#include <neb/core/util/decl.hpp>
-#include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/math/geo/polyhedron.hpp>
+#include <neb/fnd/util/decl.hpp>
+#include <neb/fnd/math/geo/polygon.hpp>
+#include <neb/fnd/math/geo/polyhedron.hpp>
 
 typedef neb::fnd::math::geo::polyhedron THIS;
 

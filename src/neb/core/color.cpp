@@ -1,7 +1,7 @@
 
 
-#include <neb/core/math/color/color.hpp>
-#include <neb/core/math/color/traits.hpp>
+#include <neb/fnd/math/color/color.hpp>
+#include <neb/fnd/math/color/traits.hpp>
 
 
 namespace neb { namespace fnd { namespace math { namespace color {

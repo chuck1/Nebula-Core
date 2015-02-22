@@ -3,18 +3,18 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/core/util/debug.hpp>
-#include <neb/core/util/config.hpp>
-#include <neb/core/util/log.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/actor/rigidbody/desc.hpp>
-#include <neb/core/core/actor/util/decl.hpp>
-#include <neb/core/core/light/base.hpp>
-#include <neb/core/core/light/util/light_count.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/core/scene/util/decl.hpp>
-#include <neb/core/core/scene/util/parent.hpp>
+#include <neb/fnd/util/debug.hpp>
+#include <neb/fnd/util/config.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
+#include <neb/fnd/core/light/base.hpp>
+#include <neb/fnd/core/light/util/light_count.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/util/decl.hpp>
+#include <neb/fnd/core/scene/util/parent.hpp>
 
 typedef neb::fnd::core::scene::base THIS;
 

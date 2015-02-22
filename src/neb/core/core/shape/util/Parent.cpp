@@ -1,6 +1,6 @@
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/shape/util/parent.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/shape/util/parent.hpp>
 
 typedef neb::fnd::core::shape::util::parent THIS;
 

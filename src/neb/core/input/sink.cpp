@@ -1,5 +1,5 @@
-#include <neb/core/input/sink.hpp>
-#include <neb/core/input/source.hpp>
+#include <neb/fnd/input/sink.hpp>
+#include <neb/fnd/input/source.hpp>
 
 typedef neb::fnd::input::sink THIS;
 

@@ -1,8 +1,8 @@
 
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/core/light/base.hpp>
-#include <neb/core/core/light/util/parent.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/core/light/base.hpp>
+#include <neb/fnd/core/light/util/parent.hpp>
 
 typedef neb::fnd::core::light::util::parent THIS;
 

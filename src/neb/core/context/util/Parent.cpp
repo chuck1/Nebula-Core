@@ -1,6 +1,6 @@
-#include <neb/core/context/util/Parent.hpp>
-#include <neb/core/window/Base.hpp>
-#include <neb/core/window/util/Parent.hpp>
+#include <neb/fnd/context/util/Parent.hpp>
+#include <neb/fnd/window/Base.hpp>
+#include <neb/fnd/window/util/Parent.hpp>
 
 typedef neb::fnd::context::util::Parent THIS;
 

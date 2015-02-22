@@ -1,8 +1,8 @@
-#include <neb/core/context/util/Cast.hpp>
-#include <neb/core/context/Base.hpp>
-#include <neb/core/context/Window.hpp>
-#include <neb/core/context/FBO.hpp>
-#include <neb/core/context/FBOM.hpp>
+#include <neb/fnd/context/util/Cast.hpp>
+#include <neb/fnd/context/Base.hpp>
+#include <neb/fnd/context/Window.hpp>
+#include <neb/fnd/context/FBO.hpp>
+#include <neb/fnd/context/FBOM.hpp>
 
 typedef neb::fnd::context::util::Cast THIS;
 

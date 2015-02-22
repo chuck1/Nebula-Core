@@ -1,4 +1,4 @@
-#include <neb/core/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/rigidactor/base.hpp>
 
 typedef neb::fnd::core::actor::rigidactor::base THIS;
 

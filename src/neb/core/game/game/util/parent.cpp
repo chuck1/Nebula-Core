@@ -1,7 +1,7 @@
 #include <gal/stl/deleter.hpp>
 
-#include <neb/core/game/game/util/parent.hpp>
-#include <neb/core/app/Base.hpp>
+#include <neb/fnd/game/game/util/parent.hpp>
+#include <neb/fnd/app/Base.hpp>
 
 typedef neb::fnd::game::game::util::parent THIS;
 

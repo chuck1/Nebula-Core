@@ -1,5 +1,5 @@
-#include <neb/core/window/util/Cast.hpp>
-#include <neb/core/window/Base.hpp>
+#include <neb/fnd/window/util/Cast.hpp>
+#include <neb/fnd/window/Base.hpp>
 
 typedef neb::fnd::window::util::Cast THIS;
 

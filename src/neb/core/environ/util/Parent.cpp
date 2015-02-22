@@ -1,15 +1,15 @@
-#include <neb/core/context/Base.hpp>
-#include <neb/core/context/util/Parent.hpp>
-#include <neb/core/window/Base.hpp>
-#include <neb/core/environ/Two.hpp>
-#include <neb/core/environ/SceneDefault.hpp>
-//#include <neb/core/environ/util/Parent.hpp>
-#include <neb/core/environ/visualization/Depth.hpp>
-#include <neb/core/environ/visualization/Normal.hpp>
-#include <neb/core/environ/shadow/Directional.hpp>
-#include <neb/core/environ/shadow/Point.hpp>
+#include <neb/fnd/context/Base.hpp>
+#include <neb/fnd/context/util/Parent.hpp>
+#include <neb/fnd/window/Base.hpp>
+#include <neb/fnd/environ/Two.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
+//#include <neb/fnd/environ/util/Parent.hpp>
+#include <neb/fnd/environ/visualization/Depth.hpp>
+#include <neb/fnd/environ/visualization/Normal.hpp>
+#include <neb/fnd/environ/shadow/Directional.hpp>
+#include <neb/fnd/environ/shadow/Point.hpp>
 
-#include <neb/core/environ/util/Parent.hpp>
+#include <neb/fnd/environ/util/Parent.hpp>
 
 typedef neb::fnd::environ::util::Parent THIS;
 

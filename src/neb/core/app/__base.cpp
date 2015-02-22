@@ -4,13 +4,13 @@
 #include <gal/log/log.hpp>
 #include <gal/dll/helper_info.hpp>
 
-#include <neb/core/util/debug.hpp>
-#include <neb/core/app/Base.hpp>
-#include <neb/core/util/config.hpp>
-#include <neb/core/util/log.hpp>
-#include <neb/core/core/actor/rigidbody/desc.hpp>
-#include <neb/core/net/core/scene/Base.hpp>
-#include <neb/core/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/util/debug.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/util/config.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/net/core/scene/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
 typedef neb::fnd::app::Base THIS;
 

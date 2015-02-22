@@ -4,7 +4,7 @@
 //#include <neb/simulation_callback.h>
 
 
-//#include <neb/core/shape/desc.hh>
+//#include <neb/fnd/shape/desc.hh>
 
 
 /*

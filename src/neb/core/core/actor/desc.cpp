@@ -1,5 +1,5 @@
 
-#include <neb/core/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
 
 void							neb::fnd::core::actor::desc::release()
 {

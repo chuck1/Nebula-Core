@@ -1,4 +1,4 @@
-#include <neb/core/core/shape/HeightField.hpp>
+#include <neb/fnd/core/shape/HeightField.hpp>
 
 typedef neb::fnd::core::shape::HeightField::Base THIS;
 

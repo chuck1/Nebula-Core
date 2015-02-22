@@ -1,12 +1,12 @@
-#include <neb/core/util/cast.hpp>
-#include <neb/core/app/Base.hpp>
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/core/scene/util/parent.hpp>
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/game/util/parent.hpp>
-#include <neb/core/game/trigger/util/parent.hpp>
-#include <neb/core/game/trigger/ActorEx1.hpp>
+#include <neb/fnd/util/cast.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/util/parent.hpp>
+#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd/game/game/util/parent.hpp>
+#include <neb/fnd/game/trigger/util/parent.hpp>
+#include <neb/fnd/game/trigger/ActorEx1.hpp>
 
 typedef neb::fnd::game::trigger::ActorEx1 THIS;
 

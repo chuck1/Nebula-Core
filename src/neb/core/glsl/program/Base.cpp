@@ -1,4 +1,4 @@
-#include <neb/core/glsl/program/Base.hpp>
+#include <neb/fnd/glsl/program/Base.hpp>
 
 typedef neb::fnd::glsl::program::Base THIS;
 

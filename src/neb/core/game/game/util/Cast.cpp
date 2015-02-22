@@ -1,5 +1,5 @@
-#include <neb/core/game/game/base.hpp>
-#include <neb/core/game/game/util/Cast.hpp>
+#include <neb/fnd/game/game/base.hpp>
+#include <neb/fnd/game/game/util/Cast.hpp>
 
 typedef neb::fnd::game::game::util::Cast THIS;
 

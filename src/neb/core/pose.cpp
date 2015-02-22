@@ -1,5 +1,5 @@
 
-#include <neb/core/math/pose.hpp>
+#include <neb/fnd/math/pose.hpp>
 
 neb::fnd::math::pose::pose():
 	pos_(0.0,0.0,0.0)

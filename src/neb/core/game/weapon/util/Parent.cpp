@@ -1,5 +1,5 @@
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/game/weapon/util/parent.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/game/weapon/util/parent.hpp>
 
 typedef neb::fnd::game::weapon::util::parent THIS;
 

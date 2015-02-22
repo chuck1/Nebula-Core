@@ -1,5 +1,5 @@
 
-#include <neb/core/game/game/base.hpp>
+#include <neb/fnd/game/game/base.hpp>
 
 void		neb::fnd::game::game::base::init(parent_t * const & p)
 {

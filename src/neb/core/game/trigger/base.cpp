@@ -1,4 +1,4 @@
-#include <neb/core/game/trigger/base.hpp>
+#include <neb/fnd/game/trigger/base.hpp>
 
 neb::fnd::game::trigger::base::base()
 {

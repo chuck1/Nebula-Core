@@ -1,4 +1,4 @@
-#include <neb/core/math/geo/polygon.hpp>
+#include <neb/fnd/math/geo/polygon.hpp>
 
 neb::fnd::math::geo::triangle::triangle()
 {

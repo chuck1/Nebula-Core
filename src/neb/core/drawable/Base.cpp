@@ -1,4 +1,4 @@
-#include <neb/core/drawable/Base.hpp>
+#include <neb/fnd/drawable/Base.hpp>
 
 typedef neb::fnd::drawable::Base THIS;
 

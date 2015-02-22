@@ -1,5 +1,5 @@
-#include <neb/core/window/util/Parent.hpp>
-#include <neb/core/app/Base.hpp>
+#include <neb/fnd/window/util/Parent.hpp>
+#include <neb/fnd/app/Base.hpp>
 
 typedef neb::fnd::window::util::Parent THIS;
 

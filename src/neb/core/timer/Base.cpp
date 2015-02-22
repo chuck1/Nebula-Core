@@ -1,5 +1,5 @@
-#include <neb/core/util/log.hpp>
-#include <neb/core/timer/Base.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/timer/Base.hpp>
 
 typedef neb::fnd::timer::Base THIS;
 

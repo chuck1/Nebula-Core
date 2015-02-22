@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include <neb/core/math/geo/polyhedron.hpp>
+#include <neb/fnd/math/geo/polyhedron.hpp>
 
 //math::geo::thin_cyl::cylinder(float 
 neb::fnd::math::geo::sphere::sphere(float r, int slices, int stacks)

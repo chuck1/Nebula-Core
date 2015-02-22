@@ -1,7 +1,7 @@
-#include <neb/core/game/game/util/parent.hpp>
-#include <neb/core/game/game/base.hpp>
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/trigger/util/parent.hpp>
+#include <neb/fnd/game/game/util/parent.hpp>
+#include <neb/fnd/game/game/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd/game/trigger/util/parent.hpp>
 
 typedef neb::fnd::game::trigger::util::parent THIS;
 

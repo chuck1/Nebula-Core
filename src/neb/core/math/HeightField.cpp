@@ -5,7 +5,7 @@
 #include <cmath>
 #include <cassert>
 
-#include <neb/core/math/HeightField.hpp>
+#include <neb/fnd/math/HeightField.hpp>
 
 typedef neb::fnd::math::HeightField::Base THIS;
 

@@ -1,5 +1,5 @@
 
-#include <neb/core/util/log.hpp>
+#include <neb/fnd/util/log.hpp>
 
 severity_level	neb::fnd::core::scene::sl;
 severity_level	neb::fnd::core::actor::sl;

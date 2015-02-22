@@ -1,5 +1,5 @@
-#include <neb/core/math/geo/vertex.hpp>
-#include <neb/core/math/geo/quad.hpp>
+#include <neb/fnd/math/geo/vertex.hpp>
+#include <neb/fnd/math/geo/quad.hpp>
 
 neb::fnd::math::geo::rectangle::rectangle(glm::vec3 center, glm::vec3 x, glm::vec3 n, float w, float h)
 {

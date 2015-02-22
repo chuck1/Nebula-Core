@@ -1,5 +1,5 @@
 
-#include <neb/core/itf/shared.hpp>
+#include <neb/fnd/itf/shared.hpp>
 
 neb::fnd::itf::shared::shared()
 {

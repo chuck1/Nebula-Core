@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include <neb/core/math/geo/polygon.hpp>
-#include <neb/core/math/geo/polyhedron.hpp>
-#include <neb/core/math/geo/quad.hpp>
+#include <neb/fnd/math/geo/polygon.hpp>
+#include <neb/fnd/math/geo/polyhedron.hpp>
+#include <neb/fnd/math/geo/quad.hpp>
 
 neb::fnd::math::geo::cuboid::cuboid(float x, float y, float z)
 {

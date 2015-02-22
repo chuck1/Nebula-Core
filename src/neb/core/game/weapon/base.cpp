@@ -1,4 +1,4 @@
-#include <neb/core/game/weapon/base.hpp>
+#include <neb/fnd/game/weapon/base.hpp>
 
 typedef neb::fnd::game::weapon::base THIS;
 
