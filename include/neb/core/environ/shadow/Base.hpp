@@ -10,8 +10,8 @@ namespace neb { namespace fnd { namespace environ { namespace shadow {
 		virtual public neb::fnd::environ::Base
 	{
 		public:
-			virtual void		setLight(std::shared_ptr<neb::fnd::core::light::base> light) = 0;
-			virtual void		setSceneEnviron(std::shared_ptr<neb::fnd::environ::Base> environ) = 0;
+			virtual void		setLight(std::shared_ptr<neb::fnd::core::light::base> light);
+			virtual void		setSceneEnviron(std::shared_ptr<neb::fnd::environ::Base> environ);
 	};
 }}}}
 

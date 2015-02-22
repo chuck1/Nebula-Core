@@ -7,8 +7,13 @@ namespace neb { namespace fnd {
 		namespace util
 		{
 		}
+		namespace proj
+		{
+			class Base;
+		}
 		namespace view
 		{
+			class Base;
 			class Ridealong;
 		}
 	}
