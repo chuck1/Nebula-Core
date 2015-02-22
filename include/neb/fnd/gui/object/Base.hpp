@@ -30,14 +30,13 @@ namespace neb { namespace fnd { namespace gui { namespace object {
 	{
 		public:
 			//typedef neb::fnd::util::parent<neb::gfx::gui::object::base, neb::gfx::gui::object::util::parent> parent_t;
-			typedef neb::gfx::gui::object::util::parent parent_t;
+			//typedef neb::gfx::gui::object::util::parent parent_t;
 			//using neb::fnd::tmp::Child<neb::gfx::gui::object::util::parent>::get_fnd_app;
 			using CHILD::get_fnd_app;
-			base();
-			virtual ~base() {}
-			
+			Base();
+			virtual ~Base();
 			virtual void			init(parent_t * const & p);
-			virtual void			draw(neb::gfx::RenderDesc const &) = 0;
+			virtual void			draw(neb::fnd::RenderDesc const &) = 0;
 			virtual void			preloop() = 0;
 			virtual int			keyFun(
 					std::shared_ptr<neb::fnd::input::source> const &, int, int, int, int) = 0;
