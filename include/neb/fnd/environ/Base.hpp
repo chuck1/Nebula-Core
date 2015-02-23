@@ -20,9 +20,11 @@ namespace neb { namespace fnd { namespace environ {
 			virtual ~Base();
 			virtual void		init(parent_t * const & p);
 			virtual void		release();
+			virtual view_shared	get_view() = 0;
 			virtual proj_shared	createCameraPerspective();
 			virtual proj_shared	createCameraOrtho();
 
+			std::weak_ptr<neb::fnd::drawable::Base>			drawable_;
 			proj_shared						proj_;
 	};
 }}}

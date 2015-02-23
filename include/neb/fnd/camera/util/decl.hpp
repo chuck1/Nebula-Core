@@ -13,6 +13,13 @@ namespace neb { namespace fnd {
 		}
 		namespace view
 		{
+			namespace shadow
+			{
+				class Base;
+				class Point;
+				class Directional;
+				class Spot;
+			}
 			class Base;
 			class Ridealong;
 		}

@@ -13,6 +13,9 @@ namespace neb { namespace fnd { namespace core {
 		}
 		class __base;
 		class base;
+		class Point;
+		class Spot;
+		class Directional;
 	}
 
 }}}

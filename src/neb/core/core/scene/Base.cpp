@@ -16,6 +16,8 @@
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
 
+#include <neb/fnd/plug/gfx/core/scene/Base.hpp>
+
 typedef neb::fnd::core::scene::base THIS;
 
 THIS::base():
@@ -180,6 +182,10 @@ void			THIS::save(
 	ar & boost::serialization::make_nvp("flag",flag_);
 	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
 }
-
+void			THIS::draw(neb::fnd::RenderDesc const & rd)
+{
+	if(_M_graphics_object)
+		_M_graphics_object->draw(rd);
+}
 
 

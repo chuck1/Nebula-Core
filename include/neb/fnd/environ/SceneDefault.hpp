@@ -3,6 +3,7 @@
 
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/environ/Three.hpp>
+#include <neb/fnd/environ/Single.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace environ {
@@ -11,6 +12,7 @@ namespace neb { namespace fnd { namespace environ {
 	 * Abstract class that contains functions and data needed to render a specific kind of drawable.
 	 */
 	class SceneDefault:
+		virtual public neb::fnd::environ::single<neb::fnd::camera::view::Base>,
 		virtual public neb::fnd::environ::Three
 	{
 		public:

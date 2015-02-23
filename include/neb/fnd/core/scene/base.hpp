@@ -44,9 +44,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				virtual void				init(parent_t * const & p) = 0;
 				void					__init(parent_t * const & p);
 				void					__release();
-				/** @name Main Loop @{ */
 				virtual void				step(gal::etc::timestep const & ts);
-				/** @} */
+				virtual void				draw(neb::fnd::RenderDesc const & rd);
 				virtual void				load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
 				virtual void				save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
 				BOOST_SERIALIZATION_SPLIT_MEMBER();

@@ -8,6 +8,7 @@
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/math/pose.hpp>
 #include <neb/fnd/DebugBuffer.hpp>
+#include <neb/fnd/RenderDesc.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core { namespace scene {
 	class Base:
@@ -18,6 +19,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core 
 			typedef neb::fnd::core::scene::base FND;
 			virtual void			init(parent_t * const & p) = 0;
 			virtual void			draw_debug_buffer(neb::fnd::DebugBuffer const & db) = 0;
+			virtual void			draw(neb::fnd::RenderDesc const & rd) = 0;
 /*
 			virtual void			v_set_pose_data(
 					FND * const & ptr,

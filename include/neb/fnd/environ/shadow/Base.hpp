@@ -6,12 +6,14 @@
 #include <neb/fnd/itf/shared.hpp>
 
 namespace neb { namespace fnd { namespace environ { namespace shadow {
+	template<typename LIGHT>
 	class Base:
 		virtual public neb::fnd::environ::Base
 	{
 		public:
-			virtual void		setLight(std::shared_ptr<neb::fnd::core::light::base> light);
-			virtual void		setSceneEnviron(std::shared_ptr<neb::fnd::environ::Base> environ);
+			virtual void			setLight(std::shared_ptr<neb::fnd::core::light::base> light);
+			virtual void			setSceneEnviron(std::shared_ptr<neb::fnd::environ::Base> environ);
+			std::weak_ptr<LIGHT>		_M_light;
 	};
 }}}}
 
