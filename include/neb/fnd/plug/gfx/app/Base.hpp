@@ -5,6 +5,7 @@
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/math/color/color.hpp>
+#include <neb/fnd/glsl/program/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 	class Base:

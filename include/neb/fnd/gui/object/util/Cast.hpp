@@ -8,8 +8,8 @@ namespace neb { namespace fnd { namespace gui { namespace object { namespace uti
 	class Cast:
 		virtual public neb::fnd::itf::shared
 	{
-		std::shared_ptr<neb::fnd::gui::object::Base>		is_fnd_gui_object_base();
-		std::shared_ptr<neb::fnd::gui::object::Terminal>	is_fnd_gui_object_terminal();
+		std::shared_ptr<neb::fnd::gui::object::Base>		is_gui_object_base();
+		std::shared_ptr<neb::fnd::gui::object::Terminal>	is_gui_object_terminal();
 	};
 }}}}}
 

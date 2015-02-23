@@ -39,14 +39,15 @@ namespace neb { namespace fnd { namespace window {
 			virtual void		resize();
 			virtual void		makeCurrent();
 
-			virtual void		callback_window_pos_fun(GLFWwindow*,int,int);
-			virtual void		callback_window_size_fun(GLFWwindow*,int,int);
-			virtual void		callback_window_close_fun(GLFWwindow*);
-			virtual void		callback_window_refresh_fun(GLFWwindow*);
-			virtual void		callback_mouse_button_fun(GLFWwindow*,int,int,int);
-			virtual void		callback_key_fun(GLFWwindow*,int,int,int,int);
-			virtual void		callbackCharFun(GLFWwindow*,unsigned int);
-
+			
+			void		callback_window_pos_fun(/*GLFWwindow**/,int,int);
+			void		callback_window_size_fun(GLFWwindow*,int,int);
+			void		callback_window_close_fun(GLFWwindow*);
+			void		callback_window_refresh_fun(GLFWwindow*);
+			void		callback_mouse_button_fun(GLFWwindow*,int,int,int);
+			void		callback_key_fun(GLFWwindow*,int,int,int,int);
+			void		callbackCharFun(GLFWwindow*,unsigned int);
+			
 			virtual int		get_width();
 			virtual int		get_height();
 

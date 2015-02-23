@@ -21,12 +21,9 @@ namespace neb { namespace fnd { namespace context {
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		render();
 			virtual void		setDrawable(std::shared_ptr<neb::fnd::drawable::Base>);
-			virtual void		setEnviron(std::shared_ptr<neb::fnd::environ::Base>);
-
+			//virtual void		setEnviron(std::shared_ptr<neb::fnd::environ::Base>);
 			//virtual std::shared_ptr<neb::fnd::environ::Base>	get_environ() = 0;
-
 			//std::shared_ptr<neb::gfx::environ::base>		environ_;
-
 			std::shared_ptr<neb::fnd::plug::gfx::context::Base>	_M_graphics_object;
 	};
 }}}

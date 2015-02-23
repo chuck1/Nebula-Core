@@ -1,6 +1,8 @@
 #ifndef NEB_FND_DEBUG_BUFFER_HPP
 #define NEB_FND_DEBUG_BUFFER_HPP
 
+#include <glm/glm.hpp>
+
 namespace neb { namespace fnd {
 	class DebugLine
 	{

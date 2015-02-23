@@ -1,6 +1,7 @@
 #ifndef NEB_CORE_ENVIRON_BASE_HPP
 #define NEB_CORE_ENVIRON_BASE_HPP
 
+#include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/environ/util/Parent.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
@@ -8,6 +9,7 @@
 
 namespace neb { namespace fnd { namespace environ {
 	class Base:
+		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::tmp::Child<neb::fnd::environ::util::Parent>
 	{
 		public:
@@ -20,6 +22,8 @@ namespace neb { namespace fnd { namespace environ {
 			virtual ~Base();
 			virtual void		init(parent_t * const & p);
 			virtual void		release();
+			virtual void		step(gal::etc::timestep const & ts);
+			void			render(neb::fnd::context::Base * const & context);
 			virtual view_shared	get_view() = 0;
 			virtual proj_shared	createCameraPerspective();
 			virtual proj_shared	createCameraOrtho();
