@@ -5,18 +5,17 @@
 
 #include <neb/fnd/itf/verbosity.hpp>
 #include <neb/fnd/app/Base.hpp>
-
 #include <neb/fnd/gui/object/Base.hpp>
 
 namespace neb { namespace fnd { namespace gui { namespace object {
 	class Terminal:
-		public neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>,
-		virtual public neb::gfx::gui::object::base
+		public neb::fnd::itf::verbosity<neb::fnd::gui::object::Terminal>,
+		virtual public neb::fnd::gui::object::Base
 	{
 		public:
-			using neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::printv;
-			typedef typename neb::gfx::gui::object::base::parent_t parent_t;
-			terminal();
+			using neb::fnd::itf::verbosity<neb::fnd::gui::object::Terminal>::printv;
+			//typedef typename neb::fnd::gui::object::base::parent_t parent_t;
+			Terminal();
 			virtual void			init(parent_t * const & p);
 			virtual void			step(gal::etc::timestep const &) {}
 			virtual void			draw(RenderDesc const &);

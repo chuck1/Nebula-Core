@@ -61,8 +61,6 @@ namespace neb { namespace fnd { namespace gui { namespace object {
 
 			}
 		public:
-			std::shared_ptr<neb::gfx::gui::object::util::parent>	parent_;
-
 			neb::gfx::gui::object::util::flag			flag_;
 
 			float							x_;
