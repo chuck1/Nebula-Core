@@ -11,6 +11,9 @@ namespace neb { namespace fnd { namespace camera { namespace view {
 	class Ridealong:
 		virtual public neb::fnd::camera::view::Base
 	{
+		public:
+			virtual void		step(gal::etc::timestep const & ts);
+			std::weak_ptr<neb::fnd::core::actor::base>	actor_;
 	};
 }}}}
 

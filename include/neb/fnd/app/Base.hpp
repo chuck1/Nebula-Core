@@ -70,8 +70,8 @@ namespace neb { namespace fnd { namespace app {
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			/***/
 			void							open_graphics_plugin(std::string filename);
-			/***/
 			void							open_network_plugin(std::string filename);
+
 			/***/
 			boost::asio::io_service					ios_;
 			/***/

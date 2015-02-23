@@ -4,6 +4,7 @@
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
+#include <neb/fnd/math/color/color.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 	class Base:
@@ -17,6 +18,23 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 			 * get data from input devices
 			 */
 			virtual void		update() = 0;
+			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
+			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
+			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
+			void			draw_quad(
+					float x,
+					float y,
+					float w,
+					float h,
+					neb::fnd::math::color::color color);
+			void			draw_text(
+					float x,
+					float y,
+					float sx,
+					float sy,
+					neb::fnd::math::color::color color,
+					std::string text,
+					std::string::size_type cursor_pos);
 	};
 }}}}}
 

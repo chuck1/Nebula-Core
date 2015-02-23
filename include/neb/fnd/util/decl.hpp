@@ -29,6 +29,9 @@ namespace neb
 		{
 			class Base;
 		}
+
+		class RenderDesc;
+		class DebugBuffer;
 	}
 }
 

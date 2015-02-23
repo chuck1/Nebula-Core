@@ -4,6 +4,7 @@
 #include <gal/stl/child.hpp>
 
 #include <neb/fnd/util/decl.hpp>
+//#include <neb/fnd/app/Base.hpp>
 
 namespace neb { namespace fnd { namespace tmp {
 	template<typename T> class Child:

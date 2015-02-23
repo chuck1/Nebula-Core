@@ -9,7 +9,7 @@ namespace neb { namespace fnd { namespace gui { namespace layout { namespace uti
 		virtual public neb::fnd::itf::shared
 	{
 		public:
-		std::shared_ptr<neb::fnd::gui::layout::Base>		is_gfx_gui_layout_base();
+		std::shared_ptr<neb::fnd::gui::layout::Base>		is_gui_layout_base();
 	};
 }}}}}
 
