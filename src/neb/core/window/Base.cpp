@@ -5,6 +5,33 @@ typedef neb::fnd::window::Base THIS;
 THIS::~Base()
 {
 }
+
+
+void			THIS::init(parent_t * const & p)
+{
+	// callback
+	callback_.key_press_.F1_ = [this](int,int,int,int)->int {
+		print_screen();
+		return 1;
+	};
+}
+void			THIS::create_object_graphics()
+{
+	auto app = get_fnd_app();
+	
+	typedef neb::fnd::plug::gfx::window::Base T;
+
+	assert(app->_M_graphics_plugin);
+
+	_M_graphics_object = app->_M_graphics_plugin->template make_shared<T>();
+}
+void			THIS::print_screen()
+{
+	if(_M_graphics_object)
+		_M_graphics_object->printScreen();
+}
+
+
 /*
 virtual void		callback_window_pos_fun(GLFWwindow* w, int x,int y)
 {

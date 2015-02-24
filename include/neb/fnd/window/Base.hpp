@@ -12,6 +12,8 @@
 #include <neb/fnd/context/util/Parent.hpp>
 #include <neb/fnd/window/util/decl.hpp>
 
+#include <neb/fnd/plug/gfx/window/Base.hpp>
+
 namespace neb { namespace fnd { namespace window {
 
 	class Base:
@@ -40,23 +42,25 @@ namespace neb { namespace fnd { namespace window {
 			virtual void		makeCurrent();
 
 			
-			void		callback_window_pos_fun(/*GLFWwindow**/,int,int);
-			void		callback_window_size_fun(GLFWwindow*,int,int);
-			void		callback_window_close_fun(GLFWwindow*);
-			void		callback_window_refresh_fun(GLFWwindow*);
-			void		callback_mouse_button_fun(GLFWwindow*,int,int,int);
-			void		callback_key_fun(GLFWwindow*,int,int,int,int);
-			void		callbackCharFun(GLFWwindow*,unsigned int);
-			
+			void		callback_window_pos_fun(/*GLFWwindow*,*/int,int);
+			void		callback_window_size_fun(/*GLFWwindow*,*/int,int);
+			void		callback_window_close_fun(/*GLFWwindow**/);
+			void		callback_window_refresh_fun(/*GLFWwindow**/);
+			void		callback_mouse_button_fun(/*GLFWwindow*,int,int,int*/);
+			void		callback_key_fun(/*GLFWwindow*,int,int,int,int*/);
+			void		callbackCharFun(/*GLFWwindow*,unsigned int*/);
+			void			print_screen();
 			virtual int		get_width();
 			virtual int		get_height();
-
+			void			create_object_graphics();
 			/*
 			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO() = 0;
 			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti() = 0;
 			virtual std::weak_ptr<neb::fnd::context::Window>	createContextWindow() = 0;
 			virtual std::weak_ptr<neb::fnd::context::Window>	createContextVisDepth() = 0;
 			*/
+
+			std::shared_ptr<neb::fnd::plug::gfx::window::Base>	_M_graphics_object;
 	};
 }}}
 
