@@ -22,20 +22,20 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
-			void			draw_quad(
+			virtual void			draw_quad(
 					float x,
 					float y,
 					float w,
 					float h,
-					neb::fnd::math::color::color color);
-			void			draw_text(
+					neb::fnd::math::color::color color) = 0;
+			virtual void			draw_text(
 					float x,
 					float y,
 					float sx,
 					float sy,
 					neb::fnd::math::color::color color,
 					std::string text,
-					std::string::size_type cursor_pos);
+					std::string::size_type cursor_pos) = 0;
 	};
 }}}}}
 

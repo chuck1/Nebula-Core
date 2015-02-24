@@ -9,4 +9,14 @@ neb::fnd::app::Base * const		THIS::get_fnd_app()
 	assert(a);
 	return a;
 }
+void					THIS::render()
+{
+	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+
+	auto lamb = [&] (pointer p) {
+		p->render();
+	};
+
+	map_.for_each(lamb);
+}
 

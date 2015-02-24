@@ -12,7 +12,7 @@
 #include <neb/fnd/context/util/Parent.hpp>
 #include <neb/fnd/window/util/decl.hpp>
 
-#include <neb/fnd/plug/gfx/window/Base.hpp>
+#include <neb/fnd/plug/gfx/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace window {
 
@@ -39,16 +39,16 @@ namespace neb { namespace fnd { namespace window {
 			virtual void		step(gal::etc::timestep const & ts);
 			/** @} */
 			virtual void		resize();
-			virtual void		makeCurrent();
+			void		makeCurrent();
 
 			
 			void		callback_window_pos_fun(/*GLFWwindow*,*/int,int);
 			void		callback_window_size_fun(/*GLFWwindow*,*/int,int);
 			void		callback_window_close_fun(/*GLFWwindow**/);
 			void		callback_window_refresh_fun(/*GLFWwindow**/);
-			void		callback_mouse_button_fun(/*GLFWwindow*,int,int,int*/);
-			void		callback_key_fun(/*GLFWwindow*,int,int,int,int*/);
-			void		callbackCharFun(/*GLFWwindow*,unsigned int*/);
+			void		callback_mouse_button_fun(/*GLFWwindow*,*/int,int,int);
+			void		callback_key_fun(/*GLFWwindow*,*/int,int,int,int);
+			void		callbackCharFun(/*GLFWwindow*,*/unsigned int);
 			void			print_screen();
 			virtual int		get_width();
 			virtual int		get_height();

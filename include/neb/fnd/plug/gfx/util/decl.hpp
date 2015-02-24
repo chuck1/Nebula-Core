@@ -8,6 +8,10 @@ namespace neb { namespace fnd { namespace plug {
 		{
 			class Base;
 		}
+		namespace window
+		{
+			class Base;
+		}
 		namespace core
 		{
 			namespace scene

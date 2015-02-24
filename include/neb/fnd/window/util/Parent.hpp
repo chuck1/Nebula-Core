@@ -11,7 +11,7 @@ namespace neb { namespace fnd { namespace window { namespace util {
 		virtual public neb::fnd::util::parent<neb::fnd::window::Base, Parent>
 	{
 		public:
-			virtual void		render() = 0;
+			void					render();
 			neb::fnd::app::Base * const		get_fnd_app();
 	};
 }}}}

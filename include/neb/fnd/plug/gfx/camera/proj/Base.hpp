@@ -1,7 +1,7 @@
 #ifndef NEB_FND_PLUG_GFX_CAMERA_PROJ_BASE_HPP
 #define NEB_FND_PLUG_GFX_CAMERA_PROJ_BASE_HPP
 
-#include <neb/fnd/camera/proj/Base.hpp>
+#include <neb/fnd/camera/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace camera { namespace proj {
 	class Base:
@@ -11,6 +11,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace camer
 		public:
 			typedef neb::fnd::camera::proj::Base FND;
 			virtual void		init(parent_t * const & p) = 0;
+			virtual void		load(neb::fnd::glsl::program::Base * const & p) = 0;
 			virtual void		calculate() = 0;
 	};
 }}}}}}
