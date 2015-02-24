@@ -26,7 +26,14 @@ THIS::Base()
 {
 	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
 }
-void THIS::init(parent_t * const & p)
+THIS::~Base()
+{
+}
+void		THIS::release()
+{
+	neb::fnd::gui::object::util::Parent::clear();
+}
+void		THIS::init(parent_t * const & p)
 {
 	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
 
