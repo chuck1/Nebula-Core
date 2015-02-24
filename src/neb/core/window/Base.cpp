@@ -1,3 +1,4 @@
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/window/Base.hpp>
 
 typedef neb::fnd::window::Base THIS;

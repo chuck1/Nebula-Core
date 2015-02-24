@@ -14,6 +14,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace windo
 			//virtual void		render() = 0;
 			//virtual void		setTexture(
 			//		std::shared_ptr<neb::fnd::itf::shared> tex) = 0;
+			virtual void		printScreen() = 0;
 	};
 }}}}}
 
