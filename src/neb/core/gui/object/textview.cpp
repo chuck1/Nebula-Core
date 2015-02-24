@@ -25,7 +25,7 @@ void			THIS::draw(std::shared_ptr<neb::fnd::glsl::program::Base> p)
 	float sx = 1.0/600.0;
 	float sy = 1.0/600.0;
 
-	auto g = get_fnd_app()->_M_graphics_object;
+	auto g = get_fnd_app()->G::get_object();
 
 	g->draw_quad(x_, y_, w_, h_, bg_color_);
 	g->draw_text(x_, y_, sx, sy, font_color_, label_, 0);

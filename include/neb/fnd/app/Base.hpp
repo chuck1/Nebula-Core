@@ -17,7 +17,7 @@
 #include <neb/fnd/glsl/program/util/decl.hpp>
 #include <neb/fnd/window/util/Parent.hpp>
 #include <neb/fnd/timer/util/Parent.hpp>
-
+#include <neb/fnd/plug/ObjectParent.hpp>
 #include <neb/fnd/plug/gfx/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace app {
@@ -26,9 +26,11 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::core::scene::util::parent,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
-		virtual public neb::fnd::timer::util::Parent
+		virtual public neb::fnd::timer::util::Parent,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>
 	{
 		public:
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
@@ -97,7 +99,6 @@ namespace neb { namespace fnd { namespace app {
 			 * shared library helper for graphics plugin
 			 */
 			std::shared_ptr<H>					_M_graphics_plugin;
-			std::shared_ptr<neb::fnd::plug::gfx::app::Base>		_M_graphics_object;
 	};
 
 }}}
