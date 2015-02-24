@@ -4,7 +4,7 @@
 #include <memory>
 #include <map>
 
-//#include <neb/fnd/core/actor/util/decl.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/camera/view/Base.hpp>
 
 namespace neb { namespace fnd { namespace camera { namespace view {

@@ -10,6 +10,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace camer
 	{
 		public:
 			typedef neb::fnd::camera::view::Base FND;
+			virtual void		load(neb::fnd::glsl::program::Base * const & p) = 0;
 	};
 }}}}}}
 
