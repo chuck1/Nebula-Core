@@ -19,14 +19,17 @@
 #include <neb/fnd/core/light/util/light_count.hpp>
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/plug/gfx/util/decl.hpp>
+#include <neb/fnd/plug/ObjectParent.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace light {
 	class base:
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::itf::serializable,
-		virtual public neb::fnd::tmp::Child<neb::fnd::core::light::util::parent>
+		virtual public neb::fnd::tmp::Child<neb::fnd::core::light::util::parent>,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base>
 	{
 		public:
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base> G;
 			base();
 			virtual void				v_set_pose_data(neb::fnd::math::pose const &);
 			virtual void				init(neb::fnd::core::light::util::parent * const & p);
@@ -59,11 +62,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			neb::fnd::core::light::util::flag			flag_;
-
 			neb::fnd::math::pose					pose_;
-
-			std::shared_ptr<neb::fnd::plug::gfx::core::light::Base>		_M_graphics_object;
-
 	};
 }}}}
 

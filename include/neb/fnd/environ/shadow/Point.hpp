@@ -3,7 +3,12 @@
 
 #include <neb/fnd/environ/shadow/Base.hpp>
 #include <neb/fnd/environ/Single.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
+#include <neb/fnd/camera/view/shadow/point.hpp>
+#include <neb/fnd/camera/view/shadow/directional.hpp>
+#include <neb/fnd/core/light/Point.hpp>
+#include <neb/fnd/core/light/Directional.hpp>
 
 namespace neb { namespace fnd { namespace environ { namespace shadow {
 	class Point:

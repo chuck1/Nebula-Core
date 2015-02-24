@@ -24,7 +24,7 @@ namespace neb { namespace fnd { namespace environ {
 			virtual void		release();
 			virtual void		step(gal::etc::timestep const & ts);
 			void			render(neb::fnd::context::Base * const & context);
-			virtual view_shared	get_view() = 0;
+			virtual view_shared	get_view(int i = 0) = 0;
 			virtual proj_shared	createCameraPerspective();
 			virtual proj_shared	createCameraOrtho();
 

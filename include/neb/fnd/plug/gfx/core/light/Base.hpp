@@ -7,19 +7,20 @@
 #include <neb/fnd/glsl/program/util/decl.hpp>
 #include <neb/fnd/core/light/util/decl.hpp>
 #include <neb/fnd/math/pose.hpp>
+#include <neb/fnd/plug/Object.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core { namespace light {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::tmp::Child<neb::fnd::core::light::base>
+		virtual public neb::fnd::plug::Object<neb::fnd::plug::gfx::core::light::Base>
 	{
 		public:
 			typedef neb::fnd::core::light::base FND;
 			virtual void			init(parent_t * const & p) = 0;
-/*
 			virtual void			v_set_pose_data(
 					FND * const & ptr,
 					neb::fnd::math::pose const & global_pose) = 0;
+			/*
 			virtual void			draw(
 					FND * const & ptr,
 					neb::fnd::glsl::program::Base const * const & p,

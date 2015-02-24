@@ -1,18 +1,20 @@
 #ifndef NEB_FND_CAMERA_VIEW_SHADOW_POINT_
 #define NEB_FND_CAMERA_VIEW_SHADOW_POINT_
 
+#include <glm/glm.hpp>
+
 #include <neb/fnd/camera/view/Base.hpp>
 #include <neb/fnd/core/light/util/decl.hpp>
 
 namespace neb { namespace fnd {namespace camera {namespace view { namespace shadow {
 	/** @brief @Base */
 	class Point:
-		virtual public neb::gfx::camera::view::Base
+		virtual public neb::fnd::camera::view::Base
 	{
 		public:
-			typedef std::weak_ptr<neb::gfx::core::light::point>	light_weak;
+			typedef std::weak_ptr<neb::fnd::core::light::Point>	light_weak;
 			/** @brief Constructor */
-			Point(std::shared_ptr< ::neb::gfx::environ::base > parent);
+			Point();
 			/** @brief Get view matrix. */
 			virtual glm::mat4			view();
 			/** @brief Step

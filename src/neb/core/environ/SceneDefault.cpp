@@ -18,4 +18,7 @@ std::weak_ptr<neb::fnd::camera::view::Ridealong>		THIS::create_view_ridealong(
 
 	return view;
 }
+void		THIS::release()
+{
+}
 

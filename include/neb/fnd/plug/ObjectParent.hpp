@@ -1,19 +1,23 @@
 #ifndef NEB_FND_PLUG_OBJECT_PARENT_HPP
 #define NEB_FND_PLUG_OBJECT_PARENT_HPP
 
+#include <gal/itf/shared.hpp>
+#include <gal/dll/helper.hpp>
+
 namespace neb { namespace fnd { namespace plug {
 	template<typename P>
 	class Parent
 	{
 	protected:
 		typedef gal::dll::helper<gal::itf::shared>  H;
-		template<typename HB, typename... ARGS>
+		template<typename... ARGS>
 		void			make_object(
 				std::shared_ptr<H> h,
 				ARGS... args)
 		{
 			_M_object = h->template make_shared<P, ARGS...>(
 					args...);
+			_M_object->init(this);
 		}
 		void			reset()
 		{

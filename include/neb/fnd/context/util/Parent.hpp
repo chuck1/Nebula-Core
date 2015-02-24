@@ -14,6 +14,7 @@ namespace neb { namespace fnd { namespace context { namespace util {
 		public:
 			typedef neb::fnd::context::Window C_W;
 			neb::fnd::app::Base * const				get_fnd_app();
+			void							render();
 			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO();
 			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti();
 			virtual std::weak_ptr<C_W>				createContextWindow();
