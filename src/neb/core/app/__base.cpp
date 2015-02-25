@@ -10,7 +10,13 @@
 #include <neb/fnd/util/log.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/net/core/scene/Base.hpp>
+
+#include <neb/fnd/plug/gfx/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/scene/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+
+
 
 typedef neb::fnd::app::Base THIS;
 
@@ -138,13 +144,21 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 }
 void							THIS::open_graphics_plugin(std::string filename)
 {
-	typedef neb::fnd::plug::gfx::core::shape::Base S;
+	typedef neb::fnd::plug::gfx::app::Base APP;
+	typedef neb::fnd::plug::gfx::core::scene::Base SC;
+	typedef neb::fnd::plug::gfx::core::actor::Base AC;
+	typedef neb::fnd::plug::gfx::core::shape::Base SH;
 
 	_M_graphics_plugin.reset(new H(filename));
 	
 	_M_graphics_plugin->open();
 	
-	_M_graphics_plugin->template add<S>("shape");
+	_M_graphics_plugin->template add<APP, int>("app");
+	_M_graphics_plugin->template add<SC,  int>("scene");
+	_M_graphics_plugin->template add<AC,  int>("actor");
+	_M_graphics_plugin->template add<SH,  int>("shape");
+
+	G::make_object<THIS>(_M_graphics_plugin);
 }
 void							THIS::open_network_plugin(std::string filename)
 {

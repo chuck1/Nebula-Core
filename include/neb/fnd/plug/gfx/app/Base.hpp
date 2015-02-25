@@ -6,11 +6,14 @@
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/math/color/color.hpp>
 #include <neb/fnd/glsl/program/util/decl.hpp>
+#include <neb/fnd/plug/Object.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::tmp::Child<neb::fnd::app::Base>
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::app::Base,
+				neb::fnd::app::Base>
 	{
 		public:
 			virtual void		init(parent_t * const & p) = 0;

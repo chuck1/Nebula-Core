@@ -9,16 +9,21 @@
 #include <neb/fnd/math/pose.hpp>
 #include <neb/fnd/DebugBuffer.hpp>
 #include <neb/fnd/RenderDesc.hpp>
+#include <neb/fnd/plug/Object.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core { namespace scene {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::tmp::Child<neb::fnd::core::scene::base>
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::core::scene::Base,
+				neb::fnd::core::scene::base>
 	{
 		public:
 			typedef neb::fnd::core::scene::base FND;
 			virtual void			init(parent_t * const & p) = 0;
-			virtual void			draw_debug_buffer(neb::fnd::DebugBuffer const & db) = 0;
+			virtual void			draw_debug_buffer(
+					neb::fnd::RenderDesc const & desc,
+					neb::fnd::DebugBuffer const & db) = 0;
 			virtual void			draw(neb::fnd::RenderDesc const & rd) = 0;
 /*
 			virtual void			v_set_pose_data(

@@ -22,7 +22,7 @@ void		THIS::init(parent_t * const & parent)
 	auto app = get_fnd_app();
 	
 	if(app->_M_graphics_plugin)
-		G::make_object<>(app->_M_graphics_plugin);
+		G::make_object<THIS>(app->_M_graphics_plugin);
 	
 }
 void				THIS::step(gal::etc::timestep const & ts)

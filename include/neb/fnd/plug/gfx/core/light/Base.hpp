@@ -12,7 +12,9 @@
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core { namespace light {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::plug::Object<neb::fnd::plug::gfx::core::light::Base>
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::core::light::Base,
+				neb::fnd::core::light::base>
 	{
 		public:
 			typedef neb::fnd::core::light::base FND;

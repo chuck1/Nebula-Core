@@ -5,7 +5,7 @@
 #include <neb/fnd/net/util/decl.hpp>
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/glsl/program/util/decl.hpp>
-#include <neb/fnd/core/ACTOR/util/decl.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/math/pose.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core { namespace actor {

@@ -10,15 +10,24 @@ namespace neb { namespace fnd { namespace plug {
 	{
 	protected:
 		typedef gal::dll::helper<gal::itf::shared>  H;
-		template<typename... ARGS>
+
+		virtual ~Parent()
+		{
+		}
+
+		template<typename PARENT, typename... ARGS>
 		void			make_object(
 				std::shared_ptr<H> h,
 				ARGS... args)
 		{
 			_M_object = h->template make_shared<P, ARGS...>(
 					args...);
-			_M_object->init(this);
+
+			PARENT * p = dynamic_cast<PARENT*>(this);
+			
+			_M_object->init(p);
 		}
+		
 		void			reset()
 		{
 			_M_object.reset();
