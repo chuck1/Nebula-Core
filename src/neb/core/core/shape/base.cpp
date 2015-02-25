@@ -70,8 +70,8 @@ void			THIS::__set_pose_data(
 	neb::fnd::core::shape::util::parent::callbackPose(pose);
 	neb::fnd::core::light::util::parent::callbackPose(pose);
 
-	if(_M_graphics_object)
-		_M_graphics_object->v_set_pose_data(this, pose);
+	if(G::has_object())
+		G::get_object()->v_set_pose_data(this, pose);
 }
 void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 {

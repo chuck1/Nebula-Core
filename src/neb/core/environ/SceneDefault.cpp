@@ -18,7 +18,14 @@ std::weak_ptr<neb::fnd::camera::view::Ridealong>		THIS::create_view_ridealong(
 
 	return view;
 }
-void		THIS::release()
+void			THIS::release()
 {
+}
+void			THIS::init(parent_t * const & p)
+{
+	setParent(p);
+
+	//neb::fnd::environ::SceneDefault::init(p);
+	neb::fnd::environ::Base::init(p);
 }
 

@@ -22,10 +22,6 @@ namespace neb { namespace fnd { namespace plug {
 			{
 				class Base;
 			}
-			namespace shape
-			{
-				class Base;
-			}
 			namespace light
 			{
 				class Base;

@@ -13,6 +13,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace camer
 			virtual void		init(parent_t * const & p) = 0;
 			virtual void		load(neb::fnd::glsl::program::Base * const & p) = 0;
 			virtual void		calculate() = 0;
+			virtual glm::mat4	proj() = 0;
 	};
 }}}}}}
 

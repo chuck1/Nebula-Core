@@ -15,6 +15,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 		public:
 			virtual void		init(parent_t * const & p) = 0;
 			virtual void		onFirstContext() = 0;
+			virtual double		get_time() = 0;
 			/*
 			 * get data from input devices
 			 */
@@ -22,13 +23,13 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
-			virtual void			draw_quad(
+			virtual void		draw_quad(
 					float x,
 					float y,
 					float w,
 					float h,
 					neb::fnd::math::color::color color) = 0;
-			virtual void			draw_text(
+			virtual void		draw_text(
 					float x,
 					float y,
 					float sx,

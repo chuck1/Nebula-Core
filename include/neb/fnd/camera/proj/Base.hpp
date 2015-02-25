@@ -13,6 +13,7 @@
 #include <neb/fnd/glsl/program/util/decl.hpp>
 
 #include <neb/fnd/plug/gfx/camera/util/decl.hpp>
+#include <neb/fnd/plug/ObjectParent.hpp>
 
 //#include <neb/fnd/camera/view/Ridealong.hpp>
 
@@ -22,9 +23,11 @@
 namespace neb { namespace fnd { namespace camera { namespace proj {
 	class Base:
 		virtual public neb::fnd::tmp::Child<neb::fnd::environ::Base>,
-		virtual public neb::fnd::itf::shared
+		virtual public neb::fnd::itf::shared,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::camera::proj::Base>
 	{
 	public:
+		typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::camera::proj::Base> G;
 		virtual void		init(parent_t * const & p) = 0;
 		glm::mat4		proj();
 		virtual void		calculate_geometry();
@@ -33,7 +36,6 @@ namespace neb { namespace fnd { namespace camera { namespace proj {
 		// physx geometry
 		//physx::PxGeometry*	_M_px_geometry;
 		std::weak_ptr<neb::fnd::core::shape::base>	_M_shape;
-		std::shared_ptr<neb::fnd::plug::gfx::camera::proj::Base>	_M_graphics_object;
 	};
 }}}}
 

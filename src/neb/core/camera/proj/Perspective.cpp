@@ -11,8 +11,8 @@ void		THIS::init(parent_t * const & p)
 {
 	setParent(p);
 	
-	if(_M_graphics_object)
-		_M_graphics_object->calculate();
+	if(G::has_object())
+		G::get_object()->calculate();
 }
 void		THIS::step(gal::etc::timestep const & p)
 {
