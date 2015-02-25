@@ -15,6 +15,9 @@
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 #include <neb/fnd/plug/gfx/core/actor/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/window/Base.hpp>
+#include <neb/fnd/plug/gfx/context/Base.hpp>
+#include <neb/fnd/plug/gfx/environ/Base.hpp>
 
 
 
@@ -102,7 +105,15 @@ void						THIS::__release()
 	typedef neb::fnd::core::scene::base S;
 	typedef neb::fnd::core::scene::util::parent P;
 
-	neb::fnd::util::parent<S, P>::clear();
+
+	neb::fnd::core::scene::util::parent::clear();
+	neb::fnd::game::game::util::parent::clear();
+	neb::fnd::window::util::Parent::clear();
+	neb::fnd::timer::util::Parent::clear();
+	neb::fnd::gui::layout::util::Parent::clear();
+
+
+	//neb::fnd::util::parent<S, P>::clear();
 }
 void						THIS::__step(gal::etc::timestep const & ts)
 {
@@ -120,26 +131,26 @@ neb::fnd::math::pose				THIS::getPoseGlobal() const
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 {
 	typedef neb::fnd::game::game::base T;
-	
+
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
 	neb::fnd::game::game::util::parent::insert(g);
-	
+
 	g->init(this);
-	
+
 	return g;
 }
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 		neb::fnd::game::game::desc const & desc)
 {
 	typedef neb::fnd::game::game::base T;
-	
+
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
 	neb::fnd::game::game::util::parent::insert(g);
-	
+
 	g->init(this);
-	
+
 	return g;
 }
 void							THIS::open_graphics_plugin(std::string filename)
@@ -149,16 +160,24 @@ void							THIS::open_graphics_plugin(std::string filename)
 	typedef neb::fnd::plug::gfx::core::actor::Base AC;
 	typedef neb::fnd::plug::gfx::core::shape::Base SH;
 
+	typedef neb::fnd::plug::gfx::window::Base W;
+	typedef neb::fnd::plug::gfx::context::Base C;
+	typedef neb::fnd::plug::gfx::environ::Base E;
+
 	_M_graphics_plugin.reset(new H(filename));
-	
+
 	_M_graphics_plugin->open();
-	
+
 	_M_graphics_plugin->template add<APP, int>("app");
 	_M_graphics_plugin->template add<SC,  int>("scene");
 	_M_graphics_plugin->template add<AC,  int>("actor");
 	_M_graphics_plugin->template add<SH,  int>("shape");
 
-	G::make_object<THIS>(_M_graphics_plugin);
+	_M_graphics_plugin->template add<W,   int>("window");
+	_M_graphics_plugin->template add<C,   int>("context");
+	_M_graphics_plugin->template add<E,   int>("environ");
+
+	G::make_object<THIS, int>(_M_graphics_plugin, 0);
 }
 void							THIS::open_network_plugin(std::string filename)
 {
@@ -167,10 +186,10 @@ void							THIS::open_network_plugin(std::string filename)
 	_M_network_plugin.reset(new H(filename));
 
 	_M_network_plugin->open();
-	
+
 	// the integer argument will indicate local or remote
 	_M_network_plugin->template add<S, int>("scene");
-	
+
 }
 void			THIS::render()
 {

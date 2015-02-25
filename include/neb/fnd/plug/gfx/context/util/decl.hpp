@@ -4,6 +4,13 @@
 namespace neb { namespace fnd { namespace plug { namespace gfx {
 	namespace context
 	{
+		struct type
+		{
+			enum
+			{
+				WINDOW
+			};
+		};
 		class Base;
 		class FBO;
 		class FBOM;

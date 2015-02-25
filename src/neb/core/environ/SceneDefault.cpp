@@ -1,5 +1,8 @@
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/environ/SceneDefault.hpp>
 #include <neb/fnd/camera/view/Ridealong.hpp>
+
+#include <neb/fnd/plug/gfx/environ/Base.hpp>
 
 typedef neb::fnd::environ::SceneDefault THIS;
 
@@ -24,6 +27,10 @@ void			THIS::release()
 void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
+
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::environ::type::SCENE_DEFAULT);
 
 	//neb::fnd::environ::SceneDefault::init(p);
 	neb::fnd::environ::Base::init(p);

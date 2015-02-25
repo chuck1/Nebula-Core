@@ -1,12 +1,20 @@
 #ifndef NEB_FND_PLUG_GFX_WINDOW_BASE_HPP
 #define NEB_FND_PLUG_GFX_WINDOW_BASE_HPP
 
-#include <neb/fnd/window/Base.hpp>
+#include <glm/glm.hpp>
+
+//#include <neb/fnd/window/Base.hpp>
+#include <neb/fnd/util/decl.hpp>
+#include <neb/fnd/itf/shared.hpp>
+
+#include <neb/fnd/plug/Object.hpp>
 
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace window {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::tmp::Child<neb::fnd::window::Base>
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::window::Base,
+				neb::fnd::window::Base>
 	{
 		public:
 			typedef neb::fnd::window::Base FND;

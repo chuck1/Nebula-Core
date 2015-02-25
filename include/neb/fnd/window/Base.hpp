@@ -12,7 +12,8 @@
 #include <neb/fnd/context/util/Parent.hpp>
 #include <neb/fnd/window/util/decl.hpp>
 
-#include <neb/fnd/plug/gfx/util/decl.hpp>
+#include <neb/fnd/plug/ObjectParent.hpp>
+#include <neb/fnd/plug/gfx/window/Base.hpp>
 
 namespace neb { namespace fnd { namespace window {
 
@@ -20,10 +21,12 @@ namespace neb { namespace fnd { namespace window {
 		virtual public neb::fnd::tmp::Child<neb::fnd::window::util::Parent>,
 		virtual public neb::fnd::context::util::Parent,
 		virtual public neb::fnd::input::source,
-		virtual public neb::fnd::input::callback
+		virtual public neb::fnd::input::callback,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::window::Base>
 	{
 		public:
 			using CHILD::get_fnd_app;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::window::Base> G;
 			typedef neb::fnd::window::util::Parent parent_t;
 			typedef neb::fnd::util::parent<neb::fnd::context::Base, neb::fnd::context::util::Parent> contexts;
 			
@@ -60,7 +63,6 @@ namespace neb { namespace fnd { namespace window {
 			virtual std::weak_ptr<neb::fnd::context::Window>	createContextVisDepth() = 0;
 			*/
 
-			std::shared_ptr<neb::fnd::plug::gfx::window::Base>	_M_graphics_object;
 	};
 }}}
 

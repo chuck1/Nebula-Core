@@ -8,6 +8,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 		virtual public neb::fnd::core::light::base
 	{
 		public:
+			virtual void	init(parent_t * const & parent);
 			void		set_spot_direction(glm::vec3);
 	};
 }}}}

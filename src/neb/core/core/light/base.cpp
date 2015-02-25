@@ -19,10 +19,9 @@ void		THIS::init(parent_t * const & parent)
 {
 	setParent(parent);
 
-	auto app = get_fnd_app();
+	//auto app = get_fnd_app();
 	
-	if(app->_M_graphics_plugin)
-		G::make_object<THIS>(app->_M_graphics_plugin);
+	//if(app->_M_graphics_plugin)
 	
 }
 void				THIS::step(gal::etc::timestep const & ts)

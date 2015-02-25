@@ -12,7 +12,7 @@ namespace neb { namespace fnd { namespace context {
 		public:
 			typedef neb::fnd::environ::shadow::Directional ESD;
 			virtual void			init(parent_t * const parent);
-			virtual void			render();
+			//virtual void			render();
 			virtual std::weak_ptr<ESD>	createEnvironShadowDirectional();
 			virtual void			setTexture(std::shared_ptr<neb::fnd::itf::shared>);
 	};

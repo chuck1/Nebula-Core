@@ -19,6 +19,7 @@
 #include <neb/fnd/drawable/Base.hpp>
 #include <neb/fnd/net/util/decl.hpp>
 #include <neb/fnd/plug/gfx/util/decl.hpp>
+#include <neb/fnd/plug/ObjectParent.hpp>
 
 //#include <neb/fnd/core/actor/rigidbody/desc.hpp>
 //#include <neb/fnd/core/shape/cuboid/desc.hpp>
@@ -33,9 +34,11 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 		class base:
 			virtual public neb::fnd::tmp::Child<neb::fnd::core::scene::util::parent>,
 			virtual public neb::fnd::core::actor::util::parent,
-			virtual public neb::fnd::drawable::Base
+			virtual public neb::fnd::drawable::Base,
+			virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base>
 		{
 			public:
+				typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base> G;
 				using CHILD::get_fnd_app;
 				typedef neb::fnd::core::scene::util::parent									parent_t;
 				typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>		actors;
@@ -123,10 +126,6 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				neb::fnd::core::scene::util::flag					flag_;
 				std::map< string, std::shared_ptr<neb::fnd::core::actor::base> >	actors_deferred_;
 				float									last_;
-			protected:
-				std::shared_ptr<neb::fnd::net::core::scene::Base>			_M_network_object;
-				std::shared_ptr<neb::fnd::plug::gfx::core::scene::Base>			_M_graphics_object;
-				//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
 		};
 }}}}
 

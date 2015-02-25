@@ -9,8 +9,8 @@ void		THIS::init(parent_t * const & p)
 }
 void		THIS::load(neb::fnd::glsl::program::Base * const & p)
 {
-	if(G::has_object())
-		G::get_object()->load(p);
+	//if(G::has_object())
+	G::get_object()->load(p);
 }
 
 

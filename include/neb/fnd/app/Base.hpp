@@ -10,10 +10,12 @@
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/app/util/Flag.hh>
 #include <neb/fnd/context/util/decl.hpp>
+#include <neb/fnd/environ/util/decl.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
 #include <neb/fnd/game/game/util/parent.hpp>
 #include <neb/fnd/game/game/util/decl.hpp>
+#include <neb/fnd/gui/layout/util/Parent.hpp>
 #include <neb/fnd/glsl/program/util/decl.hpp>
 #include <neb/fnd/window/util/Parent.hpp>
 #include <neb/fnd/timer/util/Parent.hpp>
@@ -27,6 +29,7 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
 		virtual public neb::fnd::timer::util::Parent,
+		virtual public neb::fnd::gui::layout::util::Parent,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>
 	{
 		public:
@@ -61,7 +64,7 @@ namespace neb { namespace fnd { namespace app {
 			/***/
 			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
-					std::shared_ptr<neb::fnd::context::Base> context) = 0;
+					std::shared_ptr<neb::fnd::environ::Base> environ) = 0;
 			/***/
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene() = 0;
 			/***/

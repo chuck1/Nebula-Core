@@ -184,8 +184,9 @@ void			THIS::save(
 }
 void			THIS::draw(neb::fnd::RenderDesc const & rd)
 {
-	if(_M_graphics_object)
-		_M_graphics_object->draw(rd);
+	printf(/*debug, */"%s\n", __PRETTY_FUNCTION__);
+	//if(G::has_object())
+	G::get_object()->draw(rd);
 }
 
 

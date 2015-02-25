@@ -9,6 +9,12 @@ THIS::~Base()
 }
 void			THIS::init(parent_t * const & p)
 {
+	setParent(p);
+
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
+
 	// callback
 	callback_.key_press_.F1_ = [this](int,int,int,int)->int {
 		print_screen();
@@ -17,25 +23,25 @@ void			THIS::init(parent_t * const & p)
 }
 void			THIS::makeCurrent()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->makeCurrent();
+	if(G::has_object())
+		G::get_object()->makeCurrent();
 }
 void			THIS::render()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->render();
+	if(G::has_object())
+		G::get_object()->render();
 }
 int			THIS::get_height()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->get_height();
+	if(G::has_object())
+		G::get_object()->get_height();
 
 	return 0;
 }
 int			THIS::get_width()
 {
-	if(_M_graphics_object)
-		return _M_graphics_object->get_width();
+	if(G::has_object())
+		return G::get_object()->get_width();
 
 	return 0;
 }
@@ -48,14 +54,14 @@ void			THIS::create_object_graphics()
 	
 	typedef neb::fnd::plug::gfx::window::Base T;
 
-	assert(app->_M_graphics_plugin);
+	assert(app->G::has_object());
 
-	_M_graphics_object = app->_M_graphics_plugin->template make_shared<T>();
+	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
 }
 void			THIS::print_screen()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->printScreen();
+	if(G::has_object())
+		G::get_object()->printScreen();
 }
 void			THIS::callback_mouse_button_fun(int button, int action, int mods)
 {
@@ -99,20 +105,20 @@ void		THIS::release()
 {
 	neb::fnd::context::util::Parent::clear();
 
-	if(_M_graphics_object) {
-		_M_graphics_object->release();
-		_M_graphics_object.reset();
+	if(G::has_object()) {
+		G::get_object()->release();
+		G::get_object().reset();
 	}
 }
 void		THIS::resize()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->resize();
+	if(G::has_object())
+		G::get_object()->resize();
 }
 glm::vec2	THIS::getCursorPosNDC()
 {
-	if(_M_graphics_object)
-		return _M_graphics_object->getCursorPosNDC();
+	if(G::has_object())
+		return G::get_object()->getCursorPosNDC();
 
 	return glm::vec2();
 }

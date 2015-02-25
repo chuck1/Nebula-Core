@@ -12,6 +12,7 @@ namespace neb { namespace fnd { namespace environ {
 		virtual public neb::fnd::environ::single<neb::fnd::camera::view::Base>
 	{
 		public:
+			virtual void		init(parent_t * const & parent);
 			//virtual void		render(std::shared_ptr<neb::gfx::context::base> context) = 0;
 			//std::shared_ptr<neb::gfx::drawable::two>		drawable_;
 	};

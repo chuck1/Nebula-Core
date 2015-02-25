@@ -4,6 +4,8 @@
 #include <gal/itf/shared.hpp>
 #include <gal/dll/helper.hpp>
 
+#include <neb/fnd/tmp/Child.hpp>
+
 #include <neb/fnd/plug/ObjectParent.hpp>
 
 namespace neb { namespace fnd { namespace plug {

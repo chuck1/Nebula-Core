@@ -6,18 +6,12 @@ typedef neb::fnd::context::Base THIS;
 
 void			THIS::render()
 {
-	if(_M_graphics_object)
-		_M_graphics_object->render();
+	//if(G::has_object())
+	G::get_object()->render();
 }
 void			THIS::step(gal::etc::timestep const & ts)
 {
 }
-void			THIS::setDrawable(std::shared_ptr<neb::fnd::drawable::Base> d)
-{
-	auto e = neb::fnd::environ::util::Parent::front();
-	assert(e);
-
-	e->drawable_ = d;
-}
-
+/*
+*/
 
