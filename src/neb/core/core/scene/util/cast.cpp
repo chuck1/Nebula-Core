@@ -1,5 +1,5 @@
 
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/scene/util/cast.hpp>
 
 shared_ptr<neb::fnd::core::scene::base>		neb::fnd::core::scene::util::cast::isSceneBase() {

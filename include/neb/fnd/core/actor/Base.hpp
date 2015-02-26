@@ -11,7 +11,7 @@
 
 #include <neb/fnd/math/pose.hpp>
 #include <neb/fnd/filter.hpp>
-#include <neb/fnd/core/actor/__base.hpp>
+#include <neb/fnd/core/actor/__Base.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/actor/util/flag.hpp>
 #include <neb/fnd/core/actor/util/parent.hpp>

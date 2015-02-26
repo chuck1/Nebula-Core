@@ -1,5 +1,5 @@
-#include <neb/fnd/core/actor/base.hpp>
-#include <neb/fnd/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
+#include <neb/fnd/core/actor/rigidactor/Base.hpp>
 #include <neb/fnd/game/spawn/util/parent.hpp>
 
 typedef neb::fnd::game::spawn::util::parent THIS;

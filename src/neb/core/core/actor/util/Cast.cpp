@@ -1,6 +1,6 @@
 
-#include <neb/fnd/core/actor/base.hpp>
-#include <neb/fnd/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
+#include <neb/fnd/core/actor/rigidactor/Base.hpp>
 #include <neb/fnd/core/actor/util/Cast.hpp>
 
 typedef neb::fnd::core::actor::base T;

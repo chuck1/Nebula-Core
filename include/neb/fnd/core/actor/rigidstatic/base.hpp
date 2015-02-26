@@ -1,7 +1,7 @@
 #ifndef NEB_FND_CORE_ACTOR_RIGID_STATIC_BASE_HPP
 #define NEB_FND_CORE_ACTOR_RIGID_STATIC_BASE_HPP
 
-#include <neb/fnd/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/rigidactor/Base.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace actor { namespace rigidstatic {
 

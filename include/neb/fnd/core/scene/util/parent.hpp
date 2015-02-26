@@ -5,8 +5,7 @@
 
 #include <neb/fnd/itf/Pose.hpp>
 #include <neb/fnd/util/parent.hpp>
-#include <neb/fnd/core/scene/base.hpp>
-
+#include <neb/fnd/core/scene/Base.hpp>
 namespace neb { namespace fnd { namespace core { namespace scene { namespace util {
 	/** @brief parent
 	*/

@@ -18,8 +18,8 @@
 #include <neb/phx/core/shape/box.hpp>
 */
 #include <neb/fnd/util/log.hpp>
-#include <neb/fnd/core/scene/base.hpp>
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 
 typedef neb::fnd::game::weapon::SimpleProjectile THIS;

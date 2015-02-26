@@ -7,7 +7,7 @@
 
 #include <neb/fnd/util/parent.hpp>
 #include <neb/fnd/util/decl.hpp>
-#include <neb/fnd/core/actor/__base.hpp>
+#include <neb/fnd/core/actor/__Base.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/actor/util/Cast.hpp>
 #include <neb/fnd/core/scene/util/cast.hpp>

@@ -1,5 +1,5 @@
 
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/shape/base.hpp>
 #include <neb/fnd/core/light/base.hpp>
 #include <neb/fnd/core/light/util/parent.hpp>

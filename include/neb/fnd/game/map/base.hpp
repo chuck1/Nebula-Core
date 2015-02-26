@@ -2,7 +2,7 @@
 #define NEB_FND_GAME_MAP_BASE_HPP
 
 #include <neb/fnd/tmp/Child.hpp>
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/game/spawn/util/parent.hpp>
 #include <neb/fnd/game/ai/util/parent.hpp>
 #include <neb/fnd/game/trigger/util/parent.hpp>

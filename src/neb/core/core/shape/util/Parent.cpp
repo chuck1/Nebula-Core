@@ -1,4 +1,4 @@
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/shape/base.hpp>
 #include <neb/fnd/core/shape/util/parent.hpp>
 

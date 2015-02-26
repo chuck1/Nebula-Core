@@ -1,7 +1,7 @@
 #include <neb/fnd/util/cast.hpp>
 #include <neb/fnd/app/Base.hpp>
-#include <neb/fnd/core/actor/base.hpp>
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
 #include <neb/fnd/game/map/base.hpp>
 #include <neb/fnd/game/game/util/parent.hpp>

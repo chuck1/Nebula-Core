@@ -1,5 +1,5 @@
 
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/actor/rigiddynamic/desc.hpp>
 
 typedef neb::fnd::core::actor::rigiddynamic::Desc THIS;

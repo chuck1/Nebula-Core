@@ -6,13 +6,13 @@
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/log.hpp>
-#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/light/base.hpp>
 #include <neb/fnd/core/light/util/light_count.hpp>
 #include <neb/fnd/core/shape/base.hpp>
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
 
