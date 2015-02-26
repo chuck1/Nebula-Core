@@ -4,7 +4,7 @@
 #include <neb/fnd/environ/Single.hpp>
 #include <neb/fnd/environ/SceneDefault.hpp>
 #include <neb/fnd/environ/shadow/Base.hpp>
-#include <neb/fnd/camera/view/shadow/directional.hpp>
+#include <neb/fnd/camera/view/shadow/Directional.hpp>
 #include <neb/fnd/core/light/Directional.hpp>
 
 

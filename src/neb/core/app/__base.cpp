@@ -15,6 +15,7 @@
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 #include <neb/fnd/plug/gfx/core/actor/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/core/light/Base.hpp>
 #include <neb/fnd/plug/gfx/window/Base.hpp>
 #include <neb/fnd/plug/gfx/context/Base.hpp>
 #include <neb/fnd/plug/gfx/environ/Base.hpp>
@@ -161,6 +162,7 @@ void							THIS::open_graphics_plugin(std::string filename)
 	typedef neb::fnd::plug::gfx::core::scene::Base SC;
 	typedef neb::fnd::plug::gfx::core::actor::Base AC;
 	typedef neb::fnd::plug::gfx::core::shape::Base SH;
+	typedef neb::fnd::plug::gfx::core::light::Base LI;
 
 	typedef neb::fnd::plug::gfx::window::Base W;
 	typedef neb::fnd::plug::gfx::context::Base C;
@@ -177,6 +179,7 @@ void							THIS::open_graphics_plugin(std::string filename)
 	_M_graphics_plugin->template add<SC,  int>("scene");
 	_M_graphics_plugin->template add<AC,  int>("actor");
 	_M_graphics_plugin->template add<SH,  int>("shape");
+	_M_graphics_plugin->template add<LI,  int>("light");
 
 	_M_graphics_plugin->template add<W,   int>("window");
 	_M_graphics_plugin->template add<C,   int>("context");

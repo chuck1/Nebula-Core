@@ -13,6 +13,7 @@ namespace neb { namespace fnd { namespace camera { namespace view {
 	{
 		public:
 			virtual void		step(gal::etc::timestep const & ts);
+			virtual void		init(parent_t * const & parent);
 			std::weak_ptr<neb::fnd::core::actor::base>	actor_;
 	};
 }}}}

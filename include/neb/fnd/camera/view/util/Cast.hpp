@@ -1,6 +1,7 @@
 #ifndef NEB_FND_CAMERA_VIEW_UTIL_CAST_HPP
 #define NEB_FND_CAMERA_VIEW_UTIL_CAST_HPP
 
+#include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace camera { namespace view { namespace util {
