@@ -9,6 +9,7 @@ typedef neb::fnd::environ::SceneDefault THIS;
 std::weak_ptr<neb::fnd::camera::view::Ridealong>		THIS::create_view_ridealong(
 		std::weak_ptr<neb::fnd::core::actor::base> actor)
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
 	//auto self(std::dynamic_pointer_cast<neb::gfx::environ::three>(shared_from_this()));
 
 	typedef neb::fnd::camera::view::Ridealong T;
@@ -34,5 +35,8 @@ void			THIS::init(parent_t * const & p)
 
 	//neb::fnd::environ::SceneDefault::init(p);
 	neb::fnd::environ::Base::init(p);
+
+	// default projection camera
+	createCameraPerspective();
 }
 

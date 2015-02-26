@@ -16,9 +16,6 @@ neb::fnd::core::actor::base::base():
 	density_(2.0),
 	health_(1.0)
 {
-
-
-
 	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
 }
 /*neb::fnd::core::actor::base::base(std::shared_ptr<neb::fnd::core::actor::util::parent> parent):

@@ -36,8 +36,8 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 	{
 		public:
 			using CHILD::get_fnd_app;
-			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>		actors;
-			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>		shapes;
+			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>	actors;
+			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>	shapes;
 			//typedef neb::fnd::core::actor::__base> parent_t;
 			/** @brief default constructor */
 			base();

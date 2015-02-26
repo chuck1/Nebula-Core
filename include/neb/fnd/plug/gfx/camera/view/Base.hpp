@@ -4,9 +4,14 @@
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
 
+#include <neb/fnd/plug/Object.hpp>
+
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace camera { namespace view {
 	class Base:
-		virtual public neb::fnd::tmp::Child<neb::fnd::camera::view::Base>
+		virtual public gal::itf::shared,
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::camera::view::Base,
+				neb::fnd::camera::view::Base>
 	{
 		public:
 			typedef neb::fnd::camera::view::Base FND;

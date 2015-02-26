@@ -3,10 +3,14 @@
 
 #include <neb/fnd/environ/Base.hpp>
 
+#include <neb/fnd/plug/Object.hpp>
+
 namespace neb { namespace fnd { namespace plug { namespace gfx { namespace environ {
 	class Base:
 		virtual public neb::fnd::itf::shared,
-		virtual public neb::fnd::tmp::Child<neb::fnd::environ::Base>
+		virtual public neb::fnd::plug::Object<
+				neb::fnd::plug::gfx::environ::Base,
+				neb::fnd::environ::Base>
 	{
 		public:
 			typedef neb::fnd::environ::Base FND;

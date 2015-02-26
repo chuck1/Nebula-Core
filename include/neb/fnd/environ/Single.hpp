@@ -13,6 +13,7 @@ namespace neb { namespace fnd { namespace environ {
 		typedef std::shared_ptr<neb::fnd::camera::view::Base> V;
 		virtual V				get_view(int i = 0)
 		{
+			assert(view_);
 			return view_;
 		}
 		std::shared_ptr<VIEW>			view_;
@@ -26,6 +27,7 @@ namespace neb { namespace fnd { namespace environ {
 		typedef std::shared_ptr<neb::fnd::camera::view::Base> V;
 		virtual V				get_view(int i = 0)
 		{
+			assert(view_[i]);
 			return view_[i];
 		}
 		std::shared_ptr<VIEW>			view_[6];

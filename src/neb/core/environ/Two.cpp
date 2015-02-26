@@ -13,3 +13,7 @@ void		THIS::init(parent_t * const & parent)
 
 	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::environ::type::TWO);
 }
+void		THIS::release()
+{
+}
+

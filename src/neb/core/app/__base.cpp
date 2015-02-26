@@ -18,6 +18,8 @@
 #include <neb/fnd/plug/gfx/window/Base.hpp>
 #include <neb/fnd/plug/gfx/context/Base.hpp>
 #include <neb/fnd/plug/gfx/environ/Base.hpp>
+#include <neb/fnd/plug/gfx/camera/proj/Base.hpp>
+#include <neb/fnd/plug/gfx/camera/view/Base.hpp>
 
 
 
@@ -164,6 +166,9 @@ void							THIS::open_graphics_plugin(std::string filename)
 	typedef neb::fnd::plug::gfx::context::Base C;
 	typedef neb::fnd::plug::gfx::environ::Base E;
 
+	typedef neb::fnd::plug::gfx::camera::proj::Base CP;
+	typedef neb::fnd::plug::gfx::camera::view::Base CV;
+
 	_M_graphics_plugin.reset(new H(filename));
 
 	_M_graphics_plugin->open();
@@ -176,6 +181,9 @@ void							THIS::open_graphics_plugin(std::string filename)
 	_M_graphics_plugin->template add<W,   int>("window");
 	_M_graphics_plugin->template add<C,   int>("context");
 	_M_graphics_plugin->template add<E,   int>("environ");
+
+	_M_graphics_plugin->template add<CP,  int>("camera_proj");
+	_M_graphics_plugin->template add<CV,  int>("camera_view");
 
 	G::make_object<THIS, int>(_M_graphics_plugin, 0);
 }

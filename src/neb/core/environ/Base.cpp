@@ -32,7 +32,6 @@ void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
 
-	//neb::fnd::environ::Base::init(p);
 }
 THIS::proj_shared	THIS::createCameraPerspective()
 {
