@@ -7,8 +7,8 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-#include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/shared.hpp>
+#include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/serializable.hpp>
 #include <neb/fnd/math/color/color.hpp>
 #include <neb/fnd/math/serialization/glm.hpp>
@@ -29,6 +29,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base>
 	{
 		public:
+			using CHILD::get_fnd_app;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base> G;
 			base();
 			virtual void				v_set_pose_data(neb::fnd::math::pose const &);

@@ -1,5 +1,6 @@
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/core/light/Directional.hpp>
+#include <neb/fnd/core/light/util/parent.hpp>
 
 #include <neb/fnd/plug/gfx/core/light/util/decl.hpp>
 #include <neb/fnd/plug/gfx/core/light/Base.hpp>
