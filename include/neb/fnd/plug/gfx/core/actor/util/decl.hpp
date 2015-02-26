@@ -8,7 +8,9 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace core 
 		{
 			enum
 			{
-				BASE
+				BASE,
+				RIGIDDYNAMIC,
+				RIGIDSTATIC
 			};
 		};
 		class Base;

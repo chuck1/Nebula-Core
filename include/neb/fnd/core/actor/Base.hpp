@@ -32,10 +32,12 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 		virtual public neb::fnd::core::actor::util::Cast,
 		virtual public neb::fnd::core::actor::util::parent,
 		virtual public neb::fnd::core::shape::util::parent,
-		virtual public neb::fnd::game::weapon::util::parent
+		virtual public neb::fnd::game::weapon::util::parent,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base>
 	{
 		public:
 			using CHILD::get_fnd_app;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base> G;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>	actors;
 			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>	shapes;
 			//typedef neb::fnd::core::actor::__base> parent_t;
@@ -121,7 +123,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			neb::phx::filter::data					simulation_;
 			neb::phx::filter::data					scene_query_;
 		public:
-			std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
+			//std::shared_ptr<>		_M_graphics_object;
 			//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
 			//std::shared_ptr<neb::fnd::plug::gfx::core::actor::Base>		_M_graphics_object;
 	};

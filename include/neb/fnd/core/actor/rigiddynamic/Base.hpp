@@ -8,7 +8,6 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace rig
 	class base:
 		virtual public neb::fnd::core::actor::rigidbody::base
 	{
-
 	};
 
 }}}}}
