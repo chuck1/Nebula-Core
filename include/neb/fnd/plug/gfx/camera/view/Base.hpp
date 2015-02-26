@@ -3,6 +3,7 @@
 
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
+#include <neb/fnd/glsl/program/util/decl.hpp>
 
 #include <neb/fnd/plug/Object.hpp>
 
