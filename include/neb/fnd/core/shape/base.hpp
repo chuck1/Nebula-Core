@@ -12,7 +12,6 @@
 
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/serializable.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/core/shape/util/parent.hpp>
 #include <neb/fnd/core/shape/util/flag.hpp>
 #include <neb/fnd/core/light/util/decl.hpp>
@@ -70,7 +69,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 			template<class Archive>	void				__serialize(
 					Archive & ar, unsigned int const & version)
 			{
-				LOG(lg, neb::fnd::core::shape::sl, debug) << __PRETTY_FUNCTION__;
+				printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 				ar & boost::serialization::make_nvp("flag",flag_);
 				ar & boost::serialization::make_nvp("pose",pose_);
 				ar & boost::serialization::make_nvp("scale",scale_);

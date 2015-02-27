@@ -9,6 +9,8 @@
 #include <boost/archive/polymorphic_xml_oarchive.hpp>
 #include <boost/serialization/map.hpp>
 
+#include <gal/stl/verbosity.hpp>
+
 #include <neb/fnd/math/pose.hpp>
 #include <neb/fnd/filter.hpp>
 #include <neb/fnd/core/actor/__Base.hpp>
@@ -33,10 +35,12 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 		virtual public neb::fnd::core::actor::util::parent,
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::game::weapon::util::parent,
-		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base>
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base>,
+		virtual public gal::tmp::Verbosity<neb::fnd::core::actor::base>
 	{
 		public:
 			using CHILD::get_fnd_app;
+			using gal::tmp::Verbosity<neb::fnd::core::actor::base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base> G;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>	actors;
 			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>	shapes;

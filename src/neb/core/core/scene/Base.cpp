@@ -5,7 +5,6 @@
 
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/config.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
@@ -23,31 +22,38 @@ typedef neb::fnd::core::scene::base THIS;
 THIS::base():
 	last_(0)
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
+	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 THIS::~base()
 {
 	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
+	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 void			THIS::__init(parent_t * const & p)
 {
 	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
+	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 }
 void			THIS::__release()
 {
 	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
+	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	neb::fnd::core::actor::util::parent::clear();
 }
-neb::fnd::math::pose						THIS::getPose() const {
+neb::fnd::math::pose		THIS::getPose() const
+{
 	return neb::fnd::math::pose();
 }		
-neb::fnd::math::pose						THIS::getPoseGlobal() const {
+neb::fnd::math::pose		THIS::getPoseGlobal() const
+{
 	return neb::fnd::math::pose();
 }
-void						THIS::add_deferred(std::shared_ptr<neb::fnd::core::actor::base> actor) {
+void				THIS::add_deferred(
+		std::shared_ptr<neb::fnd::core::actor::base> actor)
+{
 	/** @todo deprecated */
 	abort();
 	//actors_deferred_[actor->name_] = actor;
@@ -70,7 +76,9 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_ = pose;
 
-	printf("fnd::scene p = %16f %16f %16f\n",
+	printv(
+			gal::tmp::DEBUG,
+			"fnd::scene p = %16f %16f %16f\n",
 			actor->pose_.pos_.x,
 			actor->pose_.pos_.y,
 			actor->pose_.pos_.z);
@@ -79,7 +87,8 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 
 	// create shape
 
-	auto shape = actor->createShapeCube(neb::fnd::math::pose(), size);
+	auto shape = actor->createShapeCube(
+			neb::fnd::math::pose(), size);
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -95,7 +104,9 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 
 	actor->pose_ = pose;
 
-	printf("fnd::scene p = %16f %16f %16f\n",
+	printf(
+			gal::tmp::DEBUG,
+			"fnd::scene p = %16f %16f %16f\n",
 			actor->pose_.pos_.x,
 			actor->pose_.pos_.y,
 			actor->pose_.pos_.z);
@@ -104,7 +115,9 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 	
 	// create shape
 	
-	auto shape = actor->createShapeCuboid(neb::fnd::core::shape::cuboid::Desc(size));
+	auto shape = actor->createShapeCuboid(
+			neb::fnd::core::shape::cuboid::Desc(
+				size));
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -112,7 +125,8 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 
 	return actor;
 }
-weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidDynamicCuboid(
+typedef neb::fnd::core::actor::base ACTOR_BASE;
+weak_ptr<ACTOR_BASE>	THIS::createActorRigidDynamicCuboid(
 		neb::fnd::core::actor::rigidbody::desc const &		actor_desc,
 		neb::fnd::core::shape::cuboid::Desc const &		shape_desc)
 {
@@ -184,7 +198,7 @@ void			THIS::save(
 }
 void			THIS::draw(neb::fnd::RenderDesc const & rd)
 {
-	printf(/*debug, */"%s\n", __PRETTY_FUNCTION__);
+	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	//if(G::has_object())
 	G::get_object()->draw(rd);
 }

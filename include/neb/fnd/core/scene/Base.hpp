@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <gal/etc/flag.hpp>
+#include <gal/stl/verbosity.hpp>
 //#include <gal/stl/map.hpp>
 
 #include <boost/archive/polymorphic_iarchive.hpp>
@@ -35,9 +36,11 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 			virtual public neb::fnd::tmp::Child<neb::fnd::core::scene::util::parent>,
 			virtual public neb::fnd::core::actor::util::parent,
 			virtual public neb::fnd::drawable::Base,
-			virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base>
+			virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base>,
+			virtual public gal::tmp::Verbosity<neb::fnd::core::scene::base>
 		{
 			public:
+				using gal::tmp::Verbosity<neb::fnd::core::scene::base>::printv;
 				typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base> G;
 				using CHILD::get_fnd_app;
 				typedef neb::fnd::core::scene::util::parent									parent_t;
