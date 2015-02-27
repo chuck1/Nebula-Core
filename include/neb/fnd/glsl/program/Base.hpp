@@ -2,12 +2,12 @@
 #define NEB_FND_GLSL_PROGRAM_BASE_HPP
 
 #include <neb/fnd/itf/shared.hpp>
-#include <neb/fnd/itf/verbosity.hpp>
+#include <gal/stl/verbosity.hpp>
 
 namespace neb { namespace fnd { namespace glsl { namespace program {
 	/**/
 	class Base:
-		public neb::fnd::itf::verbosity<neb::fnd::glsl::program::Base>,
+		public gal::tmp::Verbosity<neb::fnd::glsl::program::Base>,
 		virtual public neb::fnd::itf::shared
 	{
 		public:

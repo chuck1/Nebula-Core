@@ -10,7 +10,7 @@
 
 #include <gal/etc/timestep.hpp>
 
-#include <neb/fnd/itf/verbosity.hpp>
+#include <gal/stl/verbosity.hpp>
 #include <neb/fnd/input/sink.hpp>
 
 #include <neb/fnd/core/actor/util/decl.hpp>
@@ -25,11 +25,11 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace con
 	 * force and torque at a given point in time must be stored in raw.
 	 **/
 	class base:
-		public neb::fnd::itf::verbosity<neb::fnd::core::actor::control::rigidbody::base>,
+		public gal::tmp::Verbosity<neb::fnd::core::actor::control::rigidbody::base>,
 		virtual public neb::fnd::input::sink
 	{
 		public:
-			using neb::fnd::itf::verbosity<neb::fnd::core::actor::control::rigidbody::base>::printv;
+			using gal::tmp::Verbosity<neb::fnd::core::actor::control::rigidbody::base>::printv;
 /*
 			base();
 			virtual ~base();

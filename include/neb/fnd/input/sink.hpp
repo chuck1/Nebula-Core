@@ -4,17 +4,17 @@
 #include <boost/signals2.hpp>
 
 #include <gal/itf/shared.hpp>
+#include <gal/stl/verbosity.hpp>
 
-#include <neb/fnd/itf/verbosity.hpp>
 #include <neb/fnd/input/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace input {
 	class sink:
-		public neb::fnd::itf::verbosity<neb::fnd::input::sink>,
+		public gal::tmp::Verbosity<neb::fnd::input::sink>,
 		virtual public gal::itf::shared
 	{
 		public:
-			using neb::fnd::itf::verbosity<neb::fnd::input::sink>::printv;
+			using gal::tmp::Verbosity<neb::fnd::input::sink>::printv;
 			virtual ~sink();
 			void			connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
 			void			connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);

@@ -3,17 +3,17 @@
 
 #include <deque>
 
-#include <neb/fnd/itf/verbosity.hpp>
+#include <gal/stl/verbosity.hpp>
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/gui/object/Base.hpp>
 
 namespace neb { namespace fnd { namespace gui { namespace object {
 	class Terminal:
-		public neb::fnd::itf::verbosity<neb::fnd::gui::object::Terminal>,
+		public gal::tmp::Verbosity<neb::fnd::gui::object::Terminal>,
 		virtual public neb::fnd::gui::object::Base
 	{
 		public:
-			using neb::fnd::itf::verbosity<neb::fnd::gui::object::Terminal>::printv;
+			using gal::tmp::Verbosity<neb::fnd::gui::object::Terminal>::printv;
 			//typedef typename neb::fnd::gui::object::base::parent_t parent_t;
 			Terminal();
 			virtual void			init(parent_t * const & p);

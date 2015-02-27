@@ -7,7 +7,7 @@
 
 #include <gal/stl/child.hpp>
 
-#include <neb/fnd/itf/verbosity.hpp>
+#include <gal/stl/verbosity.hpp>
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/math/color/color.hpp>
 #include <neb/fnd/input/sink.hpp>
@@ -22,7 +22,7 @@
 
 namespace neb { namespace fnd { namespace gui { namespace object {
 	class Base:
-		public neb::fnd::itf::verbosity<neb::fnd::gui::object::Base>,
+		public gal::tmp::Verbosity<neb::fnd::gui::object::Base>,
 		virtual public neb::fnd::gui::object::__Base,
 		virtual public neb::fnd::input::sink,
 		virtual public neb::fnd::tmp::Child<neb::fnd::gui::object::util::Parent>,
