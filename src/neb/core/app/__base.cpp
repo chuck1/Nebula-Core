@@ -7,7 +7,6 @@
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/config.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/net/core/scene/Base.hpp>
 
@@ -44,24 +43,25 @@ bool			THIS::is_valid()
 }
 THIS::~Base()
 {
-	LOG(lg, neb::fnd::sl, info) << __FUNCSIG__;
+	printv_func(DEBUG);
 }
 void			THIS::__init()
 {
+	printv_func(DEBUG);
 
-	LOG(lg, neb::fnd::sl, debug) << __FUNCSIG__;
-	
 	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
 
 	// boost asio ioservice
-	LOG(lg, neb::fnd::sl, debug) << "launch ios thread";
+	printv(DEBUG, "launch ios thread\n");
 
-	std::thread t([&](){
-			boost::asio::io_service::work w(ios_);
-			ios_.run();
+	auto l = [&] ()
+	{
+		boost::asio::io_service::work w(ios_);
+		ios_.run();
+		printv(DEBUG, "ios stopped\n");
+	};
 
-			LOG(lg, neb::fnd::sl, debug) << "ios stopped";
-			});
+	std::thread t(l);
 	t.detach();
 
 	// console
@@ -105,6 +105,8 @@ void			THIS::__init()
 }
 void						THIS::__release()
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::core::scene::base S;
 	typedef neb::fnd::core::scene::util::parent P;
 
@@ -120,6 +122,7 @@ void						THIS::__release()
 }
 void						THIS::__step(gal::etc::timestep const & ts)
 {
+	printv_func(DEBUG);
 	neb::fnd::core::scene::util::parent::step(ts);
 	neb::fnd::game::game::util::parent::step(ts);
 }
@@ -133,6 +136,8 @@ neb::fnd::math::pose				THIS::getPoseGlobal() const
 }
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::game::game::base T;
 
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
@@ -146,6 +151,8 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 		neb::fnd::game::game::desc const & desc)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::game::game::base T;
 
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
@@ -158,6 +165,8 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 }
 void							THIS::open_graphics_plugin(std::string filename)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::plug::gfx::app::Base APP;
 	typedef neb::fnd::plug::gfx::core::scene::Base SC;
 	typedef neb::fnd::plug::gfx::core::actor::Base AC;
@@ -192,6 +201,8 @@ void							THIS::open_graphics_plugin(std::string filename)
 }
 void							THIS::open_network_plugin(std::string filename)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::net::core::scene::Base S;
 
 	_M_network_plugin.reset(new H(filename));
@@ -204,14 +215,8 @@ void							THIS::open_network_plugin(std::string filename)
 }
 void			THIS::render()
 {
-	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	neb::fnd::window::util::Parent::render();
 }
-
-
-
-
-
-
 

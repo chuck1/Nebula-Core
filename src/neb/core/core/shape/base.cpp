@@ -18,15 +18,16 @@ typedef neb::fnd::core::shape::base THIS;
 THIS::base():
 	scale_(1.0)
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 THIS::~base()
 {
-	LOG(lg, neb::fnd::core::shape::sl, info) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
-
 bool							THIS::hasScene()
 {
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+
 	if(!hasParent()) return false;
 
 	auto shape = dynamic_cast<THIS*>(getParent());
@@ -42,6 +43,8 @@ bool							THIS::hasScene()
 
 neb::fnd::core::scene::base*				THIS::getScene()
 {
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	
 	auto shape = dynamic_cast<THIS*>(getParent());
 	
 	if(shape) return shape->getScene();
@@ -54,17 +57,21 @@ neb::fnd::core::scene::base*				THIS::getScene()
 }
 neb::fnd::math::pose				THIS::getPoseGlobal() const
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	return getParent()->getPoseGlobal() * pose_;
 }
 neb::fnd::math::pose				THIS::getPose() const
 {
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	
 	return pose_;
 }
 void			THIS::__set_pose_data(
 		neb::fnd::math::pose const & gpose)
 {
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+
 	auto pose = gpose * pose_;
 	neb::fnd::core::shape::util::parent::callbackPose(pose);
 	neb::fnd::core::light::util::parent::callbackPose(pose);
@@ -74,7 +81,7 @@ void			THIS::__set_pose_data(
 }
 void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	setParent(p);
 	
@@ -100,7 +107,7 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 }
 void					THIS::release()
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	neb::fnd::core::shape::util::parent::map_.clear();
 	neb::fnd::core::light::util::parent::map_.clear();
@@ -108,6 +115,7 @@ void					THIS::release()
 void						THIS::step(
 		gal::etc::timestep const & ts)
 {
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	neb::fnd::core::shape::util::parent::step(ts);
 	neb::fnd::core::light::util::parent::step(ts);
 }
@@ -115,14 +123,14 @@ void			THIS::load(
 		ba::polymorphic_iarchive & ar,
 		unsigned int const & v)
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	__serialize(ar, v);
 }
 void			THIS::save(
 		ba::polymorphic_oarchive & ar,
 		unsigned int const & v) const
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	const_cast<THIS*>(this)->__serialize(ar, v);
 }
 

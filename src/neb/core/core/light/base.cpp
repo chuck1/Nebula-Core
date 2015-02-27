@@ -3,7 +3,6 @@
 
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/config.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/light/util/parent.hpp>
 #include <neb/fnd/core/shape/base.hpp>
@@ -22,7 +21,6 @@ void		THIS::init(parent_t * const & parent)
 	//auto app = get_fnd_app();
 	
 	//if(app->_M_graphics_plugin)
-	
 }
 void				THIS::step(gal::etc::timestep const & ts)
 {
@@ -32,14 +30,15 @@ void				THIS::v_set_pose_data(neb::fnd::math::pose const & pose_global)
 	if(G::has_object())
 		G::get_object()->v_set_pose_data(this, pose_global);
 }
-neb::fnd::math::pose		THIS::getPose() {
-	LOG(lg, neb::fnd::core::light::sl, debug) << __FUNCSIG__;
+neb::fnd::math::pose		THIS::getPose()
+{
+	printv_func(DEBUG);
 	
 	return pose_;
 }
 neb::fnd::math::pose		THIS::getPoseGlobal()
 {
-	LOG(lg, neb::fnd::core::light::sl, debug) << __FUNCSIG__;
+	printv_func(DEBUG);
 	
 	auto p = getParent()->getPoseGlobal() * pose_;
 	

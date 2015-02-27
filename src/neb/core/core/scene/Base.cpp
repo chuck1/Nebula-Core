@@ -22,24 +22,21 @@ typedef neb::fnd::core::scene::base THIS;
 THIS::base():
 	last_(0)
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 THIS::~base()
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 void			THIS::__init(parent_t * const & p)
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 }
 void			THIS::__release()
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __FUNCSIG__;
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	neb::fnd::core::actor::util::parent::clear();
 }
@@ -77,7 +74,7 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 	actor->pose_ = pose;
 
 	printv(
-			gal::tmp::DEBUG,
+			DEBUG,
 			"fnd::scene p = %16f %16f %16f\n",
 			actor->pose_.pos_.x,
 			actor->pose_.pos_.y,
@@ -104,8 +101,8 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
 
 	actor->pose_ = pose;
 
-	printf(
-			gal::tmp::DEBUG,
+	printv(
+			DEBUG,
 			"fnd::scene p = %16f %16f %16f\n",
 			actor->pose_.pos_.x,
 			actor->pose_.pos_.y,
@@ -198,7 +195,7 @@ void			THIS::save(
 }
 void			THIS::draw(neb::fnd::RenderDesc const & rd)
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	//if(G::has_object())
 	G::get_object()->draw(rd);
 }

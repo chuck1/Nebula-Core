@@ -1,31 +1,32 @@
 #ifndef NEBULA_UTIL_COMBINER_HPP
 #define NEBULA_UTIL_COMBINER_HPP
 
-#include <neb/fnd/util/log.hpp>
+#include <gal/stl/verbosity.hpp>
 
 namespace neb { namespace util {
-
-	struct combiner {
-		typedef int result_type;
-		
-		template<typename InputIterator> result_type		operator()(InputIterator first, InputIterator last) const
+	class combiner:
+		public gal::tmp::Verbosity<neb::util::combiner>
+	{
+	public:
+		typedef int result_type;	
+		template<typename InputIterator>
+		result_type		operator()(InputIterator first, InputIterator last) const
 		{
 			static const char * func = "combiner::operator()";
 
-			LOG(lg, neb::fnd::sl, debug) << func;
+			printv(DEBUG, "%s\n", func);
 
 			result_type f;
 			
-			while (first != last)
-			{
-				LOG(lg, neb::fnd::sl, debug) << func << " first";
+			while (first != last) {
+				printv(DEBUG, "%s first\n", func);
 				f = *first;
 				
-				LOG(lg, neb::fnd::sl, debug) << func << " *first=" << f;
+				printv(DEBUG, "%s *first = %i\n", func, f);
 				
 				if(f) break;
 
-				LOG(lg, neb::fnd::sl, debug) << func << " inc";
+				printv(DEBUG, "%s inc\n", func);
 				++first;
 			}
 

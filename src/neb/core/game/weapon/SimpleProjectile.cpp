@@ -9,7 +9,6 @@
 //#include <neb/gfx/window/Base.hh>
 
 #include <neb/fnd/util/debug.hpp>
-#include <neb/fnd/util/log.hpp>
 
 #include <neb/fnd/app/Base.hpp>
 /*#include <neb/phx/filter.hpp>
@@ -17,7 +16,6 @@
 #include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/core/shape/box.hpp>
 */
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
@@ -129,10 +127,6 @@ void			THIS::fire()
 	// release timer
 	auto t = std::make_shared<neb::fnd::timer::actor::Release>(proj, scene->last_ + 5.0);
 
-	LOG(lg, neb::fnd::sl, debug) << t.use_count();
-	
 	t->activate();
-
-	LOG(lg, neb::fnd::sl, debug) << t.use_count();
 }
 

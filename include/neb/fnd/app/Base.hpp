@@ -4,7 +4,7 @@
 #include <boost/asio/io_service.hpp>
 
 #include <gal/etc/timestep.hpp>
-
+#include <gal/stl/verbosity.hpp>
 #include <gal/console/console.hpp>
 
 #include <neb/fnd/util/decl.hpp>
@@ -25,6 +25,7 @@
 namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::app::Base>,
 		virtual public neb::fnd::core::scene::util::parent,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
@@ -33,6 +34,7 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::app::Base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
 			typedef gal::console::temp<
 				gal::console::frontend::store,

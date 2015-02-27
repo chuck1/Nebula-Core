@@ -3,7 +3,6 @@
 #include <neb/fnd/timer/actor/Base.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/util/debug.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/app/Base.hpp>
 
 typedef neb::fnd::timer::actor::Base THIS;
@@ -13,7 +12,7 @@ THIS::Base(
 		double seconds):
 	actor_(actor)
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 	
 	auto app = getParent();
 	assert(app);
@@ -34,7 +33,7 @@ THIS::Base(
 }
 THIS::~Base()
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 }
 
 

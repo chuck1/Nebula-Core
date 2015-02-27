@@ -15,7 +15,7 @@ neb::fnd::core::actor::base::base():
 	density_(2.0),
 	health_(1.0)
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 /*neb::fnd::core::actor::base::base(std::shared_ptr<neb::fnd::core::actor::util::parent> parent):
   gal::stl::child<parent_t>(parent.get()),
@@ -25,7 +25,7 @@ neb::fnd::core::actor::base::base():
   assert(parent);
   }*/
 neb::fnd::core::actor::base::~base() {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	assert(neb::fnd::core::actor::util::parent::map_.empty());
 	assert(neb::fnd::core::shape::util::parent::map_.empty());
@@ -33,13 +33,13 @@ neb::fnd::core::actor::base::~base() {
 }
 void		neb::fnd::core::actor::base::init(parent_t * const & p)
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 	neb::fnd::core::shape::util::parent::initChildren(this);
 }
 void		neb::fnd::core::actor::base::release() {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	gal::itf::__release::release();
 
@@ -54,7 +54,7 @@ void		neb::fnd::core::actor::base::release() {
   }*/
 bool							neb::fnd::core::actor::base::hasScene() const
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	if(!hasParent()) return false;
 
@@ -70,7 +70,7 @@ bool							neb::fnd::core::actor::base::hasScene() const
 }
 neb::fnd::core::scene::base*				neb::fnd::core::actor::base::getScene() const
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	assert(hasParent());
 
@@ -92,7 +92,7 @@ neb::fnd::math::pose				neb::fnd::core::actor::base::getPose() const
 }
 neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	auto p = getParent()->getPoseGlobal() * getPose();
 
@@ -114,7 +114,7 @@ void			neb::fnd::core::actor::base::__set_pose_data(
 }
 void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts)
 {
-	printv(gal::tmp::DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	//typedef neb::fnd::core::actor::util::parent A;
 

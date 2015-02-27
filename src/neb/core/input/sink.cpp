@@ -5,11 +5,11 @@ typedef neb::fnd::input::sink THIS;
 
 THIS::~sink()
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 }
 void		THIS::connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, int i)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 
 	conns_.key_fun_ = src->sig_.keyFun_.connect(
 			i,
@@ -26,7 +26,7 @@ void		THIS::connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, 
 }
 void		THIS::connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src, int i)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 
 	conns_.charFun_ = src->sig_.charFun_.connect(
 			i,
@@ -40,7 +40,7 @@ void		THIS::connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src,
 }
 void		THIS::connectMouseButtonFun(std::shared_ptr<neb::fnd::input::source> const & src, int i)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 
 	conns_.mouse_button_fun_ = src->sig_.mouseButtonFun_.connect(
 			i,
@@ -64,7 +64,7 @@ int			THIS::mouseButtonFun(
 		int action,
 		int mods)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 	return 0;
 }
 int			THIS::keyFun(
@@ -74,14 +74,14 @@ int			THIS::keyFun(
 		int,
 		int)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 	return 0;
 }
 int			THIS::charFun(
 		std::shared_ptr<neb::fnd::input::source> const &,
 		unsigned int codepoint)
 {
-	printv(debug, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
 	return 0;
 }
 

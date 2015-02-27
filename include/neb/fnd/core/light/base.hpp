@@ -7,6 +7,8 @@
 #include <boost/archive/polymorphic_iarchive.hpp>
 #include <boost/archive/polymorphic_oarchive.hpp>
 
+#include <gal/stl/verbosity.hpp>
+
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/serializable.hpp>
@@ -23,6 +25,7 @@
 
 namespace neb { namespace fnd { namespace core { namespace light {
 	class base:
+		public gal::tmp::Verbosity<neb::fnd::core::light::base>,
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::itf::serializable,
 		virtual public neb::fnd::tmp::Child<neb::fnd::core::light::util::parent>,
@@ -30,6 +33,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 	{
 		public:
 			using CHILD::get_fnd_app;
+			using gal::tmp::Verbosity<neb::fnd::core::light::base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base> G;
 			base();
 			virtual void				v_set_pose_data(neb::fnd::math::pose const &);

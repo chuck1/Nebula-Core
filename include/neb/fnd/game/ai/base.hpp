@@ -2,14 +2,15 @@
 #define PHYSX_GAME_AI_BASE_HPP
 
 #include <gal/etc/timestep.hpp>
+#include <gal/stl/verbosity.hpp>
 
 #include <neb/fnd/itf/shared.hpp>
-
 #include <neb/fnd/core/actor/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace ai {
 
 	class base:
+		public gal::tmp::Verbosity<neb::fnd::game::ai::base>,
 		virtual public neb::fnd::itf::shared
 	{
 		public:
