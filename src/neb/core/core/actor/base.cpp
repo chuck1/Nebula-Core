@@ -45,7 +45,7 @@ void		neb::fnd::core::actor::base::release() {
 
 	neb::fnd::core::actor::util::parent::clear();
 	neb::fnd::core::shape::util::parent::clear();
-
+	neb::fnd::game::weapon::util::parent::clear();
 }
 /*std::shared_ptr<neb::fnd::core::actor::util::parent>	neb::fnd::core::actor::base::get_parent() {
   auto parent(parent_.lock());

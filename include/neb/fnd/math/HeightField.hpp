@@ -1,9 +1,12 @@
 #ifndef NEB_CORE_MATH_HEIGHT_FIELD_HPP
 #define NEB_CORE_MATH_HEIGHT_FIELD_HPP
 
+#include <gal/stl/verbosity.hpp>
+
 namespace neb { namespace fnd { namespace math { namespace HeightField {
 
-	class Base
+	class Base:
+		public gal::tmp::Verbosity<neb::fnd::math::HeightField::Base>
 	{
 		public:
 			Base(unsigned int r, unsigned int c);

@@ -1,0 +1,6 @@
+#ifndef NEB_FND_PLUG_NET_LOBBY_BASE_HPP
+#define NEB_FND_PLUG_NET_LOBBY_BASE_HPP
+
+
+
+#endif

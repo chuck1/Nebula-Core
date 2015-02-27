@@ -20,7 +20,7 @@ void	THIS::alloc()
 }
 void	THIS::createRandom()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 	alloc();
 
 	srand(time(NULL));
@@ -68,7 +68,7 @@ int	THIS::at(int i, int j) const
 }
 void	THIS::filterc(float factor)
 {
-
+	printv_func(DEBUG);
 
 	// determine width based on distance value
 	int width = _M_r / 2;
@@ -85,7 +85,7 @@ void	THIS::filterc(float factor)
 		}
 	}
 
-	std::cout << __PRETTY_FUNCTION__ << " width=" << width << std::endl;
+	printv(DEBUG, "width = %i\n", width);
 
 	int a = -width;
 	int b = width + 1;
@@ -104,7 +104,8 @@ void	THIS::filterc(float factor)
 
 	for(unsigned int i = 0; i < _M_r; i++)
 	{
-		std::cout << std::setw(8) << i << "/ " << _M_r << std::endl;
+		printv(DEBUG, "%i / %i\n", i, _M_r);
+
 		for(unsigned int j = 0; j < _M_c; j++)
 		{
 			sum = 0;
@@ -119,14 +120,14 @@ void	THIS::filterc(float factor)
 
 					den += d;
 
-					//std::cout<< " k,l = " << k << " " << l<< " dist = " << dist<< std::endl;
+					//std:<< " k,l = " << k << " " << l<< " dist = " << dist<< std::endl;
 
 				}
 			}
 
 			float newS = sum / den;
 
-			//std::cout<< " newS = " << newS<< " sum = " << sum<< " den = " << den<< std::endl;
+			//std::<< " newS = " << newS<< " sum = " << sum<< " den = " << den<< std::endl;
 
 			_M_z[at(i,j)] = newS;
 		}
@@ -134,7 +135,7 @@ void	THIS::filterc(float factor)
 }
 void	THIS::filter(unsigned int width)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 	int n = (width * 2 + 1) * (width * 2 + 1);
 
 	int a = -width;
@@ -156,19 +157,19 @@ void	THIS::filter(unsigned int width)
 			}
 			//short oldS = _M_z[at(i,j)].height;
 			float newS = sum / (float)n;
-			/*std::cout
+			/*
 			  << " oldS = " << oldS
 			  << " newS = " << newS
 			  << " sum = " << sum
 			  << " n = " << n
-			  << std::endl;*/
+			  <<;*/
 			_M_z[at(i,j)] = newS;
 		}
 	}
 }
 void	THIS::normalize(float a, float b)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 	float minH = min();
 	float maxH = max();
 
@@ -181,13 +182,12 @@ void	THIS::normalize(float a, float b)
 			float& s = _M_z[at(i,j)];
 
 			float l = slope * (s - minH) + a;
-
-			/*	std::cout
-				<< " s = " << s
-				<< " l = " << l
-				<< " new = " << (short)l
-				<< " slope = " << slope
-				<< std::endl;*/
+			/*
+			   << " s = " << s
+			   << " l = " << l
+			   << " new = " << (short)l
+			   << " slope = " << slope
+			   */
 			s = (float)l;
 		}
 	}
@@ -218,7 +218,8 @@ void			THIS::operator+=(THIS const & hf)
 
 void		THIS::slope(float dx, float dy)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
+
 	_M_dzdx = new float[_M_r*_M_c];
 	_M_dzdy = new float[_M_r*_M_c];
 
@@ -284,7 +285,7 @@ THIS*			THIS::mipmap(int down)
 	// calculate size
 	uint8_t r = _M_r;
 	uint8_t c = _M_c;
-	
+
 	uint8_t stride = 1;
 
 	for(int i = 0; i < down; i++)
@@ -298,21 +299,21 @@ THIS*			THIS::mipmap(int down)
 		stride *= 2;
 	}
 
-	std::cout << "mipmap" << std::endl;
-	std::cout << "original " << _M_r << " " << _M_c << std::endl;
-	std::cout << "new      " << r << " " << c << std::endl;
-	
+	printv(DEBUG, "mipmap\n");
+	printv(DEBUG, "original %i %i\n", _M_r, _M_c);
+	printv(DEBUG, "new      %i %i\n", r, c);
+
 	// create object
 	THIS* hf = new THIS(r,c);
 	hf->alloc();
-	
+
 	// copy data
 	for(int i = 0; i < r; i++) {
 		for(int j = 0; j < c; j++) {
 			hf->_M_z[hf->at(i,j)] = _M_z[at(i*stride, j*stride)];
 		}
 	}
-	
+
 	return hf;
 }
 
