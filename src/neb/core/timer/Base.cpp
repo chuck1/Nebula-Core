@@ -1,11 +1,10 @@
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/timer/Base.hpp>
 
 typedef neb::fnd::timer::Base THIS;
 
 void		THIS::activate()
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 	
 	auto me = std::dynamic_pointer_cast<THIS>(shared_from_this());
 	
