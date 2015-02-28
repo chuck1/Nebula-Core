@@ -7,7 +7,7 @@ typedef neb::fnd::core::actor::rigiddynamic::Desc THIS;
 THIS::Desc()
 {
 }
-THIS::Desc(neb::fnd::math::pose npose):
+THIS::Desc(gal::math::pose npose):
 	neb::fnd::core::actor::rigidbody::desc(npose)
 {
 }

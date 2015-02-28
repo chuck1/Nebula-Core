@@ -56,8 +56,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				virtual void				save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
 				BOOST_SERIALIZATION_SPLIT_MEMBER();
 			public:
-				neb::fnd::math::pose			getPose() const;
-				neb::fnd::math::pose			getPoseGlobal() const;
+				gal::math::pose			getPose() const;
+				gal::math::pose			getPoseGlobal() const;
 				/** @brief
 				 *
 				 */
@@ -67,7 +67,7 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				 * @{
 				 */
 				virtual wbase				createActorBase(
-						neb::fnd::math::pose pose) = 0;
+						gal::math::pose pose) = 0;
 				/** @brief create empty actor with point light
 				*/
 				wbase					createActor(
@@ -92,13 +92,13 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				 *
 				 */
 				wbase					createActorRigidStaticCuboid(
-						neb::fnd::math::pose,
+						gal::math::pose,
 						glm::vec3);
 				/** @brief
 				 *
 				 */
 				wbase					createActorRigidStaticCube(
-						neb::fnd::math::pose pose,
+						gal::math::pose pose,
 						double size);
 				/** @brief
 				 *

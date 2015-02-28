@@ -8,7 +8,7 @@
 
 #include <gal/itf/shared.hpp>
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/core/shape/desc.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 
@@ -18,7 +18,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace rig
 	struct desc: neb::fnd::core::actor::rigidbody::desc
 	{
 		desc();
-		desc(neb::fnd::math::pose npose);
+		desc(gal::math::pose npose);
 
 		template<class Archive> void		serialize(Archive & ar, unsigned int const & version)
 		{

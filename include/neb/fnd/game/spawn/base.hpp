@@ -3,7 +3,7 @@
 
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/itf/shared.hpp>
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/game/spawn/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace spawn {
@@ -14,7 +14,7 @@ namespace neb { namespace fnd { namespace game { namespace spawn {
 		public:
 			typedef neb::fnd::game::spawn::util::parent parent_t;
 
-			neb::fnd::math::pose		pose_;
+			gal::math::pose		pose_;
 
 			virtual void			init(parent_t * const & p);			
 			virtual void			step(gal::etc::timestep const &);

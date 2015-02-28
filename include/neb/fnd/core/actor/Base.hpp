@@ -11,7 +11,7 @@
 
 #include <gal/stl/verbosity.hpp>
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/filter.hpp>
 #include <neb/fnd/core/actor/__Base.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
@@ -22,7 +22,7 @@
 #include <neb/fnd/core/shape/util/decl.hpp>
 #include <neb/fnd/core/shape/util/parent.hpp>
 #include <neb/fnd/core/shape/cuboid/desc.hpp>
-#include <neb/fnd/math/serialization/glm.hpp>
+#include <gal/math/serialization/glm.hpp>
 #include <neb/fnd/game/weapon/util/parent.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
 
@@ -53,8 +53,8 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			virtual void						init(parent_t * const &) = 0;
 			virtual void						release();
 			virtual void						step(gal::etc::timestep const & ts);
-			virtual neb::fnd::math::pose				getPose() const;
-			virtual neb::fnd::math::pose				getPoseGlobal() const;
+			virtual gal::math::pose				getPose() const;
+			virtual gal::math::pose				getPoseGlobal() const;
 			bool							hasScene() const;
 			neb::fnd::core::scene::base*				getScene() const;
 			//std::shared_ptr<neb::fnd::core::actor::util::parent>		get_parent();
@@ -64,16 +64,16 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 * virtual because actor::local will add self to active transform list
 			 */
 			virtual void							v_set_pose_data(
-					neb::fnd::math::pose const & pose);
+					gal::math::pose const & pose);
 		protected:
 			void								__set_pose_data(
-					neb::fnd::math::pose const & pose);
+					gal::math::pose const & pose);
 		public:
 			/** @brief
 			 *
 			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeBase(
-					neb::fnd::math::pose const & pose) = 0;
+					gal::math::pose const & pose) = 0;
 			/** @brief
 			 *
 			 */
@@ -83,7 +83,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCube(
-					neb::fnd::math::pose const & pose,
+					gal::math::pose const & pose,
 					double size);
 			/** @brief
 			 *
@@ -94,7 +94,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeLightSpot(
-					neb::fnd::math::pose const & pose,
+					gal::math::pose const & pose,
 					glm::vec3 direction);
 			std::weak_ptr<neb::fnd::game::weapon::SimpleProjectile>		createWeaponSimpleProjectile(
 					std::shared_ptr<neb::fnd::input::source> src,
@@ -120,7 +120,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 			neb::fnd::core::actor::util::flag			flag_;
-			neb::fnd::math::pose					pose_;
+			gal::math::pose					pose_;
 			glm::vec3						velocity_;
 			float							density_;
 			double							health_;

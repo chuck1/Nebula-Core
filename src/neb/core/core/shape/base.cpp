@@ -56,20 +56,20 @@ neb::fnd::core::scene::base*				THIS::getScene()
 	
 	return actor->getScene();
 }
-neb::fnd::math::pose				THIS::getPoseGlobal() const
+gal::math::pose				THIS::getPoseGlobal() const
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	return getParent()->getPoseGlobal() * pose_;
 }
-neb::fnd::math::pose				THIS::getPose() const
+gal::math::pose				THIS::getPose() const
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	return pose_;
 }
 void			THIS::__set_pose_data(
-		neb::fnd::math::pose const & gpose)
+		gal::math::pose const & gpose)
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 

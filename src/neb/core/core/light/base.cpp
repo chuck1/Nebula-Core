@@ -25,18 +25,18 @@ void		THIS::init(parent_t * const & parent)
 void				THIS::step(gal::etc::timestep const & ts)
 {
 }
-void				THIS::v_set_pose_data(neb::fnd::math::pose const & pose_global)
+void				THIS::v_set_pose_data(gal::math::pose const & pose_global)
 {
 	if(G::has_object())
 		G::get_object()->v_set_pose_data(this, pose_global);
 }
-neb::fnd::math::pose		THIS::getPose()
+gal::math::pose		THIS::getPose()
 {
 	printv_func(DEBUG);
 	
 	return pose_;
 }
-neb::fnd::math::pose		THIS::getPoseGlobal()
+gal::math::pose		THIS::getPoseGlobal()
 {
 	printv_func(DEBUG);
 	

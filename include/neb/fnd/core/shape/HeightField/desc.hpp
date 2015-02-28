@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/math/color/color.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace shape { namespace HeightField {
@@ -19,7 +19,7 @@ namespace neb { namespace fnd { namespace core { namespace shape { namespace Hei
 			h(10.0),
 			hs(1.0)
 		{}
-		desc(neb::fnd::math::pose pose, glm::vec3 scale):
+		desc(gal::math::pose pose, glm::vec3 scale):
 			pose_(pose),
 			scale_(scale),
 			i1(1),
@@ -43,7 +43,7 @@ namespace neb { namespace fnd { namespace core { namespace shape { namespace Hei
 			hs(1.0)
 		{}
 
-		neb::fnd::math::pose	pose_;
+		gal::math::pose	pose_;
 		glm::vec3		scale_;
 
 

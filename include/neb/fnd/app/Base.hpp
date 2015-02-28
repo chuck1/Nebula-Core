@@ -42,9 +42,9 @@ namespace neb { namespace fnd { namespace app {
 			/***/
 			virtual ~Base();
 			/***/
-			neb::fnd::math::pose					getPose() const;
+			gal::math::pose					getPose() const;
 			/***/
-			neb::fnd::math::pose					getPoseGlobal() const;
+			gal::math::pose					getPoseGlobal() const;
 			/***/
 			std::weak_ptr<neb::fnd::game::game::base>		createGame();
 			/***/

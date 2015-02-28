@@ -13,8 +13,8 @@
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/serializable.hpp>
 #include <neb/fnd/math/color/color.hpp>
-#include <neb/fnd/math/serialization/glm.hpp>
-#include <neb/fnd/math/pose.hpp>
+//#include <neb/fnd/math/serialization/glm.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/light/util/decl.hpp>
 #include <neb/fnd/core/light/util/Flag.hpp>
@@ -36,12 +36,12 @@ namespace neb { namespace fnd { namespace core { namespace light {
 			using gal::tmp::Verbosity<neb::fnd::core::light::base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base> G;
 			base();
-			virtual void				v_set_pose_data(neb::fnd::math::pose const &);
+			virtual void				v_set_pose_data(gal::math::pose const &);
 			virtual void				init(neb::fnd::core::light::util::parent * const & p);
 			//virtual void				release();
 			virtual void				step(gal::etc::timestep const & ts);
-			neb::fnd::math::pose			getPose();
-			neb::fnd::math::pose			getPoseGlobal();
+			gal::math::pose			getPose();
+			gal::math::pose			getPoseGlobal();
 			glm::vec4				getPos();
 			bool					hasScene() const;
 			neb::fnd::core::scene::base*		getScene();
@@ -67,7 +67,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 		public:
 			neb::fnd::core::light::util::flag			flag_;
-			neb::fnd::math::pose					pose_;
+			gal::math::pose					pose_;
 	};
 }}}}
 

@@ -42,15 +42,15 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		void			release();
 		void			step(gal::etc::timestep const & ts);
 		virtual void		v_set_pose_data(
-				neb::fnd::math::pose const & pose_global) = 0;
+				gal::math::pose const & pose_global) = 0;
 	protected:
 		void			__set_pose_data(
-				neb::fnd::math::pose const & pose_global);
+				gal::math::pose const & pose_global);
 	public:
 		bool							hasScene();
 		neb::fnd::core::scene::base*				getScene();
-		neb::fnd::math::pose						getPose() const;
-		neb::fnd::math::pose						getPoseGlobal() const;
+		gal::math::pose						getPose() const;
+		gal::math::pose						getPoseGlobal() const;
 		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightPoint() = 0;
 		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3) = 0;
 		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3) = 0;
@@ -85,7 +85,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		public:
 			neb::fnd::core::shape::util::flag		flag_;
 			/** @brief pose */
-			neb::fnd::math::pose				pose_;
+			gal::math::pose				pose_;
 			/** @brief scale */
 			glm::vec3					scale_;
 			/** @brief Name of image file */

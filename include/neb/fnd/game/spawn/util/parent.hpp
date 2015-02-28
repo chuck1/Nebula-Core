@@ -23,7 +23,7 @@ namespace neb { namespace fnd { namespace game { namespace spawn { namespace uti
 			virtual ~parent();
 			virtual void		init();
 			virtual void		spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor);
-			std::weak_ptr<neb::fnd::game::spawn::base>		create_spawn(neb::fnd::math::pose pose);
+			std::weak_ptr<neb::fnd::game::spawn::base>		create_spawn(gal::math::pose pose);
 	};
 }}}}}
 

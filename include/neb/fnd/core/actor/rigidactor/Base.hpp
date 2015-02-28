@@ -8,7 +8,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace rig
 		virtual public neb::fnd::core::actor::base
 	{
 	public:
-		virtual void		set_pose_global(neb::fnd::math::pose pose);
+		virtual void		set_pose_global(gal::math::pose pose);
 	};
 
 }}}}}

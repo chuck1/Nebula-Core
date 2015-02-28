@@ -22,7 +22,7 @@ void		THIS::spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor)
 
 	ra->set_pose_global(s->pose_);
 }
-std::weak_ptr<neb::fnd::game::spawn::base>		THIS::create_spawn(neb::fnd::math::pose pose)
+std::weak_ptr<neb::fnd::game::spawn::base>		THIS::create_spawn(gal::math::pose pose)
 {
 	typedef neb::fnd::game::spawn::base T;
 	std::shared_ptr<T> spawn(new T);

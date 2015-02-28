@@ -20,7 +20,7 @@ namespace neb { namespace fnd { namespace net { namespace core { namespace scene
 			virtual void			visit_step(
 					FND * const & p,
 					gal::etc::timestep const & ts) = 0;
-			//virtual void			v_set_pose_data(neb::fnd::math::pose const & pose) = 0;
+			//virtual void			v_set_pose_data(gal::math::pose const & pose) = 0;
 	};
 	class Local:
 		virtual public neb::fnd::net::core::scene::Base

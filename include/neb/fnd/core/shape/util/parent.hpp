@@ -29,7 +29,7 @@ namespace neb { namespace fnd { namespace core { namespace shape { namespace uti
 	{
 		public:
 			virtual ~parent();
-			void				callbackPose(neb::fnd::math::pose const & pose);
+			void				callbackPose(gal::math::pose const & pose);
 			neb::fnd::app::Base * const	get_fnd_app();
 	};
 }}}}}

@@ -19,7 +19,7 @@ namespace neb { namespace fnd { namespace core { namespace light { namespace uti
 			virtual ~parent() {}
 			//bool							hasScene();
 			//std::weak_ptr<neb::fnd::core::scene::base>		getScene();
-			void							callbackPose(neb::fnd::math::pose const &);
+			void							callbackPose(gal::math::pose const &);
 			neb::fnd::app::Base * const				get_fnd_app();
 	};
 

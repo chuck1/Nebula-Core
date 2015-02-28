@@ -2,7 +2,7 @@
 
 typedef neb::fnd::core::actor::rigidactor::base THIS;
 
-void		THIS::set_pose_global(neb::fnd::math::pose pose)
+void		THIS::set_pose_global(gal::math::pose pose)
 {
 	abort();
 }

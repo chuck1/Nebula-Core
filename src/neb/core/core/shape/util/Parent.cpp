@@ -8,7 +8,7 @@ THIS::~parent()
 {
 }
 void				THIS::callbackPose(
-		neb::fnd::math::pose const & parent_gpose)
+		gal::math::pose const & parent_gpose)
 {
 	auto lambda_shape = [&] (map_type::pointer p)
 	{

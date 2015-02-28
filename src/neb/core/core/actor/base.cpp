@@ -86,11 +86,11 @@ neb::fnd::core::scene::base*				neb::fnd::core::actor::base::getScene() const
 
 	return actor->getScene();
 }
-neb::fnd::math::pose				neb::fnd::core::actor::base::getPose() const
+gal::math::pose				neb::fnd::core::actor::base::getPose() const
 {
 	return pose_;
 }
-neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
+gal::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
@@ -99,12 +99,12 @@ neb::fnd::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
 	return p;
 }
 void			neb::fnd::core::actor::base::v_set_pose_data(
-		neb::fnd::math::pose const & pose)
+		gal::math::pose const & pose)
 {
 	__set_pose_data(pose);
 }
 void			neb::fnd::core::actor::base::__set_pose_data(
-		neb::fnd::math::pose const & pose)
+		gal::math::pose const & pose)
 {
 	pose_ = pose;
 
@@ -131,7 +131,7 @@ void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts)
 
 }
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createShapeCube(
-		neb::fnd::math::pose const & pose,
+		gal::math::pose const & pose,
 		double size)
 {
 	neb::fnd::core::shape::cuboid::Desc desc(
@@ -146,7 +146,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createS
 }
 
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createShapeLightSpot(
-		neb::fnd::math::pose const & pose,
+		gal::math::pose const & pose,
 		glm::vec3 direction)
 {
 	auto shape = createShapeBase(pose).lock();

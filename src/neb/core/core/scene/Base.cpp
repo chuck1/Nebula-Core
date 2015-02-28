@@ -40,13 +40,13 @@ void			THIS::__release()
 	
 	neb::fnd::core::actor::util::parent::clear();
 }
-neb::fnd::math::pose		THIS::getPose() const
+gal::math::pose		THIS::getPose() const
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }		
-neb::fnd::math::pose		THIS::getPoseGlobal() const
+gal::math::pose		THIS::getPoseGlobal() const
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }
 void				THIS::add_deferred(
 		std::shared_ptr<neb::fnd::core::actor::base> actor)
@@ -67,7 +67,7 @@ void		THIS::step(gal::etc::timestep const & ts) {
 
 }
 std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
-		neb::fnd::math::pose pose,
+		gal::math::pose pose,
 		double size)
 {
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -85,7 +85,7 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 	// create shape
 
 	auto shape = actor->createShapeCube(
-			neb::fnd::math::pose(), size);
+			gal::math::pose(), size);
 
 	// reinitialize in order to apply filtering to shape
 	/// @todo consider implementing refresh-type function instead
@@ -94,7 +94,7 @@ std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 	return actor;
 }
 std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCuboid(
-		neb::fnd::math::pose pose,
+		gal::math::pose pose,
 		glm::vec3 size)
 {
 	auto actor = createActorRigidStaticUninitialized().lock();
@@ -145,10 +145,10 @@ weak_ptr<ACTOR_BASE>	THIS::createActorRigidDynamicCuboid(
 weak_ptr<neb::fnd::core::actor::base>		THIS::createActorLightPoint(glm::vec3 p) {
 
 	// actor
-	auto actor = createActorBase(neb::fnd::math::pose(p)).lock();
+	auto actor = createActorBase(gal::math::pose(p)).lock();
 
 	// shape	
-	auto shape = actor->createShapeBase(neb::fnd::math::pose()).lock();
+	auto shape = actor->createShapeBase(gal::math::pose()).lock();
 
 	// light
 	auto light = shape->createLightPoint();
@@ -157,9 +157,9 @@ weak_ptr<neb::fnd::core::actor::base>		THIS::createActorLightPoint(glm::vec3 p) 
 }
 std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorLightDirectional(glm::vec3 p)
 {
-	auto actor = createActorBase(neb::fnd::math::pose()).lock();
+	auto actor = createActorBase(gal::math::pose()).lock();
 
-	auto shape = actor->createShapeBase(neb::fnd::math::pose()).lock();
+	auto shape = actor->createShapeBase(gal::math::pose()).lock();
 
 	auto light = shape->createLightDirectional(p);
 

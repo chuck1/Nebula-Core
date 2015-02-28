@@ -1,41 +1,41 @@
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 
-neb::fnd::math::pose::pose():
+gal::math::pose::pose():
 	pos_(0.0,0.0,0.0)
 {};
-neb::fnd::math::pose::pose(neb::fnd::math::pose const & rhs):
+gal::math::pose::pose(gal::math::pose const & rhs):
 	pos_(rhs.pos_),
 	rot_(rhs.rot_)
 {}
-neb::fnd::math::pose::pose(neb::fnd::math::pose&& rhs):
+gal::math::pose::pose(gal::math::pose&& rhs):
 	pos_(::std::move(rhs.pos_)),
 	rot_(::std::move(rhs.rot_))
 {}
-neb::fnd::math::pose::pose(glm::vec3 p):
+gal::math::pose::pose(glm::vec3 p):
 	pos_(p)
 {}
-neb::fnd::math::pose::pose(glm::quat q):
+gal::math::pose::pose(glm::quat q):
 	pos_(0.0,0.0,0.0),
 	rot_(q)
 {}
-neb::fnd::math::pose::pose(glm::vec3 p, glm::quat q):
+gal::math::pose::pose(glm::vec3 p, glm::quat q):
 	pos_(p),
 	rot_(q)
 {}
-neb::fnd::math::pose&		neb::fnd::math::pose::operator=(neb::fnd::math::pose const & rhs) {
+gal::math::pose&		gal::math::pose::operator=(gal::math::pose const & rhs) {
 	pos_ = rhs.pos_;
 	rot_ = rhs.rot_;
 	return *this;
 }
-neb::fnd::math::pose		neb::fnd::math::pose::operator*(neb::fnd::math::pose const & rhs) const {
+gal::math::pose		gal::math::pose::operator*(gal::math::pose const & rhs) const {
 	pose ret;
 	ret.pos_ = pos_ + rot_ * rhs.pos_;
 	ret.rot_ = rot_ * rhs.rot_;
 	return ret;
 }
 
-glm::mat4		neb::fnd::math::pose::mat4_cast() const {
+glm::mat4		gal::math::pose::mat4_cast() const {
 	//mat4 ret(glm::mat4_cast(rot_));
 	//return glm::translate(ret, vec3(pos_));
 

@@ -126,13 +126,13 @@ void						THIS::__step(gal::etc::timestep const & ts)
 	neb::fnd::core::scene::util::parent::step(ts);
 	neb::fnd::game::game::util::parent::step(ts);
 }
-neb::fnd::math::pose				THIS::getPose() const
+gal::math::pose				THIS::getPose() const
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }
-neb::fnd::math::pose				THIS::getPoseGlobal() const
+gal::math::pose				THIS::getPoseGlobal() const
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 {
