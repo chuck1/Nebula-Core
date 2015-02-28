@@ -4,6 +4,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/math/geo/polygon.hpp>
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/debug.hpp>
@@ -85,6 +86,14 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 	
 	setParent(p);
 	
+	auto app = get_fnd_app();
+
+	if(!G::has_object()) {
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				neb::fnd::plug::gfx::core::shape::type::BASE);
+	}
+
 	//auto me = std::dynamic_pointer_cast<THIS>(shared_from_this());
 
 	//auto scene = get_parent()->get_scene();

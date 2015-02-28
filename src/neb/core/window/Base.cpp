@@ -106,7 +106,7 @@ void		THIS::release()
 	neb::fnd::context::util::Parent::clear();
 
 	if(G::has_object()) {
-		G::get_object()->release();
+		//G::get_object()->release();
 		G::get_object().reset();
 	}
 }

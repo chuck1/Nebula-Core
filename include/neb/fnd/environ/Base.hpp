@@ -4,6 +4,7 @@
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/environ/util/Parent.hpp>
+#include <neb/fnd/environ/util/Cast.hpp>
 #include <neb/fnd/camera/util/decl.hpp>
 #include <neb/fnd/glsl/program/util/decl.hpp>
 
@@ -14,7 +15,8 @@ namespace neb { namespace fnd { namespace environ {
 	class Base:
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::tmp::Child<neb::fnd::environ::util::Parent>,
-		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::environ::Base>
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::environ::Base>,
+		virtual public neb::fnd::environ::util::Cast
 	{
 		public:
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::environ::Base> G;

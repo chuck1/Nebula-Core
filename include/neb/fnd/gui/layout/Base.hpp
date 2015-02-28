@@ -20,12 +20,14 @@
 
 namespace neb { namespace fnd { namespace gui { namespace layout {
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::gui::layout::Base>,
 		virtual public neb::fnd::drawable::Base,
 		virtual public neb::fnd::gui::object::util::Parent,
 		virtual public neb::fnd::tmp::Child<neb::fnd::gui::layout::util::Parent>,
 		virtual public neb::fnd::input::sink
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::gui::layout::Base>::printv;
 			using CHILD::get_fnd_app;
 			Base();
 			virtual ~Base();

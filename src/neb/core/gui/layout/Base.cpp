@@ -24,29 +24,31 @@ typedef neb::fnd::gui::layout::Base THIS;
 
 THIS::Base()
 {
+	printv_func(DEBUG);
 	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
 }
 THIS::~Base()
 {
+	printv_func(DEBUG);
 }
 void		THIS::release()
 {
+	printv_func(DEBUG);
 	neb::fnd::gui::object::util::Parent::clear();
 }
 void		THIS::init(parent_t * const & p)
 {
-	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	setParent(p);
 }
 void		THIS::step(gal::etc::timestep const & ts)
 {
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
-
+	printv_func(DEBUG);
 }
 void			THIS::draw(neb::fnd::RenderDesc const & desc)
 {	
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	typedef neb::fnd::gui::object::util::Parent O;
 
@@ -66,7 +68,7 @@ int			THIS::keyFun(
 		int action,
 		int mode)
 {
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	typedef neb::fnd::gui::object::util::Parent O;
 
@@ -84,7 +86,7 @@ int			THIS::charFun(
 		std::shared_ptr<neb::fnd::input::source> const & window,
 		unsigned int codepoint)
 {
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	typedef neb::fnd::gui::object::util::Parent O;
 
@@ -103,8 +105,7 @@ int			THIS::mouseButtonFun(
 		int action,
 		int mods)
 {
-
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	assert(src);
 
@@ -129,8 +130,7 @@ int			THIS::search(
 		int action,
 		int mods)
 {
-
-//	LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	assert(src);
 
@@ -182,6 +182,7 @@ int			THIS::search(
 }
 std::weak_ptr<neb::fnd::gui::object::Terminal>		THIS::createObjectTerminal()
 {
+	printv_func(DEBUG);
 
 	return neb::fnd::gui::object::util::Parent::create<neb::fnd::gui::object::Terminal>();
 
@@ -196,7 +197,7 @@ std::weak_ptr<neb::fnd::gui::object::Terminal>		THIS::createObjectTerminal()
 
 void			THIS::connect(std::shared_ptr<neb::fnd::input::source> const & src)
 {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	printv_func(DEBUG);
 
 	connectKeyFun(src, 10);
 	connectCharFun(src, 10);
