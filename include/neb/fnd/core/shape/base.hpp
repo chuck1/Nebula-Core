@@ -18,7 +18,9 @@
 #include <neb/fnd/core/light/util/decl.hpp>
 #include <neb/fnd/core/light/util/parent.hpp>
 #include <neb/fnd/core/light/util/light_count.hpp>
+
 #include <neb/fnd/plug/gfx/core/shape/util/decl.hpp>
+#include <neb/fnd/plug/phx/core/shape/util/decl.hpp>
 #include <neb/fnd/plug/ObjectParent.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace shape {
@@ -29,12 +31,14 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::core::light::util::parent,
 		virtual public neb::fnd::tmp::Child<neb::fnd::core::shape::util::parent>,
-		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::shape::Base>
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::shape::Base>,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::core::shape::Base>
 	{
 	public:
 		using CHILD::get_fnd_app;
 		using gal::tmp::Verbosity<neb::fnd::core::shape::base>::printv;
 		typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::shape::Base> G;
+		typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::shape::Base> P;
 		typedef neb::fnd::core::shape::util::parent parent_t;
 		base();
 		virtual ~base();

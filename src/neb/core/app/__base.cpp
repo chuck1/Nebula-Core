@@ -21,6 +21,10 @@
 #include <neb/fnd/plug/gfx/camera/proj/Base.hpp>
 #include <neb/fnd/plug/gfx/camera/view/Base.hpp>
 
+#include <neb/fnd/plug/phx/app/Base.hpp>
+#include <neb/fnd/plug/phx/core/scene/Base.hpp>
+#include <neb/fnd/plug/phx/core/actor/Base.hpp>
+#include <neb/fnd/plug/phx/core/shape/Base.hpp>
 
 
 typedef neb::fnd::app::Base THIS;
@@ -102,6 +106,7 @@ void			THIS::__init()
 
 	// plugins
 	open_graphics_plugin("../plugin/gfx1/build/dynamic/libnebula_plugin_gfx1.so");
+	open_physics_plugin("../plugin/phx1/build/dynamic/libnebula_plugin_phx1.so");
 }
 void						THIS::__release()
 {
@@ -199,7 +204,27 @@ void							THIS::open_graphics_plugin(std::string filename)
 
 	G::make_object<THIS, int>(_M_graphics_plugin, 0);
 }
-void							THIS::open_network_plugin(std::string filename)
+void				THIS::open_physics_plugin(std::string filename)
+{
+	printv_func(DEBUG);
+
+	typedef neb::fnd::plug::phx::app::Base APP;
+	typedef neb::fnd::plug::phx::core::scene::Base SC;
+	typedef neb::fnd::plug::phx::core::actor::Base AC;
+	typedef neb::fnd::plug::phx::core::shape::Base SH;
+
+	_M_physics_plugin.reset(new H(filename));
+
+	_M_physics_plugin->open();
+
+	//_M_physics_plugin->template add<APP, int>("app");
+	//_M_physics_plugin->template add<SC,  int>("scene");
+	//_M_physics_plugin->template add<AC,  int>("actor");
+	_M_physics_plugin->template add<SH,  int>("shape");
+
+	P::make_object<THIS, int>(_M_physics_plugin, 0);
+}
+void				THIS::open_network_plugin(std::string filename)
 {
 	printv_func(DEBUG);
 
@@ -212,6 +237,21 @@ void							THIS::open_network_plugin(std::string filename)
 	// the integer argument will indicate local or remote
 	_M_network_plugin->template add<S, int>("scene");
 
+}
+std::shared_ptr<THIS::H>				THIS::get_graphics_plugin()
+{
+	assert(_M_graphics_plugin);
+	return _M_graphics_plugin;
+}
+std::shared_ptr<THIS::H>				THIS::get_physics_plugin()
+{
+	assert(_M_physics_plugin);
+	return _M_physics_plugin;
+}
+std::shared_ptr<THIS::H>				THIS::get_network_plugin()
+{
+	assert(_M_network_plugin);
+	return _M_network_plugin;
 }
 void			THIS::render()
 {

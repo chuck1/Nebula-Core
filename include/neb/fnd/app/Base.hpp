@@ -19,8 +19,10 @@
 #include <neb/fnd/glsl/program/util/decl.hpp>
 #include <neb/fnd/window/util/Parent.hpp>
 #include <neb/fnd/timer/util/Parent.hpp>
+
 #include <neb/fnd/plug/ObjectParent.hpp>
 #include <neb/fnd/plug/gfx/util/decl.hpp>
+#include <neb/fnd/plug/phx/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
@@ -31,11 +33,14 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::window::util::Parent,
 		virtual public neb::fnd::timer::util::Parent,
 		virtual public neb::fnd::gui::layout::util::Parent,
-		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base>
 	{
 		public:
 			using gal::tmp::Verbosity<neb::fnd::app::Base>::printv;
+			typedef gal::dll::helper<gal::itf::shared> H;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base> P;
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
@@ -77,8 +82,11 @@ namespace neb { namespace fnd { namespace app {
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			/***/
 			void							open_graphics_plugin(std::string filename);
+			void							open_physics_plugin(std::string filename);
 			void							open_network_plugin(std::string filename);
-
+			std::shared_ptr<H>					get_graphics_plugin();
+			std::shared_ptr<H>					get_physics_plugin();
+			std::shared_ptr<H>					get_network_plugin();
 			/***/
 			boost::asio::io_service					ios_;
 			/***/
@@ -91,7 +99,6 @@ namespace neb { namespace fnd { namespace app {
 			std::vector< std::string >				_M_preloop_scripts_python;
 			/***/
 			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
-			typedef gal::dll::helper<gal::itf::shared> H;
 			/*
 			 * shared library helper for networking plugin
 			 */

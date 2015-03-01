@@ -57,7 +57,7 @@ void 			THIS::draw(
 	//typedef neb::gfx::glsl::program::base P;
 
 	auto app = get_fnd_app();
-	auto g = app->get_object();
+	auto g = app->G::get_object();
 
 	auto console(console_.lock());
 	if(!console) return;

@@ -10,6 +10,7 @@
 #include <boost/serialization/map.hpp>
 
 #include <gal/stl/verbosity.hpp>
+#include <gal/math/serialization/glm.hpp>
 
 #include <gal/math/pose.hpp>
 #include <neb/fnd/filter.hpp>
@@ -22,9 +23,10 @@
 #include <neb/fnd/core/shape/util/decl.hpp>
 #include <neb/fnd/core/shape/util/parent.hpp>
 #include <neb/fnd/core/shape/cuboid/desc.hpp>
-#include <gal/math/serialization/glm.hpp>
 #include <neb/fnd/game/weapon/util/parent.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
+
+#include <neb/fnd/plug/phx/core/shape/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace actor {
 	/** @brief %base */
@@ -36,12 +38,14 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 		virtual public neb::fnd::core::shape::util::parent,
 		virtual public neb::fnd::game::weapon::util::parent,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base>,
+		//virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::core::actor::Base>,
 		virtual public gal::tmp::Verbosity<neb::fnd::core::actor::base>
 	{
 		public:
 			using CHILD::get_fnd_app;
 			using gal::tmp::Verbosity<neb::fnd::core::actor::base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::actor::Base> G;
+			//typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::actor::Base> P;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>	actors;
 			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>	shapes;
 			//typedef neb::fnd::core::actor::__base> parent_t;
@@ -50,13 +54,13 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			/** @brief constructor */
 			//base(std::shared_ptr<parent_t> parent);
 			virtual ~base();
-			virtual void						init(parent_t * const &) = 0;
-			virtual void						release();
-			virtual void						step(gal::etc::timestep const & ts);
+			virtual void					init(parent_t * const &) = 0;
+			virtual void					release();
+			virtual void					step(gal::etc::timestep const & ts);
 			virtual gal::math::pose				getPose() const;
 			virtual gal::math::pose				getPoseGlobal() const;
-			bool							hasScene() const;
-			neb::fnd::core::scene::base*				getScene() const;
+			bool						hasScene() const;
+			neb::fnd::core::scene::base*			getScene() const;
 			//std::shared_ptr<neb::fnd::core::actor::util::parent>		get_parent();
 			/** @brief set pose data
 			 * set the pose variable after calculating physics
