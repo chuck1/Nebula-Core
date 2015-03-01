@@ -103,6 +103,8 @@ void			THIS::callbackCharFun(unsigned int codepoint)
 }
 void		THIS::release()
 {
+	printv_func(DEBUG);
+
 	neb::fnd::context::util::Parent::clear();
 
 	if(G::has_object()) {
@@ -112,11 +114,13 @@ void		THIS::release()
 }
 void		THIS::resize()
 {
-	if(G::has_object())
+	printv_func(DEBUG);
+	//if(G::has_object())
 		G::get_object()->resize();
 }
 glm::vec2	THIS::getCursorPosNDC()
 {
+	printv_func(DEBUG);
 	if(G::has_object())
 		return G::get_object()->getCursorPosNDC();
 
@@ -124,17 +128,21 @@ glm::vec2	THIS::getCursorPosNDC()
 }
 void		THIS::callback_window_pos_fun(int x,int y)
 {
+	printv_func(DEBUG);
 	//if(_M_graphics_object)
 	//	_M_graphics_object->callback_window_pos_fun(w,x,y);
 }
 void		THIS::callback_window_size_fun(int,int)
 {
+	printv_func(DEBUG);
 }
 void		THIS::callback_window_close_fun()
 {
+	printv_func(DEBUG);
 }
 void		THIS::callback_window_refresh_fun()
 {
+	printv_func(DEBUG);
 }
 
 

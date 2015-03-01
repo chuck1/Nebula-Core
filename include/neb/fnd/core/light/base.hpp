@@ -13,7 +13,7 @@
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/itf/serializable.hpp>
 #include <neb/fnd/math/color/color.hpp>
-//#include <neb/fnd/math/serialization/glm.hpp>
+//#include <gal/math/serialization/glm.hpp>
 #include <gal/math/pose.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/light/util/decl.hpp>

@@ -16,8 +16,8 @@
 #include <neb/fnd/plug/gfx/window/Base.hpp>
 
 namespace neb { namespace fnd { namespace window {
-
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::window::Base>,
 		virtual public neb::fnd::tmp::Child<neb::fnd::window::util::Parent>,
 		virtual public neb::fnd::context::util::Parent,
 		virtual public neb::fnd::input::source,
@@ -25,6 +25,7 @@ namespace neb { namespace fnd { namespace window {
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::window::Base>
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::window::Base>::printv;
 			using CHILD::get_fnd_app;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::window::Base> G;
 			typedef neb::fnd::window::util::Parent parent_t;

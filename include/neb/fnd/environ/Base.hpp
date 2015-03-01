@@ -13,12 +13,14 @@
 
 namespace neb { namespace fnd { namespace environ {
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::environ::Base>,
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::tmp::Child<neb::fnd::environ::util::Parent>,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::environ::Base>,
 		virtual public neb::fnd::environ::util::Cast
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::environ::Base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::environ::Base> G;
 			typedef std::shared_ptr<neb::fnd::glsl::program::Base>		program_shared;
 			typedef std::shared_ptr<neb::fnd::camera::view::Base>		view_shared;
@@ -35,7 +37,7 @@ namespace neb { namespace fnd { namespace environ {
 			virtual proj_shared	createCameraPerspective();
 			virtual proj_shared	createCameraOrtho();
 			void			set_drawable(std::shared_ptr<neb::fnd::drawable::Base> drawable);
-
+			void			resize(int w, int h);
 			std::weak_ptr<neb::fnd::drawable::Base>			drawable_;
 			proj_shared						proj_;
 	};

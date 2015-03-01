@@ -4,7 +4,7 @@
 
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/math/geo/vertex.hpp>
-#include <neb/fnd/math/serialization/glm.hpp>
+#include <gal/math/serialization/glm.hpp>
 
 typedef neb::fnd::math::geo::vertex THIS;
 

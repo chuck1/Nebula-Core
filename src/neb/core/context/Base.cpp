@@ -12,6 +12,18 @@ void			THIS::render()
 void			THIS::step(gal::etc::timestep const & ts)
 {
 }
-/*
-*/
+void			THIS::resize(int w, int h)
+{
+	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+	
+	typedef neb::fnd::environ::util::Parent E;
+
+	auto lamb = [&] (E::map_type::pointer p)
+	{
+		p->resize(w, h);
+	};
+	
+	E::map_.for_each(lamb);
+
+}
 

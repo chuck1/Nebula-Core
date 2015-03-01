@@ -26,15 +26,16 @@ std::weak_ptr<neb::fnd::environ::SceneDefault>			THIS::createEnvironSceneDefault
 	typedef neb::fnd::environ::SceneDefault E;
 	
 	auto c = is_fnd_context_Base();
-	auto w = c->getParent()->is_fnd_window_base();
-	if(w) {
-		w->makeCurrent();
-	}
 
+	auto w = c->getParent()->is_fnd_window_base();
+
+	if(w) w->makeCurrent();
+	
 	//std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
 	auto environ = create<E>().lock();
 	
-
+	assert(w);
+	w->resize();
 	
 	//environ->init(this);
 
@@ -47,14 +48,13 @@ std::weak_ptr<neb::fnd::environ::visualization::Normal>	THIS::createEnvironVisua
 	typedef neb::fnd::environ::visualization::Normal E;
 	
 	auto c = is_fnd_context_Base();
+
 	auto w = c->getParent()->is_fnd_window_base();
-	if(w) {
-		w->makeCurrent();
-	}
+
+	if(w) w->makeCurrent();
 
 	//std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
 	auto environ = create<E>().lock();
-
 
 	//environ->init(this);
 
@@ -67,14 +67,13 @@ std::weak_ptr<neb::fnd::environ::shadow::Directional>		THIS::createEnvironShadow
 	typedef neb::fnd::environ::shadow::Directional E;
 
 	auto c = is_fnd_context_Base();
+
 	auto w = c->getParent()->is_fnd_window_base();
-	if(w) {
-		w->makeCurrent();
-	}
+
+	if(w) w->makeCurrent();
 
 	//std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 	auto environ = create<E>().lock();
-
 
 	//environ->init(this);
 	
@@ -82,7 +81,7 @@ std::weak_ptr<neb::fnd::environ::shadow::Directional>		THIS::createEnvironShadow
 	
 	return environ;
 }
-std::weak_ptr<neb::fnd::environ::Two>			THIS::createEnvironTwo()
+std::weak_ptr<neb::fnd::environ::Two>				THIS::createEnvironTwo()
 {
 	typedef neb::fnd::environ::Two E;
 	
@@ -106,7 +105,9 @@ std::weak_ptr<neb::fnd::environ::visualization::Depth>		THIS::createEnvironVisua
 	typedef neb::fnd::environ::visualization::Depth E;
 	
 	auto c = is_fnd_context_Base();
+
 	auto w = c->getParent()->is_fnd_window_base();
+
 	if(w) w->makeCurrent();
 
 	//std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
@@ -123,7 +124,9 @@ std::weak_ptr<neb::fnd::environ::shadow::Point>		THIS::createEnvironShadowPoint(
 	typedef neb::fnd::environ::shadow::Point E;
 	
 	auto c = is_fnd_context_Base();
+
 	auto w = c->getParent()->is_fnd_window_base();
+
 	if(w) w->makeCurrent();
 
 	//std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());

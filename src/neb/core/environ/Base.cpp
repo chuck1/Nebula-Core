@@ -57,6 +57,12 @@ THIS::proj_shared	THIS::createCameraOrtho()
 
 	return proj_;
 }
+void			THIS::resize(int w, int h)
+{
+	printv_func(DEBUG);
+	
+	G::get_object()->resize(w, h);
+}
 
 
 

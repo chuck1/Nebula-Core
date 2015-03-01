@@ -16,6 +16,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace envir
 			typedef neb::fnd::environ::Base FND;
 			virtual void		init(parent_t * const & p) = 0;
 			virtual void		render(neb::fnd::context::Base * const & context) = 0;
+			virtual void		resize(int w, int h) = 0;
 			//virtual void		setTexture(
 			//		std::shared_ptr<neb::fnd::itf::shared> tex) = 0;
 	};

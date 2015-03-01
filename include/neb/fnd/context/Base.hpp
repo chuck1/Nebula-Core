@@ -14,16 +14,19 @@
 
 namespace neb { namespace fnd { namespace context {
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::context::Base>,
 		virtual public neb::fnd::tmp::Child<neb::fnd::context::util::Parent>,
 		virtual public neb::fnd::environ::util::Parent,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::context::Base>
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::context::Base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::context::Base> G;
 			using CHILD::get_fnd_app;
 			virtual void		init(parent_t * const parent) = 0;
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		render();
+			void			resize(int w, int h);
 			//virtual void		setDrawable(std::shared_ptr<neb::fnd::drawable::Base>);
 			//virtual void		setEnviron(std::shared_ptr<neb::fnd::environ::Base>);
 			//virtual std::shared_ptr<neb::fnd::environ::Base>	get_environ() = 0;
