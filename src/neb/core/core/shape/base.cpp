@@ -10,7 +10,8 @@
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/shape/base.hpp>
-#include <neb/fnd/core/light/base.hpp>
+
+#include <neb/fnd/core/light/Point.hpp>
 
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
@@ -141,6 +142,24 @@ void			THIS::save(
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	const_cast<THIS*>(this)->__serialize(ar, v);
+}
+std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightPoint()
+{
+	printv_func(DEBUG);
+	//auto app = get_fnd_app();
+
+	typedef neb::fnd::core::light::Point L;
+	//typedef neb::fnd::plug::gfx::core::light::Point G;
+	
+	L* l = new L();
+	auto light = std::shared_ptr<L>(l);
+	
+	
+	neb::fnd::core::light::util::parent::insert(light);
+	
+	light->init(this);
+
+	return light;
 }
 
 

@@ -40,6 +40,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::shape::Base> G;
 		typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::shape::Base> P;
 		typedef neb::fnd::core::shape::util::parent parent_t;
+		typedef neb::fnd::core::light::base LIGHT;
 		base();
 		virtual ~base();
 		virtual void		init(parent_t * const &);
@@ -55,9 +56,9 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		neb::fnd::core::scene::base*				getScene();
 		gal::math::pose						getPose() const;
 		gal::math::pose						getPoseGlobal() const;
-		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightPoint() = 0;
-		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3) = 0;
-		virtual std::weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3) = 0;
+		virtual std::weak_ptr<LIGHT>		createLightPoint();
+		virtual std::weak_ptr<LIGHT>		createLightSpot(glm::vec3) = 0;
+		virtual std::weak_ptr<LIGHT>		createLightDirectional(glm::vec3) = 0;
 	public:
 		/*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
 					virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}
