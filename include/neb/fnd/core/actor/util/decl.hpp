@@ -26,7 +26,9 @@ namespace neb { namespace fnd { namespace core {
 		{
 			class base;
 		}
-		namespace rigidbody {
+		namespace rigidbody
+		{
+			class base;
 			struct desc;
 		}
 		namespace rigiddynamic
@@ -39,7 +41,7 @@ namespace neb { namespace fnd { namespace core {
 			class base;
 			class desc;
 		}
-
+	
 		class __base;
 		class base;
 		class desc;
@@ -47,6 +49,13 @@ namespace neb { namespace fnd { namespace core {
 		/** @brief util */
 		namespace util {
 			class parent;
+		}
+		namespace control
+		{
+			namespace rigidbody
+			{
+				class base;
+			}
 		}
 	}
 

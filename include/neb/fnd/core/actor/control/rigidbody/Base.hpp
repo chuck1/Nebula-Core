@@ -44,6 +44,8 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace con
 			virtual glm::vec3		t_global() = 0;
 			virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
 			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;
+			/** parent actor weak pointer */
+			std::weak_ptr<neb::fnd::core::actor::rigidbody::base>		actor_;
 		public:
 			/*
 			std::weak_ptr<neb::phx::core::actor::rigidbody::base>		actor_;

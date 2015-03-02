@@ -209,6 +209,33 @@ std::weak_ptr<Weapon>	THIS::createWeaponSimpleProjectile(
 }
 
 
+void			THIS::hit()
+{
+	printv_func(DEBUG);
+
+	auto parent(getParent());
+
+	unsigned int w2 = simulation_.word2;
+
+	if(w2 & phx::filter::filter::PROJECTILE)
+	{
+		printv(DEBUG, "%p is projectile, erase\n", shared_from_this().get());
+		parent->erase(_M_index);
+	}
+
+	if(flag_.any(neb::fnd::core::actor::util::flag::E::DESTRUCTIBLE)) {
+		damage(0.6f);
+	}
+}
+void			THIS::damage(double h)
+{
+	printv_func(DEBUG);
+
+	health_ -= h;
+	if(health_ < 0) {
+		getParent()->erase(_M_index);
+	}
+}
 
 
 
