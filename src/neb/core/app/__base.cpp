@@ -171,6 +171,7 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 void							THIS::open_graphics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::plug::gfx::app::Base APP;
 	typedef neb::fnd::plug::gfx::core::scene::Base SC;
@@ -207,6 +208,7 @@ void							THIS::open_graphics_plugin(std::string filename)
 void				THIS::open_physics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::plug::phx::app::Base APP;
 	typedef neb::fnd::plug::phx::core::scene::Base SC;
@@ -222,11 +224,12 @@ void				THIS::open_physics_plugin(std::string filename)
 	//_M_physics_plugin->template add<AC,  int>("actor");
 	_M_physics_plugin->template add<SH,  int>("shape");
 
-	P::make_object<THIS, int>(_M_physics_plugin, 0);
+	//P::make_object<THIS, int>(_M_physics_plugin, 0);
 }
 void				THIS::open_network_plugin(std::string filename)
 {
 	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::net::core::scene::Base S;
 

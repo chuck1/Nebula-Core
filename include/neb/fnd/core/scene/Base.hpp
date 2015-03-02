@@ -48,8 +48,10 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 				base();
 				virtual ~base();
 				virtual void				init(parent_t * const & p) = 0;
+			protected:
 				void					__init(parent_t * const & p);
 				void					__release();
+			public:
 				virtual void				step(gal::etc::timestep const & ts);
 				virtual void				draw(neb::fnd::RenderDesc const & rd);
 				virtual void				load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);

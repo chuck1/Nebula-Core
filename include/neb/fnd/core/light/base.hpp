@@ -37,7 +37,7 @@ namespace neb { namespace fnd { namespace core { namespace light {
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::light::Base> G;
 			base();
 			virtual void				v_set_pose_data(gal::math::pose const &);
-			virtual void				init(neb::fnd::core::light::util::parent * const & p);
+			virtual void				init(parent_t * const & p) = 0;
 			//virtual void				release();
 			virtual void				step(gal::etc::timestep const & ts);
 			gal::math::pose			getPose();

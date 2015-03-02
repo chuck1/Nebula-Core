@@ -15,6 +15,6 @@ void		THIS::init(parent_t * const & parent)
 
 	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::core::light::type::DIRECTIONAL);
 
-	neb::fnd::core::light::base::init(parent);
+	//neb::fnd::core::light::base::init(parent);
 }
 

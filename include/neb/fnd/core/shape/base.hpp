@@ -47,7 +47,7 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		void			release();
 		void			step(gal::etc::timestep const & ts);
 		virtual void		v_set_pose_data(
-				gal::math::pose const & pose_global) = 0;
+				gal::math::pose const & pose_global);
 	protected:
 		void			__set_pose_data(
 				gal::math::pose const & pose_global);
@@ -57,8 +57,8 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 		gal::math::pose						getPose() const;
 		gal::math::pose						getPoseGlobal() const;
 		virtual std::weak_ptr<LIGHT>		createLightPoint();
-		virtual std::weak_ptr<LIGHT>		createLightSpot(glm::vec3) = 0;
-		virtual std::weak_ptr<LIGHT>		createLightDirectional(glm::vec3) = 0;
+		virtual std::weak_ptr<LIGHT>		createLightSpot(glm::vec3);
+		virtual std::weak_ptr<LIGHT>		createLightDirectional(glm::vec3);
 	public:
 		/*			virtual void	load(ba::binary_iarchive & ar, unsigned int const &) {}
 					virtual void	save(ba::binary_oarchive & ar, unsigned int const &) const {}

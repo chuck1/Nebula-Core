@@ -24,8 +24,9 @@ neb::fnd::core::actor::base::base():
   LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
   assert(parent);
   }*/
-neb::fnd::core::actor::base::~base() {
-	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+neb::fnd::core::actor::base::~base()
+{
+	printv_func(DEBUG);
 
 	assert(neb::fnd::core::actor::util::parent::map_.empty());
 	assert(neb::fnd::core::shape::util::parent::map_.empty());
@@ -33,12 +34,14 @@ neb::fnd::core::actor::base::~base() {
 }
 void		neb::fnd::core::actor::base::init(parent_t * const & p)
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 	neb::fnd::core::shape::util::parent::initChildren(this);
 }
 void		neb::fnd::core::actor::base::release() {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	gal::itf::__release::release();
@@ -54,6 +57,7 @@ void		neb::fnd::core::actor::base::release() {
   }*/
 bool							neb::fnd::core::actor::base::hasScene() const
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	if(!hasParent()) return false;
@@ -70,6 +74,7 @@ bool							neb::fnd::core::actor::base::hasScene() const
 }
 neb::fnd::core::scene::base*				neb::fnd::core::actor::base::getScene() const
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	assert(hasParent());
@@ -92,6 +97,7 @@ gal::math::pose				neb::fnd::core::actor::base::getPose() const
 }
 gal::math::pose				neb::fnd::core::actor::base::getPoseGlobal() const
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	auto p = getParent()->getPoseGlobal() * getPose();
@@ -114,6 +120,7 @@ void			neb::fnd::core::actor::base::__set_pose_data(
 }
 void		neb::fnd::core::actor::base::step(gal::etc::timestep const & ts)
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	
 	//typedef neb::fnd::core::actor::util::parent A;
@@ -134,6 +141,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createS
 		gal::math::pose const & pose,
 		double size)
 {
+	printv_func(DEBUG);
+
 	neb::fnd::core::shape::cuboid::Desc desc(
 			pose,
 			glm::vec3(size)
@@ -149,12 +158,13 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createS
 		gal::math::pose const & pose,
 		glm::vec3 direction)
 {
+	printv_func(DEBUG);
+
 	auto shape = createShapeBase(pose).lock();
 
 	shape->createLightSpot(direction);
 
 	return shape;
-
 }
 void			THIS::load(
 		ba::polymorphic_iarchive & ar, unsigned int const & v)
@@ -179,6 +189,7 @@ std::weak_ptr<Weapon>	THIS::createWeaponSimpleProjectile(
 		double damage,
 		double velocity)
 {
+	printv_func(DEBUG);
 	//auto self(isPxActorBase());
 	
 	std::shared_ptr<Weapon> weap(new Weapon());

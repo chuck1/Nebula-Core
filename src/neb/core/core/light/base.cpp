@@ -6,14 +6,16 @@
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/light/util/parent.hpp>
 #include <neb/fnd/core/shape/base.hpp>
-#include <neb/fnd/core/light/base.hpp>
 #include <neb/fnd/plug/gfx/core/light/Base.hpp>
+
+#include <neb/fnd/core/light/base.hpp>
 
 typedef neb::fnd::core::light::base THIS;
 
 THIS::base()
 {
 }
+/*
 void		THIS::init(parent_t * const & parent)
 {
 	setParent(parent);
@@ -22,6 +24,7 @@ void		THIS::init(parent_t * const & parent)
 	
 	//if(app->_M_graphics_plugin)
 }
+*/
 void				THIS::step(gal::etc::timestep const & ts)
 {
 }

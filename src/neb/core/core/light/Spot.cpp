@@ -9,13 +9,21 @@ typedef neb::fnd::core::light::Spot THIS;
 
 void		THIS::init(parent_t * const & parent)
 {
+	printv_func(DEBUG);
+
 	setParent(parent);
 
 	auto app = get_fnd_app();
 
-	neb::fnd::core::light::base::init(parent);
-	
-	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::core::light::type::SPOT);
+	//neb::fnd::core::light::base::init(parent);
+
+	if(G::has_object()) {
+		printv(DEBUG, "plugin gfx not null");
+	} else {
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				neb::fnd::plug::gfx::core::light::type::SPOT);
+	}
 }
 void		THIS::set_spot_direction(glm::vec3)
 {
