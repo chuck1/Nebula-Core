@@ -221,7 +221,7 @@ void				THIS::open_physics_plugin(std::string filename)
 
 	//_M_physics_plugin->template add<APP, int>("app");
 	//_M_physics_plugin->template add<SC,  int>("scene");
-	//_M_physics_plugin->template add<AC,  int>("actor");
+	_M_physics_plugin->template add<AC,  int>("actor");
 	_M_physics_plugin->template add<SH,  int>("shape");
 
 	//P::make_object<THIS, int>(_M_physics_plugin, 0);

@@ -8,7 +8,8 @@ typedef neb::fnd::timer::actor::Release THIS;
 
 THIS::Release(
 		shared_ptr<neb::fnd::core::actor::base> actor, double seconds):
-	neb::fnd::timer::actor::Base::Base(actor, seconds)
+	neb::fnd::timer::Base::Base(seconds),
+	neb::fnd::timer::actor::Base(actor, seconds)
 {
 	printv_func(DEBUG);
 }

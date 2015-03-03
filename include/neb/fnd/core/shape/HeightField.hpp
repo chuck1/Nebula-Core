@@ -5,26 +5,20 @@
 #include <neb/fnd/core/shape/HeightField/desc.hpp>
 
 namespace neb { namespace fnd { namespace core { namespace shape { namespace HeightField {
-
 	class Base:
 		virtual public neb::fnd::core::shape::base
 	{
-		public:
-			typedef neb::fnd::core::shape::util::parent parent_t;
-
-			Base();
-			
-			virtual void				init(parent_t * const & p) = 0;
-			virtual void				release() = 0;
-			virtual void				step(gal::etc::timestep  const & ts) = 0;
-
-			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &) = 0;
-			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const = 0;
-
-			float				min_y_;
-			float				max_y_;
-
-			neb::fnd::core::shape::HeightField::desc	desc_;
+	public:
+		typedef neb::fnd::core::shape::util::parent parent_t;
+		Base();
+		virtual void				init(parent_t * const & p);
+		virtual void				release();
+		virtual void				step(gal::etc::timestep  const & ts);
+		virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
+		virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
+		float				min_y_;
+		float				max_y_;
+		neb::fnd::core::shape::HeightField::desc	desc_;
 	};
 
 

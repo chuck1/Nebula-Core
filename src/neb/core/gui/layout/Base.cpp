@@ -71,13 +71,17 @@ int			THIS::keyFun(
 	printv_func(DEBUG);
 
 	typedef neb::fnd::gui::object::util::Parent O;
-
+	
+	int ret;
+	
 	//O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
 	for(O::map_type::iterator it = O::map_.begin(); it != O::map_.end(); ++it) {
 		auto object = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(it->second.ptr_);
 		assert(object);
+		
+		ret = object->keyFun(src, key, scancode, action, mode);
 
-		if(object->keyFun(src, key, scancode, action, mode)) return 1;
+		if(ret == 1) return 1;
 	};
 
 	return 0;

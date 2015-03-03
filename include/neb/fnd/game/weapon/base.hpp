@@ -23,7 +23,11 @@ namespace neb { namespace fnd { namespace game { namespace weapon {
 			virtual void					connect(
 					std::shared_ptr<SOURCE> src) = 0;
 			virtual int					keyFun(
-					std::shared_ptr<SOURCE> window, int, int, int, int) = 0;
+					std::shared_ptr<SOURCE> const & window,
+					int,
+					int,
+					int,
+					int) = 0;
 			virtual void					fire() = 0;
 			/** @brief last
 			 *

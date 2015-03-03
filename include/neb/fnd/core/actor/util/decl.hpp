@@ -55,6 +55,8 @@ namespace neb { namespace fnd { namespace core {
 			namespace rigidbody
 			{
 				class base;
+				class Manual;
+				class PD;
 			}
 		}
 	}

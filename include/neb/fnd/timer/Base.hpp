@@ -21,11 +21,13 @@ namespace neb { namespace fnd { namespace timer {
 	{
 	public:
 		using gal::tmp::Verbosity<neb::fnd::timer::Base>::printv;
+		Base(double time);
+		virtual void		init(parent_t * const & p);
 		virtual void		step(
 				gal::etc::timestep const & ts);
 		virtual void		doSomething() = 0;
 		void 			activate();
-	protected:
+	private:
 		boost::asio::deadline_timer*		timer_;
 		double					time_;
 	};

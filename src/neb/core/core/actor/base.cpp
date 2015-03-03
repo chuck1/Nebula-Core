@@ -76,7 +76,7 @@ void			THIS::init(parent_t * const & p)
 
 	// base classes
 
-	neb::fnd::core::actor::base::init(p);
+	//neb::fnd::core::actor::base::init(p);
 
 	//neb::phx::core::actor::base::init(p);
 
@@ -99,7 +99,13 @@ void		THIS::release()
   assert(parent);
   return parent;
   }*/
-bool							neb::fnd::core::actor::base::hasScene() const
+void			THIS::set_pose_global(
+		gal::math::pose const & pose)
+{
+	if(P::has_object())
+		P::get_object()->set_pose_global(pose);
+}
+bool			THIS::hasScene() const
 {
 	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
@@ -167,8 +173,11 @@ void			THIS::step(
 {
 	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
-	
+
 	//typedef neb::fnd::core::actor::util::parent A;
+
+	if(P::has_object())
+		P::get_object()->step(ts);
 
 	actors::step(ts);
 	shapes::step(ts);
@@ -211,22 +220,6 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fnd::core::actor::base::createS
 
 	return shape;
 }
-void			THIS::load(
-		ba::polymorphic_iarchive & ar, unsigned int const & v)
-{
-	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
-	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
-
-	__serialize(ar, v);
-}
-void			THIS::save(
-		ba::polymorphic_oarchive & ar, unsigned int const & v) const
-{
-	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
-	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
-
-	const_cast<THIS*>(this)->__serialize(ar, v);
-}
 typedef neb::fnd::game::weapon::SimpleProjectile Weapon;
 std::weak_ptr<Weapon>	THIS::createWeaponSimpleProjectile(
 		std::shared_ptr<neb::fnd::input::source> src,
@@ -236,7 +229,7 @@ std::weak_ptr<Weapon>	THIS::createWeaponSimpleProjectile(
 {
 	printv_func(DEBUG);
 	//auto self(isPxActorBase());
-	
+
 	std::shared_ptr<Weapon> weap(new Weapon());
 
 	//weap->actor_ = self;
@@ -284,7 +277,7 @@ void			THIS::damage(double h)
 std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeBase(gal::math::pose const & pose)
 {
 	printv_func(DEBUG);
-	
+
 	//auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
 	typedef neb::fnd::core::shape::base T;
@@ -302,7 +295,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeCuboid(
 		neb::fnd::core::shape::cuboid::Desc const & desc)
 {
 	printv_func(DEBUG);
-	
+
 	//auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 	typedef neb::fnd::core::shape::Cuboid T;
 
@@ -316,8 +309,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeCuboid(
 	shape->init(this);
 
 	/*
-	auto ra = dynamic_cast<neb::fin::core::actor::rigidactor::base*>(this);
-	assert(ra);
+	   auto ra = dynamic_cast<neb::fin::core::actor::rigidactor::base*>(this);
+	   assert(ra);
 	//if(ra) ra->setupFiltering();
 	if(ra) ra->init_physics();
 	*/
@@ -331,7 +324,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 		neb::fnd::core::shape::HeightField::desc const & desc)
 {
 	printv_func(DEBUG);
-	
+
 	//auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
 	typedef neb::fnd::core::shape::HeightField::Base T;
@@ -340,7 +333,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 
 	//shape->pose_ = desc.pose_;
 	//shape->scale_ = desc.scale_;
-	
+
 	shape->desc_ = desc;
 
 	neb::fnd::core::shape::util::parent::insert(shape);
@@ -351,27 +344,37 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 
 	return shape;
 }
-void			THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
+void			THIS::load(
+		ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 	printv_func(DEBUG);
-	
-	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
-	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
+
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 
 	//gal::itf::shared::load(ar, v);
 	gal::itf::shared::serialize(ar, v);
-	neb::fnd::core::actor::base::load(ar, v);
+	//neb::fnd::core::actor::base::load(ar, v);
+
+	__serialize(ar, v);
 }
-void			THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
+void			THIS::save(
+		ba::polymorphic_oarchive & ar, unsigned int const & v) const
 {
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 	printv_func(DEBUG);
-	
-	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
-	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
+
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
+	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 
 	//gal::itf::shared::save(ar, v);
 	const_cast<THIS*>(this)->gal::itf::shared::serialize(ar, v);
-	neb::fnd::core::actor::base::save(ar, v);
+	//neb::fnd::core::actor::base::save(ar, v);
+
+	const_cast<THIS*>(this)->__serialize(ar, v);
 }
 
 

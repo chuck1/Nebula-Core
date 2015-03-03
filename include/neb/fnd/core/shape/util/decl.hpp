@@ -10,7 +10,7 @@ namespace neb { namespace fnd { namespace core {
 			class parent;
 		}
 		class base;
-		class box;
+		class Cuboid;
 		class sphere;
 
 		namespace cuboid

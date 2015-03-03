@@ -28,27 +28,29 @@ THIS::SimpleProjectile()
 void			THIS::connect(
 		std::shared_ptr<neb::fnd::input::source> src)
 {
-	printv(info, "%s\n", __PRETTY_FUNCTION__);
+	printv(INFO, "%s\n", __PRETTY_FUNCTION__);
 	connectKeyFun(src, 20);
 }
 int			THIS::keyFun(
-		std::shared_ptr<neb::fnd::input::source> src,
+		std::shared_ptr<neb::fnd::input::source> const & src,
 		int key,
 		int,
 		int action,
 		int mods)
 {
-	printv(info, "%s\n", __PRETTY_FUNCTION__);
+	printv(INFO, "%s\n", __PRETTY_FUNCTION__);
 
 	int key_fire = GLFW_KEY_SPACE;
 
 	switch(action) {
-		case GLFW_PRESS:
-			if(key == key_fire) {
-				fire();
-				return 1;
-			}
-			break;
+	case GLFW_PRESS:
+		if(key == key_fire) {
+			fire();
+			return 1;
+		}
+		break;
+	default:
+		return 0;
 	}
 
 	return 0;
@@ -69,7 +71,9 @@ void			THIS::fire()
 	assert(actor);
 
 	auto scene = dynamic_cast<neb::fnd::core::scene::base*>(actor->getScene());
+	assert(scene);
 
+	// CREATE ACTOR
 	auto proj_base = scene->createActorRigidDynamicUninitialized().lock();
 
 	//auto proj = std::dynamic_pointer_cast<neb::phx::core::actor::rigiddynamic::base>(proj_base);
@@ -116,17 +120,22 @@ void			THIS::fire()
 
 	proj->init(scene);
 
-	// shape
-	auto shape = proj->createShapeCuboid(
-			neb::fnd::core::shape::cuboid::Desc(glm::vec3(size_))
-			);
+	// CREATE SHAPE
+	glm::vec3 s(size_);
+	neb::fnd::core::shape::cuboid::Desc desc(s);
+	
+	auto shape = proj->createShapeCuboid(desc);
 
 	proj->init(scene);
 	//proj->setupFiltering();
 
 	// release timer
-	auto t = std::make_shared<neb::fnd::timer::actor::Release>(proj, scene->last_ + 5.0);
-
+	
+	/// @TODO app function to create timer
+	typedef neb::fnd::timer::actor::Release TIMER;
+	TIMER * tp = new TIMER(proj, scene->last_ + 5.0);
+	std::shared_ptr<TIMER> t(tp);
+	t->init(app);
 	t->activate();
 }
 

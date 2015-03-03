@@ -9,7 +9,7 @@ THIS::~sink()
 }
 void		THIS::connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, int i)
 {
-	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
+	printv(DEBUG, "%s %p %p\n", __PRETTY_FUNCTION__, this, src.get());
 
 	conns_.key_fun_ = src->sig_.keyFun_.connect(
 			i,

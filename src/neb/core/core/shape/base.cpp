@@ -123,6 +123,9 @@ void					THIS::release()
 
 	neb::fnd::core::shape::util::parent::map_.clear();
 	neb::fnd::core::light::util::parent::map_.clear();
+
+	G::reset();
+	P::reset();
 }
 void						THIS::step(
 		gal::etc::timestep const & ts)

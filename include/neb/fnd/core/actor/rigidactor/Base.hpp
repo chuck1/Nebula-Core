@@ -7,8 +7,14 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace rig
 	class base:
 		virtual public neb::fnd::core::actor::actor::base
 	{
-	public:
-		virtual void		set_pose_global(gal::math::pose pose);
+		public:
+			typedef neb::fnd::core::shape::base SHAPE;
+			//virtual void							init(neb::fnd::core::actor::util::parent * const & p) = 0;
+			//virtual void							release() = 0;
+			//virtual void							step(gal::etc::timestep const & ts) = 0;
+			std::weak_ptr<SHAPE>		createShapeBoxUninitialized(glm::vec3 size);
+			std::weak_ptr<SHAPE>		createShapeBox(gal::math::pose, glm::vec3 size);
+			//virtual void			set_pose_global(gal::math::pose pose);
 	};
 
 }}}}}

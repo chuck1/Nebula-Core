@@ -57,7 +57,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			/** @brief constructor */
 			//base(std::shared_ptr<parent_t> parent);
 			virtual ~base();
-			virtual void					init(parent_t * const &) = 0;
+			virtual void					init(parent_t * const &);
 			virtual void					release();
 			virtual void					step(gal::etc::timestep const & ts);
 			virtual gal::math::pose				getPose() const;
@@ -67,6 +67,8 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 
 			void			hit();
 			void			damage(double);
+			void			set_pose_global(
+					gal::math::pose const & pose);
 			//std::shared_ptr<neb::fnd::core::actor::util::parent>		get_parent();
 			/** @brief set pose data
 			 * set the pose variable after calculating physics
@@ -86,7 +88,7 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeHeightField(
-					neb::fnd::core::shape::HeightField::desc const &) = 0;
+					neb::fnd::core::shape::HeightField::desc const &);
 			/** @brief
 			 *
 			 */

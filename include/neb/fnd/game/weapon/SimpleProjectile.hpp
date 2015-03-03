@@ -15,7 +15,11 @@ namespace neb { namespace fnd { namespace game { namespace weapon {
 			virtual void		connect(
 					std::shared_ptr<neb::fnd::input::source> window);
 			virtual int		keyFun(
-					std::shared_ptr<neb::fnd::input::source> window, int, int, int, int);
+					std::shared_ptr<neb::fnd::input::source> const & window,
+					int,
+					int,
+					int,
+					int);
 			virtual void		fire();
 			double			size_;
 			double			velocity_;

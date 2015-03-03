@@ -1,5 +1,5 @@
-#ifndef NEB_FND_CORE_ACTOR_CONTROL_RIGID_BODY_CONTROL_H__
-#define NEB_FND_CORE_ACTOR_CONTROL_RIGID_BODY_CONTROL_H__
+#ifndef NEB_FND_CORE_ACTOR_CONTROL_RIGID_BODY_BASE_HPP
+#define NEB_FND_CORE_ACTOR_CONTROL_RIGID_BODY_BASE_HPP
 
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -30,38 +30,45 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace con
 	{
 		public:
 			using gal::tmp::Verbosity<neb::fnd::core::actor::control::rigidbody::base>::printv;
-/*
 			base();
 			virtual ~base();
 			base&				operator=(base const & base);
 			virtual void			release();
-			virtual int			keyFun(std::shared_ptr<neb::fnd::input::source> const &, int, int, int, int);
-			*/
-			virtual void			step(gal::etc::timestep const & ts) = 0;
+			virtual int			keyFun(
+					std::shared_ptr<neb::fnd::input::source> const &,
+					int,
+					int,
+					int,
+					int);
+		virtual void			step(gal::etc::timestep const & ts) = 0;
+			/**
+			 * supply the body or global frame accumulated force and torque
+			 */
 			virtual glm::vec3		f_body() = 0;
 			virtual glm::vec3		t_body() = 0;
 			virtual glm::vec3		f_global() = 0;
 			virtual glm::vec3		t_global() = 0;
-			virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version) = 0;
-			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) = 0;
+			virtual void			serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+			virtual void			serialize(boost::archive::polymorphic_oarchive & ar, unsigned int const & version);
 			/** parent actor weak pointer */
 			std::weak_ptr<neb::fnd::core::actor::rigidbody::base>		actor_;
 		public:
-			/*
-			std::weak_ptr<neb::phx::core::actor::rigidbody::base>		actor_;
+		public:
 			glm::quat				q_target_;
 			glm::vec3				p_target_;
+			/**
+			 * store force and torque
+			 */
 			glm::vec3				f_;
 			glm::vec3				t_;
 			glm::vec3				force_;
 			glm::vec3				torque_;
+		public:
+			/*
 			//gal::control::control		pid_;
 			//
 			*/
 	};
-
 }}}}}}
 
-
 #endif
-
