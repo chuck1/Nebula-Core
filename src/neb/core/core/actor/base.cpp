@@ -8,6 +8,8 @@
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/scene/Base.hpp>
+#include <neb/fnd/core/shape/Cuboid.hpp>
+#include <neb/fnd/core/shape/HeightField.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
 
 #include <gal/stl/deleter.hpp>
@@ -279,14 +281,13 @@ void			THIS::damage(double h)
 		getParent()->erase(_M_index);
 	}
 }
-
-std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose const & pose)
+std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeBase(gal::math::pose const & pose)
 {
 	printv_func(DEBUG);
 	
 	//auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
-	typedef neb::fin::core::shape::base T;
+	typedef neb::fnd::core::shape::base T;
 
 	std::shared_ptr<T> shape(
 			new T(), gal::stl::deleter<T>());
@@ -297,13 +298,13 @@ std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose
 
 	return shape;
 }
-std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
+std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeCuboid(
 		neb::fnd::core::shape::cuboid::Desc const & desc)
 {
 	printv_func(DEBUG);
 	
 	//auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
-	typedef neb::fin::core::shape::box T;
+	typedef neb::fnd::core::shape::Cuboid T;
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
@@ -331,9 +332,9 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 {
 	printv_func(DEBUG);
 	
-	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
+	//auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
-	typedef neb::fin::core::shape::HeightField::Base T;
+	typedef neb::fnd::core::shape::HeightField::Base T;
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
