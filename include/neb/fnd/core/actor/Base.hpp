@@ -121,13 +121,6 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 					gal::math::pose const & pose);
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCuboid(
 					neb::fnd::core::shape::cuboid::Desc const &);
-			/** @brief
-			 *
-			 */
-			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeHeightField(
-					neb::fnd::core::shape::HeightField::desc const &);
-
-
 			neb::fnd::core::actor::util::flag			flag_;
 			gal::math::pose					pose_;
 			glm::vec3						velocity_;

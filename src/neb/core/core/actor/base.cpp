@@ -1,6 +1,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/decl.hpp>
@@ -8,6 +9,24 @@
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/game/weapon/SimpleProjectile.hpp>
+
+#include <gal/stl/deleter.hpp>
+#include <gal/stl/verbosity.hpp>
+
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
+
+#include <neb/fnd/plug/phx/core/actor/Base.hpp>
+
+/*
+#include <neb/fin/core/actor/rigidactor/base.hpp>
+#include <neb/fin/core/shape/box.hpp>
+#include <neb/fin/core/shape/HeightField.hpp>
+
+#include <neb/fin/core/actor/base.hpp>
+*/
 
 typedef neb::fnd::core::actor::base THIS;
 
@@ -38,7 +57,7 @@ void			THIS::init(parent_t * const & p)
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
 	namespace NS1 = neb::fnd::plug::gfx::core::actor;
-	namespace NS2 = neb::fnd::plug::gfx::core::actor;
+	namespace NS2 = neb::fnd::plug::phx::core::actor;
 
 	setParent(p);
 
@@ -265,7 +284,7 @@ std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose
 {
 	printv_func(DEBUG);
 	
-	auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
+	//auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
 	typedef neb::fin::core::shape::base T;
 
