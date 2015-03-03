@@ -10,9 +10,7 @@ namespace neb { namespace fnd { namespace plug { namespace phx { namespace core 
 		public:
 			virtual glm::vec3		get_angular_velocity() = 0;
 			virtual glm::vec3		get_mass_space_inertia_tensor() = 0;
-
 	};
 }}}}}}}
-
 
 #endif

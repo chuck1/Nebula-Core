@@ -79,19 +79,6 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			void								__set_pose_data(
 					gal::math::pose const & pose);
 		public:
-			/** @brief
-			 *
-			 */
-			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeBase(
-					gal::math::pose const & pose) = 0;
-			/** @brief
-			 *
-			 */
-			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCuboid(
-					neb::fnd::core::shape::cuboid::Desc const &) = 0;
-			/** @brief
-			 *
-			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCube(
 					gal::math::pose const & pose,
 					double size);
@@ -129,6 +116,18 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
+
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeBase(
+					gal::math::pose const & pose);
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCuboid(
+					neb::fnd::core::shape::cuboid::Desc const &);
+			/** @brief
+			 *
+			 */
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeHeightField(
+					neb::fnd::core::shape::HeightField::desc const &);
+
+
 			neb::fnd::core::actor::util::flag			flag_;
 			gal::math::pose					pose_;
 			glm::vec3						velocity_;
