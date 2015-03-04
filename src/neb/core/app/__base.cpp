@@ -244,8 +244,11 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 	printv_func(DEBUG);
 
 	typedef neb::fnd::game::game::base T;
-
-	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
+	
+	T* t = new T();
+	std::shared_ptr<T> g(t, gal::stl::deleter<T>());
+	
+	g->_M_desc = desc;
 
 	neb::fnd::game::game::util::parent::insert(g);
 

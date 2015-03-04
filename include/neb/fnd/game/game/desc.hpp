@@ -15,42 +15,30 @@ namespace neb { namespace fnd { namespace game { namespace game {
 		public gal::itf::shared
 	{
 		public:
-			desc() {}
-			virtual ~desc() {}
-
-			virtual void				release() {}
-
+			desc();
+			virtual ~desc();
+			desc&					operator=(desc const & d);
+			virtual void				release();
 			template<class Archive> void		__load(Archive & ar, unsigned int const & version)
 			{
 				ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
 			}
-
 			template<class Archive> void		__save(Archive & ar, unsigned int const & version) const
 			{
 				ar & boost::serialization::make_nvp("sceneDllFile",sceneDllFile);
 			}
-
 			virtual void				load(
 					boost::archive::xml_iarchive & ar,
-					unsigned int const & version) {}
-
+					unsigned int const & version);
 			virtual void				save(
 					boost::archive::xml_oarchive & ar,
-					unsigned int const & version) const {}
-
+					unsigned int const & version) const;
 			virtual std::shared_ptr<neb::fnd::game::game::base>		visit(
-					neb::fnd::app::Base * const
-					) const
-			{
-				return std::shared_ptr<neb::fnd::game::game::base>();
-			}
-
+					neb::fnd::app::Base * const) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
-
 			std::string		sceneDllFile;
-
+			int			_M_net_type;
 	};
-
 }}}}
 
 #endif

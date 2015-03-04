@@ -2,7 +2,10 @@
 #define NEBULA_CORE_GAME_GAME_BASE_HPP
 
 #include <neb/fnd/core/scene/util/decl.hpp>
+
 #include <neb/fnd/game/game/util/decl.hpp>
+#include <neb/fnd/game/game/desc.hpp>
+
 #include <neb/fnd/game/trigger/util/parent.hpp>
 #include <neb/fnd/game/map/util/Parent.hpp>
 #include <neb/fnd/game/ai/util/parent.hpp>
@@ -14,7 +17,7 @@ namespace neb { namespace fnd { namespace game { namespace game {
 	{
 		public:
 			using CHILD::get_fnd_app;
-			typedef neb::fnd::game::game::util::parent parent_t;
+			//typedef neb::fnd::game::game::util::parent parent_t;
 			virtual void				init(parent_t * const &);
 			virtual void				release();
 			virtual void				step(
@@ -25,6 +28,7 @@ namespace neb { namespace fnd { namespace game { namespace game {
 			 */
 			//std::weak_ptr<neb::fnd::core::scene::base>		scene_;
 			//gal::map<std::shared_ptr<neb::Game::Player> >   players_;
+			neb::fnd::game::game::desc		_M_desc;
 	};
 }}}}
 
