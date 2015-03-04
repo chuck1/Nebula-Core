@@ -37,6 +37,8 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base>
 	{
 		public:
+			typedef std::weak_ptr<neb::fnd::window::Base>		window_w;
+			typedef std::weak_ptr<neb::fnd::core::scene::base>	scene_w;
 			using gal::tmp::Verbosity<neb::fnd::app::Base>::printv;
 			typedef gal::dll::helper<gal::itf::shared> H;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
@@ -45,17 +47,20 @@ namespace neb { namespace fnd { namespace app {
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
 			/***/
+			static std::shared_ptr<neb::fnd::app::base>		global();
+			static std::shared_ptr<neb::fnd::app::base>		s_init(int ac, char ** av);
+			Base();
 			virtual ~Base();
 			/***/
-			gal::math::pose					getPose() const;
+			gal::math::pose						getPose() const;
 			/***/
-			gal::math::pose					getPoseGlobal() const;
+			gal::math::pose						getPoseGlobal() const;
 			/***/
-			std::weak_ptr<neb::fnd::game::game::base>		createGame();
-			/***/
-			std::weak_ptr<neb::fnd::game::game::base>		createGame(
-					neb::fnd::game::game::desc const &
-					);
+			void							release();
+			virtual void						step(gal::etc::timestep const & ts);
+			void							preloop();
+			void							loop();
+			void							set_should_release();
 		protected:
 			//virtual void						init();
 		protected:
@@ -67,16 +72,22 @@ namespace neb { namespace fnd { namespace app {
 			/***/
 			static bool						is_valid();
 			/***/
-			virtual std::weak_ptr<neb::fnd::window::Base>		createWindow() = 0;
+			virtual window_w					createWindow();
 			/***/
 			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
-					std::shared_ptr<neb::fnd::environ::Base> environ) = 0;
+					std::shared_ptr<neb::fnd::environ::Base> environ);
 			/***/
-			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene() = 0;
-			/***/
-			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string) = 0;
-			/***/
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene();
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string);
+			std::weak_ptr<neb::fnd::game::game::base>		createGame();
+			std::weak_ptr<neb::fnd::game::game::base>		createGame(
+					neb::fnd::game::game::desc const &);
+	
+		protected:
+			void							initRegistry();
+			void							read_config();
+		public:
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;

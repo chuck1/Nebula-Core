@@ -1,8 +1,8 @@
-
 #include <stdio.h>
 
 #include <gal/log/log.hpp>
 
+#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
@@ -11,22 +11,67 @@
 #include <neb/fnd/core/light/base.hpp>
 #include <neb/fnd/core/light/util/light_count.hpp>
 #include <neb/fnd/core/shape/base.hpp>
-#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
 
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
+#include <neb/fnd/plug/phx/core/scene/Base.hpp>
+
 
 typedef neb::fnd::core::scene::base THIS;
+
+
+
+
+
+
+
+
+#include <gal/stl/deleter.hpp>
+
+#include <neb/fnd/plug/gfx/core/scene/Base.hpp>
+
+#include <neb/fnd/core/actor/Base.hpp>
+#include <neb/fnd/core/actor/rigidstatic/base.hpp>
+#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
+
+typedef std::weak_ptr<neb::fnd::core::actor::base>			wbase;
+
+
+#include <neb/fnd/core/scene/Base.hpp>
+
 
 THIS::base():
 	last_(0)
 {
+	printv_func(DEBUG);
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
 THIS::~base()
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
+}
+void			THIS::init(parent_t * const & p)
+{
+	printv_func(DEBUG);
+
+	setParent(p);
+	
+	neb::fnd::core::scene::base::__init(p);
+	//neb::gfx::core::scene::base::__init(p);
+	
+	auto app = get_fnd_app();
+
+	if(!G::has_object())
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				0);
+
+	if(!P::has_object())
+		P::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				0);
+	
 }
 void			THIS::__init(parent_t * const & p)
 {
@@ -55,16 +100,12 @@ void				THIS::add_deferred(
 	abort();
 	//actors_deferred_[actor->name_] = actor;
 }
-void		THIS::step(gal::etc::timestep const & ts) {
-
+void		THIS::step(gal::etc::timestep const & ts)
+{
 	actors::step(ts);
 
-//	A::map_.for_each([&] (A::map_type::pointer p) {
-//			auto actor = std::dynamic_pointer_cast<neb::fnd::core::actor::base>(it->ptr_);
-//			assert(actor);
-//			actor->step(ts);
-//			});
-
+	if(P::has_object())
+		P::get_object()->step(ts);
 }
 std::weak_ptr<neb::fnd::core::actor::base>		THIS::createActorRigidStaticCube(
 		gal::math::pose pose,
@@ -183,6 +224,8 @@ void			THIS::load(
 		boost::archive::polymorphic_iarchive & ar,
 		unsigned int const & version)
 {
+	printv_func(DEBUG);
+
 	ar & boost::serialization::make_nvp("flag",flag_);
 	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
 }
@@ -193,11 +236,150 @@ void			THIS::save(
 	ar & boost::serialization::make_nvp("flag",flag_);
 	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
 }
+
+
 void			THIS::draw(neb::fnd::RenderDesc const & rd)
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 	//if(G::has_object())
 	G::get_object()->draw(rd);
 }
+
+
+
+
+
+
+
+void			THIS::release()
+{
+	printv_func(DEBUG);
+
+	neb::fnd::core::scene::base::__release();
+}
+wbase		THIS::createActorBase(gal::math::pose pose)
+{
+	printv_func(DEBUG);
+
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
+
+	typedef neb::fnd::core::actor::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	actor->pose_ = pose;
+
+	insert(actor);
+
+	actor->init(this);
+
+	return actor;
+}
+wbase		THIS::createActorRigidStaticUninitialized()
+{
+	printv_func(DEBUG);
+
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
+
+	typedef neb::fnd::core::actor::rigidstatic::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	neb::fnd::core::actor::util::parent::insert_no_init(actor);
+	
+	// filtering
+	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::STATIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	return actor;
+}
+wbase		THIS::createActorRigidDynamicUninitialized()
+{
+	printv_func(DEBUG);
+
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
+
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	neb::fnd::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	return actor;
+}
+wbase			THIS::createActorRigidDynamic()
+{
+	printv_func(DEBUG);
+
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
+
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	neb::fnd::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	actor->init(this);
+
+	return actor;
+}
+wbase			THIS::createActorRigidDynamic(
+		neb::fnd::core::actor::rigiddynamic::Desc const * const & desc)
+{
+	printv_func(DEBUG);
+
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
+
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	neb::fnd::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	actor->init(this);
+
+	return actor;
+}
+void			THIS::drawPhysxVisualization(
+		neb::fnd::RenderDesc const & desc)
+{
+	printv_func(DEBUG);
+	//auto app = get_fin_app();
+
+	if(!flag_.all(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION)) return;
+
+	// visual debugging
+	if(P::has_object()) { //if(px_scene_) {
+		// get the data
+
+		neb::fnd::DebugBuffer db = P::get_object()->get_debug_buffer();
+		
+		if(G::has_object())
+			G::get_object()->draw_debug_buffer(desc, db);
+
+		//auto e = neb::could_be<neb::gfx::environ::base, neb::gfx::environ::three>(context->environ_);
+		//if(e)
+	}
+}
+
+
+
 
 

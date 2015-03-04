@@ -21,10 +21,7 @@ namespace neb { namespace fnd { namespace plug { namespace phx { namespace core 
 		public:
 			typedef neb::fnd::core::scene::base FND;
 			virtual void			init(parent_t * const & p) = 0;
-			virtual void			draw_debug_buffer(
-					neb::fnd::RenderDesc const & desc,
-					neb::fnd::DebugBuffer const & db) = 0;
-			virtual void			draw(neb::fnd::RenderDesc const & rd) = 0;
+			virtual neb::fnd::DebugBuffer	get_debug_buffer() = 0;
 /*
 			virtual void			v_set_pose_data(
 					FND * const & ptr,
