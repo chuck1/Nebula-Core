@@ -65,7 +65,6 @@ namespace neb { namespace fnd { namespace app {
 			//virtual void						init();
 		protected:
 			void							__init();
-			void							__release();
 			void							__step(gal::etc::timestep const &);
 			void							render();
 		public:

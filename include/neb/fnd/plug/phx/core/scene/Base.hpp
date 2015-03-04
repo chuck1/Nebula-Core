@@ -15,7 +15,7 @@ namespace neb { namespace fnd { namespace plug { namespace phx { namespace core 
 	class Base:
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::plug::Object<
-				neb::fnd::plug::gfx::core::scene::Base,
+				neb::fnd::plug::phx::core::scene::Base,
 				neb::fnd::core::scene::base>
 	{
 		public:

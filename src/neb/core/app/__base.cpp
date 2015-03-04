@@ -10,7 +10,6 @@
 #include <gal/dll/helper_info.hpp>
 
 #include <neb/fnd/util/debug.hpp>
-#include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/config.hpp> // neb/fnd/util/config.hpp.in
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/net/core/scene/Base.hpp>
@@ -30,10 +29,6 @@
 #include <neb/fnd/plug/phx/core/scene/Base.hpp>
 #include <neb/fnd/plug/phx/core/actor/Base.hpp>
 #include <neb/fnd/plug/phx/core/shape/Base.hpp>
-
-
-
-
 
 
 
@@ -160,7 +155,7 @@ void			THIS::__init()
 	// python init
 	char buffer[256];
 	strcpy(buffer, "import sys\nsys.path.append(\"");
-	strcat(buffer, STRINGIZE(NEB_SRC_DIR));
+	strcat(buffer, NEB_SRC_DIR);
 	strcat(buffer, "/components/python/build/dynamic");
 	strcat(buffer, "\")");
 
@@ -174,11 +169,11 @@ void			THIS::__init()
 
 	try {
 		console_->eval(buffer);
-		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
+		console_->main_namespace_["neb"] = boost::python::import("libnebula_python");
 		//console_->main_namespace_["app"] = py_app;
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
-		printf("%s\n", STRINGIZE(PY_LIB_NAME));
+		printf("%s\n", "libnebula_python.a");
 		// print all other errors to stderr
 		PyErr_Print();
 
@@ -208,7 +203,7 @@ bool			THIS::is_valid()
 {
 	return (bool)g_app_;
 }
-void						THIS::__release()
+void						THIS::release()
 {
 	printv_func(DEBUG);
 
@@ -321,7 +316,7 @@ void				THIS::open_physics_plugin(std::string filename)
 	_M_physics_plugin->open();
 
 	_M_physics_plugin->template add<APP, int>("app");
-	//_M_physics_plugin->template add<SC,  int>("scene");
+	_M_physics_plugin->template add<SC,  int>("scene");
 	_M_physics_plugin->template add<AC,  int>("actor");
 	_M_physics_plugin->template add<SH,  int>("shape");
 
@@ -400,15 +395,6 @@ std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 	
 	// continue init
 	app->neb::fnd::app::Base::__init();
-	app->neb::fin::app::base::__init();
-
-	//app->neb::gfx::app::Base::__init();
-	//app->neb::gfx::app::glsl::__init();
-	//app->neb::gfx::app::glfw::__init();
-	//app->neb::gfx::app::draw::__init();
-
-	//app->neb::phx::app::base::__init();
-
 
 
 	printv(DEBUG, "&g_app_ = %p\n", &g_app_);
@@ -611,14 +597,6 @@ void							THIS::step(gal::etc::timestep const & ts)
 
 	neb::fnd::gui::layout::util::Parent::step(ts);
 }
-gal::math::pose					THIS::getPose()
-{
-	return gal::math::pose();
-}
-gal::math::pose					THIS::getPoseGlobal()
-{
-	return gal::math::pose();
-}
 void							THIS::set_should_release()
 {
 }
@@ -626,9 +604,9 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
+	//auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
-	typedef neb::fin::core::scene::base T;
+	typedef neb::fnd::core::scene::base T;
 
 	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
 
@@ -652,15 +630,15 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 */
 	return scene;
 }
-std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
+std::weak_ptr<neb::fnd::core::scene::base>		THIS::createSceneDLL(
 		std::string dll_name)
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
+	//auto self(dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
 
-	typedef neb::fin::core::scene::base		T;
-	typedef gal::dll::helper<T>				H;
+	typedef neb::fnd::core::scene::base		T;
+	typedef gal::dll::helper<T>			H;
 
 	std::shared_ptr<H> h(new H(dll_name));
 	h->open();

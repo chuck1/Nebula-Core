@@ -69,7 +69,7 @@ void			THIS::init(parent_t * const & p)
 
 	if(!P::has_object())
 		P::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->_M_physics_plugin,
 				0);
 	
 }
