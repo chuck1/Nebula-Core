@@ -1,18 +1,29 @@
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <thread>
 #include <fstream>
+#include <fstream>
+#include <algorithm>
+#include <map>
 
 //#include <ft2build.h>
 //#include FT_FREETYPE_H
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 #include <gal/log/log.hpp>
 #include <gal/dll/helper_info.hpp>
+#include <gal/dll/helper.hpp>
+#include <gal/console/base.hpp>
+#include <gal/etc/stopwatch.hpp>
+#include <gal/stl/deleter.hpp>
+#include <gal/argparse/Parser.hpp>
 
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/config.hpp> // neb/fnd/util/config.hpp.in
-#include <neb/fnd/core/actor/rigidbody/desc.hpp>
-#include <neb/fnd/net/core/scene/Base.hpp>
 
 #include <neb/fnd/plug/gfx/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
@@ -31,27 +42,7 @@
 #include <neb/fnd/plug/phx/core/shape/Base.hpp>
 
 
-
-
-
-#include <fstream>
-#include <algorithm>
-#include <stdio.h>
-#include <stdlib.h>
-#include <map>
-
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include <gal/console/base.hpp>
-#include <gal/etc/stopwatch.hpp>
-#include <gal/dll/helper.hpp>
-#include <gal/stl/deleter.hpp>
-#include <gal/argparse/Parser.hpp>
-
 #include <neb/fnd/free.hpp>
-#include <neb/fnd/util/config.hpp>
 #include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
 #include <neb/fnd/plug/gfx/app/Base.hpp>
@@ -61,19 +52,17 @@
 #include <neb/fnd/gui/layout/util/Parent.hpp>
 #include <neb/fnd/gui/object/Terminal.hpp>
 
+#include <neb/fnd/net/core/scene/Base.hpp>
+
 #include <neb/fnd/core/scene/Base.hpp>
-#include <neb/fnd/core/light/Point.hpp>
-
-//#include <neb/py/util/config.hpp> // neb/py/util/config.hpp.in
-//#include <neb/py/core/scene/base.hpp>
-//#include <neb/py/app/base.hpp>
-
-
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
 #include <neb/fnd/core/actor/rigidstatic/base.hpp>
+#include <neb/fnd/core/actor/rigidbody/desc.hpp>
 
 #include <neb/fnd/core/shape/Cuboid.hpp>
 #include <neb/fnd/core/shape/HeightField.hpp>
+
+#include <neb/fnd/core/light/Point.hpp>
 
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
@@ -393,12 +382,14 @@ std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 		printf("%s\n", filename.c_str());
 	}
 	
+	
+
 	// continue init
 	app->neb::fnd::app::Base::__init();
-
-
-	printv(DEBUG, "&g_app_ = %p\n", &g_app_);
-
+	
+	
+	//printv(DEBUG, "&g_app_ = %p\n", &g_app_);
+	
 	g_app_ = app;
 
 	return app;

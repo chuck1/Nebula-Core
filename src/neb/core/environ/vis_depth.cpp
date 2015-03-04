@@ -1,7 +1,8 @@
-#include <neb/fin/environ/visualization/Depth.hpp>
+#include <neb/fnd/environ/visualization/Depth.hpp>
 
-typedef neb::fin::environ::visualization::Depth THIS;
+typedef neb::fnd::environ::visualization::Depth THIS;
 
+/*
 void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
@@ -10,3 +11,4 @@ void			THIS::init(parent_t * const & p)
 	neb::fnd::environ::Base::init(p);
 
 }
+*/
