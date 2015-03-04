@@ -47,8 +47,8 @@ namespace neb { namespace fnd { namespace app {
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
 			/***/
-			static std::shared_ptr<neb::fnd::app::base>		global();
-			static std::shared_ptr<neb::fnd::app::base>		s_init(int ac, char ** av);
+			static std::shared_ptr<neb::fnd::app::Base>		global();
+			static std::shared_ptr<neb::fnd::app::Base>		s_init(int ac, char ** av);
 			Base();
 			virtual ~Base();
 			/***/

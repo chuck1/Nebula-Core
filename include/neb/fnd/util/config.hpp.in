@@ -7,6 +7,7 @@
 
 #define NEB_MOD_DIR   "{{ master_config_dir }}/mod/"
 #define NEB_SHARE_DIR "{{ master_config_dir }}/share"
+#define NEB_SRC_DIR   "{{ master_config_dir }}"
 
 //#define NEB_INSTALL_DIR " CMAKE_INSTALL_PREFIX "
 
