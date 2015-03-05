@@ -1,3 +1,4 @@
+#include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/camera/view/Base.hpp>
 #include <neb/fnd/plug/gfx/camera/view/Base.hpp>
 
