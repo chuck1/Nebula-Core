@@ -6,6 +6,7 @@
 #include <gal/etc/timestep.hpp>
 #include <gal/stl/verbosity.hpp>
 #include <gal/console/console.hpp>
+#include <gal/itf/registry.hpp>
 
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/app/util/Flag.hh>
@@ -27,6 +28,7 @@ namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
 		public gal::tmp::Verbosity<neb::fnd::app::Base>,
+		virtual public gal::itf::registry,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
 		virtual public neb::fnd::timer::util::Parent,

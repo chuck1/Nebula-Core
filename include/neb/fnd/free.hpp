@@ -15,8 +15,8 @@ template<typename B, typename D> void	makeDefaultFunc()
 {
 	//LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
-	gal::itf::shared::register_type(std::type_index(typeid(B)));
-	gal::itf::shared::register_type(std::type_index(typeid(D)));
+	//gal::itf::shared::register_type(std::type_index(typeid(B)));
+	//gal::itf::shared::register_type(std::type_index(typeid(D)));
 
 	std::function< std::shared_ptr<B>() > f(
 			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
@@ -28,8 +28,8 @@ template<typename HB, typename B, typename D> void	makeDLLFunc(std::string class
 {
 	//LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
-	gal::itf::shared::register_type(std::type_index(typeid(B)));
-	gal::itf::shared::register_type(std::type_index(typeid(D)));
+	//gal::itf::shared::register_type(std::type_index(typeid(B)));
+	//gal::itf::shared::register_type(std::type_index(typeid(D)));
 	
 	//typedef neb::fin::gfx_phx::core::scene::base		D;
 	typedef gal::dll::helper<HB>				H;

@@ -1,4 +1,5 @@
 #include <neb/fnd/game/weapon/base.hpp>
+#include <neb/fnd/game/weapon/util/parent.hpp>
 
 typedef neb::fnd::game::weapon::base THIS;
 

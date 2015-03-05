@@ -10,8 +10,8 @@
 #include <neb/fnd/itf/shared.hpp>
 
 namespace neb { namespace fnd { namespace util {
-
-	template<typename CHILD, typename PARENT> class parent:
+	template<typename CHILD, typename PARENT>
+	class parent:
 		virtual public gal::stl::parent<CHILD>
 	{
 		public:
@@ -71,9 +71,7 @@ namespace neb { namespace fnd { namespace util {
 				};
 				gal_parent::map_.for_each(l);
 			}
-
 	};
-
 }}}
 
 #endif
