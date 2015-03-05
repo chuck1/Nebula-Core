@@ -1,0 +1,38 @@
+digraph {
+	rankdir=BT
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodypdcpp [label="components/core/src/neb/fnd/core/actor/control/rigidbody/pd.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodymanualcpp [label="components/core/src/neb/fnd/core/actor/control/rigidbody/manual.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodybasecpp [label="components/core/src/neb/fnd/core/actor/control/rigidbody/base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoresceneBasecpp [label="components/core/src/neb/fnd/core/scene/Base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreshapebasecpp [label="components/core/src/neb/fnd/core/shape/base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguilayoutBasecpp [label="components/core/src/neb/fnd/gui/layout/Base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjectterminalcpp [label="components/core/src/neb/fnd/gui/object/terminal.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjectBasecpp [label="components/core/src/neb/fnd/gui/object/Base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjecttextviewcpp [label="components/core/src/neb/fnd/gui/object/textview.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndapp__basecpp [label="components/core/src/neb/fnd/app/__base.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathHeightFieldcpp [label="components/core/src/neb/fnd/math/HeightField.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeospherecpp [label="components/core/src/neb/fnd/math/geo/sphere.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeovertexcpp [label="components/core/src/neb/fnd/math/geo/vertex.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeocuboidcpp [label="components/core/src/neb/fnd/math/geo/cuboid.cpp"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeopolyhedroncpp [label="components/core/src/neb/fnd/math/geo/polyhedron.cpp"]
+	usrincludeGLglewh [label="/usr/include/GL/glew.h"]
+	usrincludefeaturesh [label="/usr/include/features.h"]
+	usrincludestdioh [label="/usr/include/stdio.h"]
+	usrlocalincludeglmgtxtransformhpp [label="/usr/local/include/glm/gtx/transform.hpp"]
+	usrincludestringh [label="/usr/include/string.h"]
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodypdcpp -> usrincludeGLglewh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodymanualcpp -> usrincludeGLglewh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreactorcontrolrigidbodybasecpp -> usrincludeGLglewh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoresceneBasecpp -> usrincludestdioh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndcoreshapebasecpp -> usrlocalincludeglmgtxtransformhpp
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguilayoutBasecpp -> usrincludefeaturesh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjectterminalcpp -> usrincludeGLglewh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjectBasecpp -> usrincludestringh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndguiobjecttextviewcpp -> usrincludestdioh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndapp__basecpp -> usrincludestringh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathHeightFieldcpp -> usrincludefeaturesh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeospherecpp -> usrincludestdioh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeovertexcpp -> usrincludefeaturesh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeocuboidcpp -> usrincludestdioh
+	homechuckgitnebulaenginenebulacomponentscoresrcnebfndmathgeopolyhedroncpp -> usrincludefeaturesh
+}

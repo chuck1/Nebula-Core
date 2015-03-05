@@ -49,8 +49,8 @@ neb::fnd::core::actor::base::~base()
 {
 	printv_func(DEBUG);
 
-	assert(neb::fnd::core::actor::util::parent::map_.empty());
-	assert(neb::fnd::core::shape::util::parent::map_.empty());
+	assert(neb::fnd::core::actor::util::parent::empty());
+	assert(neb::fnd::core::shape::util::parent::empty());
 
 }
 void			THIS::init(parent_t * const & p)

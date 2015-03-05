@@ -9,13 +9,14 @@
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
-#include <neb/fnd/core/shape/base.hpp>
 
 #include <neb/fnd/core/light/Point.hpp>
 #include <neb/fnd/core/light/Directional.hpp>
 #include <neb/fnd/core/light/Spot.hpp>
 
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+
+#include <neb/fnd/core/shape/base.hpp>
 
 typedef neb::fnd::core::shape::base THIS;
 
@@ -114,15 +115,15 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 	}
 	*/
 
-	neb::fnd::core::shape::util::parent::initChildren(this);
-	neb::fnd::core::light::util::parent::initChildren(this);
+	S::initChildren(this);
+	L::initChildren(this);
 }
 void					THIS::release()
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 
-	neb::fnd::core::shape::util::parent::map_.clear();
-	neb::fnd::core::light::util::parent::map_.clear();
+	neb::fnd::core::shape::util::parent::clear();
+	neb::fnd::core::light::util::parent::clear();
 
 	G::reset();
 	P::reset();

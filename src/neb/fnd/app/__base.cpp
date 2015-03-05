@@ -87,6 +87,13 @@ void			THIS::__init()
 
 	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
 
+	// init containers
+	neb::fnd::game::game::util::parent::init(0);
+	neb::fnd::window::util::Parent::init(0);
+	neb::fnd::timer::util::Parent::init(0);
+	neb::fnd::gui::layout::util::Parent::init(0);
+
+
 	// boost asio ioservice
 	printv(DEBUG, "launch ios thread\n");
 
@@ -117,8 +124,8 @@ void			THIS::__init()
 	typedef neb::fnd::core::actor::desc T;
 	typedef neb::fnd::core::actor::rigidbody::desc D;
 
-	gal::itf::shared::register_type(std::type_index(typeid(T)));
-	gal::itf::shared::register_type(std::type_index(typeid(D)));
+	register_type(std::type_index(typeid(T)));
+	register_type(std::type_index(typeid(D)));
 
 	{
 		std::function< std::shared_ptr<T>() > f(

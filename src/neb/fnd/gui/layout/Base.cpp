@@ -6,8 +6,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <gal/log/log.hpp>
-
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/input/source.hpp>
@@ -58,7 +56,7 @@ void			THIS::draw(neb::fnd::RenderDesc const & desc)
 		object->draw(desc);
 	};
 
-	O::map_.for_each(lamb);
+	O::for_each(lamb);
 
 }
 int			THIS::keyFun(
@@ -74,8 +72,7 @@ int			THIS::keyFun(
 	
 	int ret;
 	
-	//O::map_.for_each_int<0>([&] (O::map_type::iterator<0> it) {
-	for(O::map_type::iterator it = O::map_.begin(); it != O::map_.end(); ++it) {
+	for(O::ITER it = O::begin(); it != O::end(); ++it) {
 		auto object = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(it->second.ptr_);
 		assert(object);
 		
@@ -94,7 +91,7 @@ int			THIS::charFun(
 
 	typedef neb::fnd::gui::object::util::Parent O;
 
-	for(O::map_type::iterator it = O::map_.begin(); it != O::map_.end(); ++it) {
+	for(O::map_type::iterator it = O::begin(); it != O::end(); ++it) {
 		auto object = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(it->second.ptr_);
 		assert(object);
 
@@ -159,7 +156,7 @@ int			THIS::search(
 	std::shared_ptr<neb::fnd::gui::object::Base> object;
 	std::shared_ptr<neb::fnd::gui::object::Base> objecttmp;
 
-	auto lamb = [&] (O::map_type::pointer p) {
+	auto lamb = [&] (O::S p) {
 		objecttmp = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(p);
 		assert(objecttmp);
 		printf("object %f %f %f %f\n",
@@ -178,7 +175,7 @@ int			THIS::search(
 		return O::map_type::BREAK;
 	};
 
-	O::map_.for_each_int(lamb);
+	O::for_each_int(lamb);
 
 	if(object) return object->mouseButtonFun(src, button, action, mods);
 

@@ -16,7 +16,7 @@ namespace neb { namespace fnd { namespace util {
 	{
 		public:
 			typedef gal::stl::parent<CHILD>						gal_parent;
-			typedef typename gal::stl::parent<CHILD>::map_type			map_type;
+			typedef typename gal::stl::parent<CHILD>::MAP				map_type;
 			typedef typename map_type::iterator					iterator;
 			typedef typename map_type::pointer					pointer;
 			typedef std::shared_ptr<CHILD>	shared;
@@ -48,7 +48,7 @@ namespace neb { namespace fnd { namespace util {
 
 			template<typename... A> void		initChildren(A... a)
 			{
-				for(auto it = gal_parent::map_.begin(); it != gal_parent::map_.end(); ++it)
+				for(auto it = gal_parent::begin(); it != gal_parent::end(); ++it)
 				{
 					auto p = it->second.ptr_;
 					assert(p);
@@ -60,16 +60,12 @@ namespace neb { namespace fnd { namespace util {
 			void		step(gal::etc::timestep const & ts)
 			{
 				//std::cout << __PRETTY_FUNCTION__ << std::endl;
-				gal_parent::map_.for_each([&] (pointer p) {
-						p->step(ts);
-						});
+				gal_parent::for_each([&] (pointer p) { p->step(ts); });
 			}
 			void		preloop()
 			{
-				auto l = [] (pointer p) {
-					p->preloop();
-				};
-				gal_parent::map_.for_each(l);
+				auto l = [] (pointer p) { p->preloop(); };
+				gal_parent::for_each(l);
 			}
 	};
 }}}

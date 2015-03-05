@@ -19,7 +19,7 @@ void			THIS::callbackPose(gal::math::pose const & parent_gpose)
 		light->v_set_pose_data(gpose);
 	};
 	
-	map_.for_each(lamb);
+	for_each(lamb);
 }
 neb::fnd::app::Base * const	THIS::get_fnd_app()
 {

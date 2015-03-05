@@ -5,7 +5,15 @@ namespace neb { namespace fnd { namespace game {
 
 	/** @brief game */
 	namespace game {
-
+		struct type
+		{
+			enum
+			{
+				NONE = 0,
+				LOCAL = 0,
+				REMOTE = 0,
+			};
+		};
 		/** @brief util */
 		namespace util {
 			class parent;

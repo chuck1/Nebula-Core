@@ -51,6 +51,9 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 			//typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::actor::Base> P;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>	actors;
 			typedef neb::fnd::util::parent<neb::fnd::core::shape::base, neb::fnd::core::shape::util::parent>	shapes;
+			typedef neb::fnd::core::actor::util::parent A;
+			typedef neb::fnd::core::shape::util::parent S;
+
 			//typedef neb::fnd::core::actor::__base> parent_t;
 			/** @brief default constructor */
 			base();
@@ -110,10 +113,13 @@ namespace neb { namespace fnd { namespace core { namespace actor {
 				ar & boost::serialization::make_nvp("velocity",velocity_);
 				ar & boost::serialization::make_nvp("density",density_);
 
+
+				ar & boost::serialization::base_object<A>(*this);
+				ar & boost::serialization::base_object<S>(*this);
+/*				ar & boost::serialization::make_nvp(
+						"actors", neb::fnd::core::actor::util::parent);
 				ar & boost::serialization::make_nvp(
-						"actors", neb::fnd::core::actor::util::parent::map_);
-				ar & boost::serialization::make_nvp(
-						"shapes", neb::fnd::core::shape::util::parent::map_);
+						"shapes", neb::fnd::core::shape::util::parent);*/
 			}
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;

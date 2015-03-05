@@ -22,6 +22,7 @@ namespace neb { namespace fnd { namespace game { namespace game {
 			virtual void				release();
 			virtual void				step(
 					gal::etc::timestep const & ts);
+			int					get_net_type();
 			/** @brief %Scene.
 			 * Currently a game is fully defined by a single scene.
 			 * The game will load a scene from an Xml file.

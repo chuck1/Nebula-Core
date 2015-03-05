@@ -1,13 +1,20 @@
 
 #include <neb/fnd/game/game/base.hpp>
 
-void		neb::fnd::game::game::base::init(parent_t * const & p)
+typedef neb::fnd::game::game::base THIS;
+
+void		THIS::init(parent_t * const & p)
 {
 }
-void		neb::fnd::game::game::base::release()
+void		THIS::release()
 {
 }
-void		neb::fnd::game::game::base::step(gal::etc::timestep const & ts)
+void		THIS::step(gal::etc::timestep const & ts)
 {
 }
+int		THIS::get_net_type()
+{
+	return _M_desc._M_net_type;
+}
+
 

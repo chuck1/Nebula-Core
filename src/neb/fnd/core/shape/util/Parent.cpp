@@ -22,7 +22,7 @@ void				THIS::callbackPose(
 		shape->v_set_pose_data(gpose);
 	};
 	
-	map_.for_each(lambda_shape);
+	for_each(lambda_shape);
 }
 neb::fnd::app::Base * const	THIS::get_fnd_app()
 {

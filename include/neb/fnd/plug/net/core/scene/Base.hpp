@@ -1,5 +1,5 @@
-#ifndef NEB_FND_PLUG_PHX_CORE_SCENE_BASE_HPP
-#define NEB_FND_PLUG_PHX_CORE_SCENE_BASE_HPP
+#ifndef NEB_FND_PLUG_NET_CORE_SCENE_BASE_HPP
+#define NEB_FND_PLUG_NET_CORE_SCENE_BASE_HPP
 
 #include <neb/fnd/tmp/Child.hpp>
 #include <neb/fnd/net/util/decl.hpp>
@@ -11,7 +11,7 @@
 #include <neb/fnd/RenderDesc.hpp>
 #include <neb/fnd/plug/Object.hpp>
 
-namespace neb { namespace fnd { namespace plug { namespace phx { namespace core { namespace scene {
+namespace neb { namespace fnd { namespace plug { namespace net { namespace core { namespace scene {
 	class Base:
 		virtual public neb::fnd::itf::shared,
 		virtual public neb::fnd::plug::Object<

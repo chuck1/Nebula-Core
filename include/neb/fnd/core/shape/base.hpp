@@ -37,9 +37,10 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 	public:
 		using CHILD::get_fnd_app;
 		using gal::tmp::Verbosity<neb::fnd::core::shape::base>::printv;
+		typedef neb::fnd::core::shape::util::parent S;
+		typedef neb::fnd::core::light::util::parent L;
 		typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::shape::Base> G;
 		typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::shape::Base> P;
-		typedef neb::fnd::core::shape::util::parent parent_t;
 		typedef neb::fnd::core::light::base LIGHT;
 		base();
 		virtual ~base();
@@ -78,14 +79,9 @@ namespace neb { namespace fnd { namespace core { namespace shape {
 				ar & boost::serialization::make_nvp("image",image_);
 				ar & boost::serialization::make_nvp("normal",normal_);
 				//ar & BOOST::SERIALIZATION::make_NVP("lights", neb::fnd::core::light::util::parent::map_);
-				ar & boost::serialization::make_nvp(
-						"shapes",
-						neb::fnd::core::shape::util::parent::map_
-						);
-				ar & boost::serialization::make_nvp(
-						"lights",
-						neb::fnd::core::light::util::parent::map_
-						);
+
+				ar & boost::serialization::base_object<S>(*this);
+				ar & boost::serialization::base_object<L>(*this);
 			}
 		public:
 			neb::fnd::core::shape::util::flag		flag_;

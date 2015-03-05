@@ -21,7 +21,7 @@ void				THIS::render()
 		p->render();
 	};
 
-	map_.for_each(lamb);
+	for_each(lamb);
 }
 std::weak_ptr<C_W>		THIS::createContextTwo()
 {

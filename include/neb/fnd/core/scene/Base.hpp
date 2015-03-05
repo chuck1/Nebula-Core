@@ -23,9 +23,12 @@
 #include <neb/fnd/drawable/Base.hpp>
 #include <neb/fnd/net/util/decl.hpp>
 #include <neb/fnd/RenderDesc.hpp>
+#include <neb/fnd/game/game/util/decl.hpp>
 
 #include <neb/fnd/plug/gfx/util/decl.hpp>
 #include <neb/fnd/plug/phx/util/decl.hpp>
+#include <neb/fnd/plug/net/util/decl.hpp>
+
 #include <neb/fnd/plug/ObjectParent.hpp>
 
 typedef weak_ptr<neb::fnd::core::actor::base> wbase;
@@ -97,6 +100,7 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 		public:
 			gal::math::pose			getPose() const;
 			gal::math::pose			getPoseGlobal() const;
+			neb::fnd::game::game::base*	get_game();
 			/** @brief
 			 *
 			 */

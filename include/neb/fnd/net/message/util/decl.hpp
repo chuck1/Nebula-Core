@@ -1,43 +1,31 @@
 #ifndef NEBULA_MESSAGE_TYPES
 #define NEBULA_MESSAGE_TYPES
 
-namespace neb {
+namespace neb { namespace fnd { namespace net {
 	/** @brief %Message */
-	namespace message {
-
-		class base;
-		class IBase;
-		class OBase;
-
+	namespace msg
+	{
+		class Base;
 		/** @brief %Actor */
-		namespace actor {
-
+		namespace actor
+		{
+			class Base;
 			class Create;
-			class ICreate;
-			class OCreate;
-
 			class Update;
-			class IUpdate;
-			class OUpdate;
-
-
 			/** @brief %Control */
-			namespace Control {
+			namespace control
+			{
 				/** @brief %rigidbody */
-				namespace rigidbody {
+				namespace rigidbody
+				{
+					class Base;
 					class Create;
-					class ICreate;
-					class OCreate;
-
 					class Update;
-					class IUpdate;
-					class OUpdate;
-
 				}
 			}
 		}
 	}
-}
+}}}
 
 #endif
 

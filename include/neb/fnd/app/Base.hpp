@@ -12,7 +12,7 @@
 #include <neb/fnd/app/util/Flag.hh>
 #include <neb/fnd/context/util/decl.hpp>
 #include <neb/fnd/environ/util/decl.hpp>
-#include <neb/fnd/core/scene/util/decl.hpp>
+//#include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/game/game/util/parent.hpp>
 #include <neb/fnd/game/game/util/decl.hpp>
 #include <neb/fnd/gui/layout/util/Parent.hpp>

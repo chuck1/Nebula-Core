@@ -3,6 +3,7 @@
 
 #include <gal/itf/shared.hpp>
 
+#include <neb/fnd/util/parent.hpp>
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/game/game/base.hpp>
 

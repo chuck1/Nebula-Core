@@ -23,7 +23,7 @@ void			THIS::resize(int w, int h)
 		p->resize(w, h);
 	};
 	
-	E::map_.for_each(lamb);
+	E::for_each(lamb);
 
 }
 

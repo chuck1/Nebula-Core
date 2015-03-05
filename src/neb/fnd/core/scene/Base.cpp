@@ -13,6 +13,8 @@
 #include <neb/fnd/core/shape/base.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
 #include <neb/fnd/core/scene/util/parent.hpp>
+#include <neb/fnd/game/game/base.hpp>
+#include <neb/fnd/game/game/util/decl.hpp>
 
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 #include <neb/fnd/plug/phx/core/scene/Base.hpp>
@@ -38,13 +40,27 @@ THIS::~base()
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
-void			THIS::init(parent_t * const & p)
+neb::fnd::game::game::base*	THIS::get_game()
+{
+	auto p = getParent();
+	
+	auto m = dynamic_cast<neb::fnd::game::map::Base*>(p);
+	assert(m);
+
+	auto mp = m->getParent();
+
+	auto g = dynamic_cast<neb::fnd::game::game::base*>(mp);
+	assert(g);
+
+	return g;
+}
+void				THIS::init(parent_t * const & p)
 {
 	printv_func(DEBUG);
 
 	setParent(p);
 	
-	
+	auto game = get_game();
 
 	neb::fnd::core::scene::base::__init(p);
 	//neb::gfx::core::scene::base::__init(p);
@@ -63,8 +79,7 @@ void			THIS::init(parent_t * const & p)
 
 	if(!N::has_object()) {
 		int nt = game->get_net_type();
-		if(nt == neb::fnd::game::game::type::NONE)
-		else
+		if(nt != neb::fnd::game::game::type::NONE)
 			N::make_object<THIS, int>(
 					app->_M_network_plugin,
 					nt);
@@ -225,14 +240,14 @@ void			THIS::load(
 	printv_func(DEBUG);
 
 	ar & boost::serialization::make_nvp("flag",flag_);
-	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
+	ar & boost::serialization::base_object<neb::fnd::core::actor::util::parent>(*this);
 }
 void			THIS::save(
 		boost::archive::polymorphic_oarchive & ar,
 		unsigned int const & version) const
 {
 	ar & boost::serialization::make_nvp("flag",flag_);
-	ar & boost::serialization::make_nvp("actors",neb::fnd::core::actor::util::parent::map_);
+	ar & boost::serialization::base_object<neb::fnd::core::actor::util::parent>(*this);
 }
 
 
