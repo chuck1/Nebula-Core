@@ -12,7 +12,6 @@
 #include <neb/fnd/context/util/decl.hpp>
 #include <neb/fnd/environ/util/decl.hpp>
 #include <neb/fnd/core/scene/util/decl.hpp>
-#include <neb/fnd/core/scene/util/parent.hpp>
 #include <neb/fnd/game/game/util/parent.hpp>
 #include <neb/fnd/game/game/util/decl.hpp>
 #include <neb/fnd/gui/layout/util/Parent.hpp>
@@ -28,7 +27,6 @@ namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
 		public gal::tmp::Verbosity<neb::fnd::app::Base>,
-		virtual public neb::fnd::core::scene::util::parent,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
 		virtual public neb::fnd::timer::util::Parent,
@@ -65,7 +63,6 @@ namespace neb { namespace fnd { namespace app {
 			//virtual void						init();
 		protected:
 			void							__init();
-			void							__step(gal::etc::timestep const &);
 			void							render();
 		public:
 			/***/
@@ -77,8 +74,6 @@ namespace neb { namespace fnd { namespace app {
 					std::shared_ptr<neb::fnd::window::Base> window,
 					std::shared_ptr<neb::fnd::environ::Base> environ);
 			/***/
-			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene();
-			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string);
 			std::weak_ptr<neb::fnd::game::game::base>		createGame();
 			std::weak_ptr<neb::fnd::game::game::base>		createGame(
 					neb::fnd::game::game::desc const &);

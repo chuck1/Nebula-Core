@@ -7,27 +7,48 @@ THIS::Base()
 }
 void		THIS::init(parent_t * const & p)
 {
-
+	setParent(p);
 
 }
 void		THIS::release()
 {
+	neb::fnd::core::scene::util::parent::clear();
 	neb::fnd::game::spawn::util::parent::clear();
 }
 void		THIS::step(gal::etc::timestep const & ts)
 {
+	neb::fnd::core::scene::util::parent::step(ts);
 	neb::fnd::game::ai::util::parent::step(ts);
 	neb::fnd::game::trigger::util::parent::step(ts);
 }
-std::shared_ptr<neb::fnd::core::scene::base>	THIS::get_scene()
+std::shared_ptr<neb::fnd::core::scene::base>		THIS::get_scene()
 {
-	auto s = _M_scene.lock();
+	//auto s = _M_scene;
+	auto s = neb::fnd::core::scene::util::parent::front();
 	assert(s);
 	return s;
 }
-void						THIS::set_scene(std::shared_ptr<S> s)
+std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 {
-	assert(s);
-	_M_scene = s;
+	printv_func(DEBUG);
+
+	typedef neb::fnd::core::scene::base T;
+	
+	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
+	
+	neb::fnd::core::scene::util::parent::insert(scene);
+
+	scene->init(this);
+
+	return scene;
 }
+gal::math::pose			THIS::getPose() const
+{
+	return gal::math::pose();
+}
+gal::math::pose			THIS::getPoseGlobal() const
+{
+	return gal::math::pose();
+}
+
 

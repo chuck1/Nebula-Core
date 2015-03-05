@@ -1,3 +1,4 @@
+#include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/camera/proj/Ortho.hpp>
 
 typedef neb::fnd::camera::proj::Ortho THIS;

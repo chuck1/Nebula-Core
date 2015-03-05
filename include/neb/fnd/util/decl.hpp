@@ -8,6 +8,16 @@ namespace neb
 {
 	namespace fnd
 	{	
+		struct net_type
+		{
+			enum
+			{
+				NONE = 0,
+				LOCAL = 1,
+				REMOTE = 2
+			};
+		};
+
 		/** @brief %app */
 		namespace app
 		{

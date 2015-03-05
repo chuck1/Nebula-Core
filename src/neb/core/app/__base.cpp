@@ -200,7 +200,6 @@ void						THIS::release()
 	//typedef neb::fnd::core::scene::util::parent P;
 
 
-	neb::fnd::core::scene::util::parent::clear();
 	neb::fnd::game::game::util::parent::clear();
 	neb::fnd::window::util::Parent::clear();
 	neb::fnd::timer::util::Parent::clear();
@@ -209,12 +208,6 @@ void						THIS::release()
 	G::reset();
 	P::reset();
 
-}
-void			THIS::__step(gal::etc::timestep const & ts)
-{
-	printv_func(DEBUG);
-	neb::fnd::core::scene::util::parent::step(ts);
-	neb::fnd::game::game::util::parent::step(ts);
 }
 gal::math::pose				THIS::getPose() const
 {
@@ -583,109 +576,13 @@ void				THIS::loop()
 }
 void							THIS::step(gal::etc::timestep const & ts)
 {
-	neb::fnd::core::scene::util::parent::step(ts);
-
+	printv_func(DEBUG);
 	neb::fnd::game::game::util::parent::step(ts);
-
 	neb::fnd::window::util::Parent::step(ts);
-
 	neb::fnd::gui::layout::util::Parent::step(ts);
 }
 void							THIS::set_should_release()
 {
-}
-std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
-{
-	printv_func(DEBUG);
-
-	//auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
-
-	typedef neb::fnd::core::scene::base T;
-
-	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
-
-	neb::fnd::core::scene::util::parent::insert(scene);
-
-	scene->init(this);
-
-	/*
-	// python object
-	if(console_)
-	{
-		neb::y::core::scene::base py_scene(scene);
-
-		try {
-			console_->main_namespace_["scene"] = py_scene;
-		} catch(bp::error_already_set const &) {
-			printv(DEBUG, "unhandled execption\n");
-			PyErr_Print();
-		}
-	}
-*/
-	return scene;
-}
-std::weak_ptr<neb::fnd::core::scene::base>		THIS::createSceneDLL(
-		std::string dll_name)
-{
-	printv_func(DEBUG);
-
-	//auto self(dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
-
-	typedef neb::fnd::core::scene::base		T;
-	typedef gal::dll::helper<T>			H;
-
-	std::shared_ptr<H> h(new H(dll_name));
-	h->open();
-	h->template add<T>("scene");
-	std::shared_ptr<T> scene = h->template make_shared<T>();
-
-	neb::fnd::core::scene::util::parent::insert(scene);
-
-	scene->init(this);
-
-	// python object
-	if(console_) {
-		/*
-		neb::y::core::scene::base py_scene(scene);
-
-		try {
-			console_->main_namespace_["scene"] = py_scene;
-		} catch(bp::error_already_set const &) {
-			printv(DEBUG, "unhandled execption\n");
-			PyErr_Print();
-		}
-
-		console_->eval(
-				"import os, sys\n"
-				"def set_exit_handler(func):\n"
-				"    if os.name == \"nt\":\n"
-				"        try:\n"
-				"            import win32api\n"
-				"            win32api.SetConsoleCtrlHandler(func, True)\n"
-				"        except ImportError:\n"
-				"            version = \".\".join(map(str, sys.version_info[:2]))\n"
-				"            raise Exception(\"pywin32 not installed for Python \" + version)\n"
-				"    else:\n"
-				"        import signal\n"
-				"        signal.signal(signal.SIGTERM, func)"
-			      );
-
-		console_->eval(
-				"def on_exit(sig, func=None):\n"
-				"    print \"exit handler\"\n"
-				"    import time\n"
-				"    time.sleep(10)"
-			      );
-		console_->eval(
-				"set_exit_handler(on_exit)"
-			      );
-		console_->eval(
-				"print on_exit"
-			      );
-			      */
-	}
-
-	return scene;
 }
 std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 		std::shared_ptr<neb::fnd::window::Base> window,

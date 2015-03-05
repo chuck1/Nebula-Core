@@ -24,7 +24,7 @@ void		THIS::doSomething()
 	
 	neb::fnd::core::actor::base::parent_t * const & p = actor->getParent();
 	
-	p->erase(actor->_M_index);
+	p->erase(actor->get_index());
 }
 
 

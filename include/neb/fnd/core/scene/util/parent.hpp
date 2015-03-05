@@ -6,6 +6,8 @@
 #include <neb/fnd/itf/Pose.hpp>
 #include <neb/fnd/util/parent.hpp>
 #include <neb/fnd/core/scene/Base.hpp>
+#include <neb/fnd/game/map/util/decl.hpp>
+
 namespace neb { namespace fnd { namespace core { namespace scene { namespace util {
 	/** @brief parent
 	*/
@@ -14,7 +16,12 @@ namespace neb { namespace fnd { namespace core { namespace scene { namespace uti
 		virtual public neb::fnd::itf::Pose
 	{
 		public:
+
 			neb::fnd::app::Base* const		get_fnd_app();
+
+			typedef neb::fnd::game::map::Base GM;
+
+			std::shared_ptr<GM>			is_fnd_game_map_base();
 	};
 }}}}}
 

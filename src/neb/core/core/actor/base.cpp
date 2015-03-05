@@ -258,7 +258,7 @@ void			THIS::hit()
 	if(w2 & phx::filter::filter::PROJECTILE)
 	{
 		printv(DEBUG, "%p is projectile, erase\n", shared_from_this().get());
-		parent->erase(_M_index);
+		parent->erase(get_index());
 	}
 
 	if(flag_.any(neb::fnd::core::actor::util::flag::E::DESTRUCTIBLE)) {
@@ -271,7 +271,7 @@ void			THIS::damage(double h)
 
 	health_ -= h;
 	if(health_ < 0) {
-		getParent()->erase(_M_index);
+		getParent()->erase(get_index());
 	}
 }
 std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeBase(gal::math::pose const & pose)

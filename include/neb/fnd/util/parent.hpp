@@ -25,7 +25,8 @@ namespace neb { namespace fnd { namespace util {
 			// create
 			template<typename U> std::weak_ptr<U>				create()
 			{
-				std::shared_ptr<U> u(new U, gal::stl::deleter<U>());
+				U* up = new U;
+				std::shared_ptr<U> u(up, gal::stl::deleter<U>());
 
 				gal_parent::insert(u);
 

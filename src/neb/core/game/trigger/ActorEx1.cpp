@@ -35,7 +35,7 @@ void			THIS::doSomething()
 	
 	auto scene_parent = scene->getParent();
 	
-	scene_parent->neb::fnd::core::scene::util::parent::erase(scene->_M_index);
+	scene_parent->neb::fnd::core::scene::util::parent::erase(scene->get_index());
 	
 	// message
 	//auto app = neb::fnd::app::Base::global();
