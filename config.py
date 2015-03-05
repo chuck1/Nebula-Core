@@ -43,7 +43,8 @@ l = Static("nebula_core")
 l.require([
     "galaxy_std",
     "galaxy_log",
-    "galaxy_console"])
+    "galaxy_console",
+    "galaxy_net"])
 
 l.make()
 

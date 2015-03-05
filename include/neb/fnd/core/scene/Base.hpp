@@ -41,6 +41,7 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 		virtual public neb::fnd::drawable::Base,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base>,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::core::scene::Base>,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::net::core::scene::Base>,
 		virtual public gal::tmp::Verbosity<neb::fnd::core::scene::base>
 	{
 		public:
@@ -48,7 +49,8 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 			using gal::tmp::Verbosity<neb::fnd::core::scene::base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::core::scene::Base> G;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::core::scene::Base> P;
-			typedef neb::fnd::core::scene::util::parent									parent_t;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::net::core::scene::Base> N;
+			typedef neb::fnd::core::scene::util::parent	parent_t;
 			typedef neb::fnd::util::parent<neb::fnd::core::actor::__base, neb::fnd::core::actor::util::parent>		actors;
 		public:
 			base();
@@ -62,8 +64,12 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 			void				__step(gal::etc::timestep const & ts);
 		public:
 			/***/
-			virtual void			load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
-			virtual void			save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
+			virtual void			load(
+					boost::archive::polymorphic_iarchive & ar,
+					unsigned int const & version);
+			virtual void			save(
+					boost::archive::polymorphic_oarchive & ar,
+					unsigned int const & version) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 			/***/
 			virtual void			draw(

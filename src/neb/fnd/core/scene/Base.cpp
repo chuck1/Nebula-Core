@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include <gal/log/log.hpp>
+#include <gal/stl/deleter.hpp>
 
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/util/debug.hpp>
@@ -16,30 +16,17 @@
 
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 #include <neb/fnd/plug/phx/core/scene/Base.hpp>
-
-
-typedef neb::fnd::core::scene::base THIS;
-
-
-
-
-
-
-
-
-#include <gal/stl/deleter.hpp>
-
-#include <neb/fnd/plug/gfx/core/scene/Base.hpp>
+#include <neb/fnd/plug/net/core/scene/Base.hpp>
 
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/rigidstatic/base.hpp>
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
 
-typedef std::weak_ptr<neb::fnd::core::actor::base>			wbase;
+typedef neb::fnd::core::scene::base THIS;
 
+typedef std::weak_ptr<neb::fnd::core::actor::base>	wbase;
 
 #include <neb/fnd/core/scene/Base.hpp>
-
 
 THIS::base():
 	last_(0)
@@ -57,6 +44,8 @@ void			THIS::init(parent_t * const & p)
 
 	setParent(p);
 	
+	
+
 	neb::fnd::core::scene::base::__init(p);
 	//neb::gfx::core::scene::base::__init(p);
 	
@@ -71,6 +60,15 @@ void			THIS::init(parent_t * const & p)
 		P::make_object<THIS, int>(
 				app->_M_physics_plugin,
 				0);
+
+	if(!N::has_object()) {
+		int nt = game->get_net_type();
+		if(nt == neb::fnd::game::game::type::NONE)
+		else
+			N::make_object<THIS, int>(
+					app->_M_network_plugin,
+					nt);
+	}
 	
 }
 void			THIS::__init(parent_t * const & p)
