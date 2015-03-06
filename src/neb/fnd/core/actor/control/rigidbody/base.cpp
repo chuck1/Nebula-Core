@@ -29,6 +29,14 @@ void		THIS::release()
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
 }
+void			THIS::connect(std::shared_ptr<neb::fnd::input::source> src)
+{
+	connectKeyFun(src, 20);
+}
+void			THIS::connect(std::shared_ptr<neb::fnd::input::js> src)
+{
+	connect_js_button_fun(src, 20);
+}
 void			THIS::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version)
 {
 	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);

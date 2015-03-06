@@ -24,7 +24,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 			 * get data from input devices
 			 */
 			virtual void		update() = 0;
-			virtual std::weak_ptr<neb::fnd::input::js>			get_joystick(int i) = 0;
+			virtual std::weak_ptr<neb::fnd::input::js>			get_joystick(int i = -1) = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;

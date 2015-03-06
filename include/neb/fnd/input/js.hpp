@@ -16,7 +16,10 @@ namespace neb { namespace fnd { namespace input {
 		virtual int		get_button_count() = 0;
 		virtual float		get_axes(int i) = 0;
 	protected:
-		SIG			joystickButtonFun_;
+		struct
+		{
+			SIG		js_button_fun;
+		} _M_sig;
 	};
 }}}
 

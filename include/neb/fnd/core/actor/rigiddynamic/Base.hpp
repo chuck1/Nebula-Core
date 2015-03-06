@@ -14,8 +14,6 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace rig
 		virtual void		init(parent_t * const &);
 		virtual void		release();
 		virtual void		step(gal::etc::timestep const & ts);
-		virtual void		createControlManual(std::shared_ptr<neb::fnd::input::source> window);
-		void			createControlPD();
 	};
 
 }}}}}

@@ -1,5 +1,6 @@
 #include <neb/fnd/input/sink.hpp>
 #include <neb/fnd/input/source.hpp>
+#include <neb/fnd/input/js.hpp>
 
 typedef neb::fnd::input::sink THIS;
 
@@ -41,7 +42,7 @@ void		THIS::connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src,
 void		THIS::connectMouseButtonFun(std::shared_ptr<neb::fnd::input::source> const & src, int i)
 {
 	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
-
+	
 	conns_.mouse_button_fun_ = src->sig_.mouseButtonFun_.connect(
 			i,
 			neb::fnd::input::signals::MouseButtonFun::slot_type(
@@ -53,11 +54,24 @@ void		THIS::connectMouseButtonFun(std::shared_ptr<neb::fnd::input::source> const
 				_4
 				).track_foreign(shared_from_this())
 			);
-
 }
-
-
-
+void			THIS::connect_js_button_fun(
+		std::shared_ptr<neb::fnd::input::js> const & src,
+		int i)
+{
+	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
+	
+	conns_.js_button_fun = src->_M_sig.js_button_fun.connect(
+			i,
+			neb::fnd::input::signals::JoystickButtonFun::slot_type(
+				&THIS::js_button_fun,
+				this,
+				_1,
+				_2,
+				_3
+				).track_foreign(shared_from_this())
+			);
+}
 int			THIS::mouseButtonFun(
 		std::shared_ptr<neb::fnd::input::source> const &,
 		int button,
@@ -82,6 +96,14 @@ int			THIS::charFun(
 		unsigned int codepoint)
 {
 	printv(DEBUG, "%s %p\n", __PRETTY_FUNCTION__, this);
+	return 0;
+}
+int			THIS::js_button_fun(
+		std::shared_ptr<neb::fnd::input::js> const &,
+		int,
+		int)
+{
+	printv_func(DEBUG);
 	return 0;
 }
 

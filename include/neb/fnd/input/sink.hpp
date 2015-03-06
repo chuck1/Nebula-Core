@@ -19,6 +19,10 @@ namespace neb { namespace fnd { namespace input {
 			void			connectKeyFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
 			void			connectCharFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
 			void			connectMouseButtonFun(std::shared_ptr<neb::fnd::input::source> const & src, int i);
+			void			connect_js_button_fun(
+					std::shared_ptr<neb::fnd::input::js> const & src,
+					int i);
+			// default callbacks
 			virtual int		mouseButtonFun(
 					std::shared_ptr<neb::fnd::input::source> const &,
 					int button,
@@ -33,13 +37,17 @@ namespace neb { namespace fnd { namespace input {
 			virtual int		charFun(
 					std::shared_ptr<neb::fnd::input::source> const &,
 					unsigned int codepoint);
-
+			virtual int		js_button_fun(
+					std::shared_ptr<neb::fnd::input::js> const &,
+					int,
+					int);
 			// connections
 			struct
 			{
 				boost::signals2::connection		mouse_button_fun_;
 				boost::signals2::connection		key_fun_;
 				boost::signals2::connection		charFun_;
+				boost::signals2::connection		js_button_fun;
 			} conns_;
 	};
 }}}

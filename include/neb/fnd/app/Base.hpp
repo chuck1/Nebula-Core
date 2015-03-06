@@ -70,8 +70,10 @@ namespace neb { namespace fnd { namespace app {
 			void			init_boost_asio();
 			void			init_python();
 		protected:
-			void						init(int ac, char ** av);
-			void						render();
+			void			init(int ac, char ** av);
+			void			render();
+			typedef std::weak_ptr<neb::fnd::input::js> W_JS;
+			W_JS			get_joystick(int i = -1);
 		public:
 			/***/
 			static bool						is_valid();
