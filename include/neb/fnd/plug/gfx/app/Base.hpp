@@ -1,6 +1,7 @@
 #ifndef NEB_FND_PLUG_GFX_APP_BASE_HPP
 #define NEB_FND_PLUG_GFX_APP_BASE_HPP
 
+#include <neb/fnd/input/util/decl.hpp>
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/itf/shared.hpp>
 #include <neb/fnd/tmp/Child.hpp>
@@ -23,6 +24,7 @@ namespace neb { namespace fnd { namespace plug { namespace gfx { namespace app {
 			 * get data from input devices
 			 */
 			virtual void		update() = 0;
+			virtual std::weak_ptr<neb::fnd::input::js>			get_joystick(int i) = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;

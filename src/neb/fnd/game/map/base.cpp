@@ -13,6 +13,7 @@ void		THIS::init(parent_t * const & p)
 	setParent(p);
 
 	neb::fnd::core::scene::util::parent::init(p);
+	neb::fnd::game::ai::util::parent::init(p);
 	neb::fnd::game::spawn::util::parent::init(p);
 }
 void		THIS::release()
@@ -20,12 +21,13 @@ void		THIS::release()
 	printv_func(DEBUG);
 
 	neb::fnd::core::scene::util::parent::clear();
+	neb::fnd::game::ai::util::parent::clear();
 	neb::fnd::game::spawn::util::parent::clear();
 }
 void		THIS::step(gal::etc::timestep const & ts)
 {
 	printv_func(DEBUG);
-
+	
 	neb::fnd::core::scene::util::parent::step(ts);
 	neb::fnd::game::ai::util::parent::step(ts);
 	neb::fnd::game::trigger::util::parent::step(ts);

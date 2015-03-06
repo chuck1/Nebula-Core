@@ -448,6 +448,7 @@ void				THIS::read_config()
 	VR::reg<neb::fnd::core::light::base>(			"neb fnd core light base");
 
 	VR::reg<neb::fnd::game::map::Base>(			"neb fnd game map base");
+	VR::reg<neb::fnd::game::game::base>(			"neb fnd game game base");
 	VR::reg<neb::fnd::game::spawn::base>(			"neb fnd game spawn base");
 	VR::reg<neb::fnd::game::spawn::util::parent>(		"neb fnd game spawn util parent");
 

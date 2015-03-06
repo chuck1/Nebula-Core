@@ -4,6 +4,7 @@
 namespace neb { namespace fnd { namespace input {
 	class sink;
 	class source;
+	class js;
 }}}
 
 #endif

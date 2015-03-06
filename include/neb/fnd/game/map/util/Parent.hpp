@@ -15,9 +15,11 @@ namespace neb { namespace fnd { namespace game { namespace map { namespace util 
 		virtual public neb::fnd::game::game::util::Cast
 	{
 		public:
-			using neb::fnd::util::parent<neb::fnd::game::map::Base, Parent>::step;
+			typedef neb::fnd::util::parent<neb::fnd::game::map::Base, Parent> PARENT;
+			//using neb::fnd::util::parent<neb::fnd::game::map::Base, Parent>::step;
 			virtual ~Parent();
 			typedef neb::fnd::game::map::Base M;
+			virtual void			step(gal::etc::timestep const & ts);
 			virtual std::weak_ptr<M>	create_map_dll(std::string & s);
 			neb::fnd::app::Base*		get_fnd_app();
 	};

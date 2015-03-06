@@ -48,6 +48,8 @@ namespace neb { namespace fnd { namespace util {
 
 			template<typename... A> void		initChildren(A... a)
 			{
+				std::cout << __PRETTY_FUNCTION__ << std::endl;
+				printf("size = %i\n", gal_parent::size());
 				for(auto it = gal_parent::begin(); it != gal_parent::end(); ++it)
 				{
 					auto p = it->second.ptr_;
@@ -60,11 +62,14 @@ namespace neb { namespace fnd { namespace util {
 			void		step(gal::etc::timestep const & ts)
 			{
 				std::cout << __PRETTY_FUNCTION__ << std::endl;
+				printf("size = %i\n", gal_parent::size());
 				gal_parent::for_each([&] (pointer p) { p->step(ts); });
 			}
 			void		preloop()
 			{
+				std::cout << __PRETTY_FUNCTION__ << std::endl;
 				auto l = [] (pointer p) { p->preloop(); };
+				printf("size = %i\n", gal_parent::size());
 				gal_parent::for_each(l);
 			}
 	};

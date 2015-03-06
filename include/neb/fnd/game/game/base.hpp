@@ -1,6 +1,8 @@
 #ifndef NEBULA_CORE_GAME_GAME_BASE_HPP
 #define NEBULA_CORE_GAME_GAME_BASE_HPP
 
+#include <gal/stl/verbosity.hpp>
+
 #include <neb/fnd/core/scene/util/decl.hpp>
 
 #include <neb/fnd/game/game/util/decl.hpp>
@@ -12,11 +14,13 @@
 
 namespace neb { namespace fnd { namespace game { namespace game {
 	class base:
+		public gal::tmp::Verbosity<neb::fnd::game::game::base>,
 		virtual public neb::fnd::tmp::Child<neb::fnd::game::game::util::parent>,
 		virtual public neb::fnd::game::map::util::Parent
 	{
 		public:
 			using CHILD::get_fnd_app;
+			using gal::tmp::Verbosity<neb::fnd::game::game::base>::printv;
 			typedef neb::fnd::game::map::util::Parent M;
 			//typedef neb::fnd::game::game::util::parent parent_t;
 			virtual void				init(parent_t * const &);

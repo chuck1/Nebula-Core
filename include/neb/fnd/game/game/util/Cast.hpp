@@ -1,12 +1,13 @@
 #ifndef NEB_FND_GAME_GAME_UTIL_CAST_HPP
 #define NEB_FND_GAME_GAME_UTIL_CAST_HPP
 
-#include <neb/fnd/itf/shared.hpp>
+#include <gal/itf/shared.hpp>
+
 #include <neb/fnd/game/game/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace game { namespace game { namespace util {
 	class Cast:
-		virtual public neb::fnd::itf::shared
+		virtual public gal::itf::shared
 	{
 		public:
 			typedef neb::fnd::game::game::base G;

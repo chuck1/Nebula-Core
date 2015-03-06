@@ -1,6 +1,7 @@
-#include <neb/fnd/game/map/util/Parent.hpp>
 #include <neb/fnd/game/game/base.hpp>
 #include <neb/fnd/game/game/util/parent.hpp>
+
+#include <neb/fnd/game/map/util/Parent.hpp>
 
 typedef neb::fnd::game::map::util::Parent THIS;
 
@@ -37,5 +38,9 @@ std::weak_ptr<THIS::M>	THIS::create_map_dll(std::string & s)
 	map->init(this);
 
 	return map;
+}
+void			THIS::step(gal::etc::timestep const & ts)
+{
+	PARENT::step(ts);
 }
 
