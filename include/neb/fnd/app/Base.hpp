@@ -7,6 +7,7 @@
 #include <gal/stl/verbosity.hpp>
 #include <gal/console/console.hpp>
 #include <gal/itf/registry.hpp>
+#include <gal/argparse/Args.hpp>
 
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/app/Base10.hpp>
@@ -69,8 +70,8 @@ namespace neb { namespace fnd { namespace app {
 			void			init_boost_asio();
 			void			init_python();
 		protected:
-			void							__init();
-			void							render();
+			void						init(int ac, char ** av);
+			void						render();
 		public:
 			/***/
 			static bool						is_valid();
@@ -92,25 +93,25 @@ namespace neb { namespace fnd { namespace app {
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
 			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
+			void				open_graphics_plugin(std::string filename);
+			void				open_physics_plugin(std::string filename);
+			void				open_network_plugin(std::string filename);
+			std::shared_ptr<H>		get_graphics_plugin();
+			std::shared_ptr<H>		get_physics_plugin();
+			std::shared_ptr<H>		get_network_plugin();
 			/***/
-			void							open_graphics_plugin(std::string filename);
-			void							open_physics_plugin(std::string filename);
-			void							open_network_plugin(std::string filename);
-			std::shared_ptr<H>					get_graphics_plugin();
-			std::shared_ptr<H>					get_physics_plugin();
-			std::shared_ptr<H>					get_network_plugin();
+			boost::asio::io_service		ios_;
 			/***/
-			boost::asio::io_service					ios_;
+			typedef neb::fnd::app::util::flag FLAG;
+			FLAG				flag_;
 			/***/
-			neb::fnd::app::util::flag				flag_;
+			gal::etc::timestep				ts_;
+			std::shared_ptr<console_type>			console_;
 			/***/
-			gal::etc::timestep					ts_;
-			/***/
-			std::shared_ptr<console_type>				console_;
-			/***/
-			std::vector< std::string >				_M_preloop_scripts_python;
+			std::vector<std::string>			_M_preloop_scripts_python;
 			/***/
 			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
+			gal::argparse::Args					_M_args;
 			/*
 			 * shared library helper for networking plugin
 			 */

@@ -11,6 +11,9 @@ namespace neb { namespace fnd { namespace app {
 				((INIT_GLEW)(1 << 2))
 				((INIT_GLFW)(1 << 3))
 				((FIRST_CONTEXT)(1 << 4))
+				((PLUGIN_GRAPHICS)(1 << 5))
+				((PLUGIN_PHYSICS)(1 << 6))
+				((PLUGIN_NETWORK)(1 << 7))
 			   )
 	}
 }}}

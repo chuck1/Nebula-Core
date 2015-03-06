@@ -154,9 +154,26 @@ void			THIS::init_python()
 		abort();
 	}
 }
-void			THIS::__init()
+void			THIS::init(int ac, char ** av)
 {
 	printv_func(DEBUG);
+
+
+	// parse args	
+	gal::argparse::Parser parser;
+	_M_args = parser.parse(ac, av, "");
+	
+	if(_M_args.has_long("python")) {
+		auto filename = _M_args.get_value_from_long(
+				"python");
+
+		_M_preloop_scripts_python.push_back(
+				filename);
+
+		printv(DEBUG, "%s\n", filename.c_str());
+	}
+
+
 
 	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
 
@@ -267,7 +284,8 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 void				THIS::open_graphics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
-	printv_func(INFO);
+
+	if(!flag_.any(FLAG::PLUGIN_GRAPHICS)) return;
 
 	typedef neb::fnd::plug::gfx::app::Base APP;
 	typedef neb::fnd::plug::gfx::core::scene::Base SC;
@@ -379,24 +397,8 @@ std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 
 	std::shared_ptr<THIS> app(new THIS(), gal::stl::deleter<THIS>());
 
-	// parse args	
-	gal::argparse::Parser parser;
-	auto args = parser.parse(ac, av, "");
-	
-	if(args.has_long("python")) {
-		auto filename = args.get_value_from_long(
-				"python");
-
-		app->_M_preloop_scripts_python.push_back(
-				filename);
-
-		printf("%s\n", filename.c_str());
-	}
-	
-	
-
 	// continue init
-	app->neb::fnd::app::Base::__init();
+	app->neb::fnd::app::Base::init(ac, av);
 	
 	
 	//printv(DEBUG, "&g_app_ = %p\n", &g_app_);
