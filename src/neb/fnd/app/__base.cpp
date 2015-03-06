@@ -40,14 +40,15 @@
 #include <neb/fnd/plug/phx/core/scene/Base.hpp>
 #include <neb/fnd/plug/phx/core/actor/Base.hpp>
 #include <neb/fnd/plug/phx/core/shape/Base.hpp>
-
+#include <neb/fnd/plug/gfx/app/Base.hpp>
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/environ/Base.hpp>
-#include <neb/fnd/game/weapon/util/decl.hpp>
-#include <neb/fnd/plug/gfx/app/Base.hpp>
 #include <neb/fnd/context/Base.hpp>
 #include <neb/fnd/window/Base.hpp>
+
+#include <neb/fnd/game/weapon/util/decl.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
 #include <neb/fnd/gui/layout/util/Parent.hpp>
 #include <neb/fnd/gui/object/Terminal.hpp>
@@ -81,19 +82,8 @@ THIS::~Base()
 {
 	printv_func(DEBUG);
 }
-void			THIS::__init()
+void			THIS::init_boost_asio()
 {
-	printv_func(DEBUG);
-
-	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
-
-	// init containers
-	neb::fnd::game::game::util::parent::init(0);
-	neb::fnd::window::util::Parent::init(0);
-	neb::fnd::timer::util::Parent::init(0);
-	neb::fnd::gui::layout::util::Parent::init(0);
-
-
 	// boost asio ioservice
 	printv(DEBUG, "launch ios thread\n");
 
@@ -106,18 +96,9 @@ void			THIS::__init()
 
 	std::thread t(l);
 	t.detach();
-
-	// console
-	console_.reset(new console_type);
-	console_->init();
-	flag_.set(neb::fnd::app::util::flag::INIT___BASE);
-
-	/** @todo export class to python to implement exit() */
-
-	// module search path
-	//gal::dll::helper_info::search_path_ = NEB_MOD_DIR;
-
-
+}
+void			THIS::init_register_types()
+{
 	/*
 	 * register some types for serialization
 	 */
@@ -141,14 +122,9 @@ void			THIS::__init()
 
 		gal::stl::factory<T>::default_factory_->add<D>(f);
 	}
-
-
-	// plugins
-	open_graphics_plugin("../plugin/gfx1/build/dynamic/libnebula_plugin_gfx1.so");
-	open_physics_plugin("../plugin/phx1/build/dynamic/libnebula_plugin_phx1.so");
-
-
-	// python init
+}
+void			THIS::init_python()
+{
 	char buffer[256];
 	strcpy(buffer, "import sys\nsys.path.append(\"");
 	strcat(buffer, NEB_SRC_DIR);
@@ -177,6 +153,38 @@ void			THIS::__init()
 
 		abort();
 	}
+}
+void			THIS::__init()
+{
+	printv_func(DEBUG);
+
+	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
+
+	// init containers
+	neb::fnd::game::game::util::parent::init(0);
+	neb::fnd::window::util::Parent::init(0);
+	neb::fnd::timer::util::Parent::init(0);
+	neb::fnd::gui::layout::util::Parent::init(0);
+
+
+	init_boost_asio();
+
+	// console
+	console_.reset(new console_type);
+	console_->init();
+
+	flag_.set(neb::fnd::app::util::flag::INIT___BASE);
+
+	/** @todo export class to python to implement exit() */
+
+	init_register_types();
+
+	// plugins
+	open_graphics_plugin("../plugin/gfx1/build/dynamic/libnebula_plugin_gfx1.so");
+	open_physics_plugin( "../plugin/phx1/build/dynamic/libnebula_plugin_phx1.so");
+	open_network_plugin( "../plugin/net1/build/dynamic/libnebula_plugin_net1.so");
+
+	init_python();
 
 	read_config();	
 
@@ -256,7 +264,7 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 
 	return g;
 }
-void							THIS::open_graphics_plugin(std::string filename)
+void				THIS::open_graphics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
 	printv_func(INFO);
@@ -326,7 +334,7 @@ void				THIS::open_network_plugin(std::string filename)
 	_M_network_plugin->open();
 
 	// the integer argument will indicate local or remote
-	_M_network_plugin->template add<S, int>("scene");
+	//_M_network_plugin->template add<S, int>("scene");
 
 }
 std::shared_ptr<THIS::H>				THIS::get_graphics_plugin()
@@ -429,16 +437,19 @@ void				THIS::read_config()
 
 	// fnd
 	typedef gal::tmp::VerbosityRegister VR;
-	VR::reg<neb::fnd::input::sink>(
-			"neb fnd input sink");
 
-	VR::reg<neb::fnd::game::weapon::SimpleProjectile>(
-			"neb core game weapon simple projectile");
+	VR::reg<neb::fnd::input::sink>(				"neb fnd input sink");
+
+	VR::reg<neb::fnd::game::weapon::SimpleProjectile>(	"neb core game weapon simple projectile");
 
 	VR::reg<neb::fnd::core::scene::base>(			"neb fnd core scene base");
 	VR::reg<neb::fnd::core::actor::base>(			"neb fnd core actor base");
 	VR::reg<neb::fnd::core::shape::base>(			"neb fnd core shape base");
 	VR::reg<neb::fnd::core::light::base>(			"neb fnd core light base");
+
+	VR::reg<neb::fnd::game::map::Base>(			"neb fnd game map base");
+	VR::reg<neb::fnd::game::spawn::base>(			"neb fnd game spawn base");
+	VR::reg<neb::fnd::game::spawn::util::parent>(		"neb fnd game spawn util parent");
 
 	VR::reg<neb::fnd::window::Base>(			"neb fnd window base");
 	VR::reg<neb::fnd::context::Base>(			"neb fnd context base");
@@ -448,15 +459,8 @@ void				THIS::read_config()
 	VR::reg<neb::fnd::gui::object::Base>(			"neb fnd gui object base");
 	VR::reg<neb::fnd::gui::object::Terminal>(		"neb fnd gui object terminal");
 
-	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::control::rigidbody::base>(	"neb fnd core actor control rigidbody base");
+	VR::reg<neb::fnd::core::actor::control::rigidbody::base>("neb fnd core actor control rigidbody base");
 	// phx
-/*
-	gal::tmp::VerbosityRegister::reg<neb::phx::core::scene::base>(			"neb phx core scene base");
-	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::base>(			"neb phx core actor base");
-	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigiddynamic::base>(	"neb phx core actor rigiddynamic base");
-	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigidstatic::base>(	"neb phx core actor rigidstatic base");
-	gal::tmp::VerbosityRegister::reg<neb::phx::core::shape::base>(			"neb phx core shape base");
-*/	
 
 
 /*		{"neb gfx",					(int*)&neb::gfx::sl},
@@ -561,7 +565,7 @@ void				THIS::loop()
 
 		// check for exit condition
 
-		if(!neb::fnd::window::util::Parent::map_.front()) break;
+		if(!neb::fnd::window::util::Parent::front()) break;
 
 		// update
 

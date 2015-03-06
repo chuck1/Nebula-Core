@@ -90,6 +90,9 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 	
 	setParent(p);
 	
+	S::init(this);
+	L::init(this);
+
 	auto app = get_fnd_app();
 
 	if(!G::has_object()) {

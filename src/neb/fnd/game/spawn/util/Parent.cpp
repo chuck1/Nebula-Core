@@ -6,15 +6,16 @@ typedef neb::fnd::game::spawn::util::parent THIS;
 
 THIS::parent()
 {
+	printv_func(DEBUG);
 }
 THIS::~parent()
 {
-}
-void		THIS::init()
-{
+	printv_func(DEBUG);
 }
 void		THIS::spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor)
 {
+	printv_func(DEBUG);
+	
 	auto s = front();
 	assert(s);
 
@@ -24,6 +25,8 @@ void		THIS::spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor)
 }
 std::weak_ptr<neb::fnd::game::spawn::base>		THIS::create_spawn(gal::math::pose pose)
 {
+	printv_func(DEBUG);
+	
 	typedef neb::fnd::game::spawn::base T;
 	std::shared_ptr<T> spawn(new T);
 	

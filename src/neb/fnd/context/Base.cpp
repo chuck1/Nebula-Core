@@ -1,9 +1,16 @@
+#include <neb/fnd/context/util/Parent.hpp>
 #include <neb/fnd/context/Base.hpp>
 #include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/plug/gfx/context/Base.hpp>
 
 typedef neb::fnd::context::Base THIS;
 
+void			THIS::init(parent_t * const & parent)
+{
+	setParent(parent);
+	
+	neb::fnd::environ::util::Parent::init(parent);
+}
 void			THIS::render()
 {
 	//if(G::has_object())

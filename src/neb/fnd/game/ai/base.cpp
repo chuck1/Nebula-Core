@@ -62,7 +62,7 @@ void			THIS::step(gal::etc::timestep const & ts)
 	// fire
 	if(glm::length(pd->getOrientationError()) < 0.1) {
 		// find any weapon
-		auto weap = actor->W::map_.front();
+		auto weap = actor->W::front();
 		if(weap) {
 			weap->fire();
 		}

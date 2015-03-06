@@ -59,17 +59,19 @@ void				THIS::init(parent_t * const & p)
 	printv_func(DEBUG);
 
 	setParent(p);
-	
-	auto game = get_game();
 
-	neb::fnd::core::scene::base::__init(p);
-	//neb::gfx::core::scene::base::__init(p);
+	neb::fnd::core::actor::util::parent::init(this);
+
+	neb::fnd::core::actor::util::parent::initChildren(this);
+
+
+	auto game = get_game();
 	
 	auto app = get_fnd_app();
 
 	if(!G::has_object())
 		G::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->get_graphics_plugin(),
 				0);
 
 	if(!P::has_object())
@@ -79,18 +81,15 @@ void				THIS::init(parent_t * const & p)
 
 	if(!N::has_object()) {
 		int nt = game->get_net_type();
-		if(nt != neb::fnd::game::game::type::NONE)
+
+		printv(DEBUG, "net type = %i\n", nt);
+
+		if(nt != neb::fnd::plug::net::type::NONE)
 			N::make_object<THIS, int>(
 					app->_M_network_plugin,
 					nt);
 	}
 	
-}
-void			THIS::__init(parent_t * const & p)
-{
-	printv(DEBUG, "%s\n", __PRETTY_FUNCTION__);
-
-	neb::fnd::core::actor::util::parent::initChildren(this);
 }
 void			THIS::__release()
 {
@@ -257,20 +256,13 @@ void			THIS::draw(neb::fnd::RenderDesc const & rd)
 	//if(G::has_object())
 	G::get_object()->draw(rd);
 }
-
-
-
-
-
-
-
 void			THIS::release()
 {
 	printv_func(DEBUG);
 
 	neb::fnd::core::scene::base::__release();
 }
-wbase		THIS::createActorBase(gal::math::pose pose)
+wbase			THIS::createActorBase(gal::math::pose pose)
 {
 	printv_func(DEBUG);
 

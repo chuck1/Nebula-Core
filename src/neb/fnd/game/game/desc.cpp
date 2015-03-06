@@ -2,7 +2,8 @@
 
 typedef neb::fnd::game::game::desc THIS;
 
-THIS::desc()
+THIS::desc():
+	_M_net_type(0)
 {
 }
 THIS::~desc()

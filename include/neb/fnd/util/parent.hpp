@@ -59,7 +59,7 @@ namespace neb { namespace fnd { namespace util {
 
 			void		step(gal::etc::timestep const & ts)
 			{
-				//std::cout << __PRETTY_FUNCTION__ << std::endl;
+				std::cout << __PRETTY_FUNCTION__ << std::endl;
 				gal_parent::for_each([&] (pointer p) { p->step(ts); });
 			}
 			void		preloop()

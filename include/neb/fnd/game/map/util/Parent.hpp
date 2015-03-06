@@ -15,6 +15,7 @@ namespace neb { namespace fnd { namespace game { namespace map { namespace util 
 		virtual public neb::fnd::game::game::util::Cast
 	{
 		public:
+			using neb::fnd::util::parent<neb::fnd::game::map::Base, Parent>::step;
 			virtual ~Parent();
 			typedef neb::fnd::game::map::Base M;
 			virtual std::weak_ptr<M>	create_map_dll(std::string & s);

@@ -39,6 +39,8 @@ void		THIS::init(parent_t * const & p)
 	printv_func(DEBUG);
 
 	setParent(p);
+	
+	neb::fnd::gui::object::util::Parent::init(p);
 }
 void		THIS::step(gal::etc::timestep const & ts)
 {

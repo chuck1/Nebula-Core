@@ -4,6 +4,15 @@
 namespace neb { namespace fnd { namespace plug {
 	namespace net
 	{
+		struct type
+		{
+			enum
+			{
+				NONE = 0,
+				LOCAL = 1,
+				REMOTE = 2
+			};
+		};
 		namespace app
 		{
 			class Base;

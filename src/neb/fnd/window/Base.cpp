@@ -11,10 +11,12 @@ void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
 
+	neb::fnd::context::util::Parent::init(p);
+
 	auto app = get_fnd_app();
 
 	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
-
+	
 	// callback
 	callback_.key_press_.F1_ = [this](int,int,int,int)->int {
 		print_screen();

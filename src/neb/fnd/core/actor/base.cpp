@@ -5,7 +5,6 @@
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/debug.hpp>
 #include <neb/fnd/util/decl.hpp>
-#include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/shape/Cuboid.hpp>
@@ -22,13 +21,7 @@
 
 #include <neb/fnd/plug/phx/core/actor/Base.hpp>
 
-/*
-#include <neb/fin/core/actor/rigidactor/base.hpp>
-#include <neb/fin/core/shape/box.hpp>
-#include <neb/fin/core/shape/HeightField.hpp>
-
-#include <neb/fin/core/actor/base.hpp>
-*/
+#include <neb/fnd/core/actor/Base.hpp>
 
 typedef neb::fnd::core::actor::base THIS;
 
@@ -63,6 +56,10 @@ void			THIS::init(parent_t * const & p)
 
 	setParent(p);
 
+	neb::fnd::core::actor::util::parent::init(this);
+	neb::fnd::core::shape::util::parent::init(this);
+	neb::fnd::game::weapon::util::parent::init(this);
+
 	auto app = get_fnd_app();
 
 	if(!G::has_object())
@@ -73,6 +70,7 @@ void			THIS::init(parent_t * const & p)
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 	neb::fnd::core::shape::util::parent::initChildren(this);
+	neb::fnd::game::weapon::util::parent::initChildren(this);
 
 	// base classes
 

@@ -62,7 +62,6 @@ namespace neb { namespace fnd { namespace core { namespace scene {
 			virtual void			release();
 			virtual void			step(gal::etc::timestep const & ts);
 		protected:
-			void				__init(parent_t * const & p);
 			void				__release();
 			void				__step(gal::etc::timestep const & ts);
 		public:

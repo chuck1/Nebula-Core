@@ -9,6 +9,7 @@
 #include <gal/itf/registry.hpp>
 
 #include <neb/fnd/util/decl.hpp>
+#include <neb/fnd/app/Base10.hpp>
 #include <neb/fnd/app/util/Flag.hh>
 #include <neb/fnd/context/util/decl.hpp>
 #include <neb/fnd/environ/util/decl.hpp>
@@ -27,7 +28,9 @@
 namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
 	class Base:
+		public gal::tmp::VerbosityRegister,
 		public gal::tmp::Verbosity<neb::fnd::app::Base>,
+		virtual public neb::fnd::app::Base10,
 		virtual public gal::itf::registry,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
@@ -62,7 +65,9 @@ namespace neb { namespace fnd { namespace app {
 			void							loop();
 			void							set_should_release();
 		protected:
-			//virtual void						init();
+			void			init_register_types();
+			void			init_boost_asio();
+			void			init_python();
 		protected:
 			void							__init();
 			void							render();

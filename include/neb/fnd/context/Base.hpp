@@ -21,9 +21,9 @@ namespace neb { namespace fnd { namespace context {
 	{
 		public:
 			using gal::tmp::Verbosity<neb::fnd::context::Base>::printv;
-			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::context::Base> G;
 			using CHILD::get_fnd_app;
-			virtual void		init(parent_t * const parent) = 0;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::context::Base> G;
+			virtual void		init(parent_t * const & parent);
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		render();
 			void			resize(int w, int h);

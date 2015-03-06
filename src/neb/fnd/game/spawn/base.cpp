@@ -1,10 +1,13 @@
-
+#include <neb/fnd/game/spawn/util/parent.hpp>
 #include <neb/fnd/game/spawn/base.hpp>
 
-void		neb::fnd::game::spawn::base::init(parent_t * const & p)
+typedef neb::fnd::game::spawn::base THIS;
+
+void		THIS::init(parent_t * const & p)
 {
+	setParent(p);
 }
-void		neb::fnd::game::spawn::base::step(gal::etc::timestep const &)
+void		THIS::step(gal::etc::timestep const &)
 {
 }
 

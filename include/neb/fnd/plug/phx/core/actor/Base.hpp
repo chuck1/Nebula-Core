@@ -16,6 +16,7 @@ namespace neb { namespace fnd { namespace plug { namespace phx { namespace core 
 		public:
 			typedef neb::fnd::core::actor::base FND;
 			virtual void		init(parent_t * const & p) = 0;
+			virtual void		step(gal::etc::timestep const & ts) = 0;
 			virtual void		init_physics() = 0;
 			virtual void		set_pose_global(gal::math::pose const & pose) = 0;
 	};

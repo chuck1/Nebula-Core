@@ -16,7 +16,7 @@ namespace neb { namespace fnd { namespace core { namespace scene { namespace uti
 		virtual public neb::fnd::itf::Pose
 	{
 		public:
-
+			using neb::fnd::util::parent<neb::fnd::core::scene::base, parent>::step;
 			neb::fnd::app::Base* const		get_fnd_app();
 
 			typedef neb::fnd::game::map::Base GM;

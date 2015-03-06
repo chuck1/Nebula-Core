@@ -17,6 +17,7 @@ namespace neb { namespace fnd { namespace game { namespace game {
 	{
 		public:
 			using CHILD::get_fnd_app;
+			typedef neb::fnd::game::map::util::Parent M;
 			//typedef neb::fnd::game::game::util::parent parent_t;
 			virtual void				init(parent_t * const &);
 			virtual void				release();
