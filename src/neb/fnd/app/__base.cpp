@@ -172,9 +172,12 @@ void			THIS::init(int ac, char ** av)
 
 		printv(DEBUG, "%s\n", filename.c_str());
 	}
-
-
-
+	
+	if(_M_args.has_long("graphics")) {
+		flag_.set(FLAG::PLUGIN_GRAPHICS);
+	}
+	
+	
 	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
 
 	// init containers
