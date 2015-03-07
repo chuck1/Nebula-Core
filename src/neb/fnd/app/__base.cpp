@@ -630,7 +630,7 @@ std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 
 	return window;
 }
-THIS::W_JS				THIS::get_joystick(int i)
+THIS::S_JS				THIS::get_joystick(int i)
 {
 	return G::get_object()->get_joystick(i);
 }

@@ -1,6 +1,7 @@
 #include <neb/fnd/app/Base.hpp>
-#include <neb/fnd/window/Base.hpp>
 #include <neb/fnd/plug/gfx/window/Base.hpp>
+
+#include <neb/fnd/window/Base.hpp>
 
 typedef neb::fnd::window::Base THIS;
 
