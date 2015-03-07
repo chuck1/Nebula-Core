@@ -64,7 +64,7 @@ void			THIS::init(parent_t * const & p)
 
 	if(!G::has_object())
 		G::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->get_graphics_plugin(),
 				NS1::type::BASE
 				);
 

@@ -11,7 +11,9 @@ void		THIS::init(parent_t * const & parent)
 
 	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::environ::type::TWO);
+	G::make_object<THIS, int>(
+			app->get_graphics_plugin(),
+			neb::fnd::plug::gfx::environ::type::TWO);
 }
 void		THIS::release()
 {

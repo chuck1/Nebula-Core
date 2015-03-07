@@ -97,7 +97,7 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	if(!G::has_object()) {
 		G::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->get_graphics_plugin(),
 				neb::fnd::plug::gfx::core::shape::type::BASE);
 	}
 

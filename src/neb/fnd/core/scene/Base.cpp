@@ -76,7 +76,7 @@ void				THIS::init(parent_t * const & p)
 
 	if(!P::has_object())
 		P::make_object<THIS, int>(
-				app->_M_physics_plugin,
+				app->get_physics_plugin(),
 				0);
 
 	if(!N::has_object()) {
@@ -86,7 +86,7 @@ void				THIS::init(parent_t * const & p)
 
 		if(nt != neb::fnd::plug::net::type::NONE)
 			N::make_object<THIS, int>(
-					app->_M_network_plugin,
+					app->get_network_plugin(),
 					nt);
 	}
 	

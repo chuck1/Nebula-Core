@@ -30,7 +30,7 @@ void		THIS::init(parent_t * const & p)
 
 	if(!G::has_object()) {
 		G::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->get_graphics_plugin(),
 				neb::fnd::plug::gfx::core::shape::type::CUBOID);
 	}
 
@@ -38,7 +38,7 @@ void		THIS::init(parent_t * const & p)
 		printv(DEBUG, "phx plugin not null\n");
 	} else {
 		P::make_object<THIS, int>(
-				app->_M_physics_plugin,
+				app->get_physics_plugin(),
 				neb::fnd::plug::phx::core::shape::type::CUBOID);
 	}
 

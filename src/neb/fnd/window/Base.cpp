@@ -16,7 +16,7 @@ void			THIS::init(parent_t * const & p)
 
 	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
+	G::make_object<THIS, int>(app->get_graphics_plugin(), 0);
 	
 	// callback
 	callback_.key_press_.F1_ = [this](int,int,int,int)->int {
@@ -59,7 +59,9 @@ void			THIS::create_object_graphics()
 
 	assert(app->G::has_object());
 
-	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
+	G::make_object<THIS, int>(
+			app->get_graphics_plugin(),
+			0);
 }
 void			THIS::print_screen()
 {

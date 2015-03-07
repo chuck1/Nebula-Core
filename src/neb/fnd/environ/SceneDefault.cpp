@@ -31,7 +31,9 @@ void			THIS::init(parent_t * const & p)
 
 	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(app->_M_graphics_plugin, neb::fnd::plug::gfx::environ::type::SCENE_DEFAULT);
+	G::make_object<THIS, int>(
+			app->get_graphics_plugin(),
+			neb::fnd::plug::gfx::environ::type::SCENE_DEFAULT);
 
 	//neb::fnd::environ::SceneDefault::init(p);
 	neb::fnd::environ::Base::init(p);

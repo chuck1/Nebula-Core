@@ -21,7 +21,7 @@ void		THIS::init(parent_t * const & parent)
 		printv(DEBUG, "plugin gfx not null");
 	} else {
 		G::make_object<THIS, int>(
-				app->_M_graphics_plugin,
+				app->get_graphics_plugin(),
 				neb::fnd::plug::gfx::core::light::type::SPOT);
 	}
 }

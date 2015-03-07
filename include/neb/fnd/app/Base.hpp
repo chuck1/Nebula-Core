@@ -41,8 +41,8 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base>
 	{
 		public:
-			typedef std::weak_ptr<neb::fnd::window::Base>		window_w;
-			typedef std::weak_ptr<neb::fnd::core::scene::base>	scene_w;
+			typedef std::weak_ptr<neb::fnd::window::Base> window_w;
+			typedef std::weak_ptr<neb::fnd::core::scene::base> scene_w;
 			using gal::tmp::Verbosity<neb::fnd::app::Base>::printv;
 			typedef gal::dll::helper<gal::itf::shared> H;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
@@ -50,81 +50,54 @@ namespace neb { namespace fnd { namespace app {
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
-			/***/
-			static std::shared_ptr<neb::fnd::app::Base>		global();
-			static std::shared_ptr<neb::fnd::app::Base>		s_init(int ac, char ** av);
+			typedef std::shared_ptr<neb::fnd::input::js> S_JS;
+			typedef std::shared_ptr<neb::fnd::app::Base> S_A;
+			typedef neb::fnd::app::util::flag FLAG;
+			static S_A			global();
+			static S_A			s_init(int ac, char ** av);
 			Base();
 			virtual ~Base();
-			/***/
-			gal::math::pose						getPose() const;
-			/***/
-			gal::math::pose						getPoseGlobal() const;
-			/***/
-			void							release();
-			virtual void						step(gal::etc::timestep const & ts);
-			void							preloop();
-			void							loop();
-			void							set_should_release();
-		protected:
-			void			init_register_types();
-			void			init_boost_asio();
-			void			init_python();
-		protected:
-			void			init(int ac, char ** av);
-			void			render();
-		public:
-			typedef std::shared_ptr<neb::fnd::input::js> S_JS;
-			S_JS			get_joystick(int i = -1);
-			/***/
-			static bool						is_valid();
-			/***/
-			virtual window_w					createWindow();
-			/***/
+			gal::math::pose			getPose() const;
+			gal::math::pose			getPoseGlobal() const;
+			void				release();
+			virtual void			step(gal::etc::timestep const & ts);
+			void				preloop();
+			void				loop();
+			void				set_should_release();
+			S_JS				get_joystick(int i = -1);
+			static bool			is_valid();
+			virtual window_w		createWindow();
 			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
 					std::shared_ptr<neb::fnd::environ::Base> environ);
-			/***/
 			std::weak_ptr<neb::fnd::game::game::base>		createGame();
 			std::weak_ptr<neb::fnd::game::game::base>		createGame(
 					neb::fnd::game::game::desc const &);
-	
-		protected:
-			void							initRegistry();
-			void							read_config();
 		public:
-			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_text() = 0;
-			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_tex() = 0;
-			//virtual std::shared_ptr<neb::fnd::glsl::program::Base>		get_program_simple3() = 0;
 			void				open_graphics_plugin(std::string filename);
 			void				open_physics_plugin(std::string filename);
 			void				open_network_plugin(std::string filename);
 			std::shared_ptr<H>		get_graphics_plugin();
 			std::shared_ptr<H>		get_physics_plugin();
 			std::shared_ptr<H>		get_network_plugin();
-			/***/
 			boost::asio::io_service		ios_;
-			/***/
-			typedef neb::fnd::app::util::flag FLAG;
 			FLAG				flag_;
-			/***/
 			gal::etc::timestep				ts_;
 			std::shared_ptr<console_type>			console_;
-			/***/
 			std::vector<std::string>			_M_preloop_scripts_python;
-			/***/
 			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
 			gal::argparse::Args					_M_args;
-			/*
-			 * shared library helper for networking plugin
-			 */
+		protected:
+			void			init_register_types();
+			void			init_boost_asio();
+			void			init_python();
+			void			init(int ac, char ** av);
+			void			render();
+			void							initRegistry();
+			void							read_config();
+		private:
 			std::shared_ptr<H>					_M_network_plugin;
-			/*
-			 * shared library helper for physics plugin
-			 */
 			std::shared_ptr<H>					_M_physics_plugin;
-			/*
-			 * shared library helper for graphics plugin
-			 */
 			std::shared_ptr<H>					_M_graphics_plugin;
 	};
 
