@@ -29,7 +29,7 @@ void			THIS::preloop()
 
 	auto app = get_fnd_app();
 
-	for(auto s: app->_M_preloop_scripts_python) {
+	for(auto s: app->get_preloop_scripts_python()) {
 		auto console = console_.lock();
 		assert(console);
 

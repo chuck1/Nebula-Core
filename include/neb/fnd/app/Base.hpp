@@ -50,9 +50,11 @@ namespace neb { namespace fnd { namespace app {
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
-			typedef std::shared_ptr<neb::fnd::input::js> S_JS;
-			typedef std::shared_ptr<neb::fnd::app::Base> S_A;
-			typedef neb::fnd::app::util::flag FLAG;
+			typedef std::shared_ptr<neb::fnd::input::js>		S_JS;
+			typedef std::shared_ptr<neb::fnd::app::Base>		S_A;
+			typedef std::weak_ptr<neb::fnd::gui::layout::Base>	W_L;
+			typedef neb::fnd::app::util::flag			FLAG;
+			typedef std::weak_ptr<neb::fnd::game::game::base>	W_G;
 			static S_A			global();
 			static S_A			s_init(int ac, char ** av);
 			Base();
@@ -67,11 +69,11 @@ namespace neb { namespace fnd { namespace app {
 			S_JS				get_joystick(int i = -1);
 			static bool			is_valid();
 			virtual window_w		createWindow();
-			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
+			virtual W_L			createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
 					std::shared_ptr<neb::fnd::environ::Base> environ);
-			std::weak_ptr<neb::fnd::game::game::base>		createGame();
-			std::weak_ptr<neb::fnd::game::game::base>		createGame(
+			W_G				createGame();
+			W_G				createGame(
 					neb::fnd::game::game::desc const &);
 		public:
 			void				open_graphics_plugin(std::string filename);
@@ -80,25 +82,26 @@ namespace neb { namespace fnd { namespace app {
 			std::shared_ptr<H>		get_graphics_plugin();
 			std::shared_ptr<H>		get_physics_plugin();
 			std::shared_ptr<H>		get_network_plugin();
-			boost::asio::io_service		ios_;
-			FLAG				flag_;
-			gal::etc::timestep				ts_;
-			std::shared_ptr<console_type>			console_;
-			std::vector<std::string>			_M_preloop_scripts_python;
-			static std::shared_ptr<neb::fnd::app::Base>		g_app_;
-			gal::argparse::Args					_M_args;
 		protected:
-			void			init_register_types();
-			void			init_boost_asio();
-			void			init_python();
-			void			init(int ac, char ** av);
-			void			render();
-			void							initRegistry();
-			void							read_config();
+			void				init_register_types();
+			void				init_boost_asio();
+			void				init_python();
+			void				initRegistry();
+			void				init(int ac, char ** av);
+			void				read_config();
+			void				render();
+			std::vector<std::string>	get_preloop_scripts_python();
 		private:
-			std::shared_ptr<H>					_M_network_plugin;
-			std::shared_ptr<H>					_M_physics_plugin;
-			std::shared_ptr<H>					_M_graphics_plugin;
+			static S_A			_G_app;
+			boost::asio::io_service		_M_ios;
+			FLAG				_M_flag;
+			gal::etc::timestep		_M_ts;
+			std::shared_ptr<console_type>	_M_console;
+			std::vector<std::string>	_M_preloop_scripts_python;
+			gal::argparse::Args		_M_args;
+			std::shared_ptr<H>		_M_network_plugin;
+			std::shared_ptr<H>		_M_physics_plugin;
+			std::shared_ptr<H>		_M_graphics_plugin;
 	};
 
 }}}
