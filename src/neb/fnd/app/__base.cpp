@@ -349,7 +349,6 @@ void				THIS::open_graphics_plugin(std::string filename)
 void				THIS::open_physics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
-	printv_func(INFO);
 
 	typedef neb::fnd::plug::phx::app::Base APP;
 	typedef neb::fnd::plug::phx::core::scene::Base SC;
@@ -370,7 +369,8 @@ void				THIS::open_physics_plugin(std::string filename)
 void				THIS::open_network_plugin(std::string filename)
 {
 	printv_func(DEBUG);
-	printv_func(INFO);
+
+	if(!_M_flag.any(FLAG::PLUGIN_NETWORK)) return;
 
 	typedef neb::fnd::net::core::scene::Base S;
 
@@ -403,13 +403,6 @@ void			THIS::render()
 
 	neb::fnd::window::util::Parent::render();
 }
-
-
-
-
-
-
-
 
 std::shared_ptr<neb::fnd::app::Base>		THIS::global()
 {
@@ -667,6 +660,8 @@ std::vector<std::string>		THIS::get_preloop_scripts_python()
 THIS::W_SRV				THIS::create_server(
 		int portno)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::net::server::Base T;
 
 	auto p = new T;
@@ -683,6 +678,8 @@ THIS::W_CLI				THIS::create_client(
 		std::string ip,
 		int portno)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::net::client::Base T;
 
 	auto p = new T;

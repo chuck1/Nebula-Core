@@ -6,6 +6,8 @@ typedef neb::fnd::net::client::Base THIS;
 
 void		THIS::init(parent_t * const & parent)
 {
+	printv_func(DEBUG);
+
 	setParent(parent);
 
 	auto app = get_fnd_app();

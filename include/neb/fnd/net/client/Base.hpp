@@ -8,10 +8,12 @@
 
 namespace neb { namespace fnd { namespace net { namespace client {
 	class Base:
+		public gal::tmp::Verbosity<neb::fnd::net::client::Base>,
 		virtual public neb::fnd::tmp::Child<neb::fnd::net::client::util::Parent>,
 		public neb::fnd::plug::Parent<neb::fnd::plug::net::client::Base>
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::net::client::Base>::printv;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::net::client::Base> N;
 			virtual void		init(parent_t * const & parent);
 			virtual void		release();
