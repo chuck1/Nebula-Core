@@ -191,6 +191,10 @@ void			THIS::init(int ac, char ** av)
 	
 	if(_M_args.has_long("graphics")) {
 		_M_flag.set(FLAG::PLUGIN_GRAPHICS);
+
+	}
+	if(_M_args.has_long("network")) {
+		_M_flag.set(FLAG::PLUGIN_NETWORK);
 	}
 	
 	
@@ -198,6 +202,7 @@ void			THIS::init(int ac, char ** av)
 
 	// init containers
 	neb::fnd::net::server::util::Parent::init(0);
+	neb::fnd::net::client::util::Parent::init(0);
 	neb::fnd::game::game::util::parent::init(0);
 	neb::fnd::window::util::Parent::init(0);
 	neb::fnd::timer::util::Parent::init(0);
@@ -251,6 +256,8 @@ void						THIS::release()
 	//typedef neb::fnd::core::scene::base S;
 	//typedef neb::fnd::core::scene::util::parent P;
 
+	neb::fnd::net::server::util::Parent::clear();
+	neb::fnd::net::client::util::Parent::clear();
 
 	neb::fnd::game::game::util::parent::clear();
 	neb::fnd::window::util::Parent::clear();
@@ -573,6 +580,14 @@ void				THIS::initRegistry()
 void				THIS::preloop()
 {
 	neb::fnd::gui::layout::util::Parent::preloop();
+
+	// scripts
+	for(auto s : _M_preloop_scripts_python) {
+		assert(_M_console);
+
+		_M_console->eval("execfile(\"" + s + "\")");
+	}
+
 }
 void				THIS::loop()
 {
@@ -649,11 +664,35 @@ std::vector<std::string>		THIS::get_preloop_scripts_python()
 {
 	return _M_preloop_scripts_python;
 }
-THIS::W_SRV				THIS::create_server(int portno)
+THIS::W_SRV				THIS::create_server(
+		int portno)
 {
 	typedef neb::fnd::net::server::Base T;
 
-	auto s = neb::fnd::net::server::util::Parent::create<T>();
+	auto p = new T;
+	
+	std::shared_ptr<T> s(p);
+	
+	s->portno = portno;
+	
+	neb::fnd::net::server::util::Parent::insert(s);
+	
+	return s;
+}
+THIS::W_CLI				THIS::create_client(
+		std::string ip,
+		int portno)
+{
+	typedef neb::fnd::net::client::Base T;
+
+	auto p = new T;
+	
+	std::shared_ptr<T> s(p);
+	
+	s->portno = portno;
+	s->ip = ip;
+	
+	neb::fnd::net::client::util::Parent::insert(s);
 	
 	return s;
 }

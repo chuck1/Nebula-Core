@@ -65,7 +65,7 @@ namespace neb { namespace fnd { namespace app {
 			typedef neb::fnd::app::util::flag			FLAG;
 			typedef std::weak_ptr<neb::fnd::game::game::base>	W_G;
 			typedef std::weak_ptr<neb::fnd::net::server::Base>	W_SRV;
-			typedef std::weak_ptr<neb::fnd::net::server::Base>	W_CLI;
+			typedef std::weak_ptr<neb::fnd::net::client::Base>	W_CLI;
 			static S_A			global();
 			static S_A			s_init(int ac, char ** av);
 			Base();
@@ -80,7 +80,9 @@ namespace neb { namespace fnd { namespace app {
 			S_JS				get_joystick(int i = -1);
 			static bool			is_valid();
 			W_SRV				create_server(int portno);
-			W_CLI				create_client(int ip, int portno);
+			W_CLI				create_client(
+					std::string ip,
+					int portno);
 			virtual window_w		createWindow();
 			virtual W_L			createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,

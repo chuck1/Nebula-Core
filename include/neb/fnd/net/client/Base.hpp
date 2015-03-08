@@ -15,6 +15,7 @@ namespace neb { namespace fnd { namespace net { namespace client {
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::net::client::Base> N;
 			virtual void		init(parent_t * const & parent);
 			virtual void		release();
+			std::string		ip;
 			int			portno;
 	};
 }}}}

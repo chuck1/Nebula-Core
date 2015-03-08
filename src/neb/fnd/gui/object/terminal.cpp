@@ -27,14 +27,6 @@ void			THIS::preloop()
 {
 	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
 
-	auto app = get_fnd_app();
-
-	for(auto s: app->get_preloop_scripts_python()) {
-		auto console = console_.lock();
-		assert(console);
-
-		console->eval("execfile(\"" + s + "\")");
-	}
 }
 void			THIS::init(
 		parent_t * const & p)
