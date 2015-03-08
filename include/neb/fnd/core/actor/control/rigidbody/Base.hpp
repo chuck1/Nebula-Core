@@ -70,6 +70,7 @@ namespace neb { namespace fnd { namespace core { namespace actor { namespace con
 		glm::vec3				t_;
 		glm::vec3				force_;
 		glm::vec3				torque_;
+		std::weak_ptr<neb::fnd::input::js>	_M_js;
 	public:
 		//gal::control::control		pid_;
 	};

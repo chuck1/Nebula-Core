@@ -31,11 +31,15 @@ void		THIS::release()
 }
 void			THIS::connect(std::shared_ptr<neb::fnd::input::source> src)
 {
+	printv_func(DEBUG);
 	connectKeyFun(src, 20);
 }
 void			THIS::connect(std::shared_ptr<neb::fnd::input::js> src)
 {
+	printv_func(DEBUG);
 	connect_js_button_fun(src, 20);
+
+	_M_js = src;
 }
 void			THIS::serialize(boost::archive::polymorphic_iarchive & ar, unsigned int const & version)
 {
