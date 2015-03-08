@@ -35,6 +35,15 @@ namespace neb { namespace fnd { namespace plug {
 				class Directional;
 			}
 		}
+		namespace server
+		{
+			class Base;
+		}
+		namespace client
+		{
+			class Base;
+		}
+		class communicating;
 	}
 }}}
 

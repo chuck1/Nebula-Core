@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+
+#include <gal/stl/verbosity.hpp>
 #include <gal/stl/parent.hpp>
 #include <gal/stl/deleter.hpp>
 #include <gal/etc/timestep.hpp>
@@ -12,15 +14,17 @@
 namespace neb { namespace fnd { namespace util {
 	template<typename CHILD, typename PARENT>
 	class parent:
+		public gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT> >,
 		virtual public gal::stl::parent<CHILD>
 	{
 		public:
-			typedef gal::stl::parent<CHILD>						gal_parent;
-			typedef typename gal::stl::parent<CHILD>::MAP				map_type;
-			typedef typename map_type::iterator					iterator;
-			typedef typename map_type::pointer					pointer;
-			typedef std::shared_ptr<CHILD>	shared;
-			typedef std::weak_ptr<CHILD>	weak;
+			using gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT> >::printv;
+			typedef gal::stl::parent<CHILD>				gal_parent;
+			typedef typename gal::stl::parent<CHILD>::MAP		map_type;
+			typedef typename map_type::iterator			iterator;
+			typedef typename map_type::pointer			pointer;
+			typedef std::shared_ptr<CHILD>				shared;
+			typedef std::weak_ptr<CHILD>				weak;
 
 			// create
 			template<typename U> std::weak_ptr<U>				create()
@@ -48,8 +52,8 @@ namespace neb { namespace fnd { namespace util {
 
 			template<typename... A> void		initChildren(A... a)
 			{
-				std::cout << __PRETTY_FUNCTION__ << std::endl;
-				printf("size = %i\n", gal_parent::size());
+				printv_func(DEBUG);
+				printv(DEBUG, "size = %i\n", gal_parent::size());
 				for(auto it = gal_parent::begin(); it != gal_parent::end(); ++it)
 				{
 					auto p = it->second.ptr_;
@@ -61,15 +65,15 @@ namespace neb { namespace fnd { namespace util {
 
 			void		step(gal::etc::timestep const & ts)
 			{
-				std::cout << __PRETTY_FUNCTION__ << std::endl;
-				printf("size = %i\n", gal_parent::size());
+				printv_func(DEBUG);
+				printv(DEBUG, "size = %i\n", gal_parent::size());
 				gal_parent::for_each([&] (pointer p) { p->step(ts); });
 			}
 			void		preloop()
 			{
-				std::cout << __PRETTY_FUNCTION__ << std::endl;
+				printv_func(DEBUG);
 				auto l = [] (pointer p) { p->preloop(); };
-				printf("size = %i\n", gal_parent::size());
+				printv(DEBUG, "size = %i\n", gal_parent::size());
 				gal_parent::for_each(l);
 			}
 	};

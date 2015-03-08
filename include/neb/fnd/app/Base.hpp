@@ -15,6 +15,10 @@
 #include <neb/fnd/context/util/decl.hpp>
 #include <neb/fnd/environ/util/decl.hpp>
 //#include <neb/fnd/core/scene/util/decl.hpp>
+
+#include <neb/fnd/net/server/util/Parent.hpp>
+#include <neb/fnd/net/client/util/Parent.hpp>
+
 #include <neb/fnd/game/game/util/parent.hpp>
 #include <neb/fnd/game/game/util/decl.hpp>
 #include <neb/fnd/gui/layout/util/Parent.hpp>
@@ -34,6 +38,8 @@ namespace neb { namespace fnd { namespace app {
 		public gal::tmp::Verbosity<neb::fnd::app::Base>,
 		virtual public neb::fnd::app::Base10,
 		virtual public gal::itf::registry,
+		virtual public neb::fnd::net::server::util::Parent,
+		virtual public neb::fnd::net::client::util::Parent,
 		virtual public neb::fnd::game::game::util::parent,
 		virtual public neb::fnd::window::util::Parent,
 		virtual public neb::fnd::timer::util::Parent,
@@ -58,6 +64,8 @@ namespace neb { namespace fnd { namespace app {
 			typedef std::weak_ptr<neb::fnd::gui::layout::Base>	W_L;
 			typedef neb::fnd::app::util::flag			FLAG;
 			typedef std::weak_ptr<neb::fnd::game::game::base>	W_G;
+			typedef std::weak_ptr<neb::fnd::net::server::Base>	W_SRV;
+			typedef std::weak_ptr<neb::fnd::net::server::Base>	W_CLI;
 			static S_A			global();
 			static S_A			s_init(int ac, char ** av);
 			Base();
@@ -71,6 +79,8 @@ namespace neb { namespace fnd { namespace app {
 			void				set_should_release();
 			S_JS				get_joystick(int i = -1);
 			static bool			is_valid();
+			W_SRV				create_server(int portno);
+			W_CLI				create_client(int ip, int portno);
 			virtual window_w		createWindow();
 			virtual W_L			createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,

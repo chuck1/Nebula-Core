@@ -39,6 +39,26 @@ namespace neb
 		{
 			class Base;
 		}
+		namespace net
+		{
+			namespace server
+			{
+				namespace util
+				{
+					class Parent;
+				}
+				class Base;
+			}
+			namespace client
+			{
+				namespace util
+				{
+					class Parent;
+				}
+				class Base;
+			}
+			class communicating;
+		}
 
 		class RenderDesc;
 		class DebugBuffer;

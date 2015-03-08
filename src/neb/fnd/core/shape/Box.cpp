@@ -28,18 +28,20 @@ void		THIS::init(parent_t * const & p)
 
 	auto app = get_fnd_app();
 
-	if(!G::has_object()) {
-		G::make_object<THIS, int>(
-				app->get_graphics_plugin(),
-				neb::fnd::plug::gfx::core::shape::type::CUBOID);
-	}
+	if(app->G::has_object())
+		if(!G::has_object())
+			G::make_object<THIS, int>(
+					app->get_graphics_plugin(),
+					neb::fnd::plug::gfx::core::shape::type::CUBOID);
 
-	if(P::has_object()) {
-		printv(DEBUG, "phx plugin not null\n");
-	} else {
-		P::make_object<THIS, int>(
-				app->get_physics_plugin(),
-				neb::fnd::plug::phx::core::shape::type::CUBOID);
+	if(app->P::has_object()) {
+		if(P::has_object()) {
+			printv(DEBUG, "phx plugin not null\n");
+		} else {
+			P::make_object<THIS, int>(
+					app->get_physics_plugin(),
+					neb::fnd::plug::phx::core::shape::type::CUBOID);
+		}
 	}
 
 	neb::fnd::core::shape::base::init(p);
@@ -65,7 +67,7 @@ void		THIS::release()
 	//neb::phx::core::shape::box::release();
 
 	//neb::fin::core::shape::base::release();
-	
+
 	G::reset();
 	P::reset();
 }

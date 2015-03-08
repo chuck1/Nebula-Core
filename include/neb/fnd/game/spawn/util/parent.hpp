@@ -22,6 +22,7 @@ namespace neb { namespace fnd { namespace game { namespace spawn { namespace uti
 		virtual public neb::fnd::util::parent<neb::fnd::game::spawn::base, parent>
 	{
 		public:
+			using gal::tmp::Verbosity<neb::fnd::game::spawn::util::parent>::printv;
 			parent();
 			virtual ~parent();
 			virtual void		spawn_actor(std::shared_ptr<neb::fnd::core::actor::base> actor);

@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 
 #include <thread>
 #include <fstream>
@@ -74,6 +75,18 @@
 #include <neb/fnd/app/Base.hpp>
 
 typedef neb::fnd::app::Base THIS;
+
+void sig_handler(int signo)
+{
+	switch(signo) {
+	case SIGINT:
+		printf("receivered SIGINT\n");
+		
+		THIS::global()->_M_flag.set(neb::fnd::app::util::flag::E::SHOULD_RELEASE);
+		
+		//exit(1);
+	}
+}
 
 THIS::Base()
 {
@@ -158,6 +171,9 @@ void			THIS::init(int ac, char ** av)
 {
 	printv_func(DEBUG);
 
+	if(signal(SIGINT, sig_handler) == SIG_ERR) {
+		abort();
+	}
 
 	// parse args	
 	gal::argparse::Parser parser;
@@ -181,6 +197,7 @@ void			THIS::init(int ac, char ** av)
 	assert(!_M_flag.any(neb::fnd::app::util::flag::INIT___BASE));
 
 	// init containers
+	neb::fnd::net::server::util::Parent::init(0);
 	neb::fnd::game::game::util::parent::init(0);
 	neb::fnd::window::util::Parent::init(0);
 	neb::fnd::timer::util::Parent::init(0);
@@ -566,10 +583,6 @@ void				THIS::loop()
 
 	while(!_M_flag.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
 
-		// check for exit condition
-
-		if(!neb::fnd::window::util::Parent::front()) break;
-
 		// update
 
 		if(G::has_object())
@@ -636,7 +649,14 @@ std::vector<std::string>		THIS::get_preloop_scripts_python()
 {
 	return _M_preloop_scripts_python;
 }
+THIS::W_SRV				THIS::create_server(int portno)
+{
+	typedef neb::fnd::net::server::Base T;
 
+	auto s = neb::fnd::net::server::util::Parent::create<T>();
+	
+	return s;
+}
 
 
 
