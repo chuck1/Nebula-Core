@@ -47,7 +47,7 @@ void			THIS::init(
 
 	auto app = get_fnd_app();
 
-	console_ = app->console_;
+	console_ = app->_M_console;
 }
 void 			THIS::draw(
 		neb::fnd::RenderDesc const & desc)

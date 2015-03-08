@@ -14,9 +14,8 @@ void			THIS::init(parent_t * const & p)
 
 	neb::fnd::context::util::Parent::init(p);
 
-	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(app->get_graphics_plugin(), 0);
+	create_object_graphics();
 	
 	// callback
 	callback_.key_press_.F1_ = [this](int,int,int,int)->int {
@@ -54,14 +53,11 @@ void			THIS::step(gal::etc::timestep const & ts)
 void			THIS::create_object_graphics()
 {
 	auto app = get_fnd_app();
-	
-	typedef neb::fnd::plug::gfx::window::Base T;
 
-	assert(app->G::has_object());
-
-	G::make_object<THIS, int>(
-			app->get_graphics_plugin(),
-			0);
+	if(app->G::has_object())
+		G::make_object<THIS, int>(
+				app->get_graphics_plugin(),
+				0);
 }
 void			THIS::print_screen()
 {
@@ -121,7 +117,7 @@ void		THIS::resize()
 {
 	printv_func(DEBUG);
 	//if(G::has_object())
-		G::get_object()->resize();
+	G::get_object()->resize();
 }
 glm::vec2	THIS::getCursorPosNDC()
 {

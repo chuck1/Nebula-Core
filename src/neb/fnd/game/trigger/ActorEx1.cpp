@@ -41,7 +41,7 @@ void			THIS::doSomething()
 	//auto app = neb::fnd::app::Base::global();
 	auto app = get_fnd_app();
 	
-	if(app->console_) app->console_->operator<<("you won!");
+	if(app->_M_console) app->_M_console->operator<<("you won!");
 	
 	//scene->getParent()->erase(scene->i_);
 	

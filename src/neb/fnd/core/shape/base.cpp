@@ -95,6 +95,7 @@ void					THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	auto app = get_fnd_app();
 
+	if(app->G::has_object())
 	if(!G::has_object()) {
 		G::make_object<THIS, int>(
 				app->get_graphics_plugin(),

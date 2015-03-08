@@ -69,16 +69,19 @@ void				THIS::init(parent_t * const & p)
 	
 	auto app = get_fnd_app();
 
+	if(app->G::has_object())
 	if(!G::has_object())
 		G::make_object<THIS, int>(
 				app->get_graphics_plugin(),
 				0);
 
+	if(app->P::has_object())
 	if(!P::has_object())
 		P::make_object<THIS, int>(
 				app->get_physics_plugin(),
 				0);
 
+	if(app->N::has_object())
 	if(!N::has_object()) {
 		int nt = game->get_net_type();
 

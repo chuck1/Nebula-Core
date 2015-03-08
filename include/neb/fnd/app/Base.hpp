@@ -25,6 +25,7 @@
 #include <neb/fnd/plug/ObjectParent.hpp>
 #include <neb/fnd/plug/gfx/util/decl.hpp>
 #include <neb/fnd/plug/phx/util/decl.hpp>
+#include <neb/fnd/plug/net/util/decl.hpp>
 
 namespace neb { namespace fnd { namespace app {
 	/** @brief %base */
@@ -38,7 +39,8 @@ namespace neb { namespace fnd { namespace app {
 		virtual public neb::fnd::timer::util::Parent,
 		virtual public neb::fnd::gui::layout::util::Parent,
 		virtual public neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base>,
-		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base>
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base>,
+		virtual public neb::fnd::plug::Parent<neb::fnd::plug::net::app::Base>
 	{
 		public:
 			typedef std::weak_ptr<neb::fnd::window::Base> window_w;
@@ -47,6 +49,7 @@ namespace neb { namespace fnd { namespace app {
 			typedef gal::dll::helper<gal::itf::shared> H;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::gfx::app::Base> G;
 			typedef neb::fnd::plug::Parent<neb::fnd::plug::phx::app::Base> P;
+			typedef neb::fnd::plug::Parent<neb::fnd::plug::net::app::Base> N;
 			typedef gal::console::temp<
 				gal::console::frontend::store,
 				gal::console::backend::python> console_type;
@@ -90,8 +93,9 @@ namespace neb { namespace fnd { namespace app {
 			void				init(int ac, char ** av);
 			void				read_config();
 			void				render();
+		public:
 			std::vector<std::string>	get_preloop_scripts_python();
-		private:
+		//private:
 			static S_A			_G_app;
 			boost::asio::io_service		_M_ios;
 			FLAG				_M_flag;

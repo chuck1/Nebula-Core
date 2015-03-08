@@ -89,9 +89,9 @@ void			THIS::init_boost_asio()
 
 	auto l = [&] ()
 	{
-		boost::asio::io_service::work w(ios_);
-		ios_.run();
-		printv(DEBUG, "ios stopped\n");
+		boost::asio::io_service::work w(_M_ios);
+		_M_ios.run();
+		printv(WARNING, "ios stopped\n");
 	};
 
 	std::thread t(l);
@@ -140,8 +140,8 @@ void			THIS::init_python()
 	//neb::p::app::Base py_app(me);
 
 	try {
-		console_->eval(buffer);
-		console_->main_namespace_["neb"] = boost::python::import("libnebula_python");
+		_M_console->eval(buffer);
+		_M_console->main_namespace_["neb"] = boost::python::import("libnebula_python");
 		//console_->main_namespace_["app"] = py_app;
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
@@ -149,7 +149,7 @@ void			THIS::init_python()
 		// print all other errors to stderr
 		PyErr_Print();
 
-		printf("lines: %lu\n", console_->lines_.size());
+		printf("lines: %lu\n", _M_console->lines_.size());
 
 		abort();
 	}
@@ -174,11 +174,11 @@ void			THIS::init(int ac, char ** av)
 	}
 	
 	if(_M_args.has_long("graphics")) {
-		flag_.set(FLAG::PLUGIN_GRAPHICS);
+		_M_flag.set(FLAG::PLUGIN_GRAPHICS);
 	}
 	
 	
-	assert(!flag_.any(neb::fnd::app::util::flag::INIT___BASE));
+	assert(!_M_flag.any(neb::fnd::app::util::flag::INIT___BASE));
 
 	// init containers
 	neb::fnd::game::game::util::parent::init(0);
@@ -190,10 +190,10 @@ void			THIS::init(int ac, char ** av)
 	init_boost_asio();
 
 	// console
-	console_.reset(new console_type);
-	console_->init();
+	_M_console.reset(new console_type);
+	_M_console->init();
 
-	flag_.set(neb::fnd::app::util::flag::INIT___BASE);
+	_M_flag.set(neb::fnd::app::util::flag::INIT___BASE);
 
 	/** @todo export class to python to implement exit() */
 
@@ -211,7 +211,7 @@ void			THIS::init(int ac, char ** av)
 	initRegistry();
 }
 
-std::shared_ptr<THIS>		THIS::g_app_;
+std::shared_ptr<THIS>		THIS::_G_app;
 /*
 std::shared_ptr<THIS>		THIS::global()
 {
@@ -225,7 +225,7 @@ std::shared_ptr<THIS>		THIS::global()
 */
 bool			THIS::is_valid()
 {
-	return (bool)g_app_;
+	return (bool)_G_app;
 }
 void						THIS::release()
 {
@@ -288,7 +288,7 @@ void				THIS::open_graphics_plugin(std::string filename)
 {
 	printv_func(DEBUG);
 
-	if(!flag_.any(FLAG::PLUGIN_GRAPHICS)) return;
+	if(!_M_flag.any(FLAG::PLUGIN_GRAPHICS)) return;
 
 	typedef neb::fnd::plug::gfx::app::Base APP;
 	typedef neb::fnd::plug::gfx::core::scene::Base SC;
@@ -391,8 +391,8 @@ std::shared_ptr<neb::fnd::app::Base>		THIS::global()
 {
 	printv_func(DEBUG);
 
-	assert(g_app_);
-	return g_app_;
+	assert(_G_app);
+	return _G_app;
 }
 std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 {
@@ -403,10 +403,9 @@ std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 	// continue init
 	app->neb::fnd::app::Base::init(ac, av);
 	
-	
 	//printv(DEBUG, "&g_app_ = %p\n", &g_app_);
 	
-	g_app_ = app;
+	_G_app = app;
 
 	return app;
 }
@@ -414,21 +413,21 @@ void				THIS::read_config()
 {
 	printv_func(DEBUG);
 
-	assert(console_);
+	assert(_M_console);
 
 	boost::python::object o;
 
 	// python
 	try {
-		console_->eval("execfile(\"../share/config.py\")");
-		o = console_->main_namespace_["log"];
+		_M_console->eval("execfile(\"../share/config.py\")");
+		o = _M_console->main_namespace_["log"];
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
 		printf("%s\n", STRINGIZE(PY_LIB_NAME));
 		// print all other errors to stderr
 		PyErr_Print();
-		printf("lines: %lu\n", console_->lines_.size());
-		console_->print();
+		printf("lines: %lu\n", _M_console->lines_.size());
+		_M_console->print();
 		abort();
 	}
 
@@ -498,7 +497,7 @@ void				THIS::read_config()
 
 	std::map<std::string, std::string> m;
 
-	console_->print();
+	_M_console->print();
 
 	printf("log %lu\n", len(keys));
 	for (int i = 0; i < len(keys); ++i) {
@@ -563,11 +562,9 @@ void				THIS::loop()
 	//auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
 	//assert(self);
 
-	auto g = G::get_object();
-
 	preloop();
 
-	while(!flag_.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
+	while(!_M_flag.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
 
 		// check for exit condition
 
@@ -577,14 +574,15 @@ void				THIS::loop()
 
 		if(G::has_object())
 			G::get_object()->update();
-		
 
 		// integrate
 
-		//ts_.step(glfwGetTime());
-		ts_.step(g->get_time());
+		if(G::has_object())
+			_M_ts.step(G::get_object()->get_time());
+		else
+			_M_ts.step(_M_ts.time + 1./30.);
 
-		step(ts_);
+		step(_M_ts);
 
 		// render
 
@@ -633,6 +631,10 @@ std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 THIS::S_JS				THIS::get_joystick(int i)
 {
 	return G::get_object()->get_joystick(i);
+}
+std::vector<std::string>		THIS::get_preloop_scripts_python()
+{
+	return _M_preloop_scripts_python;
 }
 
 
