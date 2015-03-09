@@ -499,6 +499,7 @@ void				THIS::read_config()
 
 	VR::reg<neb::fnd::core::actor::control::rigidbody::base>("neb fnd core actor control rigidbody base");
 
+	VR::reg<neb::fnd::net::server::Base>(			"neb fnd net server base");
 	VR::reg<neb::fnd::net::client::Base>(			"neb fnd net client base");
 	// phx
 
@@ -680,14 +681,19 @@ THIS::W_SRV				THIS::create_server(
 {
 	printv_func(DEBUG);
 
-	typedef neb::fnd::net::server::Base T;
+	typedef neb::fnd::net::server::Base S;
 
-	auto p = new T;
-	
-	std::shared_ptr<T> s(p);
-	
+	auto h = get_network_plugin();
+
+	std::shared_ptr<S> s =
+		h->template make_shared<S, int>(0);
+
 	s->portno = portno;
-	
+
+	s->init(this);
+
+	assert(s);
+
 	neb::fnd::net::server::util::Parent::insert(s);
 	
 	return s;

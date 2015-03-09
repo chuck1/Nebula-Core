@@ -8,18 +8,23 @@ typedef neb::fnd::net::server::Base THIS;
 
 void	THIS::init(parent_t * const & parent)
 {
+	printv_func(DEBUG);
+	
 	setParent(parent);
 	
-	auto app = get_fnd_app();
+	//auto app = get_fnd_app();
 	
+	/*
 	if(app->N::has_object())
 		if(!N::has_object())
 			N::make_object<THIS, int>(
 					app->get_network_plugin(),
 					0);
+					*/
 }
 void	THIS::release()
 {
-	N::reset();
+	printv_func(DEBUG);
+	//N::reset();
 }
 
