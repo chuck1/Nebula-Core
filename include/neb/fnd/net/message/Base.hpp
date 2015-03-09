@@ -10,7 +10,7 @@
 
 #include <neb/fnd/net/message/util/decl.hpp>
 
-namespace neb { namespace net { namespace msg {
+namespace neb { namespace fnd { namespace net { namespace msg {
 	/** \brief %Base
 	 */
 	class Base:
@@ -25,11 +25,11 @@ namespace neb { namespace net { namespace msg {
 				unsigned int const & version) = 0;	
 		virtual void			save(
 				boost::archive::polymorphic_oarchive & ar,
-				unsigned int const & version) = 0;
+				unsigned int const & version) const = 0;
 		BOOST_SERIALIZATION_SPLIT_MEMBER();
 		std::shared_ptr<gal::net::message>	msg_;
 	};
-}}}
+}}}}
 
 #endif
 

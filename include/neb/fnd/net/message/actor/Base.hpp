@@ -5,7 +5,7 @@
 
 namespace neb { namespace net { namespace msg { namespace actor {
 	class Base:
-		virtual public neb::net::msg::Base
+		virtual public neb::fnd::net::msg::Base
 	{
 		public:
 			/** @brief index

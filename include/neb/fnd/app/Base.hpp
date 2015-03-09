@@ -66,6 +66,7 @@ namespace neb { namespace fnd { namespace app {
 			typedef std::weak_ptr<neb::fnd::game::game::base>	W_G;
 			typedef std::weak_ptr<neb::fnd::net::server::Base>	W_SRV;
 			typedef std::weak_ptr<neb::fnd::net::client::Base>	W_CLI;
+			typedef std::shared_ptr<boost::asio::io_service>	S_IOS;
 			static S_A			global();
 			static S_A			s_init(int ac, char ** av);
 			Base();
@@ -109,7 +110,7 @@ namespace neb { namespace fnd { namespace app {
 			std::vector<std::string>	get_preloop_scripts_python();
 		//private:
 			static S_A			_G_app;
-			boost::asio::io_service		_M_ios;
+			S_IOS				_M_ios;
 			FLAG				_M_flag;
 			gal::etc::timestep		_M_ts;
 			std::shared_ptr<console_type>	_M_console;

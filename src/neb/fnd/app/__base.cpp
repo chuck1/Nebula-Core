@@ -41,7 +41,10 @@
 #include <neb/fnd/plug/phx/core/scene/Base.hpp>
 #include <neb/fnd/plug/phx/core/actor/Base.hpp>
 #include <neb/fnd/plug/phx/core/shape/Base.hpp>
-#include <neb/fnd/plug/gfx/app/Base.hpp>
+
+#include <neb/fnd/plug/net/app/Base.hpp>
+#include <neb/fnd/plug/net/server/Base.hpp>
+#include <neb/fnd/plug/net/client/Base.hpp>
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/environ/Base.hpp>
@@ -55,6 +58,7 @@
 #include <neb/fnd/gui/object/Terminal.hpp>
 
 #include <neb/fnd/net/core/scene/Base.hpp>
+#include <neb/fnd/net/client/Base.hpp>
 
 #include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
@@ -100,10 +104,12 @@ void			THIS::init_boost_asio()
 	// boost asio ioservice
 	printv(DEBUG, "launch ios thread\n");
 
+	_M_ios.reset(new boost::asio::io_service);
+
 	auto l = [&] ()
 	{
-		boost::asio::io_service::work w(_M_ios);
-		_M_ios.run();
+		boost::asio::io_service::work w(*_M_ios);
+		_M_ios->run();
 		printv(WARNING, "ios stopped\n");
 	};
 
@@ -191,10 +197,13 @@ void			THIS::init(int ac, char ** av)
 	
 	if(_M_args.has_long("graphics")) {
 		_M_flag.set(FLAG::PLUGIN_GRAPHICS);
-
 	}
+
 	if(_M_args.has_long("network")) {
+		printv(DEBUG, "network on\n");
 		_M_flag.set(FLAG::PLUGIN_NETWORK);
+	} else {
+		printv(DEBUG, "network off\n");
 	}
 	
 	
@@ -372,15 +381,20 @@ void				THIS::open_network_plugin(std::string filename)
 
 	if(!_M_flag.any(FLAG::PLUGIN_NETWORK)) return;
 
-	typedef neb::fnd::net::core::scene::Base S;
+	typedef neb::fnd::plug::net::app::Base A;
+	typedef neb::fnd::net::server::Base S;
+	typedef neb::fnd::net::client::Base C;
 
 	_M_network_plugin.reset(new H(filename));
 
 	_M_network_plugin->open();
 
 	// the integer argument will indicate local or remote
-	//_M_network_plugin->template add<S, int>("scene");
+	_M_network_plugin->template add<A, int>("app");
+	_M_network_plugin->template add<S, int>("server");
+	_M_network_plugin->template add<C, int>("client");
 
+	N::make_object<THIS, int>(_M_network_plugin, 0);
 }
 std::shared_ptr<THIS::H>				THIS::get_graphics_plugin()
 {
@@ -459,6 +473,8 @@ void				THIS::read_config()
 	// fnd
 	typedef gal::tmp::VerbosityRegister VR;
 
+	VR::reg<neb::fnd::app::Base>(				"neb fnd app base");
+
 	VR::reg<neb::fnd::input::sink>(				"neb fnd input sink");
 
 	VR::reg<neb::fnd::game::weapon::SimpleProjectile>(	"neb core game weapon simple projectile");
@@ -482,6 +498,8 @@ void				THIS::read_config()
 	VR::reg<neb::fnd::gui::object::Terminal>(		"neb fnd gui object terminal");
 
 	VR::reg<neb::fnd::core::actor::control::rigidbody::base>("neb fnd core actor control rigidbody base");
+
+	VR::reg<neb::fnd::net::client::Base>(			"neb fnd net client base");
 	// phx
 
 
@@ -680,18 +698,21 @@ THIS::W_CLI				THIS::create_client(
 {
 	printv_func(DEBUG);
 
-	typedef neb::fnd::net::client::Base T;
+	typedef neb::fnd::net::client::Base C;
 
-	auto p = new T;
+	auto h = get_network_plugin();
+
+	std::shared_ptr<C> c =
+		h->template make_shared<C, int>(0);
+
+	c->portno = portno;
+	c->ip = ip;
+
+	c->init(this);
+
+	neb::fnd::net::client::util::Parent::insert(c);
 	
-	std::shared_ptr<T> s(p);
-	
-	s->portno = portno;
-	s->ip = ip;
-	
-	neb::fnd::net::client::util::Parent::insert(s);
-	
-	return s;
+	return c;
 }
 
 

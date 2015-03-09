@@ -22,14 +22,14 @@ void		THIS::activate()
 	assert(app);
 
 	timer_ = new boost::asio::deadline_timer(
-			app->_M_ios,
+			*app->_M_ios,
 			boost::posix_time::seconds(time_));
 
-	assert(!app->_M_ios.stopped());
+	assert(!app->_M_ios->stopped());
 
 	//auto app = std::dynamic_pointer_cast<neb::fnd::app::Base>(getParent());
 
-	app->_M_ios.stopped();
+	app->_M_ios->stopped();
 
 
 	auto me = std::dynamic_pointer_cast<THIS>(shared_from_this());
