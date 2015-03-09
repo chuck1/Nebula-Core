@@ -685,8 +685,7 @@ THIS::W_SRV				THIS::create_server(
 
 	auto h = get_network_plugin();
 
-	std::shared_ptr<S> s =
-		h->template make_shared<S, int>(0);
+	std::shared_ptr<S> s = h->template make_shared<S, int>(0);
 
 	s->portno = portno;
 
