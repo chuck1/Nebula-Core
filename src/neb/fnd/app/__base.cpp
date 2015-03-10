@@ -97,12 +97,12 @@ THIS::Base()
 }
 THIS::~Base()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 }
 void			THIS::init_boost_asio()
 {
 	// boost asio ioservice
-	printv(DEBUG, "launch ios thread\n");
+	printv(INFO, "launch ios thread\n");
 
 	_M_ios.reset(new boost::asio::io_service);
 
@@ -175,7 +175,7 @@ void			THIS::init_python()
 }
 void			THIS::init(int ac, char ** av)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	if(signal(SIGINT, sig_handler) == SIG_ERR) {
 		abort();
@@ -192,7 +192,7 @@ void			THIS::init(int ac, char ** av)
 		_M_preloop_scripts_python.push_back(
 				filename);
 
-		printv(DEBUG, "%s\n", filename.c_str());
+		printv(INFO, "add script: %s\n", filename.c_str());
 	}
 	
 	if(_M_args.has_long("graphics")) {
@@ -200,10 +200,10 @@ void			THIS::init(int ac, char ** av)
 	}
 
 	if(_M_args.has_long("network")) {
-		printv(DEBUG, "network on\n");
+		printv(INFO, "network on\n");
 		_M_flag.set(FLAG::PLUGIN_NETWORK);
 	} else {
-		printv(DEBUG, "network off\n");
+		printv(INFO, "network off\n");
 	}
 	
 	
@@ -260,7 +260,7 @@ bool			THIS::is_valid()
 }
 void						THIS::release()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	//typedef neb::fnd::core::scene::base S;
 	//typedef neb::fnd::core::scene::util::parent P;
@@ -287,7 +287,7 @@ gal::math::pose				THIS::getPoseGlobal() const
 }
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::game::game::base T;
 
@@ -302,7 +302,7 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 		neb::fnd::game::game::desc const & desc)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::game::game::base T;
 	
@@ -319,7 +319,7 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 }
 void				THIS::open_graphics_plugin(std::string filename)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	if(!_M_flag.any(FLAG::PLUGIN_GRAPHICS)) return;
 
@@ -357,7 +357,7 @@ void				THIS::open_graphics_plugin(std::string filename)
 }
 void				THIS::open_physics_plugin(std::string filename)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::plug::phx::app::Base APP;
 	typedef neb::fnd::plug::phx::core::scene::Base SC;
@@ -377,7 +377,7 @@ void				THIS::open_physics_plugin(std::string filename)
 }
 void				THIS::open_network_plugin(std::string filename)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	if(!_M_flag.any(FLAG::PLUGIN_NETWORK)) return;
 
@@ -417,24 +417,23 @@ void			THIS::render()
 
 	neb::fnd::window::util::Parent::render();
 }
-
 std::shared_ptr<neb::fnd::app::Base>		THIS::global()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	assert(_G_app);
 	return _G_app;
 }
 std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	std::shared_ptr<THIS> app(new THIS(), gal::stl::deleter<THIS>());
 
 	// continue init
 	app->neb::fnd::app::Base::init(ac, av);
 	
-	//printv(DEBUG, "&g_app_ = %p\n", &g_app_);
+	//printv(INFO, "&g_app_ = %p\n", &g_app_);
 	
 	_G_app = app;
 
@@ -442,7 +441,7 @@ std::shared_ptr<THIS>		THIS::s_init(int ac, char ** av)
 }
 void				THIS::read_config()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	assert(_M_console);
 
@@ -524,7 +523,7 @@ void				THIS::read_config()
 	*/
 
 	std::map<std::string, int> map_val({
-			{"debug",	DEBUG},
+			{"debug",	INFO},
 			{"info",	INFO},
 			{"warning",	WARNING},
 			{"error",	ERROR},
@@ -580,6 +579,8 @@ void				THIS::read_config()
 }
 void				THIS::initRegistry()
 {
+	printv_func(INFO);
+
 	//makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
 
 	makeDefaultFunc<neb::fnd::core::actor::base,	neb::fnd::core::actor::rigiddynamic::base>();
@@ -597,18 +598,26 @@ void				THIS::initRegistry()
 }
 void				THIS::preloop()
 {
+	printv_func(INFO);
+
 	neb::fnd::gui::layout::util::Parent::preloop();
 
-	// scripts
-	for(auto s : _M_preloop_scripts_python) {
-		assert(_M_console);
+	assert(_M_console);
 
+	// scripts
+	auto it = _M_preloop_scripts_python.begin();
+	while(it != _M_preloop_scripts_python.end()) {
+		string s = *it;
+		printv(INFO, "exec: %s\n", s.c_str());
 		_M_console->eval("execfile(\"" + s + "\")");
+		it = _M_preloop_scripts_python.erase(it);
 	}
 
 }
 void				THIS::loop()
 {
+	printv_func(INFO);
+
 	//auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
 	//assert(self);
 
@@ -649,7 +658,7 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 		std::shared_ptr<neb::fnd::window::Base> window,
 		std::shared_ptr<neb::fnd::environ::Base> environ)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::gui::layout::Base T;
 	
@@ -665,7 +674,7 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 }
 std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	auto window = neb::fnd::window::util::Parent::create<neb::fnd::window::Base>();
 
@@ -685,7 +694,7 @@ std::vector<std::string>		THIS::get_preloop_scripts_python()
 THIS::W_SRV				THIS::create_server(
 		int portno)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::net::server::Base S;
 
@@ -707,7 +716,7 @@ THIS::W_CLI				THIS::create_client(
 		std::string ip,
 		int portno)
 {
-	printv_func(DEBUG);
+	printv_func(INFO);
 
 	typedef neb::fnd::net::client::Base C;
 
