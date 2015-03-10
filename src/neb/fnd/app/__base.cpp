@@ -501,6 +501,12 @@ void				THIS::read_config()
 
 	VR::reg<neb::fnd::net::server::Base>(			"neb fnd net server base");
 	VR::reg<neb::fnd::net::client::Base>(			"neb fnd net client base");
+	
+	
+	VR::reg< neb::fnd::util::parent<neb::fnd::game::game::base, neb::fnd::game::game::util::parent> >(	"neb parent game game");
+	VR::reg< neb::fnd::util::parent<neb::fnd::window::Base, neb::fnd::window::util::Parent> >(		"neb parent window");
+	VR::reg< neb::fnd::util::parent<neb::fnd::gui::layout::Base, neb::fnd::gui::layout::util::Parent> >(	"neb parent gui layout");
+
 	// phx
 
 
