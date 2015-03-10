@@ -43,8 +43,6 @@
 #include <neb/fnd/plug/phx/core/shape/Base.hpp>
 
 #include <neb/fnd/plug/net/app/Base.hpp>
-#include <neb/fnd/plug/net/server/Base.hpp>
-#include <neb/fnd/plug/net/client/Base.hpp>
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/environ/Base.hpp>
@@ -604,12 +602,17 @@ void				THIS::preloop()
 
 	assert(_M_console);
 
+	printv(INFO, "size: %lu\n", _M_preloop_scripts_python.size());
+
 	// scripts
 	auto it = _M_preloop_scripts_python.begin();
 	while(it != _M_preloop_scripts_python.end()) {
 		string s = *it;
-		printv(INFO, "exec: %s\n", s.c_str());
-		_M_console->eval("execfile(\"" + s + "\")");
+		
+		printv(INFO, "exec_file: %s\n", s.c_str());
+		
+		_M_console->exec_file(s);
+		
 		it = _M_preloop_scripts_python.erase(it);
 	}
 
@@ -695,6 +698,12 @@ THIS::W_SRV				THIS::create_server(
 		int portno)
 {
 	printv_func(INFO);
+
+	static int i = 0;
+
+	assert(i == 0);
+
+	i++;
 
 	typedef neb::fnd::net::server::Base S;
 
