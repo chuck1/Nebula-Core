@@ -25,9 +25,9 @@ void			THIS::resize(int w, int h)
 	
 	typedef neb::fnd::environ::util::Parent E;
 
-	auto lamb = [&] (E::map_type::pointer p)
+	auto lamb = [&] (E::S const & s)
 	{
-		p->resize(w, h);
+		s->resize(w, h);
 	};
 	
 	E::for_each(lamb);

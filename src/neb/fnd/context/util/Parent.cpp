@@ -17,8 +17,8 @@ neb::fnd::app::Base * const	THIS::get_fnd_app()
 }
 void				THIS::render()
 {
-	auto lamb = [&] (pointer p) {
-		p->render();
+	auto lamb = [&] (S const & s) {
+		s->render();
 	};
 
 	for_each(lamb);

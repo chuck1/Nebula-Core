@@ -106,6 +106,10 @@ namespace neb { namespace fnd { namespace app {
 			void				init(int ac, char ** av);
 			void				read_config();
 			void				render();
+
+
+
+
 		public:
 			std::vector<std::string>	get_preloop_scripts_python();
 		//private:

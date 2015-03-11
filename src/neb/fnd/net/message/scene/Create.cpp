@@ -1,7 +1,7 @@
 
 //#include <neb/app/Base.hh>
 #include <neb/fnd/core/scene/Base.hpp>
-#include <neb/fnd/net/message/scene/Create.hpp>
+#include <neb/fnd/net/msg/scene/Create.hpp>
 
 typedef neb::net::msg::scene::Create THIS;
 

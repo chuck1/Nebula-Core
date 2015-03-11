@@ -31,7 +31,8 @@ std::weak_ptr<SHAPE>		THIS::createShapeBoxUninitialized(
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::shape::util::parent::insert(shape);
+	neb::fnd::core::shape::util::parent::S s(shape);
+	neb::fnd::core::shape::util::parent::insert(std::move(s));
 	
 	shape->scale_ = size;
 	

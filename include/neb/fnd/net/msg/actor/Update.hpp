@@ -15,7 +15,7 @@
 
 //#include <neb/core/scene/Base.hh>
 
-#include <neb/fnd/net/message/actor/Base.hpp>
+#include <neb/fnd/net/msg/actor/Base.hpp>
 
 namespace neb { namespace net { namespace msg { namespace actor {
 	struct Update:

@@ -6,6 +6,10 @@ namespace neb { namespace fnd { namespace net {
 	namespace msg
 	{
 		class Base;
+		namespace test
+		{
+			class Text;
+		}
 		/** @brief %Actor */
 		namespace actor
 		{

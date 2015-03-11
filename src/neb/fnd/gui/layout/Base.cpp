@@ -52,12 +52,12 @@ void			THIS::draw(neb::fnd::RenderDesc const & desc)
 
 	typedef neb::fnd::gui::object::util::Parent O;
 
-	auto lamb = [&] (O::map_type::pointer p) {
-		auto object = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(p);
+	auto lamb = [&] (O::S const & s) {
+		auto object = std::dynamic_pointer_cast<neb::fnd::gui::object::Base>(s);
 		assert(object);
 		object->draw(desc);
 	};
-
+	
 	O::for_each(lamb);
 
 }

@@ -232,7 +232,8 @@ void			THIS::addActor(
 		std::shared_ptr<neb::fnd::core::actor::base> const & actor
 		)
 {
-	insert(actor);
+	neb::fnd::core::actor::util::parent::S s(actor);
+	insert(std::move(s));
 	actor->init(this);
 }
 void			THIS::load(
@@ -277,7 +278,9 @@ wbase			THIS::createActorBase(gal::math::pose pose)
 
 	actor->pose_ = pose;
 
-	insert(actor);
+
+	neb::fnd::core::actor::util::parent::S s(actor);
+	insert(std::move(s));
 
 	actor->init(this);
 
@@ -293,7 +296,8 @@ wbase		THIS::createActorRigidStaticUninitialized()
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::actor::util::parent::insert_no_init(actor);
+	neb::fnd::core::actor::util::parent::S s(actor);
+	neb::fnd::core::actor::util::parent::insert_no_init(std::move(s));
 	
 	// filtering
 	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
@@ -313,7 +317,8 @@ wbase		THIS::createActorRigidDynamicUninitialized()
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::actor::util::parent::insert(actor);
+	neb::fnd::core::actor::util::parent::S s(actor);
+	neb::fnd::core::actor::util::parent::insert(std::move(s));
 
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
@@ -332,7 +337,8 @@ wbase			THIS::createActorRigidDynamic()
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::actor::util::parent::insert(actor);
+	neb::fnd::core::actor::util::parent::S s(actor);
+	neb::fnd::core::actor::util::parent::insert(std::move(s));
 
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
@@ -354,7 +360,8 @@ wbase			THIS::createActorRigidDynamic(
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::actor::util::parent::insert(actor);
+	neb::fnd::core::actor::util::parent::S s(actor);
+	neb::fnd::core::actor::util::parent::insert(std::move(s));
 
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;

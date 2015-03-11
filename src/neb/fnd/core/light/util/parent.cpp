@@ -8,11 +8,11 @@ typedef neb::fnd::core::light::util::parent THIS;
 
 void			THIS::callbackPose(gal::math::pose const & parent_gpose)
 {	
-	auto lamb = [&] (map_type::pointer p) {
+	auto lamb = [&] (map_type::S const & s) {
 		//auto shape = std::dynamic_pointer_cast<neb::fnd::core::shape::base>(p);
 		//assert(shape);
 		
-		auto light = std::static_pointer_cast<neb::fnd::core::light::base>(p);
+		auto light = std::static_pointer_cast<neb::fnd::core::light::base>(s);
 
 		auto gpose = parent_gpose * light->pose_;
 

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-
+#include <gal/weak_ptr.hpp>
 #include <gal/stl/verbosity.hpp>
 #include <gal/stl/parent.hpp>
 #include <gal/stl/deleter.hpp>
@@ -12,45 +12,49 @@
 #include <neb/fnd/itf/shared.hpp>
 
 namespace neb { namespace fnd { namespace util {
-	template<typename CHILD, typename PARENT>
+	template< typename CHILD, typename PARENT, typename S_ = std::shared_ptr<CHILD> >
 	class parent:
-		public gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT> >,
-		virtual public gal::stl::parent<CHILD>
+		public gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT, S_> >,
+		virtual public gal::stl::parent<CHILD, S_>
 	{
 		public:
-			using gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT> >::printv;
-			typedef gal::stl::parent<CHILD>				gal_parent;
-			typedef typename gal::stl::parent<CHILD>::MAP		map_type;
+			using gal::tmp::Verbosity< neb::fnd::util::parent <CHILD, PARENT, S_> >::printv;
+			typedef gal::stl::parent<CHILD, S_>			gal_parent;
+			typedef typename gal::stl::parent<CHILD, S_>::MAP	map_type;
 			typedef typename map_type::iterator			iterator;
-			typedef typename map_type::pointer			pointer;
-			typedef std::shared_ptr<CHILD>				shared;
+			typedef typename map_type::S				S;
+			//typedef std::shared_ptr<CHILD>			S;
 			typedef std::weak_ptr<CHILD>				weak;
+			typedef gal::weak_ptr<CHILD>				W;
 
 			// create
-			template<typename U> std::weak_ptr<U>				create()
+			template<typename U>
+			std::weak_ptr<U>		create()
 			{
 				U* up = new U;
 				std::shared_ptr<U> u(up, gal::stl::deleter<U>());
 
-				gal_parent::insert(u);
+				S s(u);
+
+				gal_parent::insert(std::move(s));
 
 				u->init(dynamic_cast<PARENT*>(this));
 
 				return u;
 			}
 			// insert
-			void								insert(shared t)
+			void				insert(S && s)
 			{
-				gal_parent::insert(t);
-				t->init(dynamic_cast<PARENT*>(this));
+				W w(s);
+				gal_parent::insert(std::move(s));
+				w->init(dynamic_cast<PARENT*>(this));
 			}
-			void								insert_no_init(shared t)
+			void				insert_no_init(S && s)
 			{
-				gal_parent::insert(t);
+				gal_parent::insert(std::move(s));
 			}
-
-
-			template<typename... A> void		initChildren(A... a)
+			template<typename... A>
+			void				initChildren(A... a)
 			{
 				printv_func(DEBUG);
 				printv(DEBUG, "size = %i\n", gal_parent::size());
@@ -61,19 +65,22 @@ namespace neb { namespace fnd { namespace util {
 					p->init(a...);
 				}
 			}
-
-
-			void		step(gal::etc::timestep const & ts)
+			void				step(gal::etc::timestep const & ts)
 			{
 				printv_func(DEBUG);
 				printv(DEBUG, "size = %i\n", gal_parent::size());
-				gal_parent::for_each([&] (pointer p) { p->step(ts); });
+				
+				auto l = [&] (S s) { s->step(ts); };
+
+				gal_parent::for_each(l);
 			}
-			void		preloop()
+			void				preloop()
 			{
 				printv_func(DEBUG);
-				auto l = [] (pointer p) { p->preloop(); };
 				printv(DEBUG, "size = %i\n", gal_parent::size());
+
+				auto l = [] (S s) { s->preloop(); };
+
 				gal_parent::for_each(l);
 			}
 	};

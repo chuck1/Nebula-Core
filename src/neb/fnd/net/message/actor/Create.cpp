@@ -1,7 +1,7 @@
 
 #include <neb/fnd/core/actor/Base.hpp>
 
-#include <neb/fnd/net/message/actor/Create.hpp>
+#include <neb/fnd/net/msg/actor/Create.hpp>
 
 void		neb::net::msg::actor::Create::load(std::shared_ptr<neb::fnd::core::actor::base> actor)
 {

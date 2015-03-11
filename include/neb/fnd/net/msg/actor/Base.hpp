@@ -1,7 +1,7 @@
 #ifndef NEBULA_MESSAGE_ACTOR_BASE_HPP
 #define NEBULA_MESSAGE_ACTOR_BASE_HPP
 
-#include <neb/fnd/net/message/Base.hpp>
+#include <neb/fnd/net/msg/Base.hpp>
 
 namespace neb { namespace net { namespace msg { namespace actor {
 	class Base:

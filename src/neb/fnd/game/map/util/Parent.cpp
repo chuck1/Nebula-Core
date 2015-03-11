@@ -32,12 +32,14 @@ std::weak_ptr<THIS::M>	THIS::create_map_dll(std::string & s)
 	
 	std::shared_ptr<T> map = h->make_shared<T>();
 
+	gal::weak_ptr<T> w(map);
+
 	//neb::fnd::game::map::util::parent::insert(scene);
-	insert(map);
+	insert(std::move(map));
 
-	map->init(this);
+	w->init(this);
 
-	return map;
+	return w;
 }
 void			THIS::step(gal::etc::timestep const & ts)
 {

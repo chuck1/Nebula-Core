@@ -11,7 +11,9 @@ void	THIS::init(parent_t * const & parent)
 	printv_func(DEBUG);
 	
 	setParent(parent);
-	
+
+	neb::fnd::net::comm::util::Parent::init(parent);
+
 	//auto app = get_fnd_app();
 	
 	/*
@@ -26,5 +28,18 @@ void	THIS::release()
 {
 	printv_func(DEBUG);
 	//N::reset();
+	neb::fnd::net::comm::util::Parent::clear();
+}
+std::shared_ptr<THIS::COMM>	THIS::create_communicating()
+{
+	printv_func(DEBUG);
+
+	auto app = get_fnd_app();
+
+	auto h = app->get_network_plugin();
+
+	std::shared_ptr<THIS::COMM> c = h->template make_shared<COMM, int>(0);
+	
+	return c;
 }
 

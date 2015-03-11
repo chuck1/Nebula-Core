@@ -57,6 +57,7 @@
 
 #include <neb/fnd/net/core/scene/Base.hpp>
 #include <neb/fnd/net/client/Base.hpp>
+#include <neb/fnd/net/msg/test/Text.hpp>
 
 #include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
@@ -291,11 +292,12 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame()
 
 	std::shared_ptr<T> g(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::game::game::util::parent::insert(g);
+	gal::weak_ptr<neb::fnd::game::game::base> w(g);
+	neb::fnd::game::game::util::parent::insert(std::move(g));
 
-	g->init(this);
+	w->init(this);
 
-	return g;
+	return w;
 }
 std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 		neb::fnd::game::game::desc const & desc)
@@ -309,11 +311,12 @@ std::weak_ptr<neb::fnd::game::game::base>		THIS::createGame(
 	
 	g->_M_desc = desc;
 
-	neb::fnd::game::game::util::parent::insert(g);
+	gal::weak_ptr<neb::fnd::game::game::base> w(g);
+	neb::fnd::game::game::util::parent::insert(std::move(g));
 
-	g->init(this);
+	w->init(this);
 
-	return g;
+	return w;
 }
 void				THIS::open_graphics_plugin(std::string filename)
 {
@@ -382,6 +385,7 @@ void				THIS::open_network_plugin(std::string filename)
 	typedef neb::fnd::plug::net::app::Base A;
 	typedef neb::fnd::net::server::Base S;
 	typedef neb::fnd::net::client::Base C;
+	typedef neb::fnd::net::comm::Base COMM;
 
 	_M_network_plugin.reset(new H(filename));
 
@@ -391,6 +395,7 @@ void				THIS::open_network_plugin(std::string filename)
 	_M_network_plugin->template add<A, int>("app");
 	_M_network_plugin->template add<S, int>("server");
 	_M_network_plugin->template add<C, int>("client");
+	_M_network_plugin->template add<COMM, int>("comm");
 
 	N::make_object<THIS, int>(_M_network_plugin, 0);
 }
@@ -590,6 +595,10 @@ void				THIS::initRegistry()
 	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::Cuboid>();
 	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::HeightField::Base>();
 
+	makeDefaultFunc<neb::fnd::net::msg::Base,	neb::fnd::net::msg::test::Text>();
+	
+	
+
 	/*	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
 		makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
 		*/
@@ -717,9 +726,11 @@ THIS::W_SRV				THIS::create_server(
 
 	assert(s);
 
-	neb::fnd::net::server::util::Parent::insert(s);
+	gal::weak_ptr<S> w(s);
+
+	neb::fnd::net::server::util::Parent::insert(std::move(s));
 	
-	return s;
+	return w;
 }
 THIS::W_CLI				THIS::create_client(
 		std::string ip,
@@ -728,20 +739,38 @@ THIS::W_CLI				THIS::create_client(
 	printv_func(INFO);
 
 	typedef neb::fnd::net::client::Base C;
+	typedef neb::fnd::net::comm::Base COM;
 
 	auto h = get_network_plugin();
 
 	std::shared_ptr<C> c =
 		h->template make_shared<C, int>(0);
-
+	
+	printv(INFO, "use_count = %lu\n", c.use_count());
+	
 	c->portno = portno;
 	c->ip = ip;
-
+	
 	c->init(this);
 
-	neb::fnd::net::client::util::Parent::insert(c);
+	gal::weak_ptr<C> wc(c);
+
+	long int count = c.use_count();
+
+	printv(INFO, "use_count = %li\n", count);
 	
-	return c;
+	assert(count == 1);
+	
+	//neb::fnd::net::client::util::Parent::S s(c.get());
+	neb::fnd::net::client::util::Parent::S s(std::move(c));
+	
+	neb::fnd::net::client::util::Parent::insert(std::move(s));
+	
+	printv(INFO, "use_count = %lu\n", c.use_count());
+	
+	assert(wc);
+	
+	return wc;
 }
 
 

@@ -2,7 +2,7 @@
 
 #include <neb/fnd/core/actor/Base.hpp>
 
-#include <neb/fnd/net/message/actor/Update.hpp>
+#include <neb/fnd/net/msg/actor/Update.hpp>
 
 typedef neb::net::msg::actor::Update THIS;
 

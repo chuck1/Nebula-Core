@@ -6,6 +6,7 @@
 #include <neb/fnd/util/decl.hpp>
 #include <neb/fnd/tmp/Child.hpp>
 
+#include <neb/fnd/net/msg/util/decl.hpp>
 #include <neb/fnd/net/comm/Base.hpp>
 
 //#include <neb/fnd/plug/net/util/decl.hpp>
@@ -29,6 +30,7 @@ namespace neb { namespace fnd { namespace net { namespace client {
 			//typedef neb::fnd::plug::Parent<neb::fnd::plug::net::client::Base> N;
 			virtual void		init(parent_t * const & parent);
 			virtual void		release();
+			virtual void		send(std::shared_ptr<neb::fnd::net::msg::Base> m) = 0;
 			std::string		ip;
 			int			portno;
 	};

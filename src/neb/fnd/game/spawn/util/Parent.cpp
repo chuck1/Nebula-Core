@@ -30,10 +30,12 @@ std::weak_ptr<neb::fnd::game::spawn::base>		THIS::create_spawn(gal::math::pose p
 	typedef neb::fnd::game::spawn::base T;
 	std::shared_ptr<T> spawn(new T);
 	
-	neb::fnd::game::spawn::util::parent::insert(spawn);
-	
 	spawn->pose_ = pose;
 
-	return spawn;
+	gal::weak_ptr<T> w(spawn);
+
+	neb::fnd::game::spawn::util::parent::insert(std::move(spawn));
+
+	return w;
 }
 

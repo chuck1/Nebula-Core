@@ -6,7 +6,7 @@
 
 #include <neb/fnd/core/actor/util/decl.hpp>
 
-#include <neb/fnd/net/message/actor/event/Base.hpp>
+#include <neb/fnd/net/msg/actor/event/Base.hpp>
 
 namespace neb { namespace net { namespace msg { namespace actor {
 	class Create

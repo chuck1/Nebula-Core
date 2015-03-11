@@ -21,9 +21,13 @@ namespace neb { namespace fnd { namespace net { namespace server {
 			using CHILD::get_fnd_app;
 			using gal::tmp::Verbosity<neb::fnd::net::server::Base>::printv;
 			//typedef neb::fnd::plug::Parent<neb::fnd::plug::net::server::Base> N;
+			typedef neb::fnd::net::comm::Base COMM;
 			virtual void		init(parent_t * const & parent);
 			virtual void		release();
 			int			portno;
+		protected:
+			/** for use with accept() */
+			std::shared_ptr<COMM>	create_communicating();
 	};
 }}}}
 

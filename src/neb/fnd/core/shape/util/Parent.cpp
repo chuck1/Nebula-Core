@@ -10,12 +10,12 @@ THIS::~parent()
 void				THIS::callbackPose(
 		gal::math::pose const & parent_gpose)
 {
-	auto lambda_shape = [&] (map_type::pointer p)
+	auto lambda_shape = [&] (S const & s)
 	{
 		//auto shape = std::dynamic_pointer_cast<neb::fnd::core::shape::base>(p);
 		//assert(shape);
 		
-		auto shape = std::static_pointer_cast<neb::fnd::core::shape::base>(p);
+		auto shape = std::static_pointer_cast<neb::fnd::core::shape::base>(s);
 
 		auto gpose = parent_gpose * shape->pose_;
 

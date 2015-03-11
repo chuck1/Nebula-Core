@@ -19,7 +19,7 @@
 
 #include <neb/fnd/core/actor/util/decl.hpp>
 
-#include <neb/fnd/net/message/actor/Base.hpp>
+#include <neb/fnd/net/msg/actor/Base.hpp>
 
 namespace neb { namespace net { namespace msg { namespace actor { namespace Event {
 	/** @brief %Base */

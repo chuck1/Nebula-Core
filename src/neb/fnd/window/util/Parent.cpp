@@ -13,8 +13,8 @@ void					THIS::render()
 {
 	//LOG(lg, neb::gfx::sl, debug) << __PRETTY_FUNCTION__;
 
-	auto lamb = [&] (pointer p) {
-		p->render();
+	auto lamb = [&] (S const & s) {
+		s->render();
 	};
 
 	for_each(lamb);

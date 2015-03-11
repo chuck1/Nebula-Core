@@ -48,16 +48,18 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 	typedef neb::fnd::core::scene::base T;
 	
 	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
-	
-	neb::fnd::core::scene::util::parent::insert(scene);
 
-	scene->init(this);
+	gal::weak_ptr<T> w(scene);
+
+	neb::fnd::core::scene::util::parent::insert(std::move(scene));
+
+	w->init(this);
 
 	// map mod stuff
 	/// @TODO how to cope with multiple scenes? should there even be multiple scenes?
 	setup();
 
-	return scene;
+	return w;
 }
 gal::math::pose			THIS::getPose() const
 {

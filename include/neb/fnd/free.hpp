@@ -11,19 +11,6 @@
 
 #include <neb/fnd/util/config.hpp>
 
-template<typename B, typename D> void	makeDefaultFunc()
-{
-	//LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
-
-	//gal::itf::shared::register_type(std::type_index(typeid(B)));
-	//gal::itf::shared::register_type(std::type_index(typeid(D)));
-
-	std::function< std::shared_ptr<B>() > f(
-			[]() { return std::shared_ptr<D>(new D(), gal::stl::deleter<D>()); }
-			);
-
-	gal::stl::factory<B>::default_factory_->template add<D>(f);
-}
 template<typename HB, typename B, typename D> void	makeDLLFunc(std::string class_name)
 {
 	//LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;

@@ -199,7 +199,8 @@ std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightPoint()
 	L* l = new L();
 	auto light = std::shared_ptr<L>(l);
 	
-	neb::fnd::core::light::util::parent::insert(light);
+	neb::fnd::core::light::util::parent::S s(light);
+	neb::fnd::core::light::util::parent::insert(std::move(s));
 	
 	light->init(this);
 
@@ -221,7 +222,8 @@ std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightSpot(glm::vec3 d)
 
 	light->set_spot_direction(d);
 
-	neb::fnd::core::light::util::parent::insert(light);
+	neb::fnd::core::light::util::parent::S s(light);
+	neb::fnd::core::light::util::parent::insert(std::move(s));
 
 	light->init(this);
 
@@ -240,7 +242,8 @@ std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightDirectional(glm::ve
 
 	light->pose_.pos_ = d;
 
-	neb::fnd::core::light::util::parent::insert(light);
+	neb::fnd::core::light::util::parent::S s(light);
+	neb::fnd::core::light::util::parent::insert(std::move(s));
 
 	light->init(this);
 

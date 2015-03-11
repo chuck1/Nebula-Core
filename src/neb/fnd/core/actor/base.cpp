@@ -240,7 +240,8 @@ std::weak_ptr<Weapon>	THIS::createWeaponSimpleProjectile(
 	weap->size_ = size;
 	weap->damage_ = damage;
 
-	neb::fnd::game::weapon::util::parent::insert(weap);
+	neb::fnd::game::weapon::util::parent::S s(weap);
+	neb::fnd::game::weapon::util::parent::insert(std::move(s));
 
 	return weap;
 }
@@ -284,11 +285,13 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeBase(gal::math::pos
 	std::shared_ptr<T> shape(
 			new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::shape::util::parent::insert(shape);
+	gal::weak_ptr<T> w(shape);
+
+	neb::fnd::core::shape::util::parent::insert(std::move(shape));
 
 	shape->init(this);
 
-	return shape;
+	return w;
 }
 std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeCuboid(
 		neb::fnd::core::shape::cuboid::Desc const & desc)
@@ -303,7 +306,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeCuboid(
 	shape->pose_ = desc.pose_;
 	shape->scale_ = desc.scale_;
 
-	neb::fnd::core::shape::util::parent::insert(shape);
+	neb::fnd::core::shape::util::parent::S s(shape);
+	neb::fnd::core::shape::util::parent::insert(std::move(s));
 
 	shape->init(this);
 
@@ -335,7 +339,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 
 	shape->desc_ = desc;
 
-	neb::fnd::core::shape::util::parent::insert(shape);
+	neb::fnd::core::shape::util::parent::S s(shape);
+	neb::fnd::core::shape::util::parent::insert(std::move(s));
 
 
 
